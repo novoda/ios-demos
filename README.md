@@ -2,4 +2,4 @@
 
 This is a collection of basic iOS examples created by Novoda.
 
-* [Calculator - Your First iOS App](http://github.com/novoda/ios-demos/tree/master/CalculatorYourFirstiOSApp)
+* [Calculator - Your First iOS App](https://github.com/novoda/ios-demos/tree/master/Your%20First%20iOS%20App)
