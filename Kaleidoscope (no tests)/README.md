@@ -15,3 +15,12 @@ Some screenshots:
 [screen_shot_2.png](https://github.com/novoda/ios-demos/blob/master/Kaleidoscope%20(no%20tests)/screen_shot_2.png)
 
 [screen_shot_3.png](https://github.com/novoda/ios-demos/blob/master/Kaleidoscope%20(no%20tests)/screen_shot_3.png)
+
+Some animated gifs:
+
+[animated_gif_1.gif](https://github.com/novoda/ios-demos/blob/master/Kaleidoscope%20(no%20tests)/animated_gif_1.gif)
+
+[animated_gif_2.gif](https://github.com/novoda/ios-demos/blob/master/Kaleidoscope%20(no%20tests)/animated_gif_2.gif)
+
+[animated_gif_3.gif](https://github.com/novoda/ios-demos/blob/master/Kaleidoscope%20(no%20tests)/animated_gif_3.gif)
+
