@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+   <productTemplate>
+      <banner>
+         <infoList>
+            <info>
+               <header>
+                  <title>Creators</title>
+               </header>
+               <text>Chuck Lorre</text>
+               <text>Bill Prady</text>
+            </info>
+            <info>
+               <header>
+                  <title>Actors</title>
+               </header>
+               <text>Johnny Galecki</text>
+               <text>Jim Parsons</text>
+               <text>Kaley Cuoco</text>
+               <text>Simon Helberg</text>
+               <text>Kunal Nayyar</text>
+               <text>Sara Gilbert</text>
+               <text>Melissa Rauch</text>
+               <text>Mayim Bialik</text>
+               <text>Kevin Sussman</text>
+               <text>Laura Spencer</text>
+            </info>
+         </infoList>
+         <stack>
+            <title>The Big Bang Theory</title>
+            <row>
+               <text><badge src="resource://tomato-fresh" /> 99%</text>
+               <text>18-24 min</text>
+               <text>Comedy</text>
+               <text>2006-2016</text>
+               <badge src="resource://mpaa-pg" class="badge" />
+               <badge src="resource://cc" class="badge" />
+            </row>
+            <description allowsZooming="true" moreLabel="more">The show is primarily centered on five characters living in Pasadena, California: Leonard Hofstadter and Sheldon Cooper, both physicists at Caltech, who share an apartment; Penny, a waitress and aspiring actress who later becomes a pharmaceutical representative and who lives across the hall; and Leonard and Sheldon's similarly geeky and socially awkward friends and co-workers, aerospace engineer Howard Wolowitz and astrophysicist Raj Koothrappali. The geekiness and intellect of the four guys is contrasted for comic effect with Penny's social skills and common sense.</description>
+            <row>
+               <buttonLockup>
+                  <badge src="resource://button-preview" />
+                  <title>Preview</title>
+               </buttonLockup>
+               <buttonLockup type="buy">
+                  <text>£29.99</text>
+                  <title>Buy Season Pass</title>
+               </buttonLockup>
+            </row>
+         </stack>
+         <heroImg src="http://cdn.playbuzz.com/cdn/7b4f711d-2a46-45dc-bea7-85a15ffa587a/b9f955c1-d8ad-4778-862d-e66ec2c38df1.jpg" />
+      </banner>
+      <shelf>
+         <header>
+            <title>Viewers Also Watched</title>
+         </header>
+         <section>
+            <lockup documentURL="/templates/xml/Home/WalterPresents.xml">
+               <img src="http://ic.c4assets.com/brands/tonys-revenge/series-1/episode-4/eebec4f0-741d-4cb1-8aaa-1acd5fd91097_625x352.jpg" width="200" height="250" />
+               <title>Tony's Revenge</title>
+            </lockup>
+            <lockup>
+               <img src="http://static.bips.channel4.com/bse/orig/blue-eyes/6e1054ff-01c2-497e-8653-a4e96c8294b0_625x352.jpg" width="200" height="250" />
+               <title>Blue Eyes</title>
+            </lockup>
+            <lockup>
+               <img src="http://ic.c4assets.com/brands/mafiosa/series-1/episode-4/85b18e97-05fb-4de3-87ab-e46f97741b4c_625x352.jpg" width="200" height="250" />
+               <title>Mafiosa</title>
+            </lockup>
+         </section>
+      </shelf>
+<!--
+Everything past this is below the fold
+ -->
+      <shelf>
+         <header>
+            <title>Cast and Crew</title>
+         </header>
+         <section>
+            <monogramLockup>
+               <monogram firstName="Johnny" lastName="Galecki" src="https://upload.wikimedia.org/wikipedia/commons/8/83/Johnny_Galecki_at_PaleyFest_2013.jpg" />
+               <title>Johnny Galecki</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Jim" lastName="Parsons" src="https://upload.wikimedia.org/wikipedia/commons/9/92/Jim_Parsons_2013.jpg" />
+               <title>Jim Parsons</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Kaley" lastName="Cuoco" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Kaley_Cuoco_at_PaleyFest_2013.jpg" />
+               <title>Kaley Cuoco</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Simon" lastName="Helberg" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Simon_Helberg_at_PaleyFest_2013.jpg" />
+               <title>Simon Helberg</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Kunal" lastName="Nayyar" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Kunal_Nayyar_at_PaleyFest_2013.jpg" />
+               <title>Kunal Nayyar</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Sara" lastName="Gilbert" src="https://upload.wikimedia.org/wikipedia/commons/5/54/Sara_Gilbert.jpg" />
+               <title>Sara Gilbert</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Melissa" lastName="Rauch" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Melissa_Rauch_-_PaleyFest_2013.jpg" />
+               <title>Melissa Rauch</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Mayim" lastName="Bialik" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Mayim_Bialik_at_PaleyFest_2013.jpg" />
+               <title>Mayim Bialik</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Kevin" lastName="Sussman" src="" />
+               <title>Kevin Sussman</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+            <monogramLockup>
+               <monogram firstName="Laura" lastName="Spencer" src="" />
+               <title>Laura Spencer</title>
+               <subtitle>Actor</subtitle>
+            </monogramLockup>
+         </section>
+      </shelf>
+      <productInfo>
+         <infoTable>
+            <header>
+               <title>Information</title>
+            </header>
+            <info>
+               <header>
+                  <title>Studio</title>
+               </header>
+               <text>Chuck Lorre Productions</text>
+            </info>
+            <info>
+               <header>
+                  <title>Runtime</title>
+               </header>
+               <text>0:24</text>
+            </info>
+            <info>
+               <header>
+                  <title>Format</title>
+               </header>
+               <text>Widescreen</text>
+            </info>
+         </infoTable>
+         <infoTable>
+            <header>
+               <title>Languages</title>
+            </header>
+            <info>
+               <header>
+                  <title>Primary</title>
+               </header>
+               <text>English (Dolby 5.1), Subtitles, CC</text>
+            </info>
+            <info>
+               <header>
+                  <title>Additional</title>
+               </header>
+               <text>Cantonese (Subtitles)</text>
+            </info>
+         </infoTable>
+         <infoTable style="tv-line-spacing:10;">
+            <header>
+               <title>Accessibility</title>
+            </header>
+            <info>
+               <header>
+                  <textBadge>SDH</textBadge>
+               </header>
+               <text>Subtitles for the deaf and Hard of Hearing (SDH) refer to subtitles in the original lanuage with the addition of relevant non-dialog information.</text>
+            </info>
+         </infoTable>
+      </productInfo>
+   </productTemplate>
+</document>

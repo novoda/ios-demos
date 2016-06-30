@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+    <listTemplate>
+        <banner>
+            <title>Home</title>
+        </banner>
+        <list onhighlight="setupMediaContent(event.currentTarget, event.target.getAttribute('mediaContent'), event.target.getAttribute('artworkURL'))">
+            <section>
+                <listItemLockup documentURL="/templates/xml/Home/WalterPresents.xml">
+                    <title>Walter Presents</title>
+                    <relatedContent>
+                        <lockup>
+                            <img aspectFill="true" src="http://ic.c4assets.com/brands/tonys-revenge/series-1/episode-4/eebec4f0-741d-4cb1-8aaa-1acd5fd91097_625x352.jpg" />
+                            <description>Tony's Revenge</description>
+                        </lockup>
+                    </relatedContent>
+                </listItemLockup>
+                <listItemLockup mediaContent="http://p.events-delivery.apple.com.edgesuite.net/1509pijnedfvopihbefvpijlkjb/m3u8/hls_vod_mvp.m3u8" artworkURL="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Headquarters_in_Cupertino.jpg"  onselect="presentVideo(event.currentTarget)">
+                    <title>Apple Special Events</title>
+                    <subtitle>September 2015</subtitle>
+                    <relatedContent>
+                        <lockup>
+                            <mediaContent playbackMode="always" audioMode="always">
+                                <img src="" aspectFill="true" />
+                            </mediaContent>
+                            <description>Apple Special Event 2015</description>
+                        </lockup>
+                    </relatedContent>
+                </listItemLockup>
+                <listItemLockup documentURL="/templates/xml/Home/PopularThisWeek.xml">
+                    <title>Popular This Week</title>
+                    <relatedContent>
+                        <lockup>
+                            <img aspectFill="true" src="http://cdn.playbuzz.com/cdn/7b4f711d-2a46-45dc-bea7-85a15ffa587a/b9f955c1-d8ad-4778-862d-e66ec2c38df1.jpg" width="500" height="300" />
+                            <description>Big Bang Theory</description>
+                        </lockup>
+                    </relatedContent>
+                </listItemLockup>
+            </section>
+        </list>
+    </listTemplate>
+</document>

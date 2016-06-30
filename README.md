@@ -2,7 +2,10 @@
 
 This is a collection of basic iOS examples created by Novoda. Most recent at the top.
 
-* [Adaptive iOS Design]()
+* [Channel-4 demo for the Apple TV]()
+This is a barebones demo of a content-delivery app for the Apple TV. It's not a native app but uses the TVMLKit framework's javascript templates to display content. All the content urls are hardcoded at the moment, rather than served from a json file. The app showcases different templates and also shows how to play video from both inside an element and in full-screen mode. It's based on Apple's sample code.
+
+* [Adaptive iOS Design](https://github.com/novoda/ios-demos/tree/master/Adaptive%20iOS%20Design)
 This demo is not a full application but simply shows different stages of getting a sample screen design to behave adaptively. It is part of a Hack & Tell I gave on adaptive iOS design. See [linked pdf](https://github.com/novoda/ios-demos/blob/master/Adaptive%20iOS%20Design/Adaptive%20iOS%20Design.pdf) for the H&T slides.
 
 * [Kaleidoscope (no tests)](https://github.com/novoda/ios-demos/tree/master/Kaleidoscope%20(no%20tests))
