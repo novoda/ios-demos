@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rick-->
+        <scene sceneID="pz8-rE-ef2">
+            <objects>
+                <navigationController title="Rick" id="f1T-Q2-ofO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rick" image="rick-icon" id="kQb-HN-VwL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dPY-eK-mHf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XA4-cL-hTO" kind="relationship" relationship="rootViewController" id="fPd-sC-ZeL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IcD-yH-3qS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="-376"/>
+        </scene>
+        <!--Rick-->
+        <scene sceneID="YwY-NC-YAF">
+            <objects>
+                <collectionViewController title="Rick" id="XA4-cL-hTO" customClass="RickCollectionViewController" customModule="Rick_And_Morty" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9Mo-1w-866">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hcz-4r-fXt">
+                            <size key="itemSize" width="599" height="164"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rick-cell-identifier" id="agh-Qv-2sF" customClass="RickCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
+                                <rect key="frame" x="1" y="64" width="599" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="599" height="164"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rick-2" translatesAutoresizingMaskIntoConstraints="NO" id="FSA-pe-p2x">
+                                            <rect key="frame" x="513" y="47" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="1sB-8D-HG1"/>
+                                                <constraint firstAttribute="height" constant="70" id="Xmb-Sh-5Mu"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq4-Vs-jiA">
+                                            <rect key="frame" x="16" y="44" width="489" height="61"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="61" id="db8-vG-y78"/>
+                                            </constraints>
+                                            <string key="text">Rick Prime's appearance is almost identical to the other members of the Council of Ricks. The only difference is that his hair style consists of a large puff of hair on top, with the sides and back of his head shaved.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick Prime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qri-MS-e8d">
+                                            <rect key="frame" x="16" y="16" width="489" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="nq4-Vs-jiA" firstAttribute="leading" secondItem="FSA-pe-p2x" secondAttribute="trailing" constant="8" id="1Ng-fa-ttb"/>
+                                    <constraint firstItem="FSA-pe-p2x" firstAttribute="centerY" secondItem="agh-Qv-2sF" secondAttribute="centerY" id="2t7-WC-Dw4"/>
+                                    <constraint firstItem="qri-MS-e8d" firstAttribute="leading" secondItem="nq4-Vs-jiA" secondAttribute="leading" id="3Fw-cj-qpu"/>
+                                    <constraint firstItem="nq4-Vs-jiA" firstAttribute="leading" secondItem="agh-Qv-2sF" secondAttribute="leadingMargin" constant="8" id="5fr-Zy-8QQ"/>
+                                    <constraint firstItem="nq4-Vs-jiA" firstAttribute="trailing" secondItem="FSA-pe-p2x" secondAttribute="leading" constant="-8" id="LXN-7E-XlG"/>
+                                    <constraint firstItem="qri-MS-e8d" firstAttribute="leading" secondItem="agh-Qv-2sF" secondAttribute="leadingMargin" constant="8" id="Nrr-YV-rST"/>
+                                    <constraint firstItem="FSA-pe-p2x" firstAttribute="top" secondItem="agh-Qv-2sF" secondAttribute="topMargin" id="Vaz-ra-tYo"/>
+                                    <constraint firstItem="FSA-pe-p2x" firstAttribute="leading" secondItem="qri-MS-e8d" secondAttribute="trailing" constant="8" id="Ygv-eO-Sw5"/>
+                                    <constraint firstItem="nq4-Vs-jiA" firstAttribute="top" secondItem="qri-MS-e8d" secondAttribute="bottom" constant="8" id="Zvx-pe-Wo5"/>
+                                    <constraint firstItem="qri-MS-e8d" firstAttribute="top" secondItem="FSA-pe-p2x" secondAttribute="top" id="gUT-EN-5YW"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="qri-MS-e8d" secondAttribute="leading" constant="8" id="kAU-uG-IEJ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="FSA-pe-p2x" secondAttribute="trailing" constant="8" id="kp0-ag-05K"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="nq4-Vs-jiA" secondAttribute="leading" constant="8" id="nNS-mU-7I5"/>
+                                    <constraint firstAttribute="topMargin" secondItem="qri-MS-e8d" secondAttribute="top" constant="-8" id="uFP-D1-gsA"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="nq4-Vs-jiA" secondAttribute="bottom" constant="8" id="ugL-h6-MCv"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gUT-EN-5YW"/>
+                                        <exclude reference="kAU-uG-IEJ"/>
+                                        <exclude reference="1Ng-fa-ttb"/>
+                                        <exclude reference="nNS-mU-7I5"/>
+                                        <exclude reference="ugL-h6-MCv"/>
+                                        <exclude reference="Vaz-ra-tYo"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="nq4-Vs-jiA" id="BlH-zD-NPR"/>
+                                    <outlet property="imageView" destination="FSA-pe-p2x" id="6VQ-ka-5j4"/>
+                                    <outlet property="nameLabel" destination="qri-MS-e8d" id="rEg-5b-1nn"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="XA4-cL-hTO" id="ZHw-cj-meA"/>
+                            <outlet property="delegate" destination="XA4-cL-hTO" id="KvK-pT-UHD"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="pGx-om-ray"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvW-1u-s7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="-376"/>
+        </scene>
+        <!--Morty-->
+        <scene sceneID="UtG-bH-tTP">
+            <objects>
+                <navigationController title="Morty" id="Wvd-3z-Dlg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Morty" image="morty-icon" id="tnu-cM-BEC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z43-rB-Vdc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jS7-2J-lyM" kind="relationship" relationship="rootViewController" id="O5W-pm-hpP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5w-vD-DEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="407"/>
+        </scene>
+        <!--Morty-->
+        <scene sceneID="0EC-OJ-H8T">
+            <objects>
+                <collectionViewController title="Morty" id="jS7-2J-lyM" customClass="MortyCollectionViewController" customModule="Rick_And_Morty" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cBg-6S-I5U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qxu-Jo-dCN">
+                            <size key="itemSize" width="600" height="147"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="morty-cell-identifier" id="Pae-ca-sa5" customClass="MortyCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="147"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="147"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PM-2" translatesAutoresizingMaskIntoConstraints="NO" id="mPn-qu-WkM">
+                                            <rect key="frame" x="20" y="39" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="UZn-S0-1aS"/>
+                                                <constraint firstAttribute="width" constant="70" id="nGN-wJ-asR"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scruffy Morty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ami-Zy-9bs">
+                                            <rect key="frame" x="98" y="16" width="494" height="54"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scruffy Morty is a Rock-type Morty found early in the game. It evolves into Unkempt Morty and later into Hobo Morty." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaj-ED-29X">
+                                            <rect key="frame" x="98" y="78" width="494" height="61"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="61" id="ojB-sE-dFY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="ami-Zy-9bs" firstAttribute="top" secondItem="mPn-qu-WkM" secondAttribute="top" id="05y-cL-B1k"/>
+                                    <constraint firstItem="jaj-ED-29X" firstAttribute="leading" secondItem="ami-Zy-9bs" secondAttribute="leading" id="7cF-Lv-At7"/>
+                                    <constraint firstItem="ami-Zy-9bs" firstAttribute="leading" secondItem="mPn-qu-WkM" secondAttribute="trailing" constant="8" id="DcL-Kc-Hao"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jaj-ED-29X" secondAttribute="trailing" id="EdI-kz-xzD"/>
+                                    <constraint firstItem="mPn-qu-WkM" firstAttribute="leading" secondItem="Pae-ca-sa5" secondAttribute="leadingMargin" constant="12" id="Qon-7o-aW2"/>
+                                    <constraint firstItem="mPn-qu-WkM" firstAttribute="centerY" secondItem="Pae-ca-sa5" secondAttribute="centerY" id="SMC-lm-AbA"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="jaj-ED-29X" secondAttribute="bottom" id="ToD-fo-Svz"/>
+                                    <constraint firstItem="mPn-qu-WkM" firstAttribute="top" secondItem="Pae-ca-sa5" secondAttribute="topMargin" id="VJG-dX-qtY"/>
+                                    <constraint firstItem="jaj-ED-29X" firstAttribute="top" secondItem="ami-Zy-9bs" secondAttribute="bottom" constant="8" id="c2v-pB-ne0"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ami-Zy-9bs" secondAttribute="trailing" id="hho-J1-r9G"/>
+                                    <constraint firstItem="ami-Zy-9bs" firstAttribute="top" secondItem="Pae-ca-sa5" secondAttribute="topMargin" constant="8" id="qYm-GA-beN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VJG-dX-qtY"/>
+                                        <exclude reference="05y-cL-B1k"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="jaj-ED-29X" id="Yqy-IH-P5k"/>
+                                    <outlet property="imageView" destination="mPn-qu-WkM" id="ZiI-Qb-DXZ"/>
+                                    <outlet property="nameLabel" destination="ami-Zy-9bs" id="iQR-qd-avp"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="jS7-2J-lyM" id="HK8-gk-4Pg"/>
+                            <outlet property="delegate" destination="jS7-2J-lyM" id="OgZ-nz-6BM"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="SUL-to-e90"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEL-HJ-9MK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="407"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="f1T-Q2-ofO" kind="relationship" relationship="viewControllers" id="2fI-UJ-lht"/>
+                        <segue destination="Wvd-3z-Dlg" kind="relationship" relationship="viewControllers" id="HoP-lZ-ItX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="PM-2" width="150" height="284"/>
+        <image name="Rick-2" width="502" height="502"/>
+        <image name="morty-icon" width="25" height="25"/>
+        <image name="rick-icon" width="25" height="25"/>
+    </resources>
+</document>
