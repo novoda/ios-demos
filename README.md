@@ -17,5 +17,8 @@ A simulated kaleidoscope. It follows the standard MVC pattern but uses no reacti
 * [Calculator - Your First iOS App](https://github.com/novoda/ios-demos/tree/master/Your%20First%20iOS%20App)
 A very simple calculator app, with just enough interesting bits to give an idea of what an iOS app looks like from a developer's point of view. No, it has no error checking or unit tests, and doesn't follow the MVC pattern the way it should, but it's a start.
 
+* [CustomScheduler](https://github.com/novoda/ios-demos/blob/master/CustomScheduler.swift)
+A custom scheduler to easily run tasks either in the back- or the foreground.
+
 * [UIView+Autolayout](https://github.com/novoda/ios-demos/blob/master/UIView%2BAutolayout.swift)
 extends UIView; Import this into your project to be able to use constraints programmatically in a straightforward way.
