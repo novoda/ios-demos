@@ -29,8 +29,6 @@ extension UITest {
 	
 }
 
-//MARK: - 
-
 extension EarlGreyImpl {
 	
 	func selectElementWith(accessibilityLabel accessibilityLabel: String) -> GREYElementInteraction {
