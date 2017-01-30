@@ -65,9 +65,9 @@ extension GREYElementInteraction {
 		performAction(GREYActions.actionForTap())
 	}
 
-  func swipeLeft() {
-    performAction(GREYActions.actionForSwipeSlowInDirection(GREYDirection.Left))
-  }
+	func swipeLeft() {
+		performAction(GREYActions.actionForSwipeSlowInDirection(GREYDirection.Left))
+	}
 
 	func assertIsVisible() {
 		assertWithMatcher(GREYMatchers.matcherForSufficientlyVisible())
