@@ -1,45 +1,49 @@
 import Foundation
 
 class GCDScheduler: Scheduler {
-	
-	func runInForeground(task: () -> Void) {
-		dispatch_async(dispatch_get_main_queue(), task)
-	}
-	
-	func runInForegroundDelayed(by delay: Double, _ task: () -> Void) {
-		let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-		dispatch_after(time, dispatch_get_main_queue(), task)
-	}
-	
-	func runInBackground(task: () -> Void) {
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), task)
+
+	func inForeground(execute task: @escaping () -> Void) {
+        DispatchQueue.main.async(execute: task)
+    }
+
+	func inForeground(execute task: @escaping () -> Void, delayedBy delay: DispatchTimeInterval) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: task)
+    }
+
+	func inBackground(execute task: @escaping () -> Void, withPriority priority: DispatchQoS.QoSClass) {
+		DispatchQueue.global(qos: .default).async(execute: task)
 	}
 }
 
 protocol Scheduler : class {
-    func runInForeground(task: () -> Void)
-    func runInForegroundDelayed(by delay: Double, _ task: () -> Void)
-    func runInBackground(task: () -> Void)
+    func inForeground(execute task: @escaping () -> Void)
+	func inForeground(execute task: @escaping () -> Void, delayedBy delay: DispatchTimeInterval)
+	func inBackground(execute task: @escaping () -> Void, withPriority priority: DispatchQoS.QoSClass)
+
 }
 
 extension Scheduler {
-    func runInBackground<T>(task: () throws -> T, foregroundCompletion: (T) -> Void, foregroundFailure: (ErrorType) -> Void) {
-        runInBackground({ [weak self] in
-            
-            guard let  strongSelf = self else {
+    func execute<T>(task: @escaping () throws -> T, completingBy foregroundCompletion: @escaping (T) -> Void, handlingErrorsBy foregroundFailure: @escaping (Error) -> Void) {
+		inBackground(execute: { [weak self] in
+
+            guard let strongSelf = self else {
                 return
             }
-            
+
             do {
                 let result = try task()
-                strongSelf.runInForeground({
+				strongSelf.inForeground(execute: {
                     foregroundCompletion(result)
                 })
             } catch {
-                strongSelf.runInForeground({
+                strongSelf.inForeground(execute: {
                     foregroundFailure(error)
                 })
             }
         })
     }
+
+	func inBackground(execute task: @escaping () -> Void) {
+		inBackground(execute: task, withPriority: .default)
+	}
 }
