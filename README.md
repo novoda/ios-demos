@@ -5,7 +5,7 @@ This is a collection of basic iOS examples created by Novoda. Most recent at the
 * [Rick-and-Morty](https://github.com/novoda/ios-demos/tree/master/Rick-and-Morty)
 This is a project to be used for pairing sessions with potential new hires. The application is basically a `TabViewController` with 2 different tabs: "Rick" and "Morty". Each tab implements a `CollectionViewController` with a hardcoded data source. The implementation is really basic so there is plenty of refactoring potential.
 
-* [Channel-4 demo for the Apple TV](https://github.com/novoda/ios-demos/tree/master/Ch4Demo)
+* [Demo for the Apple TV](https://github.com/novoda/ios-demos/tree/master/TVDemo)
 This is a barebones demo of a content-delivery app for the Apple TV. It's not a native app but uses the TVMLKit framework's javascript templates to display content. All the content urls are hardcoded at the moment, rather than served from a json file. The app showcases different templates and also shows how to play video from both inside an element and in full-screen mode. It's based on Apple's sample code.
 
 * [Adaptive iOS Design](https://github.com/novoda/ios-demos/tree/master/Adaptive%20iOS%20Design)
