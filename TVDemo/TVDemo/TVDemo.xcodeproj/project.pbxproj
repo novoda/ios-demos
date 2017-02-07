@@ -11,8 +11,8 @@
 		3B45BA1C1D25897B0053875B /* TBBT.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BA181D25897B0053875B /* TBBT.xml */; };
 		3B45BA1D1D25897B0053875B /* WalterPresents.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BA191D25897B0053875B /* WalterPresents.xml */; };
 		3B45BA1E1D25897B0053875B /* Home.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BA1A1D25897B0053875B /* Home.xml */; };
-		65AE407D1B8C3649006FB795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE407C1B8C3649006FB795 /* AppDelegate.swift */; };
 		65AE40841B8C3649006FB795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AE40831B8C3649006FB795 /* Assets.xcassets */; };
+		FA5FAB3A1E4A2390008B6384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAB391E4A2390008B6384 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +21,15 @@
 		3B45BA191D25897B0053875B /* WalterPresents.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WalterPresents.xml; sourceTree = "<group>"; };
 		3B45BA1A1D25897B0053875B /* Home.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Home.xml; sourceTree = "<group>"; };
 		3EFA808C1B98BCD500D16AAB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		65AE40791B8C3649006FB795 /* Ch4Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch4Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		65AE407C1B8C3649006FB795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65AE40831B8C3649006FB795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		65AE40851B8C3649006FB795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65AE40791B8C3649006FB795 /* AppleTVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65AE40831B8C3649006FB795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TVDemo/Assets.xcassets; sourceTree = "<group>"; };
+		65AE40851B8C3649006FB795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = TVDemo/Info.plist; sourceTree = "<group>"; };
 		7AF6E4031D023BF200FD73EA /* application.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = application.js; sourceTree = "<group>"; };
 		7AF6E4041D023BF200FD73EA /* DocumentController.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = DocumentController.js; sourceTree = "<group>"; };
 		7AF6E4051D023BF200FD73EA /* DocumentLoader.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = DocumentLoader.js; sourceTree = "<group>"; };
 		7AF6E4851D023BF200FD73EA /* Index.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Index.xml; sourceTree = "<group>"; };
+		FA5FAB381E4A238F008B6384 /* TV Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TV Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA5FAB391E4A2390008B6384 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TVDemo/AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,27 +66,29 @@
 			isa = PBXGroup;
 			children = (
 				3EFA808C1B98BCD500D16AAB /* README.md */,
-				65AE407B1B8C3649006FB795 /* Ch4Demo */,
+				FA5FAB391E4A2390008B6384 /* AppDelegate.swift */,
+				65AE407B1B8C3649006FB795 /* Apple TV Demo */,
 				7AF6E4011D023BF200FD73EA /* Server */,
 				65AE407A1B8C3649006FB795 /* Products */,
+				FA5FAB381E4A238F008B6384 /* TV Demo-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
 		65AE407A1B8C3649006FB795 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65AE40791B8C3649006FB795 /* Ch4Demo.app */,
+				65AE40791B8C3649006FB795 /* AppleTVDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65AE407B1B8C3649006FB795 /* Ch4Demo */ = {
+		65AE407B1B8C3649006FB795 /* Apple TV Demo */ = {
 			isa = PBXGroup;
 			children = (
-				65AE407C1B8C3649006FB795 /* AppDelegate.swift */,
 				65AE40831B8C3649006FB795 /* Assets.xcassets */,
 				65AE40851B8C3649006FB795 /* Info.plist */,
 			);
+			name = "Apple TV Demo";
 			path = Ch4Demo;
 			sourceTree = "<group>";
 		};
@@ -121,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65AE40781B8C3649006FB795 /* Ch4Demo */ = {
+		65AE40781B8C3649006FB795 /* TV Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65AE40881B8C3649006FB795 /* Build configuration list for PBXNativeTarget "Ch4Demo" */;
+			buildConfigurationList = 65AE40881B8C3649006FB795 /* Build configuration list for PBXNativeTarget "TV Demo" */;
 			buildPhases = (
 				65AE40751B8C3649006FB795 /* Sources */,
 				65AE40761B8C3649006FB795 /* Frameworks */,
@@ -133,9 +136,9 @@
 			);
 			dependencies = (
 			);
-			name = Ch4Demo;
+			name = "TV Demo";
 			productName = Ch4Demo;
-			productReference = 65AE40791B8C3649006FB795 /* Ch4Demo.app */;
+			productReference = 65AE40791B8C3649006FB795 /* AppleTVDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -152,7 +155,7 @@
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 6344MVRY42;
 						DevelopmentTeamName = "Novoda Ltd";
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -161,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 65AE40741B8C3649006FB795 /* Build configuration list for PBXProject "Ch4Demo" */;
+			buildConfigurationList = 65AE40741B8C3649006FB795 /* Build configuration list for PBXProject "TVDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -174,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65AE40781B8C3649006FB795 /* Ch4Demo */,
+				65AE40781B8C3649006FB795 /* TV Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -199,7 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65AE407D1B8C3649006FB795 /* AppDelegate.swift in Sources */,
+				FA5FAB3A1E4A2390008B6384 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,13 +295,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Ch4Demo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Ch4Demo";
-				PRODUCT_NAME = Ch4Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.appletv.sample;
+				PRODUCT_NAME = AppleTVDemo;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TV Demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -309,13 +315,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Ch4Demo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Ch4Demo";
-				PRODUCT_NAME = Ch4Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.appletv.sample;
+				PRODUCT_NAME = AppleTVDemo;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TV Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -325,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65AE40741B8C3649006FB795 /* Build configuration list for PBXProject "Ch4Demo" */ = {
+		65AE40741B8C3649006FB795 /* Build configuration list for PBXProject "TVDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65AE40861B8C3649006FB795 /* Debug */,
@@ -334,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65AE40881B8C3649006FB795 /* Build configuration list for PBXNativeTarget "Ch4Demo" */ = {
+		65AE40881B8C3649006FB795 /* Build configuration list for PBXNativeTarget "TV Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65AE40891B8C3649006FB795 /* Debug */,
