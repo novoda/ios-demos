@@ -15,6 +15,7 @@
 		86F439801E54B20B00A91018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86F4397F1E54B20B00A91018 /* Assets.xcassets */; };
 		86F439831E54B20B00A91018 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86F439811E54B20B00A91018 /* LaunchScreen.storyboard */; };
 		86F4398E1E54B20B00A91018 /* Earl_Grey_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4398D1E54B20B00A91018 /* Earl_Grey_DemoTests.swift */; };
+		86F439991E54B49200A91018 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F439981E54B49200A91018 /* UITest.swift */; };
 		C96B8511698A13B176ADC466 /* Pods_Earl_Grey_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5C757E6A6E8580D00DA093 /* Pods_Earl_Grey_DemoTests.framework */; };
 		E7D7713381792DD592EDBC10 /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F381E39337D4E7287D741 /* EarlGrey.swift */; };
 		FE8BEFCAA07F525224DAF369 /* EarlGrey.framework in EarlGrey Copy Files */ = {isa = PBXBuildFile; fileRef = 32936EF53659FD0CD19D35EF /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -61,6 +62,7 @@
 		86F439891E54B20B00A91018 /* Earl-Grey-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Earl-Grey-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F4398D1E54B20B00A91018 /* Earl_Grey_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earl_Grey_DemoTests.swift; sourceTree = "<group>"; };
 		86F4398F1E54B20B00A91018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86F439981E54B49200A91018 /* UITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		965F381E39337D4E7287D741 /* EarlGrey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
 		DB5C757E6A6E8580D00DA093 /* Pods_Earl_Grey_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Earl_Grey_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				86F4398D1E54B20B00A91018 /* Earl_Grey_DemoTests.swift */,
 				86F4398F1E54B20B00A91018 /* Info.plist */,
 				965F381E39337D4E7287D741 /* EarlGrey.swift */,
+				86F439981E54B49200A91018 /* UITest.swift */,
 			);
 			path = "Earl-Grey-DemoTests";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F439991E54B49200A91018 /* UITest.swift in Sources */,
 				86F4398E1E54B20B00A91018 /* Earl_Grey_DemoTests.swift in Sources */,
 				E7D7713381792DD592EDBC10 /* EarlGrey.swift in Sources */,
 			);
@@ -571,6 +575,7 @@
 				86F439941E54B20B00A91018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86F439951E54B20B00A91018 /* Build configuration list for PBXNativeTarget "Earl-Grey-DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -579,6 +584,7 @@
 				86F439971E54B20B00A91018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
