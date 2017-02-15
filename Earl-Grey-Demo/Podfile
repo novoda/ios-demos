@@ -9,7 +9,14 @@ target 'Earl-Grey-Demo' do
 
   target 'Earl-Grey-DemoTests' do
     inherit! :search_paths
-    # Pods for testing
+    use_frameworks!
+
+    pod 'EarlGrey'
   end
 
+end
+
+post_install do |installer|
+  require 'earlgrey'
+  configure_for_earlgrey(installer, 'Earl-Grey-Demo', 'Earl-Grey-DemoTests', 'Earl-Grey-DemoTests', {swift: true})
 end
