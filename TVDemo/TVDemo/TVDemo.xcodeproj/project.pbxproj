@@ -89,7 +89,6 @@
 				65AE40851B8C3649006FB795 /* Info.plist */,
 			);
 			name = "Apple TV Demo";
-			path = Ch4Demo;
 			sourceTree = "<group>";
 		};
 		7AF6E4011D023BF200FD73EA /* Server */ = {
