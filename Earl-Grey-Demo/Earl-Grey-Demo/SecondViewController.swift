@@ -22,7 +22,7 @@ class SecondViewController: UIViewController {
 
         view.backgroundColor = .white
         view.addSubview(label)
-		label.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         label.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
@@ -30,11 +30,11 @@ class SecondViewController: UIViewController {
         label.textAlignment = .center
         label.accessibilityLabel = "welcome"
 
-		if let input = input, input.characters.count > 0 {
-			label.text = "Welcome, \(input)"
-		} else {
-			label.text = "Welcome stranger!"
-		}
+        if let input = input, input.characters.count > 0 {
+            label.text = "Welcome, \(input)"
+        } else {
+            label.text = "Welcome stranger!"
+        }
     }
 
 }
