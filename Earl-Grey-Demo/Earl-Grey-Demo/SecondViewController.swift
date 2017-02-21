@@ -8,7 +8,13 @@ import Foundation
 
 class SecondViewController: UIViewController {
 
-    let label = UILabel()
+    private let label = UILabel()
+    private var input: String?
+
+    convenience init(input: String?) {
+        self.init(nibName: nil, bundle: nil)
+        self.input = input
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +28,13 @@ class SecondViewController: UIViewController {
         label.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         label.textAlignment = .center
+        label.accessibilityLabel = "welcome"
 
-        label.text = "Welcome to the second controller!";
+		if let input = input, input.characters.count > 0 {
+			label.text = "Welcome, \(input)"
+		} else {
+			label.text = "Welcome stranger!"
+		}
     }
 
 }

@@ -10,8 +10,9 @@ protocol UITest {
 
 extension UITest {
     
-    func onView(with matcher: Matcher) -> GREYElementInteraction {
-        return EarlGrey.select(elementWithMatcher: matcher.function())
+    func onView(with matchers: Matcher...) -> GREYElementInteraction {
+		let greyMatchers = matchers.map { $0.function() }
+        return EarlGrey.select(elementWithMatcher: grey_allOfMatchers(greyMatchers))
     }
     
     func onTabBarButton(with matcher: Matcher) -> GREYElementInteraction {
@@ -36,6 +37,12 @@ struct Matcher {
             return grey_accessibilityLabel(accessibilityLabel)
         })
     }
+
+	static func type(_ classType: AnyClass) -> Matcher {
+		return Matcher(function: {
+			return grey_kindOfClass(classType)
+		})
+	}
     
     static func title(_ title: String) -> Matcher {
         return Matcher(function: {
@@ -74,7 +81,12 @@ extension GREYElementInteraction {
         assert(with: GREYMatchers.matcher(forText: string))
     }
     
-    func type(_ text:String) {
+    func type(_ text: String) {
         perform(GREYActions.action(forTypeText: text))
     }
+
+	func backspace(times: Int) {
+		let backspaceString = String(repeating: "\u{8}", count: times)
+		type(backspaceString)
+	}
 }
