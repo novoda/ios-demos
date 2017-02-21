@@ -8,14 +8,6 @@ protocol UITest {
     
 }
 
-class Foo: UITest {
-    
-    func foo() {
-        onView(with: .accessibilityIdentifier("hello")).assertIsVisible()
-    }
-    
-}
-
 extension UITest {
     
     func onView(with matcher: Matcher) -> GREYElementInteraction {

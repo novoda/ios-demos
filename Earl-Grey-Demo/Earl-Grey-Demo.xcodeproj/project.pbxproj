@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00BA672E12C47DF1A57553C3 /* EarlGrey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32936EF53659FD0CD19D35EF /* EarlGrey.framework */; };
+		2DBA10BAD4FC01CB9DF54716 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA178531F6C0E73FCD044D /* SecondViewController.swift */; };
 		7663F16DB0B843DD1BA63F11 /* Pods_Earl_Grey_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B02085C748EBCFC1685DDC1 /* Pods_Earl_Grey_Demo.framework */; };
 		86F439791E54B20B00A91018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F439781E54B20B00A91018 /* AppDelegate.swift */; };
 		86F4397B1E54B20B00A91018 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4397A1E54B20B00A91018 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		05E3B2E544B966360CB039A6 /* Pods-Earl-Grey-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earl-Grey-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Earl-Grey-Demo/Pods-Earl-Grey-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		2DBA178531F6C0E73FCD044D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2F7E0B1D22FF27FB8F521561 /* Pods-Earl-Grey-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earl-Grey-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Earl-Grey-Demo/Pods-Earl-Grey-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		32936EF53659FD0CD19D35EF /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = "${SRCROOT}/Pods/EarlGrey/EarlGrey/EarlGrey.framework"; sourceTree = SRCROOT; };
 		374D9FA4A219A9F894329D9A /* Pods-Earl-Grey-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earl-Grey-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Earl-Grey-DemoTests/Pods-Earl-Grey-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				86F4397F1E54B20B00A91018 /* Assets.xcassets */,
 				86F439811E54B20B00A91018 /* LaunchScreen.storyboard */,
 				86F439841E54B20B00A91018 /* Info.plist */,
+				2DBA178531F6C0E73FCD044D /* SecondViewController.swift */,
 			);
 			path = "Earl-Grey-Demo";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			files = (
 				86F4397B1E54B20B00A91018 /* ViewController.swift in Sources */,
 				86F439791E54B20B00A91018 /* AppDelegate.swift in Sources */,
+				2DBA10BAD4FC01CB9DF54716 /* SecondViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
