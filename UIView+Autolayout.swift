@@ -230,3 +230,50 @@ extension UIView {
     }
     
 }
+
+// MARK: Center superview
+extension UIView {
+    
+    @discardableResult func centerYToSuperview(withConstant constant: CGFloat = 0,
+                                               priority: UILayoutPriority = UILayoutPriorityRequired,
+                                               relatedBy relation: NSLayoutRelation = .equal) -> NSLayoutConstraint {
+        guard let superview = self.superview else {
+            preconditionFailure("view has no superview")
+        }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .centerY,
+                                            relatedBy: relation,
+                                            toItem: superview,
+                                            attribute: .centerY,
+                                            multiplier: 1,
+                                            constant: constant)
+        constraint.priority = priority
+        superview.addConstraint(constraint)
+        return constraint
+    }
+    
+    @discardableResult func centerXToSuperview(withConstant constant: CGFloat = 0,
+                                               priority: UILayoutPriority = UILayoutPriorityRequired,
+                                               relatedBy relation: NSLayoutRelation = .equal) -> NSLayoutConstraint {
+        guard let superview = self.superview else {
+            preconditionFailure("view has no superview")
+        }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .centerX,
+                                            relatedBy: relation,
+                                            toItem: superview,
+                                            attribute: .centerX,
+                                            multiplier: 1,
+                                            constant: constant)
+        constraint.priority = priority
+        superview.addConstraint(constraint)
+        return constraint
+    }
+}
+
