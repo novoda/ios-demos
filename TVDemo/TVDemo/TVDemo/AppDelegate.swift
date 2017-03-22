@@ -12,10 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let TVBaseURL = "http://localhost:9001/"
     static let TVBootURL = "\(AppDelegate.TVBaseURL)js/application.js"
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {
-
-        window = UIWindow(frame: UIScreen.main().bounds)
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
         let appControllerContext = TVApplicationControllerContext()
 
         if let javaScriptURL = URL(string: AppDelegate.TVBootURL) {
@@ -24,11 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appControllerContext.launchOptions["baseURL"] = AppDelegate.TVBaseURL
         
-        if let launchOptions = launchOptions as? [String: AnyObject] {
+        if let launchOptions = launchOptions {
             for (kind, value) in launchOptions {
-                appControllerContext.launchOptions[kind] = value
+                appControllerContext.launchOptions[kind.rawValue] = value as AnyObject
             }
         }
+
 
         appController = TVApplicationController(context: appControllerContext, window: window, delegate: self)
         return true
@@ -39,15 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: TVApplicationControllerDelegate {
 
-    func appController(_ appController: TVApplicationController, didFail error: NSError) {
+	func appController(_ appController: TVApplicationController, didFail error: Error) {
+		print("\(#function) invoked with error: \(error)")
 
-        print("\(#function) invoked with error: \(error)")
+		let title = "Error Launching Application"
+		let message = error.localizedDescription
+		let alertController = UIAlertController(title: title, message: message, preferredStyle:.alert)
 
-        let title = "Error Launching Application"
-        let message = error.localizedDescription
-        let alertController = UIAlertController(title: title, message: message, preferredStyle:.alert)
-
-        self.appController?.navigationController.present(alertController, animated: true, completion: nil)
-    }
+		self.appController?.navigationController.present(alertController, animated: true, completion: nil)
+	}
 
 }

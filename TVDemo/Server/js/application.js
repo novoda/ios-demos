@@ -24,7 +24,7 @@ App.onLaunch = function(options) {
         } else {
             const alertDocument = createEvalErrorAlertDocument();
             navigationDocument.replaceDocument(alertDocument, loadingDocument);
-            throw new EvalError("Ch4Demo application.js: unable to evaluate scripts.");
+            throw new EvalError("TVDemo application.js: unable to evaluate scripts.");
         }
     });
 };
