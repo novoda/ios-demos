@@ -1,8 +1,3 @@
-//
-// Created by Alex on 21/02/2017.
-// Copyright (c) 2017 Alex Curran. All rights reserved.
-//
-
 import UIKit
 import Foundation
 

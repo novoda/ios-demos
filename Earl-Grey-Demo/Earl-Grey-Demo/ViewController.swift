@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Earl-Grey-Demo
-//
-//  Created by Alex Curran on 15/02/2017.
-//  Copyright © 2017 Alex Curran. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
