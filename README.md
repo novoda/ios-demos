@@ -17,6 +17,8 @@ A simulated kaleidoscope. It follows the standard MVC pattern but uses no reacti
 * [Calculator - Your First iOS App](https://github.com/novoda/ios-demos/tree/master/Your%20First%20iOS%20App)
 A very simple calculator app, with just enough interesting bits to give an idea of what an iOS app looks like from a developer's point of view. No, it has no error checking or unit tests, and doesn't follow the MVC pattern the way it should, but it's a start.
 
+* [Earl Grey demo](https://github.com/novoda/ios-demos/tree/master/Earl-Grey-Demo): A demo project showing how to use [Earl Grey](https://github.com/google/EarlGrey) in an iOS project. Also includes our wrapper API which makes it easier to use (see the [UITest file](https://github.com/novoda/ios-demos/blob/master/Earl-Grey-Demo/Earl-Grey-DemoTests/UITest.swift)) 
+
 * [CustomScheduler](https://github.com/novoda/ios-demos/blob/master/CustomScheduler.swift)
 A custom scheduler to easily run tasks either in the back- or the foreground.
 
