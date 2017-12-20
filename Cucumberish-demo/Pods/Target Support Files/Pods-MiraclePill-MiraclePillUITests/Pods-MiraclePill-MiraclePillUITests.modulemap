@@ -1,0 +1,6 @@
+framework module Pods_MiraclePill_MiraclePillUITests {
+  umbrella header "Pods-MiraclePill-MiraclePillUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
