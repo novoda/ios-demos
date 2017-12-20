@@ -19,6 +19,8 @@ A very simple calculator app, with just enough interesting bits to give an idea 
 
 * [Earl Grey demo](https://github.com/novoda/ios-demos/tree/master/Earl-Grey-Demo): A demo project showing how to use [Earl Grey](https://github.com/google/EarlGrey) in an iOS project. Also includes our wrapper API which makes it easier to use (see the [UITest file](https://github.com/novoda/ios-demos/blob/master/Earl-Grey-Demo/Earl-Grey-DemoTests/UITest.swift)). Requires a `gem install earlgrey && pod install` first.
 
+* [Cucumberish - BDD testing framework + sample app](https://github.com/novoda/ios-demos/tree/master/Cucumberish-demo): Sample iOS app with the Cucumberish - BDD testing framework. Includes implementation of the UI tests on MiraclePillUITests target. Requires `pod install` before opening xcworkspace. It is part of the [blog post](https://www.novoda.com/blog/cucumberish-bdd-testing-framework-for-ios-applications-sample-application/).
+
 * [CustomScheduler](https://github.com/novoda/ios-demos/blob/master/CustomScheduler.swift)
 A custom scheduler to easily run tasks either in the back- or the foreground.
 
