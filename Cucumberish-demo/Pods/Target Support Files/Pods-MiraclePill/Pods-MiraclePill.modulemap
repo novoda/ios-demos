@@ -1,0 +1,6 @@
+framework module Pods_MiraclePill {
+  umbrella header "Pods-MiraclePill-umbrella.h"
+
+  export *
+  module * { export * }
+}

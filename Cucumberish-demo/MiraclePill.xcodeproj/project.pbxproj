@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D201DB11FE02A20006CDEB7 /* FormScreenSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D201DB01FE02A20006CDEB7 /* FormScreenSteps.swift */; };
+		2D201DB41FE044B3006CDEB7 /* CommonSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D201DB31FE044B3006CDEB7 /* CommonSteps.swift */; };
+		2D201DB81FE04690006CDEB7 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D201DB71FE04690006CDEB7 /* Common.swift */; };
+		2D34980F1FE29B4D00A64FD4 /* SuccessScreenSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34980E1FE29B4D00A64FD4 /* SuccessScreenSteps.swift */; };
+		2D7FE1811FDAE449005C4AE7 /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 2D7FE1801FDAE448005C4AE7 /* Features */; };
+		2D7FE1831FDAE4F2005C4AE7 /* CucumberishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FE1821FDAE4F2005C4AE7 /* CucumberishTests.m */; };
+		2D7FE19A1FDAFE7E005C4AE7 /* CucumberishInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FE1991FDAFE7E005C4AE7 /* CucumberishInitializer.swift */; };
+		2D7FE1A01FDB332D005C4AE7 /* FormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FE19F1FDB332D005C4AE7 /* FormScreen.swift */; };
+		2D7FE1A21FDB333F005C4AE7 /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FE1A11FDB333F005C4AE7 /* SuccessScreen.swift */; };
+		2DC6DFDB1FE7BC4B00B58A41 /* Pods_MiraclePill_MiraclePillUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC6DFDA1FE7BC4A00B58A41 /* Pods_MiraclePill_MiraclePillUITests.framework */; };
+		2DC6DFDD1FE7BC8A00B58A41 /* Pods_MiraclePill.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC6DFDC1FE7BC8900B58A41 /* Pods_MiraclePill.framework */; };
+		3A66020EA0DFE81454377D42 /* Pods_MiraclePill_MiraclePillUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F1A9D2F0DE00CEB30D47AC /* Pods_MiraclePill_MiraclePillUITests.framework */; };
+		89B88E501D33495F00EA1578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B88E4F1D33495F00EA1578 /* AppDelegate.swift */; };
+		89B88E521D33495F00EA1578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B88E511D33495F00EA1578 /* ViewController.swift */; };
+		89B88E551D33495F00EA1578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B88E531D33495F00EA1578 /* Main.storyboard */; };
+		89B88E571D33495F00EA1578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89B88E561D33495F00EA1578 /* Assets.xcassets */; };
+		89B88E5A1D33495F00EA1578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B88E581D33495F00EA1578 /* LaunchScreen.storyboard */; };
+		94D3C4E3865CD152756A81A7 /* Pods_MiraclePill.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4A07BD1FE7B92B00E00048 /* Pods_MiraclePill.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2DA6B88F1FDAE0C900AC646C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89B88E441D33495F00EA1578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89B88E4B1D33495F00EA1578;
+			remoteInfo = MiraclePill;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D201DB01FE02A20006CDEB7 /* FormScreenSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormScreenSteps.swift; sourceTree = "<group>"; };
+		2D201DB31FE044B3006CDEB7 /* CommonSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSteps.swift; sourceTree = "<group>"; };
+		2D201DB71FE04690006CDEB7 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		2D34980E1FE29B4D00A64FD4 /* SuccessScreenSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScreenSteps.swift; sourceTree = "<group>"; };
+		2D4A07BD1FE7B92B00E00048 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MiraclePill.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7FE1801FDAE448005C4AE7 /* Features */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Features; sourceTree = "<group>"; };
+		2D7FE1821FDAE4F2005C4AE7 /* CucumberishTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CucumberishTests.m; sourceTree = "<group>"; };
+		2D7FE1961FDAF861005C4AE7 /* main-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "main-Bridging-Header.h"; sourceTree = "<group>"; };
+		2D7FE1991FDAFE7E005C4AE7 /* CucumberishInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CucumberishInitializer.swift; sourceTree = "<group>"; };
+		2D7FE19E1FDB0199005C4AE7 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MiraclePill.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7FE19F1FDB332D005C4AE7 /* FormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormScreen.swift; sourceTree = "<group>"; };
+		2D7FE1A11FDB333F005C4AE7 /* SuccessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScreen.swift; sourceTree = "<group>"; };
+		2DA6B88A1FDAE0C900AC646C /* MiraclePillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiraclePillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DA6B88E1FDAE0C900AC646C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DC6DFD81FE7BC0300B58A41 /* Library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Library; path = ../Library; sourceTree = "<group>"; };
+		2DC6DFDA1FE7BC4A00B58A41 /* Pods_MiraclePill_MiraclePillUITests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_MiraclePill_MiraclePillUITests.framework; path = "../Library/Developer/Xcode/DerivedData/MiraclePill-dequaawkjmvuzdejqblubfzwqasn/Build/Products/Debug-iphonesimulator/Pods_MiraclePill_MiraclePillUITests.framework"; sourceTree = "<group>"; };
+		2DC6DFDC1FE7BC8900B58A41 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_MiraclePill.framework; path = "../Library/Developer/Xcode/DerivedData/MiraclePill-dequaawkjmvuzdejqblubfzwqasn/Build/Products/Debug-iphonesimulator/Pods_MiraclePill.framework"; sourceTree = "<group>"; };
+		339A9F3553DCA3F929F28531 /* Pods-MiraclePillUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePillUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePillUITests/Pods-MiraclePillUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		347E803AAA12E37EC825C097 /* Pods-MiraclePill-MiraclePillUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePill-MiraclePillUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePill-MiraclePillUITests/Pods-MiraclePill-MiraclePillUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3B43E4052292B65D84DAECFD /* libPods-MiraclePillUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiraclePillUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4638F3B5DFF93D625C15C8AD /* Pods-MiraclePill.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePill.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePill/Pods-MiraclePill.debug.xcconfig"; sourceTree = "<group>"; };
+		89B88E4C1D33495F00EA1578 /* MiraclePill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiraclePill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89B88E4F1D33495F00EA1578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		89B88E511D33495F00EA1578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89B88E541D33495F00EA1578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89B88E561D33495F00EA1578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89B88E591D33495F00EA1578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89B88E5B1D33495F00EA1578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B62B46FBBF79056A6B1ABA2 /* Pods-MiraclePill.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePill.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePill/Pods-MiraclePill.release.xcconfig"; sourceTree = "<group>"; };
+		95F1A9D2F0DE00CEB30D47AC /* Pods_MiraclePill_MiraclePillUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiraclePill_MiraclePillUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98230A684F268DBCB9277AED /* Pods-MiraclePillUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePillUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePillUITests/Pods-MiraclePillUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F2701457ED88D53B8C814768 /* Pods-MiraclePill-MiraclePillUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiraclePill-MiraclePillUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiraclePill-MiraclePillUITests/Pods-MiraclePill-MiraclePillUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F89B29D55A970B7C03752F06 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiraclePill.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DA6B8871FDAE0C900AC646C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DC6DFDD1FE7BC8A00B58A41 /* Pods_MiraclePill.framework in Frameworks */,
+				2DC6DFDB1FE7BC4B00B58A41 /* Pods_MiraclePill_MiraclePillUITests.framework in Frameworks */,
+				3A66020EA0DFE81454377D42 /* Pods_MiraclePill_MiraclePillUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89B88E491D33495F00EA1578 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94D3C4E3865CD152756A81A7 /* Pods_MiraclePill.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D201DB21FE02A2D006CDEB7 /* StepsDefinitions */ = {
+			isa = PBXGroup;
+			children = (
+				2D201DB01FE02A20006CDEB7 /* FormScreenSteps.swift */,
+				2D34980E1FE29B4D00A64FD4 /* SuccessScreenSteps.swift */,
+				2D201DB31FE044B3006CDEB7 /* CommonSteps.swift */,
+			);
+			path = StepsDefinitions;
+			sourceTree = "<group>";
+		};
+		2D7FE1941FDAF7ED005C4AE7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				89B88E561D33495F00EA1578 /* Assets.xcassets */,
+				89B88E531D33495F00EA1578 /* Main.storyboard */,
+				89B88E581D33495F00EA1578 /* LaunchScreen.storyboard */,
+				89B88E5B1D33495F00EA1578 /* Info.plist */,
+				2D7FE1961FDAF861005C4AE7 /* main-Bridging-Header.h */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		2D7FE1A31FDB3345005C4AE7 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2D7FE19F1FDB332D005C4AE7 /* FormScreen.swift */,
+				2D7FE1A11FDB333F005C4AE7 /* SuccessScreen.swift */,
+				2D201DB71FE04690006CDEB7 /* Common.swift */,
+			);
+			name = Screens;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		2DA6B88B1FDAE0C900AC646C /* MiraclePillUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2D7FE1A31FDB3345005C4AE7 /* Screens */,
+				2D7FE1801FDAE448005C4AE7 /* Features */,
+				2D201DB21FE02A2D006CDEB7 /* StepsDefinitions */,
+				2D7FE1821FDAE4F2005C4AE7 /* CucumberishTests.m */,
+				2D7FE1991FDAFE7E005C4AE7 /* CucumberishInitializer.swift */,
+				2DA6B88E1FDAE0C900AC646C /* Info.plist */,
+			);
+			path = MiraclePillUITests;
+			sourceTree = "<group>";
+		};
+		89B88E431D33495F00EA1578 = {
+			isa = PBXGroup;
+			children = (
+				89B88E4E1D33495F00EA1578 /* MiraclePill */,
+				2DA6B88B1FDAE0C900AC646C /* MiraclePillUITests */,
+				89B88E4D1D33495F00EA1578 /* Products */,
+				FFC817AFCDE6246322F27BF2 /* Pods */,
+				D51FC237705FDBD745193125 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		89B88E4D1D33495F00EA1578 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89B88E4C1D33495F00EA1578 /* MiraclePill.app */,
+				2DA6B88A1FDAE0C900AC646C /* MiraclePillUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89B88E4E1D33495F00EA1578 /* MiraclePill */ = {
+			isa = PBXGroup;
+			children = (
+				89B88E4F1D33495F00EA1578 /* AppDelegate.swift */,
+				89B88E511D33495F00EA1578 /* ViewController.swift */,
+				2D7FE1941FDAF7ED005C4AE7 /* SupportingFiles */,
+			);
+			path = MiraclePill;
+			sourceTree = "<group>";
+		};
+		D51FC237705FDBD745193125 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DC6DFDC1FE7BC8900B58A41 /* Pods_MiraclePill.framework */,
+				2DC6DFDA1FE7BC4A00B58A41 /* Pods_MiraclePill_MiraclePillUITests.framework */,
+				2DC6DFD81FE7BC0300B58A41 /* Library */,
+				2D4A07BD1FE7B92B00E00048 /* Pods_MiraclePill.framework */,
+				2D7FE19E1FDB0199005C4AE7 /* Pods_MiraclePill.framework */,
+				F89B29D55A970B7C03752F06 /* Pods_MiraclePill.framework */,
+				3B43E4052292B65D84DAECFD /* libPods-MiraclePillUITests.a */,
+				95F1A9D2F0DE00CEB30D47AC /* Pods_MiraclePill_MiraclePillUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFC817AFCDE6246322F27BF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4638F3B5DFF93D625C15C8AD /* Pods-MiraclePill.debug.xcconfig */,
+				8B62B46FBBF79056A6B1ABA2 /* Pods-MiraclePill.release.xcconfig */,
+				339A9F3553DCA3F929F28531 /* Pods-MiraclePillUITests.debug.xcconfig */,
+				98230A684F268DBCB9277AED /* Pods-MiraclePillUITests.release.xcconfig */,
+				F2701457ED88D53B8C814768 /* Pods-MiraclePill-MiraclePillUITests.debug.xcconfig */,
+				347E803AAA12E37EC825C097 /* Pods-MiraclePill-MiraclePillUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DA6B8891FDAE0C900AC646C /* MiraclePillUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA6B8911FDAE0C900AC646C /* Build configuration list for PBXNativeTarget "MiraclePillUITests" */;
+			buildPhases = (
+				B184B799BC49C5FC77DF66D1 /* [CP] Check Pods Manifest.lock */,
+				2DA6B8861FDAE0C900AC646C /* Sources */,
+				2DA6B8871FDAE0C900AC646C /* Frameworks */,
+				2DA6B8881FDAE0C900AC646C /* Resources */,
+				2B0A4EC0E42DE287C4D23775 /* [CP] Embed Pods Frameworks */,
+				802822822964DA5EE3EBB18E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DA6B8901FDAE0C900AC646C /* PBXTargetDependency */,
+			);
+			name = MiraclePillUITests;
+			productName = MiraclePillUITests;
+			productReference = 2DA6B88A1FDAE0C900AC646C /* MiraclePillUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		89B88E4B1D33495F00EA1578 /* MiraclePill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89B88E5E1D33495F00EA1578 /* Build configuration list for PBXNativeTarget "MiraclePill" */;
+			buildPhases = (
+				6DC867762C4875254E166FA1 /* [CP] Check Pods Manifest.lock */,
+				89B88E481D33495F00EA1578 /* Sources */,
+				89B88E491D33495F00EA1578 /* Frameworks */,
+				89B88E4A1D33495F00EA1578 /* Resources */,
+				9EA664B4BF4978A3017531A7 /* [CP] Embed Pods Frameworks */,
+				CD4C96FB046CBF3D7D75EC03 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiraclePill;
+			productName = MiraclePill;
+			productReference = 89B88E4C1D33495F00EA1578 /* MiraclePill.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89B88E441D33495F00EA1578 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Devslopes;
+				TargetAttributes = {
+					2DA6B8891FDAE0C900AC646C = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 6344MVRY42;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 89B88E4B1D33495F00EA1578;
+					};
+					89B88E4B1D33495F00EA1578 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 6344MVRY42;
+						DevelopmentTeamName = "Devslopes, LLC";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 89B88E471D33495F00EA1578 /* Build configuration list for PBXProject "MiraclePill" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89B88E431D33495F00EA1578;
+			productRefGroup = 89B88E4D1D33495F00EA1578 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89B88E4B1D33495F00EA1578 /* MiraclePill */,
+				2DA6B8891FDAE0C900AC646C /* MiraclePillUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DA6B8881FDAE0C900AC646C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D7FE1811FDAE449005C4AE7 /* Features in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89B88E4A1D33495F00EA1578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89B88E5A1D33495F00EA1578 /* LaunchScreen.storyboard in Resources */,
+				89B88E571D33495F00EA1578 /* Assets.xcassets in Resources */,
+				89B88E551D33495F00EA1578 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B0A4EC0E42DE287C4D23775 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MiraclePill-MiraclePillUITests/Pods-MiraclePill-MiraclePillUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cucumberish/Cucumberish.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cucumberish.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiraclePill-MiraclePillUITests/Pods-MiraclePill-MiraclePillUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DC867762C4875254E166FA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiraclePill-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		802822822964DA5EE3EBB18E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiraclePill-MiraclePillUITests/Pods-MiraclePill-MiraclePillUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EA664B4BF4978A3017531A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiraclePill/Pods-MiraclePill-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B184B799BC49C5FC77DF66D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiraclePill-MiraclePillUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4C96FB046CBF3D7D75EC03 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiraclePill/Pods-MiraclePill-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DA6B8861FDAE0C900AC646C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D201DB81FE04690006CDEB7 /* Common.swift in Sources */,
+				2D7FE1A01FDB332D005C4AE7 /* FormScreen.swift in Sources */,
+				2D201DB11FE02A20006CDEB7 /* FormScreenSteps.swift in Sources */,
+				2D34980F1FE29B4D00A64FD4 /* SuccessScreenSteps.swift in Sources */,
+				2D7FE1831FDAE4F2005C4AE7 /* CucumberishTests.m in Sources */,
+				2D7FE19A1FDAFE7E005C4AE7 /* CucumberishInitializer.swift in Sources */,
+				2D201DB41FE044B3006CDEB7 /* CommonSteps.swift in Sources */,
+				2D7FE1A21FDB333F005C4AE7 /* SuccessScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89B88E481D33495F00EA1578 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89B88E521D33495F00EA1578 /* ViewController.swift in Sources */,
+				89B88E501D33495F00EA1578 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DA6B8901FDAE0C900AC646C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89B88E4B1D33495F00EA1578 /* MiraclePill */;
+			targetProxy = 2DA6B88F1FDAE0C900AC646C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		89B88E531D33495F00EA1578 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89B88E541D33495F00EA1578 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		89B88E581D33495F00EA1578 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89B88E591D33495F00EA1578 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DA6B8921FDAE0C900AC646C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2701457ED88D53B8C814768 /* Pods-MiraclePill-MiraclePillUITests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MiraclePillUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.MiraclePillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/bartziemba/Downloads/MiraclePill/MiraclePill/SupportingFiles/main-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MiraclePill;
+			};
+			name = Debug;
+		};
+		2DA6B8931FDAE0C900AC646C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 347E803AAA12E37EC825C097 /* Pods-MiraclePill-MiraclePillUITests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MiraclePillUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.MiraclePillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/bartziemba/Downloads/MiraclePill/MiraclePill/SupportingFiles/main-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MiraclePill;
+			};
+			name = Release;
+		};
+		89B88E5C1D33495F00EA1578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89B88E5D1D33495F00EA1578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89B88E5F1D33495F00EA1578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4638F3B5DFF93D625C15C8AD /* Pods-MiraclePill.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = MiraclePill/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		89B88E601D33495F00EA1578 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B62B46FBBF79056A6B1ABA2 /* Pods-MiraclePill.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = MiraclePill/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DA6B8911FDAE0C900AC646C /* Build configuration list for PBXNativeTarget "MiraclePillUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA6B8921FDAE0C900AC646C /* Debug */,
+				2DA6B8931FDAE0C900AC646C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89B88E471D33495F00EA1578 /* Build configuration list for PBXProject "MiraclePill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89B88E5C1D33495F00EA1578 /* Debug */,
+				89B88E5D1D33495F00EA1578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89B88E5E1D33495F00EA1578 /* Build configuration list for PBXNativeTarget "MiraclePill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89B88E5F1D33495F00EA1578 /* Debug */,
+				89B88E601D33495F00EA1578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89B88E441D33495F00EA1578 /* Project object */;
+}
