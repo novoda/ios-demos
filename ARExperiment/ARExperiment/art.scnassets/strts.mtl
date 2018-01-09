@@ -1,0 +1,77 @@
+newmtl blinn1SG
+illum 4
+Kd 0.26 0.85 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl initialShadingGroup
+illum 4
+Kd 0.23 0.23 0.23
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__blinn2SG
+illum 4
+Kd 0.62 0.62 0.62
+Ka 0.15 0.15 0.15
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl pasted__blinn8SG
+illum 4
+Kd 0.88 0.13 0.26
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.23 0.23 0.23
+newmtl pasted__blinn9SG
+illum 4
+Kd 1.00 0.26 0.37
+Ka 0.03 0.03 0.03
+Tf 0.91 0.91 0.91
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl pasted__pasted__pasted__blinn4SG
+illum 4
+Kd 0.07 0.10 0.21
+Ka 0.07 0.07 0.07
+Tf 0.76 0.76 0.76
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl pasted__pasted__pasted__phong1SG1
+illum 4
+Kd 0.15 0.15 0.15
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl pasted__phong1SG
+illum 4
+Kd 0.35 0.35 0.35
+Ka 0.12 0.12 0.12
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 49.42
+newmtl pasted__phong3SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 0.79 0.79 0.79
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl pasted__phongE1SG
+illum 4
+Kd 0.90 0.18 0.26
+Ka 0.20 0.20 0.20
+Tf 0.41 0.41 0.41
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl pasted__phongE3SG
+illum 4
+Kd 0.90 0.35 0.18
+Ka 0.56 0.56 0.56
+Tf 0.85 0.85 0.85
+Ni 1.00
+Ks 0.50 0.50 0.50
