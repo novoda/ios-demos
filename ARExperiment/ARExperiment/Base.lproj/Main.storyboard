@@ -51,6 +51,14 @@
                                     <segue destination="Nc5-t9-vlo" kind="show" id="PP7-xS-olW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-sG-B20">
+                                <rect key="frame" x="103" y="341" width="181" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="RecognizeObjects VC"/>
+                                <connections>
+                                    <segue destination="fYl-Q7-ghR" kind="show" id="Yb4-X0-wa7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ycr-Qa-zBu"/>
@@ -103,6 +111,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOK-mG-OgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="172" y="369"/>
+        </scene>
+        <!--RecognizeObjectsViewController-->
+        <scene sceneID="iyy-y2-dmI">
+            <objects>
+                <viewController title="RecognizeObjectsViewController" id="fYl-Q7-ghR" customClass="RecognizeObjectsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eP0-w5-OkY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bJL-fM-s46">
+                                <rect key="frame" x="98" y="269" width="240" height="128"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bJL-fM-s46" firstAttribute="width" secondItem="eP0-w5-OkY" secondAttribute="width" id="7eM-2f-q0l"/>
+                            <constraint firstItem="bJL-fM-s46" firstAttribute="centerY" secondItem="mlb-O7-oSr" secondAttribute="centerY" id="OAU-RF-pSx"/>
+                            <constraint firstItem="bJL-fM-s46" firstAttribute="centerX" secondItem="mlb-O7-oSr" secondAttribute="centerX" id="a2Q-Yw-GJA"/>
+                            <constraint firstItem="bJL-fM-s46" firstAttribute="height" secondItem="eP0-w5-OkY" secondAttribute="height" id="qSQ-N9-4U3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mlb-O7-oSr"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="bJL-fM-s46" id="gtD-1s-Fsx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpW-PG-QVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="1105"/>
         </scene>
     </scenes>
 </document>
