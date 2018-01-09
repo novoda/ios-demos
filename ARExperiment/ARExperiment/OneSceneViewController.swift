@@ -14,7 +14,18 @@ class OneSceneViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     fileprivate var nodeModel: SCNNode?
+    //MARK: These strings is what you need to switch between different 3D objects
+    /** NodeName is the name of the object you want to show, not necessarily the name of the file.
+        - You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
+        - on the left bottom side of the corner there should be an icon called "Show the scene graph View" click on that, you will now see the hierarchy of the object, tap the object at the top you want to use
+        - on the right top of xcode there should be a button called "Hide or show utilities" open the utilities using it
+        - On the top of the utilities look for the cube icon called "Show the nodes inspector" and click on that
+        - Under identity -> Name there should be a textField, that is the nodeName you need for here
+     **/
     private let nodeName = "icecream"
+    private let fileName = "icecream"
+    private let fileExtension = "dae"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +37,7 @@ class OneSceneViewController: UIViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 
-        nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/icecream.dae")
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")
-//        sceneView.scene = scene!
+        nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,13 +90,6 @@ class OneSceneViewController: UIViewController {
 }
 
 extension OneSceneViewController: ARSCNViewDelegate {
-
-     // Override to create and configure nodes for anchors added to the view's session.
-//     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-//     let node = SCNNode()
-//
-//     return node
-//     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
