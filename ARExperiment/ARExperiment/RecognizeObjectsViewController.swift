@@ -92,7 +92,8 @@ class RecognizeObjectsViewController: UIViewController {
         guard let pixelBufferCamerCapture : CVPixelBuffer = (sceneView.session.currentFrame?.capturedImage) else {
             return
         }
-        if let predictions = try? yolo.predict(image: pixelBufferCamerCapture) {
+        let scalePixelBufferCameraCapture = scaleImageForModel(pixelBuffer: pixelBufferCamerCapture)
+        if let predictions = try? yolo.predict(image: scalePixelBufferCameraCapture) {
             if let boundingBox = predictions.first {
                 showOnMainThread(boundingBox)
             }
@@ -106,7 +107,46 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     func show(prediction: YOLO.Prediction) {
-        boundingBox.show(frame: prediction.rect, label: "", color: .blue)
+        let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect)
+        boundingBox.show(frame: scaledRect, label: "", color: .blue)
+    }
+
+
+    //MARK: Processing Image
+
+    private func scaleImageForModel(pixelBuffer: CVPixelBuffer) -> CVPixelBuffer {
+        let copyToRender = pixelBuffer
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        let scaleX = CGFloat(YOLO.inputWidth) / CGFloat(CVPixelBufferGetWidth(pixelBuffer))
+        let scaleY = CGFloat(YOLO.inputHeight) / CGFloat(CVPixelBufferGetHeight(pixelBuffer))
+        let scaleTransform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        let scaledImage = ciImage.transformed(by: scaleTransform)
+
+        CIContext().render(scaledImage, to: copyToRender)
+        return copyToRender
+    }
+
+    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect {
+        // The predicted bounding box is in the coordinate space of the input
+        // image, which is a square image of 416x416 pixels. We want to show it
+        // on the video preview, which is as wide as the screen and has a 4:3
+        // aspect ratio. The video preview also may be letterboxed at the top
+        // and bottom.
+        let width = view.bounds.width
+        let height = width * 4 / 3
+        let scaleX = width / CGFloat(YOLO.inputWidth)
+        let scaleY = height / CGFloat(YOLO.inputHeight)
+        let top = (view.bounds.height - height) / 2
+
+        // Translate and scale the rectangle to our own coordinate system.
+        var scaleRect = predictionRect
+        scaleRect.origin.x *= scaleX
+        scaleRect.origin.y *= scaleY
+        scaleRect.origin.y += top
+        scaleRect.size.width *= scaleX
+        scaleRect.size.height *= scaleY
+
+        return scaleRect
     }
 }
 
