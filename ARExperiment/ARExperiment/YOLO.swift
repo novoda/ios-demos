@@ -25,17 +25,22 @@ class YOLO {
 
   public init() { }
 
-  public func predict(image: CVPixelBuffer) throws -> [Prediction] {
+  public func predict(image: CVPixelBuffer) throws -> Prediction? {
     if let output = try? model.prediction(image: image) {
-      return computeBoundingBoxes(features: output.grid)
+        print("3 inside YOLO")
+        let boundingBoxes = computeBoundingBoxes(features: output.grid)
+        if boundingBoxes.count == 0 {
+            return Prediction(classIndex: 0, score: 50, rect: CGRect(x: 0, y: 0, width: 100, height: 100))
+        }
+        return boundingBoxes.sorted{ $0.score > $1.score}.first
     } else {
-      return []
+      return nil
     }
   }
 
   public func computeBoundingBoxes(features: MLMultiArray) -> [Prediction] {
     assert(features.count == 125*13*13)
-
+    print("4")
     var predictions = [Prediction]()
 
     let blockSize: Float = 32
@@ -138,6 +143,7 @@ class YOLO {
             let prediction = Prediction(classIndex: detectedClass,
                                         score: confidenceInClass,
                                         rect: rect)
+            print("prediction: \(prediction.score)")
             predictions.append(prediction)
           }
         }
