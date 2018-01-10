@@ -46,6 +46,15 @@ class RecognizeObjectsViewController: UIViewController {
         loopCoreMLUpdate()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        // Run the view's session
+        sceneView.session.run(configuration)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
