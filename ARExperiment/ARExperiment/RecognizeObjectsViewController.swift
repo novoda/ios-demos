@@ -20,6 +20,13 @@ class RecognizeObjectsViewController: UIViewController {
     fileprivate var boundingBox = BoundingBox()
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
+    private var touchPoint: float4x4?
+
+    let labels = [
+        "aeroplane", "bicDDycle", "bird", "boat", "bottle", "bus", "car", "cat",
+        "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person",
+        "pottedplant", "sheep", "sofa", "train", "tvmonitor"
+    ]
 
     //MARK: These strings is what you need to switch between different 3D objects
     /** NodeName is the name of the object you want to show, not necessarily the name of the file.
@@ -29,10 +36,9 @@ class RecognizeObjectsViewController: UIViewController {
      - On the top of the utilities look for the cube icon called "Show the nodes inspector" and click on that
      - Under identity -> Name there should be a textField, that is the nodeName you need for here
      **/
-    private let nodeName = "icecream"
-    private let fileName = "icecream"
+    private let nodeName = "cubewireframe"
+    private let fileName = "cubewireframe"
     private let fileExtension = "dae"
-    private var currentFrame: CVPixelBuffer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +53,6 @@ class RecognizeObjectsViewController: UIViewController {
         nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
 
         // Begin Loop to Update CoreML
-//        loopCoreMLUpdate()
         setUpVision()
     }
 
@@ -84,40 +89,13 @@ class RecognizeObjectsViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let pixelBuffer = getCurrentFrame() else { return }
-        guard pixelBuffer != currentFrame else {
-            return
-        }
+        self.touchPoint = getCoordinateFromTouchHitPoint(touch: touches.first)
+        let arAnchorToTest = ARAnchor(transform: touchPoint ?? float4x4())
+        print("touchPOint: \(arAnchorToTest)")
         semaphore.wait()
          DispatchQueue.global().async {
-//        getCoreMLPredictions()
             self.predictUsingVision(pixelBuffer: pixelBuffer)
         }
-    }
-
-    //MARK: Core ML Yolo functions
-    private func loopCoreMLUpdate() {
-        dispatchQueueML.async { [weak self] in
-            guard let strongSelf = self else {
-                return
-            }
-//            strongSelf.getCoreMLPredictions()
-            strongSelf.loopCoreMLUpdate()
-        }
-    }
-
-    private func getCoreMLPredictions(pixelBuffer: CVPixelBuffer) {
-
-        print("1")
-            self.currentFrame = pixelBuffer
-            let scalePixelBufferCameraCapture = self.scaleImageForModel(pixelBuffer: pixelBuffer)
-            print("2")
-            do {
-                guard let prediction = try self.yolo.predict(image: scalePixelBufferCameraCapture) else { return }
-                print("5")
-                self.showOnMainThread(prediction)
-            } catch {
-                print("yolo predict threw exception")
-            }
     }
 
     func setUpVision() {
@@ -125,7 +103,6 @@ class RecognizeObjectsViewController: UIViewController {
             print("Error: could not create Vision model")
             return
         }
-
         request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
 
         // NOTE: If you choose another crop/scale option, then you must also
@@ -136,11 +113,6 @@ class RecognizeObjectsViewController: UIViewController {
 
 
     private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
-        // Measure how long it takes to predict a single video frame. Note that
-        // predict() can be called on the next frame while the previous one is
-        // still being processed. Hence the need to queue up the start times.
-//        startTimes.append(CACurrentMediaTime())
-
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
@@ -152,6 +124,7 @@ class RecognizeObjectsViewController: UIViewController {
 
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
             let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
+            self.semaphore.signal()
             if let prominentBox = prominentBox {
                 showOnMainThread(prominentBox)
             }
@@ -159,53 +132,40 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     private func getCurrentFrame() -> CVPixelBuffer? {
-        var pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
-        CVPixelBufferCreate(nil, YOLO.inputWidth, YOLO.inputHeight,
-                            kCVPixelFormatType_32BGRA, nil,
-                            &pixelBufferCameraCapture)
+        let pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
         return pixelBufferCameraCapture
     }
 
     func showOnMainThread(_ boundingBox: YOLO.Prediction) {
-        print("6")
         DispatchQueue.main.async {
-            self.semaphore.signal()
-            print("7")
             self.show(prediction: boundingBox)
         }
     }
 
     func show(prediction: YOLO.Prediction) {
         let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect)
-        print("8")
-        boundingBox.show(frame: scaledRect, label: "", color: .blue)
-        print("9")
-        boundingBox.addToLayer(sceneView.layer)
-        print("10")
+        print("prediction: \(prediction.score)  \(labels[prediction.classIndex]) \(prediction.rect)")
+        let anchor = ARAnchor(transform: scaledRect ?? float4x4())
+        print("anchor \(anchor)")
+        sceneView.session.add(anchor: anchor)
+        matrix_identity_float4x4
     }
+
+    /**
+     var translation = matrix_identity_float4x4
+     translation.columns.3.z = -0.3
+     let transform = simd_mul(currentFrame.camera.transform, translation)
+
+     let anchor = ARAnchor(transform: transform)
+     sceneView.session.add(anchor: anchor)
+     anchors.append(anchor)
+
+ **/
 
 
     //MARK: Processing Image
-    private func scaleImageForModel(pixelBuffer: CVPixelBuffer) -> CVPixelBuffer {
-//        let copyToRender = pixelBuffer
-//        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-//        let scaleX = CGFloat(YOLO.inputWidth) / CGFloat(CVPixelBufferGetWidth(pixelBuffer))
-//        let scaleY = CGFloat(YOLO.inputHeight) / CGFloat(CVPixelBufferGetHeight(pixelBuffer))
-//        let scaleTransform = CGAffineTransform(scaleX: scaleX, y: scaleY)
-//        let scaledImage = ciImage.transformed(by: scaleTransform)
-//
-//        CIContext().render(scaledImage, to: copyToRender)
-//        return copyToRender
 
-        guard let resizedPixelBuffer = resizePixelBuffer(pixelBuffer,
-                                                      width: YOLO.inputWidth,
-                                                      height: YOLO.inputHeight) else {
-            return pixelBuffer
-        }
-        return resizedPixelBuffer
-    }
-
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect {
+    private func scaleImageForCameraOutput(predictionRect: CGRect) -> float4x4? {
         // The predicted bounding box is in the coordinate space of the input
         // image, which is a square image of 416x416 pixels. We want to show it
         // on the video preview, which is as wide as the screen and has a 4:3
@@ -225,7 +185,20 @@ class RecognizeObjectsViewController: UIViewController {
         scaleRect.size.width *= scaleX
         scaleRect.size.height *= scaleY
 
-        return scaleRect
+        touchPoint?.columns.3.x = Float(scaleRect.origin.x)
+        touchPoint?.columns.3.y = Float(scaleRect.origin.y)
+        touchPoint?.columns.3.w = Float(scaleRect.width)
+        touchPoint?.columns.3.z = Float(scaleRect.height)
+
+        return touchPoint
+    }
+
+    private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {
+        guard let touch = touch else { return nil}
+        let location = touch.location(in: sceneView)
+        let hitResultsFeaturePoints: [ARHitTestResult] =
+            sceneView.hitTest(location, types: .featurePoint)
+        return hitResultsFeaturePoints.first?.worldTransform
     }
 }
 
@@ -246,3 +219,5 @@ extension RecognizeObjectsViewController: ARSCNViewDelegate {
         }
     }
 }
+
+

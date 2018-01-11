@@ -40,7 +40,6 @@ class YOLO {
 
   public func computeBoundingBoxes(features: MLMultiArray) -> [Prediction] {
     assert(features.count == 125*13*13)
-    print("4")
     var predictions = [Prediction]()
 
     let blockSize: Float = 32
@@ -143,7 +142,6 @@ class YOLO {
             let prediction = Prediction(classIndex: detectedClass,
                                         score: confidenceInClass,
                                         rect: rect)
-            print("prediction: \(prediction.score)")
             predictions.append(prediction)
           }
         }
