@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */; };
+		4C185BA620052908007182D2 /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA520052908007182D2 /* TinyYOLO.mlmodel */; };
+		4C185BA820052915007182D2 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */; };
+		4C185BAA20052928007182D2 /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA920052928007182D2 /* YOLO.swift */; };
+		4C185BAC2005296F007182D2 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BAB2005296E007182D2 /* BoundingBox.swift */; };
+		4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */; };
 		4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */; };
 		4C5E3ECE1FFBA2CC001B4493 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */; };
 		4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */; };
@@ -18,6 +24,7 @@
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
 		8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */; };
 		835578E420067EC700F8548A /* WalkingTarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835578E320067EC700F8548A /* WalkingTarsViewController.swift */; };
+		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeObjectsViewController.swift; sourceTree = "<group>"; };
+		4C185BA520052908007182D2 /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
+		4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		4C185BA920052928007182D2 /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		4C185BAB2005296E007182D2 /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
 		4C5E3EC81FFBA2CC001B4493 /* ARExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -46,6 +59,7 @@
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
 		8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSceneViewController.swift; sourceTree = "<group>"; };
 		835578E320067EC700F8548A /* WalkingTarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTarsViewController.swift; sourceTree = "<group>"; };
+		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +107,14 @@
 				835578E320067EC700F8548A /* WalkingTarsViewController.swift */,
 				8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
+				4C185BAB2005296E007182D2 /* BoundingBox.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
+				4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */,
+				4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */,
+				4CA242F4200533DE00D895C1 /* Helpers.swift */,
+				4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */,
+				4C185BA920052928007182D2 /* YOLO.swift */,
+				4C185BA520052908007182D2 /* TinyYOLO.mlmodel */,
 				4C5E3ED11FFBA2CC001B4493 /* Main.storyboard */,
 				4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */,
 				4C5E3ED61FFBA2CC001B4493 /* LaunchScreen.storyboard */,
@@ -217,7 +238,15 @@
 			files = (
 				8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */,
 				4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */,
+				4C185BAA20052928007182D2 /* YOLO.swift in Sources */,
+				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
+				4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */,
+				4C5E3ED01FFBA2CC001B4493 /* OneSceneViewController.swift in Sources */,
+				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
+				4C185BAC2005296F007182D2 /* BoundingBox.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
+				4C185BA620052908007182D2 /* TinyYOLO.mlmodel in Sources */,
+				4C185BA820052915007182D2 /* UIImage+CVPixelBuffer.swift in Sources */,
 				4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */,
 				835578E420067EC700F8548A /* WalkingTarsViewController.swift in Sources */,
 				4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */,
