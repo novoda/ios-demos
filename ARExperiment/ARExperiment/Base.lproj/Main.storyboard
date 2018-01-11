@@ -14,13 +14,13 @@
         <!--Tars View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="TarsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="TarsViewController" customModule="ARExperiment" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </arscnView>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="4zK-lv-kSu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -64,7 +64,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="TARS"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="1uL-aP-9Iw"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="gHB-TO-qx2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-sG-B20">
@@ -159,6 +159,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AkR-gA-Nbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1045.5999999999999" y="1065.5172413793105"/>
+        </scene>
         <!--RecognizeObjectsViewController-->
         <scene sceneID="iyy-y2-dmI">
             <objects>
@@ -186,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpW-PG-QVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214" y="1105"/>
+            <point key="canvasLocation" x="-526" y="1066"/>
         </scene>
     </scenes>
 </document>

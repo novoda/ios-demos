@@ -15,16 +15,16 @@
 		4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */; };
 		4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */; };
 		4C5E3ECE1FFBA2CC001B4493 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */; };
-		4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */; };
 		4C5E3ED31FFBA2CC001B4493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED11FFBA2CC001B4493 /* Main.storyboard */; };
 		4C5E3ED51FFBA2CC001B4493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */; };
 		4C5E3ED81FFBA2CC001B4493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED61FFBA2CC001B4493 /* LaunchScreen.storyboard */; };
 		4C5E3EE31FFBA2CC001B4493 /* ARExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3EE21FFBA2CC001B4493 /* ARExperimentTests.swift */; };
 		4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */; };
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
+		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
 		8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */; };
 		835578E420067EC700F8548A /* WalkingTarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835578E320067EC700F8548A /* WalkingTarsViewController.swift */; };
-		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
+		835578E5200774D200F8548A /* TarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +57,9 @@
 		4C5E3EE41FFBA2CC001B4493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
+		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSceneViewController.swift; sourceTree = "<group>"; };
 		835578E320067EC700F8548A /* WalkingTarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTarsViewController.swift; sourceTree = "<group>"; };
-		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,12 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835578E5200774D200F8548A /* TarsViewController.swift in Sources */,
 				8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */,
-				4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */,
 				4C185BAA20052928007182D2 /* YOLO.swift in Sources */,
 				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
 				4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */,
-				4C5E3ED01FFBA2CC001B4493 /* OneSceneViewController.swift in Sources */,
 				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
 				4C185BAC2005296F007182D2 /* BoundingBox.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
