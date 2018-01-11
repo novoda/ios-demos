@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */; };
 		4C5E3ECE1FFBA2CC001B4493 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */; };
-		4C5E3ED01FFBA2CC001B4493 /* OneSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */; };
+		4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */; };
 		4C5E3ED31FFBA2CC001B4493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED11FFBA2CC001B4493 /* Main.storyboard */; };
 		4C5E3ED51FFBA2CC001B4493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */; };
 		4C5E3ED81FFBA2CC001B4493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ED61FFBA2CC001B4493 /* LaunchScreen.storyboard */; };
 		4C5E3EE31FFBA2CC001B4493 /* ARExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3EE21FFBA2CC001B4493 /* ARExperimentTests.swift */; };
 		4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */; };
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
+		8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */; };
+		835578E420067EC700F8548A /* WalkingTarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835578E320067EC700F8548A /* WalkingTarsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,7 @@
 		4C5E3EC81FFBA2CC001B4493 /* ARExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSceneViewController.swift; sourceTree = "<group>"; };
+		4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarsViewController.swift; sourceTree = "<group>"; };
 		4C5E3ED21FFBA2CC001B4493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C5E3ED71FFBA2CC001B4493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +44,8 @@
 		4C5E3EE41FFBA2CC001B4493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
+		8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnduranceSceneViewController.swift; sourceTree = "<group>"; };
+		835578E320067EC700F8548A /* WalkingTarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTarsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +89,9 @@
 			children = (
 				4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */,
 				4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */,
-				4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */,
+				4C5E3ECF1FFBA2CC001B4493 /* TarsViewController.swift */,
+				835578E320067EC700F8548A /* WalkingTarsViewController.swift */,
+				8353CDB220052C32004C4AB2 /* EnduranceSceneViewController.swift */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
 				4C5E3ED11FFBA2CC001B4493 /* Main.storyboard */,
@@ -209,9 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5E3ED01FFBA2CC001B4493 /* OneSceneViewController.swift in Sources */,
+				8353CDB320052C32004C4AB2 /* EnduranceSceneViewController.swift in Sources */,
+				4C5E3ED01FFBA2CC001B4493 /* TarsViewController.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
 				4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */,
+				835578E420067EC700F8548A /* WalkingTarsViewController.swift in Sources */,
 				4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,10 +374,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V994K8B55B;
+				DEVELOPMENT_TEAM = DWSFPGCG4Y;
 				INFOPLIST_FILE = ARExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = novoda.ios.ARExperiment;
+				PRODUCT_BUNDLE_IDENTIFIER = chris.ios.ARExperiment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -381,10 +389,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V994K8B55B;
+				DEVELOPMENT_TEAM = DWSFPGCG4Y;
 				INFOPLIST_FILE = ARExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = novoda.ios.ARExperiment;
+				PRODUCT_BUNDLE_IDENTIFIER = chris.ios.ARExperiment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
