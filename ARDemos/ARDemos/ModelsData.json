@@ -1,21 +1,26 @@
-/**
- explanation text
- **/
 {
-    "model": {
-        "fileName": "",
-        "fileExtension": "",
-        "nodes": {
-            "nodeName": "S",
-            "nodeType": "",
+  "model":[
+    {
+      "filePath":"/art.scnassets/",
+      "fileName":"tars-walking",
+      "fileExtension":".dae",
+      "nodes":[
+        {
+          "name":"Tarsy",
+          "type":"object"
         }
+      ]
     },
-    "model": {
-        "fileName": "",
-        "fileExtension": "",
-        "nodes": {
-            "nodeName": "S",
-            "nodeType": "",
+    {
+      "filePath":"/art.scnassets/",
+      "fileName":"",
+      "fileExtension":"",
+      "nodes":[
+        {
+          "name":"",
+          "type":""
         }
+      ]
     }
+  ]
 }
