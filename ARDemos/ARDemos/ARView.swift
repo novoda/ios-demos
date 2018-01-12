@@ -12,6 +12,8 @@ class ARView: ARSCNView {
         super.init(frame: frame)
         // Show statistics such as fps and timing information
         showsStatistics = true
+        debugOptions = []
+        antialiasingMode = .multisampling4X
 
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -25,7 +27,7 @@ class ARView: ARSCNView {
         debugOptions = []
         antialiasingMode = .multisampling4X
     }
-
+    
     func addNodeToView() {
 
     }
