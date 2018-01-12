@@ -3,27 +3,21 @@ import UIKit
 class BottomBar: UIView {
 
     private let scrollView = UIScrollView()
-    private var models: [Model]!
+    private var models: [Model]?
+    
+    var onTap: ((Model) -> Void)?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    init(frame: CGRect, models: [Model]) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.models = models
-        getModels()
         setUpViews()
         setUpLayout()
     }
-    
-    private func getModels() {
-        let modelFactory = ModelFactory()
-        models = modelFactory.parseJSON()
-    }
 
     private func setUpViews() {
-        addModelButtons()
         addSubview(scrollView)
     }
 
@@ -46,7 +40,7 @@ class BottomBar: UIView {
         scrollView.addConstraint(constraint)
     }
 
-    func addModelButtons() {
+    func addModelButtons(models: [Model]) {
         let height = scrollView.bounds.height
         let width = scrollView.bounds.width/4
         let frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -55,7 +49,14 @@ class BottomBar: UIView {
             let modelButton = UIButton(frame: frame)
             modelButton.backgroundColor = .lightGray
             modelButton.setTitle(model.fileName, for: .normal)
+            modelButton.addTarget(self, action: #selector(modelButtonTapped), for: .touchUpInside)
+            
             scrollView.addSubview(modelButton)
         }
+    }
+    
+    @objc private func modelButtonTapped(button: UIButton) {
+        guard let modelName = button.titleLabel?.text else { return }
+            onTap?(modelName)
     }
 }
