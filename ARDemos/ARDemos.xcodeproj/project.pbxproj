@@ -16,8 +16,9 @@
 		4C4A35EE200787850000F95C /* ARDemosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35ED200787850000F95C /* ARDemosTests.swift */; };
 		4C4A35F9200787E90000F95C /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35F8200787E90000F95C /* ARView.swift */; };
 		4C4A35FB200789590000F95C /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FA200789590000F95C /* BottomBar.swift */; };
-		4C4A35FD20078B2F0000F95C /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FC20078B2F0000F95C /* ObjectModel.swift */; };
+		4C4A35FD20078B2F0000F95C /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FC20078B2F0000F95C /* ModelFactory.swift */; };
 		4C4A35FF20078C690000F95C /* ModelsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35FE20078C690000F95C /* ModelsData.json */; };
+		871EF61B2007D659006F7F51 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EF61A2007D659006F7F51 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +45,9 @@
 		4C4A35EF200787850000F95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4A35F8200787E90000F95C /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		4C4A35FA200789590000F95C /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		4C4A35FC20078B2F0000F95C /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
+		4C4A35FC20078B2F0000F95C /* ModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
 		4C4A35FE20078C690000F95C /* ModelsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ModelsData.json; sourceTree = "<group>"; };
+		871EF61A2007D659006F7F51 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +96,10 @@
 				4C4A35DF200787850000F95C /* Assets.xcassets */,
 				4C4A35E1200787850000F95C /* LaunchScreen.storyboard */,
 				4C4A35E4200787850000F95C /* Info.plist */,
+				871EF61A2007D659006F7F51 /* Extensions.swift */,
 				4C4A35F8200787E90000F95C /* ARView.swift */,
 				4C4A35FA200789590000F95C /* BottomBar.swift */,
-				4C4A35FC20078B2F0000F95C /* ObjectModel.swift */,
+				4C4A35FC20078B2F0000F95C /* ModelFactory.swift */,
 				4C4A35FE20078C690000F95C /* ModelsData.json */,
 			);
 			path = ARDemos;
@@ -217,7 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4A35FB200789590000F95C /* BottomBar.swift in Sources */,
-				4C4A35FD20078B2F0000F95C /* ObjectModel.swift in Sources */,
+				871EF61B2007D659006F7F51 /* Extensions.swift in Sources */,
+				4C4A35FD20078B2F0000F95C /* ModelFactory.swift in Sources */,
 				4C4A35DB200787850000F95C /* ViewController.swift in Sources */,
 				4C4A35D7200787850000F95C /* AppDelegate.swift in Sources */,
 				4C4A35F9200787E90000F95C /* ARView.swift in Sources */,
