@@ -16,6 +16,12 @@ struct Node: Decodable {
     let type: String
 }
 
+enum NodeType: String {
+    case object = "object"
+    case plane = "plane"
+    case lightSource = "light source"
+}
+
 class ModelFactory {
 
     func parseJSON() -> [Model]? {
