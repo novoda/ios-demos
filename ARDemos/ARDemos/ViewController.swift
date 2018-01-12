@@ -8,8 +8,8 @@ class ViewController: UIViewController {
     @IBOutlet var bottomBar: BottomBar!
     
     private var modelNodeModel: SCNNode?
-    private var lightNodeModel: SCNNode?
     private var planeNodeModel: SCNNode?
+    private var lightNodeModel: SCNNode?
     private let modelFactory = ModelFactory()
     
     private var models: [Model]!
@@ -61,12 +61,33 @@ class ViewController: UIViewController {
     }
     
     private func setNewModel(with modelName: String) {
-        guard let model = models.first(where: { $0.fileName == modelName }) else {return }
+        guard let model = models.first(where: { $0.fileName == modelName }) else { return }
+        addNodesToModel(to: model)
+    }
+    
+    private func addNodes(to model: Model) {
         let assetpath = model.filePath + model.fileName + model.fileExtension
-        
-        modelNodeModel = createSceneNodeForAsset(modelNodeName, assetPath: assetpath)
-        lightNodeModel = createSceneNodeForAsset(lightNodeName, assetPath: assetpath)
-        planeNodeModel = createSceneNodeForAsset(planeNodeName, assetPath: assetpath)
+        model.nodes.forEach { node in
+            switch node.type {
+            case .object:
+                let assetName = node.type.rawValue
+                modelNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
+            case .plane:
+                let assetName = node.type.rawValue
+                planeNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
+            case .lightSource:
+                let assetName = node.type.rawValue
+                lightNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
+            }
+        }
+    }
+    
+    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
+        guard let scene = SCNScene(named: assetPath) else {
+            return nil
+        }
+        let node = scene.rootNode.childNode(withName: assetName, recursively: true)
+        return node
     }
 }
 

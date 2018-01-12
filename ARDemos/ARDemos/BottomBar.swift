@@ -5,7 +5,7 @@ class BottomBar: UIView {
     private let scrollView = UIScrollView()
     private var models: [Model]?
     
-    var onTap: ((Model) -> Void)?
+    var onTap: ((String) -> Void)?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

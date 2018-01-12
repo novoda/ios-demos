@@ -13,10 +13,10 @@ struct Model: Decodable {
 
 struct Node: Decodable {
     let name: String
-    let type: String
+    let type: NodeType
 }
 
-enum NodeType: String {
+enum NodeType: String, Decodable {
     case object = "object"
     case plane = "plane"
     case lightSource = "light source"
