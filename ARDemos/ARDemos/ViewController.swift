@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     
     private func setNewModel(with modelName: String) {
         guard let model = models.first(where: { $0.fileName == modelName }) else { return }
-        addNodesToModel(to: model)
+        addNodes(to: model)
     }
     
     private func addNodes(to model: Model) {
@@ -70,13 +70,13 @@ class ViewController: UIViewController {
         model.nodes.forEach { node in
             switch node.type {
             case .object:
-                let assetName = node.type.rawValue
+                let assetName = node.name
                 modelNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             case .plane:
-                let assetName = node.type.rawValue
+                let assetName = node.name
                 planeNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             case .lightSource:
-                let assetName = node.type.rawValue
+                let assetName = node.name
                 lightNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             }
         }
