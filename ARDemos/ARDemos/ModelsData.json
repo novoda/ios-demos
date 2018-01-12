@@ -8,13 +8,21 @@
         {
           "name":"Tarsy",
           "type":"object"
-        }
+        },
+        {
+          "name":"directional",
+          "type":"light source"
+        },
+        {
+        "name":"plane",
+        "type":"plane"
+      }
       ]
     },
     {
       "filePath":"/art.scnassets/",
-      "fileName":"",
-      "fileExtension":"",
+      "fileName":"endurance-rotating",
+      "fileExtension":".dae",
       "nodes":[
         {
           "name":"",
