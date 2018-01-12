@@ -5,10 +5,11 @@ import ARKit
 class ARView: ARSCNView {
 
     required init?(coder aDecoder: NSCoder) {
-        <#code#>
+        super.init(coder: aDecoder)
     }
 
     override init(frame: CGRect) {
+        super.init(frame: frame)
         // Show statistics such as fps and timing information
         showsStatistics = true
 
@@ -17,6 +18,12 @@ class ARView: ARSCNView {
 
         // Set the scene to the view
         self.scene = scene
+    }
+    
+    private func setupView() {
+        showsStatistics = false
+        debugOptions = []
+        antialiasingMode = .multisampling4X
     }
 
     func addNodeToView() {
