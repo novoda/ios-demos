@@ -92,6 +92,7 @@ class RecognizeObjectsViewController: UIViewController {
         self.touchPoint = getCoordinateFromTouchHitPoint(touch: touches.first)
         let arAnchorToTest = ARAnchor(transform: touchPoint ?? float4x4())
         print("touchPOint: \(arAnchorToTest)")
+
         semaphore.wait()
          DispatchQueue.global().async {
             self.predictUsingVision(pixelBuffer: pixelBuffer)
@@ -145,10 +146,12 @@ class RecognizeObjectsViewController: UIViewController {
     func show(prediction: YOLO.Prediction) {
         let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect)
         print("prediction: \(prediction.score)  \(labels[prediction.classIndex]) \(prediction.rect)")
-        let anchor = ARAnchor(transform: scaledRect ?? float4x4())
-        print("anchor \(anchor)")
-        sceneView.session.add(anchor: anchor)
-        matrix_identity_float4x4
+        guard let node = self.nodeModel else {
+            print("node not found")
+            return
+        }
+        node.position = scaledRect ?? SCNVector3Zero
+        sceneView.scene.rootNode.addChildNode(node)
     }
 
     /**
@@ -165,7 +168,7 @@ class RecognizeObjectsViewController: UIViewController {
 
     //MARK: Processing Image
 
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> float4x4? {
+    private func scaleImageForCameraOutput(predictionRect: CGRect) -> SCNVector3? {
         // The predicted bounding box is in the coordinate space of the input
         // image, which is a square image of 416x416 pixels. We want to show it
         // on the video preview, which is as wide as the screen and has a 4:3
@@ -185,13 +188,12 @@ class RecognizeObjectsViewController: UIViewController {
         scaleRect.size.width *= scaleX
         scaleRect.size.height *= scaleY
 
-        touchPoint?.columns.3.x = Float(scaleRect.origin.x)
-        touchPoint?.columns.3.y = Float(scaleRect.origin.y)
-        touchPoint?.columns.3.w = Float(scaleRect.width)
-        touchPoint?.columns.3.z = Float(scaleRect.height)
+        let vector = SCNVector3(scaleRect.origin.x, scaleRect.origin.y, 0)
 
-        return touchPoint
+        return vector
     }
+
+//    private func getZCoordinateFrom
 
     private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {
         guard let touch = touch else { return nil}
