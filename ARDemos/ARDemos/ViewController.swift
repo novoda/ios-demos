@@ -1,5 +1,6 @@
 import UIKit
 import ARKit
+import SceneKit
 
 class ViewController: UIViewController {
 
@@ -9,6 +10,7 @@ class ViewController: UIViewController {
     private var modelNodeModel: SCNNode?
     private var lightNodeModel: SCNNode?
     private var planeNodeModel: SCNNode?
+    private let modelFactory = ModelFactory()
     
     private var models: [Model]!
     
@@ -17,6 +19,9 @@ class ViewController: UIViewController {
         
         // Set the view's delegate
         sceneView.delegate = self
+        self.models = modelFactory.parseJSON()
+        setUpFirstModel()
+        setUpModelsOnView()
     }
 
     
@@ -37,6 +42,32 @@ class ViewController: UIViewController {
         // Pause the view's session
         sceneView.session.pause()
     }
+    
+    private func setUpModelsOnView() {
+        bottomBar.addModelButtons(models: models ?? [])
+        bindButtons()
+    }
+    
+    private func setUpFirstModel() {
+        guard let firstModelName = models.first?.fileName else { return }
+        setNewModel(with: firstModelName)
+    }
+    
+    private func bindButtons() {
+        bottomBar.onTap = { [weak self] (modelName) in
+            guard let strongSelf = self else { return }
+            strongSelf.setNewModel(with: modelName)
+        }
+    }
+    
+    private func setNewModel(with modelName: String) {
+        guard let model = models.first(where: { $0.fileName == modelName }) else {return }
+        let assetpath = model.filePath + model.fileName + model.fileExtension
+        
+        modelNodeModel = createSceneNodeForAsset(modelNodeName, assetPath: assetpath)
+        lightNodeModel = createSceneNodeForAsset(lightNodeName, assetPath: assetpath)
+        planeNodeModel = createSceneNodeForAsset(planeNodeName, assetPath: assetpath)
+    }
 }
 
 extension ViewController: ARSCNViewDelegate {
@@ -46,7 +77,7 @@ extension ViewController: ARSCNViewDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 guard let model = strongSelf.modelNodeModel else {
-                    print("we have no model")
+                    print("We have no model to render")
                     return
                 }
                 
@@ -57,19 +88,27 @@ extension ViewController: ARSCNViewDelegate {
                 node.addChildNode(strongSelf.lightNodeModel!)
                 node.addChildNode(strongSelf.planeNodeModel!)
                                 
-                strongSelf.addLightEstimate()
+                strongSelf.setSceneLighting()
+                strongSelf.setPlane()
             }
         }
     }
     
-    private func addLightEstimate() {
-        sceneView.autoenablesDefaultLighting = false;
+    private func setSceneLighting() {
+        let estimate: ARLightEstimate! = sceneView.session.currentFrame?.lightEstimate
+        let light: SCNLight! = lightNodeModel?.light
         
-        let estimate: ARLightEstimate!
-        estimate = self.sceneView.session.currentFrame?.lightEstimate
-        
-        let light: SCNLight!
-        light = self.lightNodeModel?.light
         light.intensity = estimate.ambientIntensity
+        light.shadowMode = .deferred
+        light.shadowSampleCount = 16
+        
+        sceneView.autoenablesDefaultLighting = false;
+    }
+    
+    private func setPlane() {
+        let plane = self.planeNodeModel?.geometry!
+        
+        plane?.firstMaterial?.writesToDepthBuffer = true
+        plane?.firstMaterial?.colorBufferWriteMask = []
     }
 }
