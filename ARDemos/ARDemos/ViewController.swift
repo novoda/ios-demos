@@ -7,19 +7,21 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARView!
     @IBOutlet var bottomBar: BottomBar!
     
+    private var models: [Model]!
+    private var currentModel: Model?
     private var modelNodeModel: SCNNode?
     private var planeNodeModel: SCNNode?
     private var lightNodeModel: SCNNode?
+    
     private let modelFactory = ModelFactory()
     
-    private var models: [Model]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
-        self.models = modelFactory.parseJSON()
+        models = modelFactory.parseJSON()
         setUpFirstModel()
         setUpModelsOnView()
     }
@@ -62,21 +64,20 @@ class ViewController: UIViewController {
     
     private func setNewModel(with modelName: String) {
         guard let model = models.first(where: { $0.fileName == modelName }) else { return }
+        currentModel = model
         addNodes(to: model)
     }
     
     private func addNodes(to model: Model) {
         let assetpath = model.filePath + model.fileName + model.fileExtension
         model.nodes.forEach { node in
+            let assetName = node.name
             switch node.type {
             case .object:
-                let assetName = node.name
                 modelNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             case .plane:
-                let assetName = node.name
                 planeNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
-            case .lightSource:
-                let assetName = node.name
+            case .light:
                 lightNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             }
         }
@@ -88,6 +89,32 @@ class ViewController: UIViewController {
         }
         let node = scene.rootNode.childNode(withName: assetName, recursively: true)
         return node
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = touches.first?.location(in: sceneView),
+                let modelName = currentModel?.fileName else {
+            return
+        }
+        
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: modelName, recursively: true) {
+            nodeExists.removeFromParentNode()
+        }
+        
+        addAnchor(using: location)
+    }
+    
+    private func addAnchor(using location: CGPoint) {
+        let hitResultsFeaturePoints: [ARHitTestResult] = sceneView.hitTest(location, types: .featurePoint)
+        
+        if let hit = hitResultsFeaturePoints.first {
+            
+            let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+            let finalTransform = simd_mul(hit.worldTransform, rotate)
+            let anchor = ARAnchor(transform: finalTransform)
+            
+            sceneView.session.add(anchor: anchor)
+        }
     }
 }
 
@@ -110,26 +137,28 @@ extension ViewController: ARSCNViewDelegate {
                 node.addChildNode(strongSelf.planeNodeModel!)
                                 
                 strongSelf.setSceneLighting()
-                strongSelf.setPlane()
+                strongSelf.setScenePlane()
             }
         }
     }
     
     private func setSceneLighting() {
+        guard let lightnode = lightNodeModel else { return }
+        
         let estimate: ARLightEstimate! = sceneView.session.currentFrame?.lightEstimate
-        let light: SCNLight! = lightNodeModel?.light
+        let light: SCNLight! = lightnode.light
         
-        light.intensity = estimate.ambientIntensity
-        light.shadowMode = .deferred
-        light.shadowSampleCount = 16
-        
-        sceneView.autoenablesDefaultLighting = false;
+        light.intensity = currentModel?.lightSettings.intensity ?? estimate.ambientIntensity
+        light.shadowMode = currentModel?.lightSettings.shadowMode
+        light.shadowSampleCount = currentModel?.lightSettings.shadowSampleCount
     }
     
-    private func setPlane() {
-        let plane = self.planeNodeModel?.geometry!
+    private func setScenePlane() {
+        guard let planenode = planeNodeModel else { return }
         
-        plane?.firstMaterial?.writesToDepthBuffer = true
-        plane?.firstMaterial?.colorBufferWriteMask = []
+        let plane = planenode.geometry!
+        
+        plane.firstMaterial?.writesToDepthBuffer = currentModel?.planeSettings.writesToDepthBuffer!
+        plane.firstMaterial?.colorBufferWriteMask = []
     }
 }

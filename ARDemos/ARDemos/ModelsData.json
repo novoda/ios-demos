@@ -1,4 +1,26 @@
 {
+  "sceneSettings":[
+    {
+      "showsStatistics":false,
+      "autoenablesDefaultLighting":false,
+      "antialiasingMode":"multisampling4X",
+      "debugOptions":[
+        {
+          "showPhysicsShapes":false,
+          "showBoundingBoxes":false,
+          "showLightInfluences":false,
+          "showLightExtents":false,
+          "showPhysicsFields":false,
+          "showWireframe":false,
+          "renderAsWireframe":false,
+          "showSkeletons":false,
+          "showCreases":false,
+          "showConstraints":false,
+          "showCameras":false
+        }
+      ]
+    }
+  ],
   "model":[
     {
       "filePath":"/art.scnassets/",
@@ -11,12 +33,33 @@
         },
         {
           "name":"directional",
-          "type":"light source"
+          "type":"light"
         },
         {
-        "name":"plane",
-        "type":"plane"
-      }
+          "name":"plane",
+          "type":"plane"
+        }
+      ],
+      "lightSettings":[
+        {
+          "intensity":0,
+          "shadowMode":"deferred",
+          "shadowSampleCount":16
+        }
+      ],
+      "planeSettings":[
+        {
+          "writesToDepthBuffer":true,
+          "colorBufferWriteMask":[
+            {
+              "all":false,
+              "red":false,
+              "green":false,
+              "blue":false,
+              "alpha":false
+            }
+          ]
+        }
       ]
     },
     {
