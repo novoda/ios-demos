@@ -21,13 +21,13 @@ class BottomBar: UIView {
     }
 
     private func setUpLayout() {
-        applyConstraint(for: .top)
-        applyConstraint(for: .right)
-        applyConstraint(for: .bottom)
-        applyConstraint(for: .left)
+        constraintToSuperview(.top)
+        constraintToSuperview(.right)
+        constraintToSuperview(.bottom)
+        constraintToSuperview(.left)
     }
     
-    private func applyConstraint(for attribute: NSLayoutAttribute) {
+    private func constraintToSuperview(_ attribute: NSLayoutAttribute) {
         let constraint = NSLayoutConstraint(item: scrollView,
                                   attribute: attribute,
                                   relatedBy: .equal,
