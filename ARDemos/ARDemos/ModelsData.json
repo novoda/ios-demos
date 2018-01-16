@@ -21,7 +21,7 @@
         },
   "models":[
     {
-      "filePath":"/art.scnassets/Banana",
+      "filePath":"/art.scnassets/Banana/",
       "fileName":"banana-small",
       "fileExtension":".dae",
       "nodes":[
@@ -51,7 +51,7 @@
         }
     },
             {
-            "filePath":"/art.scnassets/EarthMoon",
+            "filePath":"/art.scnassets/EarthMoon/",
             "fileName":"earth-moon",
             "fileExtension":".dae",
             "nodes":[
