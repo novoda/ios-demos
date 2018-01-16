@@ -1,60 +1,44 @@
 import Foundation
 import SceneKit
 
-class SceneSettingsFactory {
-    
-    func parseJSON() -> SceneSettings? {
-        if let url = Bundle.main.url(forResource: "ModelsData", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(ResponseData.self, from: data)
-                
-                return jsonData.sceneSettings
-            } catch {
-                print("error:\(error)")
-            }
-        }
-        return nil
-    }
-}
-
 struct SceneSettings: Decodable {
-    let showsStatistics: Bool = false
-    let autoenablesDefaultLighting: Bool = false
-    let antialiasingMode: AntialiasingOption = .none
+    let showsStatistics: Bool
+    let autoenablesDefaultLighting: Bool
+    let antialiasingMode: AntialiasingOption
     let debugOptions: DebugOption
 }
 
 enum AntialiasingOption: String, Decodable {
     case none = "none"
-    case mutisampling2X = "mutisampling2X"
-    case mutisampling4X = "mutisampling4X"
+    case multisampling2X = "multisampling2X"
+    case multisampling4X = "multisampling4X"
 }
 
 extension AntialiasingOption {
     func getMode() -> SCNAntialiasingMode {
         switch self {
         case .none: return .none
-        case .mutisampling2X: return .multisampling2X
-        case .mutisampling4X: return .multisampling4X
+        case .multisampling2X: return .multisampling2X
+        case .multisampling4X: return .multisampling4X
         }
     }
 }
 
 struct DebugOption: Decodable, Loopable {
-    let showPhysicsShapes: Bool = false
-    let showBoundingBoxes: Bool  = false
-    let showLightInfluences: Bool = false
-    let showLightExtents: Bool = false
-    let showPhysicsFields: Bool = false
-    let showWireframe: Bool = false
-    let renderAsWireframe: Bool = false
-    let showSkeletons: Bool = false
-    let showCreases: Bool = false
-    let showConstraints: Bool = false
-    let showCameras: Bool = false
-    
+    let showPhysicsShapes: Bool
+    let showBoundingBoxes: Bool
+    let showLightInfluences: Bool
+    let showLightExtents: Bool
+    let showPhysicsFields: Bool
+    let showWireframe: Bool
+    let renderAsWireframe: Bool
+    let showSkeletons: Bool
+    let showCreases: Bool
+    let showConstraints: Bool
+    let showCameras: Bool
+}
+
+extension DebugOption {
     func getOptionSet() -> SCNDebugOptions {
         var optionSet = SCNDebugOptions()
         let allPropertyValues = self.allProperties

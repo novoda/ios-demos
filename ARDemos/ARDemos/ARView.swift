@@ -3,9 +3,6 @@ import SceneKit
 import ARKit
 
 class ARView: ARSCNView {
-    
-    private var sceneSettings: SceneSettings?
-    private let settingsFactory = SceneSettingsFactory()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -13,16 +10,13 @@ class ARView: ARSCNView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        sceneSettings = settingsFactory.parseJSON()
-        applySettings()
+    
     }
     
-    private func applySettings() {
-        guard let settings = sceneSettings else { return }
-        showsStatistics = settings.showsStatistics
-        autoenablesDefaultLighting = settings.autoenablesDefaultLighting
-        debugOptions = settings.debugOptions.getOptionSet()
-        antialiasingMode = settings.antialiasingMode.getMode()
+    func apply(sceneSettings: SceneSettings) {
+        showsStatistics = sceneSettings.showsStatistics
+        autoenablesDefaultLighting = sceneSettings.autoenablesDefaultLighting
+        debugOptions = sceneSettings.debugOptions.getOptionSet()
+        antialiasingMode = sceneSettings.antialiasingMode.getMode()
     }
 }

@@ -1,11 +1,6 @@
 import Foundation
 import SceneKit
 
-struct ResponseData: Decodable {
-    var model: [Model]
-    var sceneSettings: SceneSettings
-}
-
 struct Model: Decodable {
     let filePath: String
     let fileName: String
@@ -27,9 +22,9 @@ enum NodeType: String, Decodable {
 }
 
 struct LightSetting: Decodable {
-    let intensity: CGFloat = 0
-    let shadowMode: ShadowOptions = .deferred
-    let shadowSampleCount: Int = 10
+    let intensity: CGFloat
+    let shadowMode: ShadowOptions
+    let shadowSampleCount: Int
 }
 
 enum ShadowOptions: String, Decodable {
@@ -49,16 +44,16 @@ extension ShadowOptions {
 }
 
 struct PlaneSettings: Decodable {
-    let writesToDepthBuffer: Bool = false
+    let writesToDepthBuffer: Bool
     let colorBufferWriteMask: ColorBufferOptions
 }
 
 struct ColorBufferOptions: Decodable, Loopable {
-    let all: Bool = false
-    let red: Bool = false
-    let green: Bool = false
-    let blue: Bool = false
-    let alpha: Bool = false
+    let all: Bool
+    let red: Bool
+    let green: Bool
+    let blue: Bool
+    let alpha: Bool
     
     func getOptionSet() -> SCNColorMask {
         var optionSet = SCNColorMask()
@@ -82,23 +77,5 @@ struct ColorBufferOptions: Decodable, Loopable {
             case "alpha": return .alpha
             default: return nil
         }
-    }
-}
-
-class ModelFactory {
-
-    func parseJSON() -> [Model] {
-        if let url = Bundle.main.url(forResource: "ModelsData", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(ResponseData.self, from: data)
-                
-                return jsonData.model
-            } catch {
-                print("error:\(error)")
-            }
-        }
-        return []
     }
 }

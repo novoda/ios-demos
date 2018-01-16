@@ -19,7 +19,7 @@
               "showCameras":false
             }
         },
-  "model":[
+  "models":[
     {
       "filePath":"/art.scnassets/",
       "fileName":"tars-walking",

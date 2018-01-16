@@ -7,23 +7,24 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARView!
     @IBOutlet var bottomBar: BottomBar!
     
-    private var models: [Model]!
+    private var responseData: ResponseData?
     private var currentModel: Model?
     private var modelNodeModel: SCNNode?
     private var planeNodeModel: SCNNode?
     private var lightNodeModel: SCNNode?
     
-    private let modelFactory = ModelFactory()
-    
+    private let modelFactory = DataFactory()
+    private let jsonFileName = "ModelsData"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
-        models = modelFactory.parseJSON()
+        responseData = modelFactory.parseJSON(fileName: jsonFileName)
         setUpFirstModel()
         setUpModelsOnView()
+        setupSceneSettings()
     }
 
     
@@ -45,12 +46,22 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    private func setupSceneSettings() {
+        guard let sceneSettings = responseData?.sceneSettings else {
+            return
+        }
+        sceneView.apply(sceneSettings: sceneSettings)
+    }
+    
     private func setUpModelsOnView() {
-        bottomBar.addModelButtons(models: models ?? [])
+        bottomBar.addModelButtons(models: responseData?.models ?? [])
         bindButtons()
     }
     
     private func setUpFirstModel() {
+        guard let models = responseData?.models else {
+            return
+        }
         guard let firstModelName = models.first?.fileName else { return }
         setNewModel(with: firstModelName)
     }
@@ -63,6 +74,9 @@ class ViewController: UIViewController {
     }
     
     private func setNewModel(with modelName: String) {
+        guard let models = responseData?.models else {
+            return
+        }
         guard let model = models.first(where: { $0.fileName == modelName }) else { return }
         currentModel = model
         addNodes(to: model)

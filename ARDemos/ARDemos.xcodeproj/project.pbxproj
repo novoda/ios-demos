@@ -13,13 +13,17 @@
 		4C4A35DE200787850000F95C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35DC200787850000F95C /* Main.storyboard */; };
 		4C4A35E0200787850000F95C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35DF200787850000F95C /* Assets.xcassets */; };
 		4C4A35E3200787850000F95C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35E1200787850000F95C /* LaunchScreen.storyboard */; };
-		4C4A35EE200787850000F95C /* ARDemosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35ED200787850000F95C /* ARDemosTests.swift */; };
+		4C4A35EE200787850000F95C /* DataFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35ED200787850000F95C /* DataFactoryTest.swift */; };
 		4C4A35F9200787E90000F95C /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35F8200787E90000F95C /* ARView.swift */; };
 		4C4A35FB200789590000F95C /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FA200789590000F95C /* BottomBar.swift */; };
-		4C4A35FD20078B2F0000F95C /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FC20078B2F0000F95C /* ModelFactory.swift */; };
+		4C4A35FD20078B2F0000F95C /* ObjectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35FC20078B2F0000F95C /* ObjectModels.swift */; };
 		4C4A35FF20078C690000F95C /* ModelsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35FE20078C690000F95C /* ModelsData.json */; };
+		8714AFFD200E3E350038EDD9 /* testModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 87C3681D200E23AC009774F9 /* testModel.json */; };
 		871EF61B2007D659006F7F51 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EF61A2007D659006F7F51 /* Extensions.swift */; };
-		87C3681C200E2055009774F9 /* SceneSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3681B200E2055009774F9 /* SceneSettingsFactory.swift */; };
+		87C3681C200E2055009774F9 /* SceneSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3681B200E2055009774F9 /* SceneSettingsModel.swift */; };
+		87C3681E200E23AC009774F9 /* testModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 87C3681D200E23AC009774F9 /* testModel.json */; };
+		87C36821200E24E1009774F9 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C36820200E24E1009774F9 /* DataFactory.swift */; };
+		87C36823200E253E009774F9 /* ResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C36822200E253E009774F9 /* ResponseDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +46,17 @@
 		4C4A35E2200787850000F95C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4A35E4200787850000F95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4A35E9200787850000F95C /* ARDemosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARDemosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C4A35ED200787850000F95C /* ARDemosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDemosTests.swift; sourceTree = "<group>"; };
+		4C4A35ED200787850000F95C /* DataFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactoryTest.swift; sourceTree = "<group>"; };
 		4C4A35EF200787850000F95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4A35F8200787E90000F95C /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		4C4A35FA200789590000F95C /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		4C4A35FC20078B2F0000F95C /* ModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
+		4C4A35FC20078B2F0000F95C /* ObjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModels.swift; sourceTree = "<group>"; };
 		4C4A35FE20078C690000F95C /* ModelsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ModelsData.json; sourceTree = "<group>"; };
 		871EF61A2007D659006F7F51 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		87C3681B200E2055009774F9 /* SceneSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSettingsFactory.swift; sourceTree = "<group>"; };
+		87C3681B200E2055009774F9 /* SceneSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSettingsModel.swift; sourceTree = "<group>"; };
+		87C3681D200E23AC009774F9 /* testModel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testModel.json; sourceTree = "<group>"; };
+		87C36820200E24E1009774F9 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
+		87C36822200E253E009774F9 /* ResponseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +108,11 @@
 				871EF61A2007D659006F7F51 /* Extensions.swift */,
 				4C4A35F8200787E90000F95C /* ARView.swift */,
 				4C4A35FA200789590000F95C /* BottomBar.swift */,
-				4C4A35FC20078B2F0000F95C /* ModelFactory.swift */,
-				87C3681B200E2055009774F9 /* SceneSettingsFactory.swift */,
+				4C4A35FC20078B2F0000F95C /* ObjectModels.swift */,
+				87C3681B200E2055009774F9 /* SceneSettingsModel.swift */,
 				4C4A35FE20078C690000F95C /* ModelsData.json */,
+				87C36820200E24E1009774F9 /* DataFactory.swift */,
+				87C36822200E253E009774F9 /* ResponseDataModel.swift */,
 			);
 			path = ARDemos;
 			sourceTree = "<group>";
@@ -111,8 +120,9 @@
 		4C4A35EC200787850000F95C /* ARDemosTests */ = {
 			isa = PBXGroup;
 			children = (
-				4C4A35ED200787850000F95C /* ARDemosTests.swift */,
+				4C4A35ED200787850000F95C /* DataFactoryTest.swift */,
 				4C4A35EF200787850000F95C /* Info.plist */,
+				87C3681D200E23AC009774F9 /* testModel.json */,
 			);
 			path = ARDemosTests;
 			sourceTree = "<group>";
@@ -203,6 +213,7 @@
 				4C4A35D9200787850000F95C /* art.scnassets in Resources */,
 				4C4A35FF20078C690000F95C /* ModelsData.json in Resources */,
 				4C4A35E3200787850000F95C /* LaunchScreen.storyboard in Resources */,
+				8714AFFD200E3E350038EDD9 /* testModel.json in Resources */,
 				4C4A35E0200787850000F95C /* Assets.xcassets in Resources */,
 				4C4A35DE200787850000F95C /* Main.storyboard in Resources */,
 			);
@@ -212,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C3681E200E23AC009774F9 /* testModel.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +236,12 @@
 			files = (
 				4C4A35FB200789590000F95C /* BottomBar.swift in Sources */,
 				871EF61B2007D659006F7F51 /* Extensions.swift in Sources */,
-				4C4A35FD20078B2F0000F95C /* ModelFactory.swift in Sources */,
-				87C3681C200E2055009774F9 /* SceneSettingsFactory.swift in Sources */,
+				4C4A35FD20078B2F0000F95C /* ObjectModels.swift in Sources */,
+				87C3681C200E2055009774F9 /* SceneSettingsModel.swift in Sources */,
 				4C4A35DB200787850000F95C /* ViewController.swift in Sources */,
+				87C36823200E253E009774F9 /* ResponseDataModel.swift in Sources */,
 				4C4A35D7200787850000F95C /* AppDelegate.swift in Sources */,
+				87C36821200E24E1009774F9 /* DataFactory.swift in Sources */,
 				4C4A35F9200787E90000F95C /* ARView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C4A35EE200787850000F95C /* ARDemosTests.swift in Sources */,
+				4C4A35EE200787850000F95C /* DataFactoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
