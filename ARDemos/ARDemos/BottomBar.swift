@@ -3,7 +3,6 @@ import UIKit
 class BottomBar: UIView {
 
     private let scrollView = UIScrollView()
-    private var models: [Model]?
     
     var onTap: ((String) -> Void)?
 
