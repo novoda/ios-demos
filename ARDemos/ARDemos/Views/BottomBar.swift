@@ -16,6 +16,8 @@ class BottomBar: UIView {
     private func setUpViews() {
         buttonsStackView.alignment = .fill
         buttonsStackView.distribution = .fillEqually
+        buttonsStackView.axis = .horizontal
+        buttonsStackView.spacing = 5
 
         scrollView.addSubview(buttonsStackView)
         addSubview(scrollView)
@@ -23,9 +25,8 @@ class BottomBar: UIView {
 
     private func setUpLayout() {
 
-        scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 0, priority: .defaultHigh)
-
         buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 5, priority: .defaultHigh)
+        scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 0, priority: .defaultHigh)
     }
 
     func addModelButtons(models: [Model]) {
@@ -35,8 +36,14 @@ class BottomBar: UIView {
             modelButton.backgroundColor = .lightGray
             modelButton.setTitle(model.fileName, for: .normal)
             modelButton.addTarget(self, action: #selector(modelButtonTapped), for: .touchUpInside)
-            
+            modelButton.reversesTitleShadowWhenHighlighted = true
+
             buttonsStackView.addArrangedSubview(modelButton)
+
+            if let first = models.first,
+                first.fileName == model.fileName {
+                modelButton.isSelected = true
+            }
         }
     }
     
