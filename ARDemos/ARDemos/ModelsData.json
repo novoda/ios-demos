@@ -21,21 +21,13 @@
         },
   "models":[
     {
-      "filePath":"/art.scnassets/",
-      "fileName":"tars-walking",
+      "filePath":"/art.scnassets/Banana",
+      "fileName":"banana-small",
       "fileExtension":".dae",
       "nodes":[
         {
-          "name":"Tarsy",
+          "name":"Banana",
           "type":"object"
-        },
-        {
-          "name":"directional",
-          "type":"light"
-        },
-        {
-          "name":"plane",
-          "type":"plane"
         }
       ],
       "lightSettings":
@@ -57,6 +49,48 @@
               "alpha":false
             }
         }
-    }
+    },
+            {
+            "filePath":"/art.scnassets/EarthMoon",
+            "fileName":"earth-moon",
+            "fileExtension":".dae",
+            "nodes":[
+                     {
+                     "name":"earth",
+                     "type":"object"
+                     },
+                     {
+                     "name":"Moon_Orbit",
+                     "type":"object"
+                     },
+                     {
+                     "name":"Plane",
+                     "type":"plane"
+                     },
+                     {
+                     "name":"Sun",
+                     "type":"light"
+                     }
+                     ],
+            "lightSettings":
+            {
+            "intensity":0,
+            "shadowMode":"deferred",
+            "shadowSampleCount":16
+            }
+            ,
+            "planeSettings":
+            {
+            "writesToDepthBuffer":true,
+            "colorBufferWriteMask":
+            {
+            "all":false,
+            "red":false,
+            "green":false,
+            "blue":false,
+            "alpha":false
+            }
+            }
+            }
   ]
 }
