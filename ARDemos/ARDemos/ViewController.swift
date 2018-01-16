@@ -147,8 +147,12 @@ extension ViewController: ARSCNViewDelegate {
                 modelClone.position = SCNVector3Zero
                 
                 node.addChildNode(modelClone)
-                node.addChildNode(strongSelf.lightNodeModel!)
-                node.addChildNode(strongSelf.planeNodeModel!)
+                if let lightNodeModel = strongSelf.lightNodeModel {
+                    node.addChildNode(lightNodeModel)
+                }
+                if let planeNodeModel = strongSelf.planeNodeModel {
+                    node.addChildNode(planeNodeModel)
+                }
                                 
                 strongSelf.setSceneLighting()
                 strongSelf.setScenePlane()

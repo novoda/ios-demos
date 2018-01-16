@@ -9,6 +9,8 @@ class BottomBar: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setUpViews()
+        setUpLayout()
     }
 
     private func setUpViews() {
@@ -24,11 +26,6 @@ class BottomBar: UIView {
         scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 0, priority: .defaultHigh)
 
         buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 5, priority: .defaultHigh)
-    }
-
-    func setupView() {
-        setUpViews()
-        setUpLayout()
     }
 
     func addModelButtons(models: [Model]) {
