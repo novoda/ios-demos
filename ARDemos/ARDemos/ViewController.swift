@@ -148,14 +148,13 @@ extension ViewController: ARSCNViewDelegate {
                 
                 node.addChildNode(modelClone)
                 if let lightNodeModel = strongSelf.lightNodeModel {
+                    strongSelf.setSceneLighting()
                     node.addChildNode(lightNodeModel)
                 }
                 if let planeNodeModel = strongSelf.planeNodeModel {
+                    strongSelf.setScenePlane()
                     node.addChildNode(planeNodeModel)
                 }
-                                
-                strongSelf.setSceneLighting()
-                strongSelf.setScenePlane()
             }
         }
     }
@@ -163,22 +162,22 @@ extension ViewController: ARSCNViewDelegate {
     private func setSceneLighting() {
         guard let lightnode = lightNodeModel,
                 let lightSettings = currentModel?.lightSettings else { return }
-        
-        let estimate: ARLightEstimate! = sceneView.session.currentFrame?.lightEstimate
-        let light: SCNLight! = lightnode.light
-        
-        light.intensity = lightSettings.intensity ?? estimate.ambientIntensity
-        light.shadowMode = lightSettings.shadowMode.getMode()
-        light.shadowSampleCount = lightSettings.shadowSampleCount
+
+        if let light: SCNLight = lightnode.light,
+            let estimate: ARLightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            light.intensity = estimate.ambientIntensity
+            light.shadowMode = lightSettings.shadowMode.getMode()
+            light.shadowSampleCount = lightSettings.shadowSampleCount
+        }
     }
     
     private func setScenePlane() {
         guard let planenode = planeNodeModel,
                 let planeSettings = currentModel?.planeSettings else { return }
         
-        let plane = planenode.geometry!
-        
-        plane.firstMaterial?.writesToDepthBuffer = planeSettings.writesToDepthBuffer
-        plane.firstMaterial?.colorBufferWriteMask = planeSettings.colorBufferWriteMask.getOptionSet()
+        if let plane = planenode.geometry {
+            plane.firstMaterial?.writesToDepthBuffer = planeSettings.writesToDepthBuffer
+            plane.firstMaterial?.colorBufferWriteMask = planeSettings.colorBufferWriteMask.getOptionSet()
+        }
     }
 }
