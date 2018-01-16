@@ -4,7 +4,8 @@ import ARKit
 
 class ARView: ARSCNView {
     
-    private let settings: SceneSettings
+    private var sceneSettings: SceneSettings?
+    private let settingsFactory = SceneSettingsFactory()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -12,16 +13,16 @@ class ARView: ARSCNView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let factory = SceneSettingsFactory()
         
-        settings = SceneSettingsFactory.parseJSON()
+        sceneSettings = settingsFactory.parseJSON()
         applySettings()
     }
     
     private func applySettings() {
+        guard let settings = sceneSettings else { return }
         showsStatistics = settings.showsStatistics
         autoenablesDefaultLighting = settings.autoenablesDefaultLighting
-        debugOptions = []
-        antialiasingMode = settings.antialiasingMode
+        debugOptions = settings.debugOptions.getOptionSet()
+        antialiasingMode = settings.antialiasingMode.getMode()
     }
 }

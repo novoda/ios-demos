@@ -28,58 +28,61 @@ enum NodeType: String, Decodable {
 
 struct LightSetting: Decodable {
     let intensity: CGFloat = 0
-    let shadowMode: String = "deferred"
+    let shadowMode: ShadowOptions = .deferred
     let shadowSampleCount: Int = 10
 }
 
-struct PlaneSettings: Decodable {
-    let writesToDepthBuffer: Bool = false
-    let colorBufferWriteMask: [ColorBufferOptions] = []
+enum ShadowOptions: String, Decodable {
+    case deferred = "deferred"
+    case forward = "forward"
+    case modulated = "modulated"
 }
 
-enum ColorBufferOptions: String, Decodable {
-    case all = "all"
-    case red = "red"
-    case green = "green"
-    case blue = "blue"
-    case alpha = "alpha"
-}
-
-struct SceneSettings: Decodable {
-    let showsStatistics: Bool = false
-    let autoenablesDefaultLighting: Bool = false
-    let antialiasingMode: AntialiasingOption = .none
-    let debugOptions: DebugOption
-}
-
-enum AntialiasingOption: String, Decodable {
-    case none = "none"
-    case mutisampling2X = "mutisampling2X"
-    case mutisampling4X = "mutisampling4X"
-}
-
-extension AntialiasingOption {
-    func getMode() -> SCNAntialiasingMode {
+extension ShadowOptions {
+    func getMode() -> SCNShadowMode {
         switch self {
-        case .none: return SCNAntialiasingMode.none
-        case .mutisampling2X: return SCNAntialiasingMode.multisampling2X
-        case .mutisampling4X: return SCNAntialiasingMode.multisampling4X
+        case .deferred: return .deferred
+        case .forward: return .forward
+        case .modulated: return .modulated
         }
     }
 }
 
-struct DebugOption: Decodable {
-    let showPhysicsShapes: Bool = false
-    let showBoundingBoxes: Bool  = false
-    let showLightInfluences: Bool = false
-    let showLightExtents: Bool = false
-    let showPhysicsFields: Bool = false
-    let showWireframe: Bool = false
-    let renderAsWireframe: Bool = false
-    let showSkeletons: Bool = false
-    let showCreases: Bool = false
-    let showConstraints: Bool = false
-    let showCameras: Bool = false
+struct PlaneSettings: Decodable {
+    let writesToDepthBuffer: Bool = false
+    let colorBufferWriteMask: ColorBufferOptions
+}
+
+struct ColorBufferOptions: Decodable, Loopable {
+    let all: Bool = false
+    let red: Bool = false
+    let green: Bool = false
+    let blue: Bool = false
+    let alpha: Bool = false
+    
+    func getOptionSet() -> SCNColorMask {
+        var optionSet = SCNColorMask()
+        let allPropertyValues = self.allProperties
+        allPropertyValues.forEach { property in
+            guard let valueIsTrue = property.value as? Bool else { return }
+            let propertyAsOption = keyStringAsOption(property.key)
+            if valueIsTrue {
+                optionSet.insert(propertyAsOption!)
+            }
+        }
+        return optionSet
+    }
+    
+    private func keyStringAsOption(_ propertyString: String) -> SCNColorMask? {
+        switch propertyString {
+            case "all": return .all
+            case "red": return .red
+            case "green": return .green
+            case "blue": return .blue
+            case "alpha": return .alpha
+            default: return nil
+        }
+    }
 }
 
 class ModelFactory {
@@ -97,23 +100,5 @@ class ModelFactory {
             }
         }
         return []
-    }
-}
-
-class SceneSettingsFactory {
-    
-    func parseJSON() -> SceneSettings? {
-        if let url = Bundle.main.url(forResource: "ModelsData", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(ResponseData.self, from: data)
-                
-                return jsonData.sceneSettings
-            } catch {
-                print("error:\(error)")
-            }
-        }
-        return nil
     }
 }

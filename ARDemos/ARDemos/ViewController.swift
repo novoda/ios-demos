@@ -143,22 +143,24 @@ extension ViewController: ARSCNViewDelegate {
     }
     
     private func setSceneLighting() {
-        guard let lightnode = lightNodeModel else { return }
+        guard let lightnode = lightNodeModel,
+                let lightSettings = currentModel?.lightSettings else { return }
         
         let estimate: ARLightEstimate! = sceneView.session.currentFrame?.lightEstimate
         let light: SCNLight! = lightnode.light
         
-        light.intensity = currentModel?.lightSettings.intensity ?? estimate.ambientIntensity
-        light.shadowMode = currentModel?.lightSettings.shadowMode
-        light.shadowSampleCount = currentModel?.lightSettings.shadowSampleCount
+        light.intensity = lightSettings.intensity ?? estimate.ambientIntensity
+        light.shadowMode = lightSettings.shadowMode.getMode()
+        light.shadowSampleCount = lightSettings.shadowSampleCount
     }
     
     private func setScenePlane() {
-        guard let planenode = planeNodeModel else { return }
+        guard let planenode = planeNodeModel,
+                let planeSettings = currentModel?.planeSettings else { return }
         
         let plane = planenode.geometry!
         
-        plane.firstMaterial?.writesToDepthBuffer = currentModel?.planeSettings.writesToDepthBuffer!
-        plane.firstMaterial?.colorBufferWriteMask = []
+        plane.firstMaterial?.writesToDepthBuffer = planeSettings.writesToDepthBuffer
+        plane.firstMaterial?.colorBufferWriteMask = planeSettings.colorBufferWriteMask.getOptionSet()
     }
 }

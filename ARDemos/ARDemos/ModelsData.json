@@ -1,26 +1,24 @@
-{
-  "sceneSettings":[
     {
-      "showsStatistics":false,
-      "autoenablesDefaultLighting":false,
-      "antialiasingMode":"multisampling4X",
-      "debugOptions":[
+      "sceneSettings":
         {
-          "showPhysicsShapes":false,
-          "showBoundingBoxes":false,
-          "showLightInfluences":false,
-          "showLightExtents":false,
-          "showPhysicsFields":false,
-          "showWireframe":false,
-          "renderAsWireframe":false,
-          "showSkeletons":false,
-          "showCreases":false,
-          "showConstraints":false,
-          "showCameras":false
-        }
-      ]
-    }
-  ],
+          "showsStatistics":false,
+          "autoenablesDefaultLighting":false,
+          "antialiasingMode":"multisampling4X",
+          "debugOptions":
+            {
+              "showPhysicsShapes":false,
+              "showBoundingBoxes":false,
+              "showLightInfluences":false,
+              "showLightExtents":false,
+              "showPhysicsFields":false,
+              "showWireframe":false,
+              "renderAsWireframe":false,
+              "showSkeletons":false,
+              "showCreases":false,
+              "showConstraints":false,
+              "showCameras":false
+            }
+        },
   "model":[
     {
       "filePath":"/art.scnassets/",
@@ -40,17 +38,17 @@
           "type":"plane"
         }
       ],
-      "lightSettings":[
+      "lightSettings":
         {
           "intensity":0,
           "shadowMode":"deferred",
           "shadowSampleCount":16
         }
-      ],
-      "planeSettings":[
+      ,
+      "planeSettings":
         {
           "writesToDepthBuffer":true,
-          "colorBufferWriteMask":[
+          "colorBufferWriteMask":
             {
               "all":false,
               "red":false,
@@ -58,20 +56,7 @@
               "blue":false,
               "alpha":false
             }
-          ]
         }
-      ]
-    },
-    {
-      "filePath":"/art.scnassets/",
-      "fileName":"endurance-rotating",
-      "fileExtension":".dae",
-      "nodes":[
-        {
-          "name":"",
-          "type":""
-        }
-      ]
     }
   ]
 }
