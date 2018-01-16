@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0B97BF200E6275004BB204 /* UView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B97BE200E6275004BB204 /* UView+AutoLayout.swift */; };
 		4C4A35D7200787850000F95C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35D6200787850000F95C /* AppDelegate.swift */; };
 		4C4A35D9200787850000F95C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A35D8200787850000F95C /* art.scnassets */; };
 		4C4A35DB200787850000F95C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A35DA200787850000F95C /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C0B97BE200E6275004BB204 /* UView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UView+AutoLayout.swift"; sourceTree = "<group>"; };
 		4C4A35D3200787850000F95C /* ARDemos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARDemos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4A35D6200787850000F95C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4A35D8200787850000F95C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -77,6 +79,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0B97C0200E6294004BB204 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C0B97BE200E6275004BB204 /* UView+AutoLayout.swift */,
+				871EF61A2007D659006F7F51 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C0B97C1200E62A3004BB204 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87C36822200E253E009774F9 /* ResponseDataModel.swift */,
+				87C3681B200E2055009774F9 /* SceneSettingsModel.swift */,
+				4C4A35FC20078B2F0000F95C /* ObjectModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4C0B97C2200E62BC004BB204 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C4A35F8200787E90000F95C /* ARView.swift */,
+				4C4A35FA200789590000F95C /* BottomBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4C4A35CA200787850000F95C = {
 			isa = PBXGroup;
 			children = (
@@ -98,21 +128,18 @@
 		4C4A35D5200787850000F95C /* ARDemos */ = {
 			isa = PBXGroup;
 			children = (
+				4C0B97C1200E62A3004BB204 /* Models */,
+				4C0B97C0200E6294004BB204 /* Helpers */,
+				4C0B97C2200E62BC004BB204 /* Views */,
 				4C4A35D6200787850000F95C /* AppDelegate.swift */,
-				4C4A35D8200787850000F95C /* art.scnassets */,
 				4C4A35DA200787850000F95C /* ViewController.swift */,
+				87C36820200E24E1009774F9 /* DataFactory.swift */,
 				4C4A35DC200787850000F95C /* Main.storyboard */,
+				4C4A35D8200787850000F95C /* art.scnassets */,
 				4C4A35DF200787850000F95C /* Assets.xcassets */,
 				4C4A35E1200787850000F95C /* LaunchScreen.storyboard */,
 				4C4A35E4200787850000F95C /* Info.plist */,
-				871EF61A2007D659006F7F51 /* Extensions.swift */,
-				4C4A35F8200787E90000F95C /* ARView.swift */,
-				4C4A35FA200789590000F95C /* BottomBar.swift */,
-				4C4A35FC20078B2F0000F95C /* ObjectModels.swift */,
-				87C3681B200E2055009774F9 /* SceneSettingsModel.swift */,
 				4C4A35FE20078C690000F95C /* ModelsData.json */,
-				87C36820200E24E1009774F9 /* DataFactory.swift */,
-				87C36822200E253E009774F9 /* ResponseDataModel.swift */,
 			);
 			path = ARDemos;
 			sourceTree = "<group>";
@@ -235,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4A35FB200789590000F95C /* BottomBar.swift in Sources */,
+				4C0B97BF200E6275004BB204 /* UView+AutoLayout.swift in Sources */,
 				871EF61B2007D659006F7F51 /* Extensions.swift in Sources */,
 				4C4A35FD20078B2F0000F95C /* ObjectModels.swift in Sources */,
 				87C3681C200E2055009774F9 /* SceneSettingsModel.swift in Sources */,
@@ -396,10 +424,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F6896R5ECP;
+				DEVELOPMENT_TEAM = V994K8B55B;
 				INFOPLIST_FILE = ARDemos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wayne.ios.ARDemos;
+				PRODUCT_BUNDLE_IDENTIFIER = bertadevant.ios.ARDemos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,10 +439,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F6896R5ECP;
+				DEVELOPMENT_TEAM = V994K8B55B;
 				INFOPLIST_FILE = ARDemos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wayne.ios.ARDemos;
+				PRODUCT_BUNDLE_IDENTIFIER = bertadevant.ios.ARDemos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
