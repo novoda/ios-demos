@@ -16,23 +16,28 @@ class BottomBar: UIView {
     }
 
     private func setUpViews() {
-        buttonsStackView.alignment = .fill
-        buttonsStackView.distribution = .fillEqually
+        buttonsStackView.alignment = .center
+        buttonsStackView.distribution = .equalCentering
         buttonsStackView.axis = .horizontal
         buttonsStackView.spacing = 5
 
         scrollView.addSubview(buttonsStackView)
         addSubview(scrollView)
     }
-
+    
     private func setUpLayout() {
-
-        buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right],
-                                        constant: 5,
-                                        priority: .defaultHigh)
         scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right],
                                   constant: 0,
                                   priority: .defaultHigh)
+        buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right],
+                                        constant: 5,
+                                        priority: .defaultHigh)
+        buttonsStackView.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.widthAnchor,
+                                                multiplier: 1,
+                                                constant: -10).isActive = true
+        buttonsStackView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor,
+                                                 multiplier: 1,
+                                                 constant: -10).isActive = true
     }
 
     func addModelButtons(models: [Model]) {
@@ -42,13 +47,11 @@ class BottomBar: UIView {
             modelButton.backgroundColor = .lightGray
             modelButton.setTitle(model.fileName, for: .normal)
             modelButton.addTarget(self, action: #selector(modelButtonTapped), for: .touchUpInside)
-            modelButton.reversesTitleShadowWhenHighlighted = true
 
             buttonsStackView.addArrangedSubview(modelButton)
 
-            if let first = models.first,
-                first.fileName == model.fileName {
-                modelButton.isSelected = true
+            if model == models[0] {
+                updateSelectedButtonColor(modelButton)
             }
         }
     }
@@ -67,8 +70,6 @@ class BottomBar: UIView {
     }
     
     private func updateSelectedButtonColor(_ button: UIButton) {
-        if button.backgroundColor == .lightGray {
-            button.backgroundColor = .darkGray
-        }
+        button.backgroundColor = .darkGray
     }
 }
