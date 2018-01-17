@@ -3,15 +3,16 @@ import ARKit
 import SceneKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var sceneView: ARView!
     @IBOutlet var bottomBar: BottomBar!
     
     private var responseData: ResponseData?
     private var currentModel: Model?
-    private var modelNodeModel: SCNNode?
+    private var objectNodeModel: SCNNode?
     private var planeNodeModel: SCNNode?
     private var lightNodeModel: SCNNode?
+    private var currentModelNodeName: String?
     
     private let modelFactory = DataFactory()
     private let jsonFileName = "ModelsData"
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         setUpModelsOnView()
         setupSceneSettings()
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.isLightEstimationEnabled = true;
-
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -88,7 +89,8 @@ class ViewController: UIViewController {
             let assetName = node.name
             switch node.type {
             case .object:
-                modelNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
+                currentModelNodeName = assetName
+                objectNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             case .plane:
                 planeNodeModel = createSceneNodeForAsset(assetName, assetPath: assetpath)
             case .light:
@@ -107,11 +109,11 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView),
-                let modelName = currentModel?.fileName else {
-            return
+            let nodeName = currentModelNodeName else {
+                return
         }
         
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: modelName, recursively: true) {
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
             nodeExists.removeFromParentNode()
         }
         
@@ -138,7 +140,7 @@ extension ViewController: ARSCNViewDelegate {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                guard let model = strongSelf.modelNodeModel else {
+                guard let model = strongSelf.objectNodeModel else {
                     print("We have no model to render")
                     return
                 }
@@ -161,8 +163,8 @@ extension ViewController: ARSCNViewDelegate {
     
     private func setSceneLighting() {
         guard let lightnode = lightNodeModel,
-                let lightSettings = currentModel?.lightSettings else { return }
-
+            let lightSettings = currentModel?.lightSettings else { return }
+        
         if let light: SCNLight = lightnode.light,
             let estimate: ARLightEstimate = sceneView.session.currentFrame?.lightEstimate {
             light.intensity = estimate.ambientIntensity
@@ -173,7 +175,7 @@ extension ViewController: ARSCNViewDelegate {
     
     private func setScenePlane() {
         guard let planenode = planeNodeModel,
-                let planeSettings = currentModel?.planeSettings else { return }
+            let planeSettings = currentModel?.planeSettings else { return }
         
         if let plane = planenode.geometry {
             plane.firstMaterial?.writesToDepthBuffer = planeSettings.writesToDepthBuffer
@@ -181,3 +183,4 @@ extension ViewController: ARSCNViewDelegate {
         }
     }
 }
+
