@@ -7,6 +7,21 @@ extension float4x4 {
     }
 }
 
+extension UIColor {
+        static let selectedButton = UIColor(red: 33/255,
+                                            green: 33/255,
+                                            blue: 33/255,
+                                            alpha: 1.00)
+        static let unSelectedButton = UIColor(red: 33/255,
+                                              green: 33/255,
+                                              blue: 33/255,
+                                              alpha: 1.00)
+        static let bottomBar = UIColor(red: 33/255,
+                                       green: 33/255,
+                                       blue: 33/255,
+                                       alpha: 1.00)
+}
+
 protocol Loopable {
     var allProperties: [String: Any] { get }
 }

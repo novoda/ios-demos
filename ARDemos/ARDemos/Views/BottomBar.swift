@@ -16,11 +16,15 @@ class BottomBar: UIView {
     }
 
     private func setUpViews() {
+        backgroundColor = .bottomBar
+        
+        buttonsStackView.backgroundColor = .clear
         buttonsStackView.alignment = .center
         buttonsStackView.distribution = .equalCentering
         buttonsStackView.axis = .horizontal
         buttonsStackView.spacing = 5
-
+        
+        scrollView.backgroundColor = .clear
         scrollView.addSubview(buttonsStackView)
         addSubview(scrollView)
     }
@@ -65,11 +69,11 @@ class BottomBar: UIView {
     
     private func resetButtonColors() {
         for case let button as UIButton in buttonsStackView.subviews {
-            button.backgroundColor = .lightGray
+            button.backgroundColor = .unSelectedButton
         }
     }
     
     private func updateSelectedButtonColor(_ button: UIButton) {
-        button.backgroundColor = .darkGray
+        button.backgroundColor = .selectedButton
     }
 }
