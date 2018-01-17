@@ -1,11 +1,13 @@
 import UIKit
 
 class BottomBar: UIView {
+    
+    typealias BindTap = ((String) -> Void)?
 
     private let scrollView = UIScrollView()
     private let buttonsStackView = UIStackView()
     
-    var onTap: ((String) -> Void)?
+    var onTap: BindTap
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,8 +27,12 @@ class BottomBar: UIView {
 
     private func setUpLayout() {
 
-        buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 5, priority: .defaultHigh)
-        scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right], constant: 0, priority: .defaultHigh)
+        buttonsStackView.pinToSuperview(edges: [.top, .bottom, .left, .right],
+                                        constant: 5,
+                                        priority: .defaultHigh)
+        scrollView.pinToSuperview(edges: [.top, .bottom, .left, .right],
+                                  constant: 0,
+                                  priority: .defaultHigh)
     }
 
     func addModelButtons(models: [Model]) {
@@ -50,5 +56,19 @@ class BottomBar: UIView {
     @objc private func modelButtonTapped(button: UIButton) {
         guard let modelName = button.titleLabel?.text else { return }
             onTap?(modelName)
+            resetButtonColors()
+            updateSelectedButtonColor(button)
+    }
+    
+    private func resetButtonColors() {
+        for case let button as UIButton in buttonsStackView.subviews {
+            button.backgroundColor = .lightGray
+        }
+    }
+    
+    private func updateSelectedButtonColor(_ button: UIButton) {
+        if button.backgroundColor == .lightGray {
+            button.backgroundColor = .darkGray
+        }
     }
 }
