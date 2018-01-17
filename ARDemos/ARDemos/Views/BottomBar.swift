@@ -20,7 +20,7 @@ class BottomBar: UIView {
         
         buttonsStackView.backgroundColor = .clear
         buttonsStackView.alignment = .center
-        buttonsStackView.distribution = .equalCentering
+        buttonsStackView.distribution = .fillEqually
         buttonsStackView.axis = .horizontal
         buttonsStackView.spacing = 5
         
@@ -48,7 +48,8 @@ class BottomBar: UIView {
         
         models.forEach { model in
             let modelButton = UIButton()
-            modelButton.backgroundColor = .lightGray
+            modelButton.backgroundColor = .unSelectedButton
+            modelButton.setTitleColor(.buttonText, for: .normal)
             modelButton.setTitle(model.fileName, for: .normal)
             modelButton.addTarget(self, action: #selector(modelButtonTapped), for: .touchUpInside)
 
