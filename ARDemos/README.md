@@ -25,7 +25,7 @@ No prior knowledge of any code is required.
 - On the top of the utilities look for the cube icon called `Show the nodes inspector` and click on that
 - Under identity -> Name there should be a textField, that is the Node Name you will need below (you can change this to whatever, just remember to update this in the `.json` file)
 
-GIF HERE
+![Alt Text](https://imgur.com/07mh8ke)
 
 The `.json` file you will be updating is called `ModelsData.json` in the Xcode project. It contains two different sections `sceneSettings` and `models`. Each parameter must have a corresponding value and cannot be left blank. If you don't know what to put, just leave the values that are already there.
 
