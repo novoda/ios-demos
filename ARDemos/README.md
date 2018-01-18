@@ -1,23 +1,23 @@
-#ARKit Demo
+# ARKit Demo
 
 This repository is a basic iOS using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality.
 
 No prior knowledge of any code is required.
 
-###Requirements
+### Requirements
 
 - Xcode 9 or higher
 - iPhone 6s or higher(iOS 11 or higher)
 - Apple ID
 
-###Setup
+### Setup
 
 - Download and unzip the project
 - Open ARDemos.xcodeproj
 - Copy any `.dae` or `.scn` model files into `art.scnassets` folder
 - Update `.json` file with correct details for the model you have imported
 
-###How to update the .json file
+### How to update the .json file
 
 - In Xcode select your model file that you added to the `art.scnassets` folder. You should see your model in the main window.
 - On the left bottom side of the corner there should be an icon called `Show the scene graph View` click on that, you will now see the hierarchy of the object, tap the object at the top you want to use.
@@ -29,7 +29,7 @@ GIF HERE
 
 The `.json` file you will be updating is called `ModelsData.json` in the Xcode project. It contains two different sections `sceneSettings` and `models`. Each parameter must have a corresponding value and cannot be left blank. If you don't know what to put, just leave the values that are already there.
 
-####Scene Settings
+#### Scene Settings
 
 - showsStatistics
 - autoenablesDefaultLighting
@@ -48,7 +48,7 @@ The `.json` file you will be updating is called `ModelsData.json` in the Xcode p
  - showCameras
  - showPhysicsShapes
 
-####Models
+#### Models
 
 - filePath
 - fileName
@@ -69,4 +69,4 @@ The `.json` file you will be updating is called `ModelsData.json` in the Xcode p
   - blue
   - alpha
 
-###Running the App
+### Running the App
