@@ -44,6 +44,7 @@ class OneSceneViewController: UIViewController {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -76,15 +77,28 @@ class OneSceneViewController: UIViewController {
         if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
             nodeExists.removeFromParentNode()
         }
-        
+
+        addNoteToSceneUsingVector(location: location)
+//        addNodeToSessionUsingFeaturePoints(location: location)
+    }
+
+    private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
         let hitResultsFeaturePoints: [ARHitTestResult] =
             sceneView.hitTest(location, types: .featurePoint)
 
         if let hit = hitResultsFeaturePoints.first {
             let anchor = ARAnchor(transform: hit.worldTransform)
-            print("anchor \(anchor)")
             sceneView.session.add(anchor: anchor)
         }
+    }
+
+    private func addNoteToSceneUsingVector(location: CGPoint) {
+        guard let nodeModel = self.nodeModel else {
+            return
+        }
+        nodeModel.position = SCNVector3(location.x, location.y,-0.2)
+        nodeModel.isHidden = false
+        sceneView.scene.rootNode.addChildNode(nodeModel)
     }
 }
 
