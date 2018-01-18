@@ -35,18 +35,18 @@ The `.json` file you will be updating is called `ModelsData.json` in the Xcode p
 - autoenablesDefaultLighting
 - antialiasingMode
 - debugOptions
- - showPhysicsShapes
- - showBoundingBoxes
- - showLightInfluences
- - showLightExtents
- - showPhysicsFields
- - showWireframe
- - renderAsWireframe
- - showSkeletons
- - showCreases
- - showConstraints
- - showCameras
- - showPhysicsShapes
+  - showPhysicsShapes
+  - showBoundingBoxes
+  - showLightInfluences
+  - showLightExtents
+  - showPhysicsFields
+  - showWireframe
+  - renderAsWireframe
+  - showSkeletons
+  - showCreases
+  - showConstraints
+  - showCameras
+  - showPhysicsShapes
 
 #### Models
 
@@ -54,19 +54,19 @@ The `.json` file you will be updating is called `ModelsData.json` in the Xcode p
 - fileName
 - fileExtension
 - nodes
- - name
- - type
+  - name
+  - type
 - lightSettings
- - intensity
- - shadowMode
- - shadowSampleCount
+  - intensity
+  - shadowMode
+  - shadowSampleCount
 - planeSettings
- - writesToDepthBuffer
- - colorBufferWriteMask
-  - all
-  - red
-  - green
-  - blue
-  - alpha
+  - writesToDepthBuffer
+  - colorBufferWriteMask
+    - all
+    - red
+    - green
+    - blue
+    - alpha
 
 ### Running the App
