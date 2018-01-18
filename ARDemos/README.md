@@ -1,6 +1,6 @@
 # ARKit Demo
 
-This repository is a basic iOS using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality.
+This repository is a basic iOS app using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality.
 
 No prior knowledge of any code is required.
 
