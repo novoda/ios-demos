@@ -21,6 +21,7 @@ class RecognizeObjectsViewController: UIViewController {
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
     private var touchPoint: float4x4?
+    private let startButton = UIButton()
 
     let labels = [
         "aeroplane", "bicDDycle", "bird", "boat", "bottle", "bus", "car", "cat",
@@ -52,7 +53,7 @@ class RecognizeObjectsViewController: UIViewController {
 
         nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
 
-        // Begin Loop to Update CoreML
+        setupStartButton()
         setUpVision()
     }
 
@@ -77,6 +78,29 @@ class RecognizeObjectsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    private func setupStartButton() {
+        startButton.setTitle("Start", for: .normal)
+        startButton.setTitleColor(.black, for: .normal)
+        startButton.backgroundColor = .white
+        startButton.alpha = 0.85
+        startButton.addTarget(self, action: #selector(startButtonHasBeenPressed), for: .touchUpInside)
+        self.view.addSubview(startButton)
+
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        startButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        startButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+    }
+
+    @objc private func startButtonHasBeenPressed(_ sender: UIButton) {
+        guard let pixelBuffer = getCurrentFrame() else { return }
+        startButton.isHidden = true
+        semaphore.wait()
+        DispatchQueue.global().async { [weak self] in
+            self?.predictUsingVision(pixelBuffer: pixelBuffer)
+        }
+    }
+
     //MARK: ARKit functions
 
     private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
@@ -87,16 +111,17 @@ class RecognizeObjectsViewController: UIViewController {
         return carNode
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let pixelBuffer = getCurrentFrame() else { return }
-        self.touchPoint = getCoordinateFromTouchHitPoint(touch: touches.first)
-        let arAnchorToTest = ARAnchor(transform: touchPoint ?? float4x4())
-        print("touchPOint: \(arAnchorToTest)")
+    private func getCurrentFrame() -> CVPixelBuffer? {
+        let pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
+        return pixelBufferCameraCapture
+    }
 
-        semaphore.wait()
-         DispatchQueue.global().async {
-            self.predictUsingVision(pixelBuffer: pixelBuffer)
-        }
+     //MARK: CoreML Functions
+
+    private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
+        // Vision will automatically resize the input image.
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+        try? handler.perform([request])
     }
 
     func setUpVision() {
@@ -112,29 +137,19 @@ class RecognizeObjectsViewController: UIViewController {
         request.imageCropAndScaleOption = .scaleFill
     }
 
-
-    private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
-        // Vision will automatically resize the input image.
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
-        try? handler.perform([request])
-    }
-
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let features = observations.first?.featureValue.multiArrayValue {
 
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
+            print("bounding boxes \(boundingBoxes)")
             let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
+            print("box: \(prominentBox)")
             self.semaphore.signal()
             if let prominentBox = prominentBox {
                 showOnMainThread(prominentBox)
             }
         }
-    }
-
-    private func getCurrentFrame() -> CVPixelBuffer? {
-        let pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
-        return pixelBufferCameraCapture
     }
 
     func showOnMainThread(_ boundingBox: YOLO.Prediction) {
@@ -144,31 +159,21 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     func show(prediction: YOLO.Prediction) {
-        let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect)
-        print("prediction: \(prediction.score)  \(labels[prediction.classIndex]) \(prediction.rect)")
-        guard let node = self.nodeModel else {
-            print("node not found")
+        guard let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect) else {
+            print("could not scale the POint vectors")
             return
         }
-        node.position = scaledRect ?? SCNVector3Zero
-        sceneView.scene.rootNode.addChildNode(node)
+        let hitResultsFeaturePoints: [ARHitTestResult] =
+            sceneView.hitTest(scaledRect, types: .featurePoint)
+        if let hit = hitResultsFeaturePoints.first {
+            let anchor = ARAnchor(transform: hit.worldTransform)
+            sceneView.session.add(anchor: anchor)
+        }
     }
-
-    /**
-     var translation = matrix_identity_float4x4
-     translation.columns.3.z = -0.3
-     let transform = simd_mul(currentFrame.camera.transform, translation)
-
-     let anchor = ARAnchor(transform: transform)
-     sceneView.session.add(anchor: anchor)
-     anchors.append(anchor)
-
- **/
-
 
     //MARK: Processing Image
 
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> SCNVector3? {
+    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGPoint? {
         // The predicted bounding box is in the coordinate space of the input
         // image, which is a square image of 416x416 pixels. We want to show it
         // on the video preview, which is as wide as the screen and has a 4:3
@@ -188,12 +193,8 @@ class RecognizeObjectsViewController: UIViewController {
         scaleRect.size.width *= scaleX
         scaleRect.size.height *= scaleY
 
-        let vector = SCNVector3(scaleRect.origin.x, scaleRect.origin.y, 0)
-
-        return vector
+        return CGPoint(x: scaleRect.origin.x, y: scaleRect.origin.y)
     }
-
-//    private func getZCoordinateFrom
 
     private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {
         guard let touch = touch else { return nil}
