@@ -15,9 +15,7 @@ class RecognizeObjectsViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate var nodeModel: SCNNode?
-    fileprivate let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml") // A Serial Queue
     fileprivate let yolo = YOLO()
-    fileprivate var boundingBox = BoundingBox()
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
     private var touchPoint: float4x4?

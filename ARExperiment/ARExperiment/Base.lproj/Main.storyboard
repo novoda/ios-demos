@@ -59,6 +59,14 @@
                                     <segue destination="fYl-Q7-ghR" kind="show" id="Yb4-X0-wa7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-UT-Edf">
+                                <rect key="frame" x="114" y="395" width="170" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LightsAnimationVC"/>
+                                <connections>
+                                    <segue destination="1qu-Rp-qbK" kind="show" id="VNg-xg-IsL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ycr-Qa-zBu"/>
@@ -140,6 +148,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpW-PG-QVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="214" y="1105"/>
+        </scene>
+        <!--Lights Animations View Controller-->
+        <scene sceneID="hFP-rn-VKP">
+            <objects>
+                <viewController id="1qu-Rp-qbK" customClass="LightsAnimationsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4vb-Ax-DuE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULK-Yn-QB7">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ULK-Yn-QB7" firstAttribute="centerX" secondItem="Mfu-BT-AkZ" secondAttribute="centerX" id="KFQ-x6-jo1"/>
+                            <constraint firstItem="ULK-Yn-QB7" firstAttribute="centerY" secondItem="Mfu-BT-AkZ" secondAttribute="centerY" id="TZV-ep-sjx"/>
+                            <constraint firstItem="ULK-Yn-QB7" firstAttribute="width" secondItem="4vb-Ax-DuE" secondAttribute="width" id="avD-eZ-0fm"/>
+                            <constraint firstItem="ULK-Yn-QB7" firstAttribute="height" secondItem="4vb-Ax-DuE" secondAttribute="height" id="xVi-c2-czD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mfu-BT-AkZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="ULK-Yn-QB7" id="d56-BW-7Nf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CuB-J8-W6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="1079"/>
         </scene>
     </scenes>
 </document>
