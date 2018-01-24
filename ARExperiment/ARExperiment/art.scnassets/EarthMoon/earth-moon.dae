@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2018-01-24T11:15:56Z</created>
-  <modified>2018-01-24T11:15:56Z</modified>
+  <created>2018-01-24T11:24:42Z</created>
+  <modified>2018-01-24T11:24:42Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -65,31 +65,34 @@
  </library_lights>
  <library_images>
   <image id="image7">
-   <init_from>texture-moon.jpg</init_from>
+   <init_from>../Earth moon/texture-moon.jpg</init_from>
   </image>
   <image id="image8">
-   <init_from>texture-earth.jpg</init_from>
+   <init_from>../Earth moon/texture-earth.jpg</init_from>
   </image>
  </library_images>
  <library_materials>
-  <material id="ID1" name="Mat">
-   <instance_effect url="#effect_ID1"/>
-  </material>
   <material id="ID6" name="Earth">
    <instance_effect url="#effect_ID6"/>
   </material>
+  <material id="ID1" name="Mat">
+   <instance_effect url="#effect_ID1"/>
+  </material>
+  <material id="material" name="material">
+   <instance_effect url="#effect_material"/>
+  </material>
  </library_materials>
  <library_effects>
-  <effect id="effect_ID1">
+  <effect id="effect_ID6">
    <profile_COMMON>
-    <newparam sid="ID9_image7_surface">
+    <newparam sid="ID9_image8_surface">
      <surface type="2D">
-      <init_from>image7</init_from>
+      <init_from>image8</init_from>
      </surface>
     </newparam>
-    <newparam sid="ID9_image7">
+    <newparam sid="ID9_image8">
      <sampler2D>
-      <source>ID9_image7_surface</source>
+      <source>ID9_image8_surface</source>
       <wrap_s>WRAP</wrap_s>
       <wrap_t>WRAP</wrap_t>
       <minfilter>LINEAR</minfilter>
@@ -100,7 +103,7 @@
     <technique sid="common">
      <blinn>
       <diffuse>
-       <texture texture="ID9_image7" texcoord="CHANNEL2"/>
+       <texture texture="ID9_image8" texcoord="CHANNEL2"/>
       </diffuse>
       <shininess>
        <float>0.022516</float>
@@ -121,16 +124,16 @@
     </technique>
    </extra>
   </effect>
-  <effect id="effect_ID6">
+  <effect id="effect_ID1">
    <profile_COMMON>
-    <newparam sid="ID10_image8_surface">
+    <newparam sid="ID10_image7_surface">
      <surface type="2D">
-      <init_from>image8</init_from>
+      <init_from>image7</init_from>
      </surface>
     </newparam>
-    <newparam sid="ID10_image8">
+    <newparam sid="ID10_image7">
      <sampler2D>
-      <source>ID10_image8_surface</source>
+      <source>ID10_image7_surface</source>
       <wrap_s>WRAP</wrap_s>
       <wrap_t>WRAP</wrap_t>
       <minfilter>LINEAR</minfilter>
@@ -141,7 +144,7 @@
     <technique sid="common">
      <blinn>
       <diffuse>
-       <texture texture="ID10_image8" texcoord="CHANNEL2"/>
+       <texture texture="ID10_image7" texcoord="CHANNEL2"/>
       </diffuse>
       <shininess>
        <float>0.022516</float>
@@ -159,6 +162,44 @@
     <technique profile="SceneKit">
      <litPerPixel>1</litPerPixel>
      <ambient_diffuse_lock>0</ambient_diffuse_lock>
+    </technique>
+   </extra>
+  </effect>
+  <effect id="effect_material">
+   <profile_COMMON>
+    <technique sid="common">
+     <blinn>
+      <ambient>
+       <color>0.484529 0.484529 0.484529 1</color>
+      </ambient>
+      <diffuse>
+       <color>0.572307 0.572307 0.572307 1</color>
+      </diffuse>
+      <specular>
+       <color>0 0 0 1</color>
+      </specular>
+      <shininess>
+       <float>0.022516</float>
+      </shininess>
+      <reflective>
+       <color>0 0 0 1</color>
+      </reflective>
+      <transparent opaque="A_ONE">
+       <color>1 1 1 1</color>
+      </transparent>
+      <transparency>
+       <float>1</float>
+      </transparency>
+      <index_of_refraction>
+       <float>1</float>
+      </index_of_refraction>
+     </blinn>
+    </technique>
+   </profile_COMMON>
+   <extra>
+    <technique profile="SceneKit">
+     <litPerPixel>1</litPerPixel>
+     <ambient_diffuse_lock>1</ambient_diffuse_lock>
     </technique>
    </extra>
   </effect>
@@ -294,7 +335,15 @@
  <library_visual_scenes>
   <visual_scene id="scene28">
    <node id="Plane" name="Plane">
-    <instance_geometry url="#geometry16"/>
+    <instance_geometry url="#geometry16">
+     <bind_material>
+      <technique_common>
+       <instance_material symbol="geometryElement22" target="#ID1">
+        <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="1"/>
+       </instance_material>
+      </technique_common>
+     </bind_material>
+    </instance_geometry>
    </node>
    <node id="Sun" name="Sun">
     <matrix>0.3700066 0.2200752 -0.9025863 -451.294 0 0.9715371 0.2368873 118.443 0.9290291 -0.08764986 0.3594751 179.735 0 0 0 1 </matrix>

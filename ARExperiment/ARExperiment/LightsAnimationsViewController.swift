@@ -123,6 +123,7 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
             light.intensity = estimate.ambientIntensity
             light.shadowMode = .deferred
             light.shadowSampleCount = 16
+            light.shadowRadius = 24
         }
     }
 
@@ -132,6 +133,7 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
         if let plane = planenode.geometry {
             plane.firstMaterial?.writesToDepthBuffer = true
             plane.firstMaterial?.colorBufferWriteMask = []
+            plane.firstMaterial?.lightingModel = .constant
         }
     }
 }
