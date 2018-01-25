@@ -11,7 +11,6 @@
 		4C185BA620052908007182D2 /* TinyYOLO.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA520052908007182D2 /* TinyYOLO.mlmodel */; };
 		4C185BA820052915007182D2 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */; };
 		4C185BAA20052928007182D2 /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA920052928007182D2 /* YOLO.swift */; };
-		4C185BAC2005296F007182D2 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BAB2005296E007182D2 /* BoundingBox.swift */; };
 		4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */; };
 		4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */; };
 		4C5E3ECE1FFBA2CC001B4493 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */; };
@@ -41,7 +40,6 @@
 		4C185BA520052908007182D2 /* TinyYOLO.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TinyYOLO.mlmodel; sourceTree = "<group>"; };
 		4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		4C185BA920052928007182D2 /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
-		4C185BAB2005296E007182D2 /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
 		4C5E3EC81FFBA2CC001B4493 /* ARExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
 				4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */,
-				4C185BAB2005296E007182D2 /* BoundingBox.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
 				4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */,
 				4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */,
@@ -239,7 +236,6 @@
 				4C5E3ED01FFBA2CC001B4493 /* OneSceneViewController.swift in Sources */,
 				4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */,
 				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
-				4C185BAC2005296F007182D2 /* BoundingBox.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
 				4C185BA620052908007182D2 /* TinyYOLO.mlmodel in Sources */,
 				4C185BA820052915007182D2 /* UIImage+CVPixelBuffer.swift in Sources */,
