@@ -1,11 +1,3 @@
-//
-//  RecognizeObjectsViewController.swift
-//  ARExperiment
-//
-//  Created by Berta Devant on 09/01/2018.
-//  Copyright © 2018 Berta Devant. All rights reserved.
-//
-
 import UIKit
 import ARKit
 import SceneKit
@@ -20,6 +12,8 @@ class RecognizeObjectsViewController: UIViewController {
     private var request: VNCoreMLRequest!
     private var touchPoint: float4x4?
     private let startButton = UIButton()
+    private let compoundingBox = UIView()
+    private let predictionLabel = UILabel()
 
     let labels = [
         "aeroplane", "bicDDycle", "bird", "boat", "bottle", "bus", "car", "cat",
@@ -47,12 +41,13 @@ class RecognizeObjectsViewController: UIViewController {
 
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
         nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
 
         setupStartButton()
         setUpVision()
+        setupCompoundingBox()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +92,18 @@ class RecognizeObjectsViewController: UIViewController {
         DispatchQueue.global().async { [weak self] in
             self?.predictUsingVision(pixelBuffer: pixelBuffer)
         }
+    }
+
+    private func setupCompoundingBox() {
+        predictionLabel.textColor = .gray
+        compoundingBox.isHidden = true
+
+        compoundingBox.addSubview(predictionLabel)
+        view.addSubview(compoundingBox)
+
+        predictionLabel.translatesAutoresizingMaskIntoConstraints = false
+        predictionLabel.trailingAnchor.constraint(equalTo: compoundingBox.trailingAnchor).isActive = true
+        predictionLabel.topAnchor.constraint(equalTo: compoundingBox.topAnchor).isActive = true
     }
 
     //MARK: ARKit functions
@@ -144,15 +151,17 @@ class RecognizeObjectsViewController: UIViewController {
             let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
             print("box: \(prominentBox)")
             self.semaphore.signal()
-            if let prominentBox = prominentBox {
-                showOnMainThread(prominentBox)
-            }
+            showOnMainThread(prominentBox)
         }
     }
 
-    func showOnMainThread(_ boundingBox: YOLO.Prediction) {
-        DispatchQueue.main.async {
-            self.show(prediction: boundingBox)
+    func showOnMainThread(_ boundingBox: YOLO.Prediction?) {
+        DispatchQueue.main.async { [weak self] in
+            if let prominentBox = boundingBox {
+                self?.show(prediction: prominentBox)
+            } else {
+                self?.startButton.isHidden = false
+            }
         }
     }
 
@@ -161,8 +170,14 @@ class RecognizeObjectsViewController: UIViewController {
             print("could not scale the POint vectors")
             return
         }
+        compoundingBox.frame = scaledRect
+        predictionLabel.text = "\(labels[prediction.classIndex])"
+        compoundingBox.isHidden = false
+
+        let hitPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+        nodeModel?.boundingBox
         let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(scaledRect, types: .featurePoint)
+            sceneView.hitTest(hitPoint, types: .featurePoint)
         if let hit = hitResultsFeaturePoints.first {
             let anchor = ARAnchor(transform: hit.worldTransform)
             sceneView.session.add(anchor: anchor)
@@ -171,7 +186,7 @@ class RecognizeObjectsViewController: UIViewController {
 
     //MARK: Processing Image
 
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGPoint? {
+    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect? {
         // The predicted bounding box is in the coordinate space of the input
         // image, which is a square image of 416x416 pixels. We want to show it
         // on the video preview, which is as wide as the screen and has a 4:3
@@ -191,7 +206,7 @@ class RecognizeObjectsViewController: UIViewController {
         scaleRect.size.width *= scaleX
         scaleRect.size.height *= scaleY
 
-        return CGPoint(x: scaleRect.origin.x, y: scaleRect.origin.y)
+        return scaleRect
     }
 
     private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {

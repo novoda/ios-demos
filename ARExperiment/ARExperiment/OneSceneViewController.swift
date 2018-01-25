@@ -26,7 +26,7 @@ class OneSceneViewController: UIViewController {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
         nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
     }
@@ -71,10 +71,11 @@ class OneSceneViewController: UIViewController {
         }
 
         addNoteToSceneUsingVector(location: location)
-//        addNodeToSessionUsingFeaturePoints(location: location)
+        addNodeToSessionUsingFeaturePoints(location: location)
     }
 
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
+
         let hitResultsFeaturePoints: [ARHitTestResult] =
             sceneView.hitTest(location, types: .featurePoint)
 
@@ -95,6 +96,21 @@ class OneSceneViewController: UIViewController {
 }
 
 extension OneSceneViewController: ARSCNViewDelegate {
+
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        if !anchor.isKind(of: ARPlaneAnchor.self) {
+                guard let model = self.nodeModel else {
+                    print("we have no model")
+                    return nil
+                }
+                let modelClone = model.clone()
+                modelClone.position = SCNVector3Zero
+                // Add model as a child of the node
+                return modelClone
+        }
+        return nil
+    }
+    
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if !anchor.isKind(of: ARPlaneAnchor.self) {

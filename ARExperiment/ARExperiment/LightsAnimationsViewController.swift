@@ -12,8 +12,8 @@ class LightsAnimationsViewController: UIViewController {
     fileprivate var lightNodeModel: SCNNode?
     private let fileName = "EarthMoon/earth-moon"
     private let fileExtension = "dae"
-    private let objectNode1 = "earth"
-    private let objectNode2 = "moon_orbit"
+    private let objectNode1 = "Sphere"
+    private let objectNode2 = "Moon_Orbit"
     private let planeNode = "Plane"
     private let lightNode = "Sun"
 
@@ -21,6 +21,7 @@ class LightsAnimationsViewController: UIViewController {
         super.viewDidLoad()
 
         sceneView.delegate = self
+
         objectNodeModel = createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         secondObjectNodeModel = createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         planeNodeModel = createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
