@@ -76,6 +76,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C3DF54F201B72C4008F81E8 /* TinyYolo Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CA242F4200533DE00D895C1 /* Helpers.swift */,
+				4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */,
+				4C185BA920052928007182D2 /* YOLO.swift */,
+				4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */,
+			);
+			path = "TinyYolo Helpers";
+			sourceTree = "<group>";
+		};
 		4C5E3EBF1FFBA2CC001B4493 = {
 			isa = PBXGroup;
 			children = (
@@ -99,15 +110,12 @@
 			children = (
 				4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */,
 				4C5E3ECD1FFBA2CC001B4493 /* art.scnassets */,
-				4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */,
+				4C3DF54F201B72C4008F81E8 /* TinyYolo Helpers */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
-				4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */,
+				4C5E3ECF1FFBA2CC001B4493 /* OneSceneViewController.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
 				4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */,
-				4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */,
-				4CA242F4200533DE00D895C1 /* Helpers.swift */,
-				4C185BA720052915007182D2 /* UIImage+CVPixelBuffer.swift */,
-				4C185BA920052928007182D2 /* YOLO.swift */,
+				4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */,
 				4C185BA520052908007182D2 /* TinyYOLO.mlmodel */,
 				4C5E3ED11FFBA2CC001B4493 /* Main.storyboard */,
 				4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */,

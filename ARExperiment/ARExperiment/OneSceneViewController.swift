@@ -99,14 +99,12 @@ extension OneSceneViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-                guard let model = self.nodeModel else {
+                guard let model = self.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
                     print("we have no model")
                     return nil
                 }
-                let modelClone = model.clone()
-                modelClone.position = SCNVector3Zero
-                // Add model as a child of the node
-                return modelClone
+                model.position = SCNVector3Zero
+                return model
         }
         return nil
     }
