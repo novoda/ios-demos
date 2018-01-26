@@ -4,10 +4,5 @@ import ARKit
 
 class StartViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
 }
 

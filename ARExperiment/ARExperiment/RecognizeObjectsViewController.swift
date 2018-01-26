@@ -15,12 +15,6 @@ class RecognizeObjectsViewController: UIViewController {
     private let compoundingBox = UIView()
     private let predictionLabel = UILabel()
 
-    let labels = [
-        "aeroplane", "bicDDycle", "bird", "boat", "bottle", "bus", "car", "cat",
-        "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person",
-        "pottedplant", "sheep", "sofa", "train", "tvmonitor"
-    ]
-
     //MARK: These strings is what you need to switch between different 3D objects
     /** NodeName is the name of the object you want to show, not necessarily the name of the file.
      - You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
@@ -36,10 +30,7 @@ class RecognizeObjectsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set the view's delegate
         sceneView.delegate = self
-
-        // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
@@ -53,22 +44,14 @@ class RecognizeObjectsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        // Run the view's session
         sceneView.session.run(configuration)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // Pause the view's session
         sceneView.session.pause()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     private func setupStartButton() {
@@ -107,7 +90,6 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     //MARK: ARKit functions
-
     private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
         guard let paperPlaneScene = SCNScene(named: assetPath) else {
             return nil
@@ -122,7 +104,6 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
      //MARK: CoreML Functions
-
     private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
@@ -147,9 +128,7 @@ class RecognizeObjectsViewController: UIViewController {
             let features = observations.first?.featureValue.multiArrayValue {
 
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
-            print("bounding boxes \(boundingBoxes)")
             let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
-            print("box: \(prominentBox)")
             self.semaphore.signal()
             showOnMainThread(prominentBox)
         }
@@ -175,7 +154,6 @@ class RecognizeObjectsViewController: UIViewController {
         compoundingBox.isHidden = false
 
         let hitPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        nodeModel?.boundingBox
         let hitResultsFeaturePoints: [ARHitTestResult] =
             sceneView.hitTest(hitPoint, types: .featurePoint)
         if let hit = hitResultsFeaturePoints.first {
@@ -185,7 +163,6 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     //MARK: Processing Image
-
     private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect? {
         // The predicted bounding box is in the coordinate space of the input
         // image, which is a square image of 416x416 pixels. We want to show it
