@@ -34,4 +34,6 @@ extends UIView; Import this into your project to be able to use constraints prog
   1. Description of what the project is, or what changes you are making and why
   2. If you're adding a new project or making UI changes to an existing one, provide screenshots so the changes can be reviewed properly
 
-You will need to wait for someone to approved and merge your PR
+  Someone will code review your PR as soon as possible. From there, it could be approved right away
+  and merged — great job! :tada: — or it may require some more work. Don't worry if that's the case,
+  the team will work with you to make the necessary changes and get your PR merged!
