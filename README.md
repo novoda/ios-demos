@@ -33,7 +33,10 @@ extends UIView; Import this into your project to be able to use constraints prog
 
 ## How to add a new project
  - Pull from master and create a new branch with your project and/or changes
- - If you are creating a new project make sure that XCode did not created a `.git` file inside of your folder. You can check that by going inside the project folder on terminal and entering `ls -la` if there is a `.git` folder it will conflict with the git repository of the `ios-demos` repo. Delete it by entering `rm -rf .git` while being inside your project folder.
+ - If you are creating a new project make sure that XCode did not create a `.git` folder inside of the project directory.
+   Having a `.git` folder in the project folder will create conflicts with the `.git` folder that sits at the root of the repository — that is the correct place for it.
+
+   You can check that by going inside the project folder on terminal and entering `ls -la` if there is a `.git` folder. If XCode created a `.git` folder at the root of the project, delete it by typing `rm -rf .git` in the Terminal while being inside your project folder.
 - Push your branch and make a PR. Your PR should have:
   1. Description of what the project is, or what changes you are making and why
   2. If you're adding a new project or making UI changes to an existing one, provide screenshots so the changes can be reviewed properly
