@@ -27,6 +27,10 @@ A custom scheduler to easily run tasks either in the back- or the foreground.
 * [UIView+Autolayout](https://github.com/novoda/ios-demos/blob/master/UIView%2BAutolayout.swift)
 extends UIView; Import this into your project to be able to use constraints programmatically in a straightforward way.
 
+* [ARDemos](https://github.com/novoda/ios-demos/tree/master/ARDemos): This repository is a basic iOS app using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality. No prior knowledge of any code is required.
+
+* [ARExperiment](https://github.com/novoda/ios-demos/tree/master/ARExperiment): Sample iOS app with the different demos . It is part of the [blog post](https://www.novoda.com/blog/).
+
 ## How to add a new project
  - Pull from master and create a new branch with your project and/or changes
  - If you are creating a new project make sure that XCode did not created a `.git` file inside of your folder. You can check that by going inside the project folder on terminal and entering `ls -la` if there is a `.git` file it will conflict with the git repository of the `ios-demos` repo. Delete it by entering `rm -rf .git` while being inside your project folder.
