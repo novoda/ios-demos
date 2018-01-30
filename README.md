@@ -30,3 +30,17 @@ extends UIView; Import this into your project to be able to use constraints prog
 * [ARDemos](https://github.com/novoda/ios-demos/tree/master/ARDemos): This repository is a basic iOS app using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality. No prior knowledge of any code is required.
 
 * [ARExperiment](https://github.com/novoda/ios-demos/tree/master/ARExperiment): Sample iOS app with the different demos . It is part of the [blog post](https://www.novoda.com/blog/).
+
+## How to add a new project
+ - Pull from master and create a new branch with your project and/or changes
+ - If you are creating a new project make sure that XCode did not create a `.git` folder inside of the project directory.
+   Having a `.git` folder in the project folder will create conflicts with the `.git` folder that sits at the root of the repository — that is the correct place for it.
+
+   You can check that by going inside the project folder on terminal and entering `ls -la` if there is a `.git` folder. If XCode created a `.git` folder at the root of the project, delete it by typing `rm -rf .git` in the Terminal while being inside your project folder.
+- Push your branch and make a PR. Your PR should have:
+  1. Description of what the project is, or what changes you are making and why
+  2. If you're adding a new project or making UI changes to an existing one, provide screenshots so the changes can be reviewed properly
+
+  Someone will code review your PR as soon as possible. From there, it could be approved right away
+  and merged — great job! :tada: — or it may require some more work. Don't worry if that's the case,
+  the team will work with you to make the necessary changes and get your PR merged!
