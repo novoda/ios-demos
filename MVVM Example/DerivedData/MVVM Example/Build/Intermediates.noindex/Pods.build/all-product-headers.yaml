@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM Example/Build/Products/Debug-iphonesimulator/Pods_MVVM_Example.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-MVVM Example-umbrella.h",
+          'external-contents': "/Users/niamhpower/work/ios-demos/MVVM Example/Pods/Target Support Files/Pods-MVVM Example/Pods-MVVM Example-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_MVVM_Example-Swift.h",
+          'external-contents': "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM Example/Build/Products/Debug-iphonesimulator/Pods_MVVM_Example.framework/Headers/Pods_MVVM_Example-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM Example/Build/Products/Debug-iphonesimulator/Pods_MVVM_Example.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM Example/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Pods-MVVM Example.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
