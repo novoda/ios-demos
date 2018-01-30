@@ -43,11 +43,11 @@ class ListViewController: UIViewController {
     }
 
     fileprivate func setupDataSource() {
-        dataSource.cellFactor = { tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(ofType: ListCell.self, for: indexPath)
-            cell.update(with: item)
-            return cell
-        }
+//        dataSource.cellFactory = { tableView, indexPath, item in
+//            let cell = tableView.dequeueReusableCell(ofType: ListCell.self, for: indexPath)
+//            cell.update(with: item)
+//            return cell
+//        }
     }
 
     fileprivate func setupHierarchy() {

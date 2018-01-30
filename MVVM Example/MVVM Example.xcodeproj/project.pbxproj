@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		61CFE3D145CFD78FE802E858 /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFEDA6B7F1BB6C899F749D /* TransitionDelegate.swift */; };
+		61CFE479B7C3C17E5CF0641B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE50EBDC70724531C47C2 /* TableDataSource.swift */; };
+		61CFE4A495FAD32F7EC5AD3C /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFEFA8BC0A79FA0368410F /* ReusableCell.swift */; };
 		61CFE5BEF170D9984A7B6E7C /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE04A4FC9C72BFAD1DF28 /* FadeTransition.swift */; };
 		61CFE7BE02A0E08F56A64C78 /* GCD+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE6D5A9C3A5FE60D03EFD /* GCD+Ext.swift */; };
 		61CFE81B5D5083D0808C37F3 /* NavigatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE72500C413432EB2F83A /* NavigatorFactory.swift */; };
+		61CFE9D2571AC9EEAEB20F26 /* TableDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE7B3ECE1C08C8CC47917 /* TableDataProvider.swift */; };
+		61CFEFE63A7A9570AA33F549 /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFE0D6BCA1998566D6E73E /* ListCellView.swift */; };
 		71055B2A20210378000D79F9 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71055B2920210378000D79F9 /* ListViewModel.swift */; };
 		71055B2D202109C5000D79F9 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71055B2C202109C5000D79F9 /* ApplicationCoordinator.swift */; };
 		71055B2F20210AC8000D79F9 /* ListViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71055B2E20210AC8000D79F9 /* ListViewNavigator.swift */; };
@@ -41,9 +45,13 @@
 		424F9E7D795DCDC917449535 /* Pods-MVVM Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM Example/Pods-MVVM Example.release.xcconfig"; sourceTree = "<group>"; };
 		5E0F7542DADC9BFA924976B8 /* Pods-MVVM ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM ExampleTests/Pods-MVVM ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		61CFE04A4FC9C72BFAD1DF28 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		61CFE0D6BCA1998566D6E73E /* ListCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		61CFE50EBDC70724531C47C2 /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		61CFE6D5A9C3A5FE60D03EFD /* GCD+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GCD+Ext.swift"; sourceTree = "<group>"; };
 		61CFE72500C413432EB2F83A /* NavigatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorFactory.swift; sourceTree = "<group>"; };
+		61CFE7B3ECE1C08C8CC47917 /* TableDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataProvider.swift; sourceTree = "<group>"; };
 		61CFEDA6B7F1BB6C899F749D /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
+		61CFEFA8BC0A79FA0368410F /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		63028FA92E77654521159725 /* Pods_MVVM_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71055B2920210378000D79F9 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		71055B2C202109C5000D79F9 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
@@ -95,6 +103,16 @@
 			path = "Custom Transitions";
 			sourceTree = "<group>";
 		};
+		61CFED79EDC92C212293F63C /* Generic Table View */ = {
+			isa = PBXGroup;
+			children = (
+				61CFEFA8BC0A79FA0368410F /* ReusableCell.swift */,
+				61CFE7B3ECE1C08C8CC47917 /* TableDataProvider.swift */,
+				61CFE50EBDC70724531C47C2 /* TableDataSource.swift */,
+			);
+			path = "Generic Table View";
+			sourceTree = "<group>";
+		};
 		71055B2B202109BA000D79F9 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +156,7 @@
 				71EC61E120208DC600CF5F46 /* LaunchScreen.storyboard */,
 				71EC61E420208DC600CF5F46 /* Info.plist */,
 				61CFEB4F7D4BBDB36199D118 /* Custom Transitions */,
+				61CFED79EDC92C212293F63C /* Generic Table View */,
 			);
 			path = "MVVM Example";
 			sourceTree = "<group>";
@@ -157,6 +176,7 @@
 				71EC61F92020907100CF5F46 /* ListViewController.swift */,
 				71055B2920210378000D79F9 /* ListViewModel.swift */,
 				71055B3020211555000D79F9 /* ListViewData.swift */,
+				61CFE0D6BCA1998566D6E73E /* ListCellView.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -410,6 +430,10 @@
 				61CFE7BE02A0E08F56A64C78 /* GCD+Ext.swift in Sources */,
 				61CFE3D145CFD78FE802E858 /* TransitionDelegate.swift in Sources */,
 				61CFE5BEF170D9984A7B6E7C /* FadeTransition.swift in Sources */,
+				61CFEFE63A7A9570AA33F549 /* ListCellView.swift in Sources */,
+				61CFE4A495FAD32F7EC5AD3C /* ReusableCell.swift in Sources */,
+				61CFE9D2571AC9EEAEB20F26 /* TableDataProvider.swift in Sources */,
+				61CFE479B7C3C17E5CF0641B /* TableDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

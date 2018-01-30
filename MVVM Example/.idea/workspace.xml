@@ -32,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/MVVM Example/Navigation/ApplicationCoordinator.swift">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-12">
-              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -50,33 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FadeTransition.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MVVM Example/Custom Transitions/FadeTransition.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-              <folding>
-                <element signature="e#102#119#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GCD+Ext.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MVVM Example/Extensions/GCD+Ext.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NavigatorFactory.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MVVM Example/Navigation/NavigatorFactory.swift">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#99#116#0" expanded="true" />
               </folding>
@@ -84,12 +62,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListViewController.swift" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ListViewController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="70" column="41" lean-forward="false" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
+            <state relative-caret-position="501">
+              <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListCellView.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListCellView.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <element signature="e#99#116#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReusableCell.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/ReusableCell.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableDataProvider.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/TableDataProvider.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableDataSource.swift" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/TableDataSource.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1293">
+              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+              <folding>
+                <element signature="e#99#116#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListViewData.swift">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -117,6 +139,10 @@
         <option value="$PROJECT_DIR$/MVVM Example/Navigation/ApplicationCoordinator.swift" />
         <option value="$PROJECT_DIR$/MVVM Example/ListView/ListViewData.swift" />
         <option value="$PROJECT_DIR$/MVVM Example/ListView/ListViewController.swift" />
+        <option value="$PROJECT_DIR$/MVVM Example/ListView/ListCellView.swift" />
+        <option value="$PROJECT_DIR$/MVVM Example/Generic Table View/ReusableCell.swift" />
+        <option value="$PROJECT_DIR$/MVVM Example/Generic Table View/CollectionDataProvider.swift" />
+        <option value="$PROJECT_DIR$/MVVM Example/Generic Table View/TableDataSource.swift" />
       </list>
     </option>
   </component>
@@ -163,25 +189,7 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="MVVM Example" type="1d218c8b:XcodeProjectNode" />
               <item name="MVVM Example" type="fcab9f18:XcodeViewNode" />
-              <item name="Custom Transitions" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="MVVM Example" type="1d218c8b:XcodeProjectNode" />
-              <item name="MVVM Example" type="fcab9f18:XcodeViewNode" />
-              <item name="Extensions" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="MVVM Example" type="1d218c8b:XcodeProjectNode" />
-              <item name="MVVM Example" type="fcab9f18:XcodeViewNode" />
-              <item name="ListView" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="MVVM Example" type="1d218c8b:XcodeProjectNode" />
-              <item name="MVVM Example" type="fcab9f18:XcodeViewNode" />
-              <item name="Navigation" type="fcab9f18:XcodeViewNode" />
+              <item name="Generic Table View" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
@@ -228,12 +236,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517346507635</updated>
-      <workItem from="1517346511305" duration="1091000" />
+      <workItem from="1517346511305" duration="3055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1091000" />
+    <option name="totallyTimeSpent" value="3055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="803" extended-state="6" />
@@ -282,9 +290,9 @@
     <entry file="file://$PROJECT_DIR$/MVVM Example/Custom Transitions/FadeTransition.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding>
-            <element signature="e#102#119#0" expanded="true" />
+            <element signature="e#102#119#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -302,7 +310,7 @@
     <entry file="file://$PROJECT_DIR$/MVVM Example/Navigation/ApplicationCoordinator.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -318,7 +326,7 @@
     <entry file="file://$PROJECT_DIR$/MVVM Example/Navigation/NavigatorFactory.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#99#116#0" expanded="true" />
           </folding>
@@ -328,16 +336,52 @@
     <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListViewData.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="70" column="41" lean-forward="false" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
+        <state relative-caret-position="501">
+          <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MVVM Example/ListView/ListCellView.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#99#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/ReusableCell.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/TableDataProvider.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MVVM Example/Generic Table View/TableDataSource.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1293">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="e#99#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
