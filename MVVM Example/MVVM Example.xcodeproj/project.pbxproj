@@ -13,6 +13,8 @@
 		71EC61E020208DC600CF5F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EC61DF20208DC600CF5F46 /* Assets.xcassets */; };
 		71EC61E320208DC600CF5F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EC61E120208DC600CF5F46 /* LaunchScreen.storyboard */; };
 		71EC61EE20208DC600CF5F46 /* MVVM_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC61ED20208DC600CF5F46 /* MVVM_ExampleTests.swift */; };
+		71EC61FA2020907100CF5F46 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC61F92020907100CF5F46 /* ListViewController.swift */; };
+		71EC61FD2020924200CF5F46 /* Weakify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC61FC2020924200CF5F46 /* Weakify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		71EC61E920208DC600CF5F46 /* MVVM ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EC61ED20208DC600CF5F46 /* MVVM_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_ExampleTests.swift; sourceTree = "<group>"; };
 		71EC61EF20208DC600CF5F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71EC61F92020907100CF5F46 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		71EC61FC2020924200CF5F46 /* Weakify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weakify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 		71EC61D720208DC600CF5F46 /* MVVM Example */ = {
 			isa = PBXGroup;
 			children = (
+				71EC61FB2020923700CF5F46 /* Extensions */,
+				71EC61F820208E8700CF5F46 /* ListView */,
 				71EC61D820208DC600CF5F46 /* AppDelegate.swift */,
 				71EC61DA20208DC600CF5F46 /* ViewController.swift */,
 				71EC61DC20208DC600CF5F46 /* Main.storyboard */,
@@ -94,6 +100,22 @@
 				71EC61EF20208DC600CF5F46 /* Info.plist */,
 			);
 			path = "MVVM ExampleTests";
+			sourceTree = "<group>";
+		};
+		71EC61F820208E8700CF5F46 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				71EC61F92020907100CF5F46 /* ListViewController.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		71EC61FB2020923700CF5F46 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71EC61FC2020924200CF5F46 /* Weakify.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71EC61FD2020924200CF5F46 /* Weakify.swift in Sources */,
 				71EC61DB20208DC600CF5F46 /* ViewController.swift in Sources */,
 				71EC61D920208DC600CF5F46 /* AppDelegate.swift in Sources */,
+				71EC61FA2020907100CF5F46 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
