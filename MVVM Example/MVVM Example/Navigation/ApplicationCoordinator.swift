@@ -36,12 +36,6 @@ class Navigator: NSObject, NavigatorProtocol {
         window.rootViewController?.dismiss(animated: true, completion: nil)
     }
 
-    func showListViewScreen() {
-        let viewModel = ListViewModel(viewData: .defaultData())
-        let vc = ListViewController(viewModel: viewModel)
-        window.rootViewController?.present(vc, animated: true, completion: nil)
-    }
-
     @objc fileprivate func dismissViewController() {
         window.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -51,10 +45,5 @@ class Navigator: NSObject, NavigatorProtocol {
         alert.addAction(action)
 
         window.rootViewController?.present(alert, animated: true, completion: nil)
-    }
-
-    func showRegistration(from navigationController: UINavigationController) {
-        let registrationController = self.navigatorFactory.registrationViewController(self, showCancel: true)
-        navigationController.present(registrationController, animated: true, completion: nil)
     }
 }

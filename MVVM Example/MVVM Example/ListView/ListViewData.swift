@@ -10,11 +10,10 @@ import Foundation
 
 struct ListViewData {
     var title: String
-    var subtitle: String
 }
 
 extension ListViewData {
     static func defaultData() -> ListViewData {
-        return ListViewData(title: "list item title text", subtitle: "list item subtitle text")
+        return ListViewData(title: "List View Title")
     }
 }

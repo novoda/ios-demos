@@ -13,7 +13,7 @@ class ListViewController: UIViewController {
     fileprivate let viewModel: ListViewModel
     fileprivate let tableView = UITableView(frame: .zero, style: .grouped)
 
-    fileprivate let dataSource = TableDataSource<ListCell>()
+    //fileprivate let dataSource = TableDataSource<ListCell>()
 
     init(viewModel: ListViewModel) {
         self.viewModel = viewModel
@@ -33,7 +33,7 @@ class ListViewController: UIViewController {
     }
 
     fileprivate func setupViews() {
-        tableView.dataSource = dataSource
+        //tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -62,13 +62,13 @@ class ListViewController: UIViewController {
     }
 
     fileprivate func bindViewModel() {
-        viewModel.didChangeData = = weakify(self, method: ListViewController.updateView)
+        viewModel.didChangeData = weakify(self, method: ListViewController.updateView)
         viewModel.ready()
     }
 
     fileprivate func updateView(with viewData: ListViewData) {
-        self.navigationItem.title = viewData.screenTitle
-        dataSource.updateItems(with: viewData.items)
+        self.navigationItem.title = viewData.title
+        //dataSource.updateItems(with: viewData.items)
         tableView.setNeedsLayout()
         tableView.layoutIfNeeded()
         tableView.reloadData()
@@ -77,7 +77,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.onItemSelected(dataSource.item(atIndexPath: indexPath))
+        //viewModel.onItemSelected(dataSource.item(atIndexPath: indexPath))
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }
