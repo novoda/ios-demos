@@ -31,7 +31,7 @@ extends UIView; Import this into your project to be able to use constraints prog
  - Pull from master and create a new branch with your project and/or changes
  - If you are creating a new project make sure that XCode did not created a `.git` file inside of your folder. You can check that by going inside the project folder on terminal and entering `ls -la` if there is a `.git` file it will conflict with the git repository of the `ios-demos` repo. Delete it by entering `rm -rf .git` while being inside your project folder.
 - Push your branch and make a PR. Your PR should have:
-  1. Description of what the project is/ what changes are you making and why
+  1. Description of what the project is, or what changes you are making and why
   2. Screenshots if is a new project so it can be reviewed properly
 
 You will need to wait for someone to approved and merge your PR
