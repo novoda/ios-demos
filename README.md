@@ -26,3 +26,7 @@ A custom scheduler to easily run tasks either in the back- or the foreground.
 
 * [UIView+Autolayout](https://github.com/novoda/ios-demos/blob/master/UIView%2BAutolayout.swift)
 extends UIView; Import this into your project to be able to use constraints programmatically in a straightforward way.
+
+* [ARDemos](https://github.com/novoda/ios-demos/tree/master/ARDemos): This repository is a basic iOS app using ARKit to allow adding of custom `.dae` or `.scn` files so that they can be viewed through a device in augmented reality. No prior knowledge of any code is required.
+
+* [ARExperiment](https://github.com/novoda/ios-demos/tree/master/ARExperiment): Sample iOS app with the different demos . It is part of the [blog post](https://www.novoda.com/blog/).
