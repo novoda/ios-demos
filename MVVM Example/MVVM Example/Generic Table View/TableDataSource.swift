@@ -58,4 +58,8 @@ open class TableDataSource<Provider: TableDataProvider, Cell: UITableViewCell>:
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableItemSelectionHandler?(indexPath)
     }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UITableViewHeaderFooterView(frame: .zero)
+    }
 }
