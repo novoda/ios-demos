@@ -1,0 +1,103 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ConstraintMakerPriortizable"
+provides-nominal:
+- "7SnapKit27ConstraintMakerPriortizableC"
+provides-member:
+- ["7SnapKit27ConstraintMakerPriortizableC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "ConstraintMakerFinalizable"
+- "ConstraintMakerPriortizable"
+- "ConstraintPriority"
+- "ConstraintPriorityTarget"
+depends-member:
+- !private ["s10ComparableP", "high"]
+- !private ["s10ComparableP", "low"]
+- !private ["s10ComparableP", "medium"]
+- !private ["s10ComparableP", "required"]
+- !private ["s10ComparableP", "value"]
+- !private ["7SnapKit21ConstraintDescriptionC", "priority"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "ConstraintMakerFinalizable"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "ConstraintPriority"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "ConstraintPriorityTarget"]
+- !private ["7SnapKit26ConstraintMakerFinalizableC", "description"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "init"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "priority"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "priorityHigh"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "priorityLow"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "priorityMedium"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "priorityRequired"]
+- ["7SnapKit26ConstraintMakerFinalizableC", ""]
+- ["7SnapKit27ConstraintMakerPriortizableC", "ConstraintMakerFinalizable"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "ConstraintPriority"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "ConstraintPriorityTarget"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "deinit"]
+- !private ["7SnapKit27ConstraintMakerPriortizableC", "description"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "init"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "priority"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "priorityHigh"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "priorityLow"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "priorityMedium"]
+- ["7SnapKit27ConstraintMakerPriortizableC", "priorityRequired"]
+- !private ["7SnapKit18ConstraintPriorityV", "high"]
+- !private ["7SnapKit18ConstraintPriorityV", "low"]
+- !private ["7SnapKit18ConstraintPriorityV", "medium"]
+- !private ["7SnapKit18ConstraintPriorityV", "required"]
+- !private ["7SnapKit18ConstraintPriorityV", "value"]
+- !private ["7SnapKit24ConstraintPriorityTargetP", "high"]
+- !private ["7SnapKit24ConstraintPriorityTargetP", "low"]
+- !private ["7SnapKit24ConstraintPriorityTargetP", "medium"]
+- !private ["7SnapKit24ConstraintPriorityTargetP", "required"]
+- !private ["s9EquatableP", "high"]
+- !private ["s9EquatableP", "low"]
+- !private ["s9EquatableP", "medium"]
+- !private ["s9EquatableP", "required"]
+- !private ["s9EquatableP", "value"]
+- !private ["s25ExpressibleByFloatLiteralP", "high"]
+- !private ["s25ExpressibleByFloatLiteralP", "low"]
+- !private ["s25ExpressibleByFloatLiteralP", "medium"]
+- !private ["s25ExpressibleByFloatLiteralP", "required"]
+- !private ["s25ExpressibleByFloatLiteralP", "value"]
+- !private ["Sf", "deinit"]
+- !private ["s10StrideableP", "high"]
+- !private ["s10StrideableP", "low"]
+- !private ["s10StrideableP", "medium"]
+- !private ["s10StrideableP", "required"]
+- !private ["s10StrideableP", "value"]
+- !private ["s11_StrideableP", "high"]
+- !private ["s11_StrideableP", "low"]
+- !private ["s11_StrideableP", "medium"]
+- !private ["s11_StrideableP", "required"]
+- !private ["s11_StrideableP", "value"]
+depends-nominal:
+- !private "s10ComparableP"
+- !private "7SnapKit21ConstraintDescriptionC"
+- "7SnapKit26ConstraintMakerFinalizableC"
+- "7SnapKit27ConstraintMakerPriortizableC"
+- !private "7SnapKit18ConstraintPriorityV"
+- !private "7SnapKit24ConstraintPriorityTargetP"
+- !private "s9EquatableP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "Sf"
+- !private "s10StrideableP"
+- !private "s11_StrideableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/Pods/Target Support Files/SnapKit/SnapKit-umbrella.h"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example-bkmcmbyenwcnqmbxgxjklblkqybe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SnapKit.build/unextended-module.modulemap"
+interface-hash: "bbcd4bb2db860bee63762d1a7010e359"

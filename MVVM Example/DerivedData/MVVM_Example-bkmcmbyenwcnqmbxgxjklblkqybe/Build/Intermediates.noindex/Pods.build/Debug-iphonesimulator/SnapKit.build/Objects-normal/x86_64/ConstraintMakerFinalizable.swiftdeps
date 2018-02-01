@@ -1,0 +1,47 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ConstraintMakerFinalizable"
+provides-nominal:
+- "7SnapKit26ConstraintMakerFinalizableC"
+provides-member:
+- ["7SnapKit26ConstraintMakerFinalizableC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "Constraint"
+- "ConstraintDescription"
+- "ConstraintMakerFinalizable"
+- "String"
+depends-member:
+- !private ["7SnapKit21ConstraintDescriptionC", "constraint"]
+- !private ["7SnapKit21ConstraintDescriptionC", "label"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "Constraint"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "ConstraintDescription"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "ConstraintMakerFinalizable"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "String"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "constraint"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "deinit"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "description"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "init"]
+- ["7SnapKit26ConstraintMakerFinalizableC", "labeled"]
+depends-nominal:
+- !private "7SnapKit21ConstraintDescriptionC"
+- "7SnapKit26ConstraintMakerFinalizableC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/Pods/Target Support Files/SnapKit/SnapKit-umbrella.h"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example-bkmcmbyenwcnqmbxgxjklblkqybe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SnapKit.build/unextended-module.modulemap"
+interface-hash: "72d55dfae8a7efa338541c20d73b761e"

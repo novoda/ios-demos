@@ -1,0 +1,86 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ConstraintLayoutSupportDSL"
+provides-nominal:
+- "7SnapKit26ConstraintLayoutSupportDSLV"
+provides-member:
+- ["7SnapKit26ConstraintLayoutSupportDSLV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AnyObject"
+- "AssignmentPrecedence"
+- !private "ConstraintAttributes"
+- "ConstraintDSL"
+- "ConstraintItem"
+- "ConstraintLayoutSupport"
+- "ConstraintLayoutSupportDSL"
+depends-member:
+- !private ["7SnapKit20ConstraintAttributesV", "bottom"]
+- !private ["7SnapKit20ConstraintAttributesV", "height"]
+- !private ["7SnapKit20ConstraintAttributesV", "top"]
+- !private ["7SnapKit13ConstraintDSLP", "ConstraintAttributes"]
+- !private ["7SnapKit13ConstraintDSLP", "ConstraintItem"]
+- ["7SnapKit13ConstraintDSLP", "label"]
+- ["7SnapKit13ConstraintDSLP", "setLabel"]
+- !private ["7SnapKit13ConstraintDSLP", "support"]
+- ["7SnapKit13ConstraintDSLP", "target"]
+- ["7SnapKit13ConstraintDSLP", ""]
+- !private ["7SnapKit14ConstraintItemC", "init"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "AnyObject"]
+- !private ["7SnapKit26ConstraintLayoutSupportDSLV", "ConstraintAttributes"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "ConstraintItem"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "ConstraintLayoutSupport"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "bottom"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "deinit"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "height"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "init"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "label"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "setLabel"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "support"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "target"]
+- ["7SnapKit26ConstraintLayoutSupportDSLV", "top"]
+- !private ["7SnapKit25ConstraintRelatableTargetP", "init"]
+- !private ["s9EquatableP", "bottom"]
+- !private ["s9EquatableP", "height"]
+- !private ["s9EquatableP", "top"]
+- !private ["s25ExpressibleByArrayLiteralP", "bottom"]
+- !private ["s25ExpressibleByArrayLiteralP", "height"]
+- !private ["s25ExpressibleByArrayLiteralP", "top"]
+- !private ["s9OptionSetP", "bottom"]
+- !private ["s9OptionSetP", "height"]
+- !private ["s9OptionSetP", "top"]
+- !private ["s16RawRepresentableP", "bottom"]
+- !private ["s16RawRepresentableP", "height"]
+- !private ["s16RawRepresentableP", "top"]
+- !private ["s10SetAlgebraP", "bottom"]
+- !private ["s10SetAlgebraP", "height"]
+- !private ["s10SetAlgebraP", "top"]
+depends-nominal:
+- !private "7SnapKit20ConstraintAttributesV"
+- "7SnapKit13ConstraintDSLP"
+- !private "7SnapKit14ConstraintItemC"
+- "7SnapKit26ConstraintLayoutSupportDSLV"
+- !private "7SnapKit25ConstraintRelatableTargetP"
+- !private "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s9OptionSetP"
+- !private "s16RawRepresentableP"
+- !private "s10SetAlgebraP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/Pods/Target Support Files/SnapKit/SnapKit-umbrella.h"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example-bkmcmbyenwcnqmbxgxjklblkqybe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SnapKit.build/unextended-module.modulemap"
+interface-hash: "82b5e9bbdb4f5c019100ca0ee95bc3d0"

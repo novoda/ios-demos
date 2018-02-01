@@ -8,14 +8,15 @@
 
 import Foundation
 
-class ListViewModel {
+class ListViewModel: ListViewActionDelegate {
     fileprivate var viewData: ListViewData {
         didSet {
             didChangeData?(viewData)
         }
     }
 
-//    fileprivate let navigator: TYPE
+//    TODO: navigation
+//  fileprivate let navigator: TYPE
 
     var didChangeData: ((ListViewData) -> Void)?
 
@@ -24,6 +25,10 @@ class ListViewModel {
     }
 
     func ready() {
-        //any updates to view data here
+        self.viewData = .defaultData()
+    }
+
+    func itemPressed() {
+        //do stuff!
     }
 }

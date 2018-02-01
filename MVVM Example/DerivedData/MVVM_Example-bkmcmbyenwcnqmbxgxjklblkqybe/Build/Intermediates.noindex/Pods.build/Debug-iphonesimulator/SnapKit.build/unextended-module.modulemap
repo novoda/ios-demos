@@ -1,0 +1,10 @@
+framework module SnapKit {
+  umbrella header "SnapKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SnapKit.__Swift {
+    exclude header "SnapKit-Swift.h"
+}

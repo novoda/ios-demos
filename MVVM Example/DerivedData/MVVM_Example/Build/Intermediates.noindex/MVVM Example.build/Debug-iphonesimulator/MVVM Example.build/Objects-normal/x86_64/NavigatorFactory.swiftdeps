@@ -1,0 +1,102 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "NavigatorViewControllerFactory"
+- "NavigatorFactory"
+provides-nominal:
+- "12MVVM_Example30NavigatorViewControllerFactoryP"
+- "12MVVM_Example16NavigatorFactoryC"
+provides-member:
+- ["12MVVM_Example30NavigatorViewControllerFactoryP", ""]
+- ["12MVVM_Example16NavigatorFactoryC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "ListViewController"
+- !private "ListViewModel"
+- "NavigatorFactory"
+- "NavigatorProtocol"
+- "NavigatorViewControllerFactory"
+- "UIViewController"
+depends-member:
+- !private ["s7CVarArgP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9EquatableP", "init"]
+- !private ["s8HashableP", "init"]
+- !private ["12MVVM_Example22ListViewActionDelegateP", "init"]
+- !private ["12MVVM_Example18ListViewControllerC", "deinit"]
+- !private ["12MVVM_Example18ListViewControllerC", "init"]
+- !private ["12MVVM_Example12ListViewDataV", "defaultData"]
+- !private ["12MVVM_Example13ListViewModelC", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["12MVVM_Example16NavigatorFactoryC", "ListViewController"]
+- !private ["12MVVM_Example16NavigatorFactoryC", "ListViewModel"]
+- ["12MVVM_Example16NavigatorFactoryC", "NavigatorProtocol"]
+- ["12MVVM_Example16NavigatorFactoryC", "UIViewController"]
+- ["12MVVM_Example16NavigatorFactoryC", "deinit"]
+- ["12MVVM_Example16NavigatorFactoryC", "init"]
+- ["12MVVM_Example16NavigatorFactoryC", "initialViewController"]
+- ["12MVVM_Example16NavigatorFactoryC", "listViewController"]
+- !private ["12MVVM_Example30NavigatorViewControllerFactoryP", "ListViewController"]
+- !private ["12MVVM_Example30NavigatorViewControllerFactoryP", "ListViewModel"]
+- ["12MVVM_Example30NavigatorViewControllerFactoryP", "NavigatorProtocol"]
+- ["12MVVM_Example30NavigatorViewControllerFactoryP", "UIViewController"]
+- ["12MVVM_Example30NavigatorViewControllerFactoryP", "initialViewController"]
+- !private ["12MVVM_Example30NavigatorViewControllerFactoryP", "listViewController"]
+- ["12MVVM_Example30NavigatorViewControllerFactoryP", ""]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So20UIScrollViewDelegateP", "init"]
+- !private ["So16UIStateRestoringP", "init"]
+- !private ["So19UITableViewDelegateP", "init"]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+depends-nominal:
+- !private "s7CVarArgP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9EquatableP"
+- !private "s8HashableP"
+- !private "12MVVM_Example22ListViewActionDelegateP"
+- !private "12MVVM_Example18ListViewControllerC"
+- !private "12MVVM_Example12ListViewDataV"
+- !private "12MVVM_Example13ListViewModelC"
+- !private "So8NSCodingP"
+- !private "So26NSExtensionRequestHandlingP"
+- !private "So16NSObjectProtocolP"
+- "12MVVM_Example16NavigatorFactoryC"
+- "12MVVM_Example30NavigatorViewControllerFactoryP"
+- !private "So21UIAppearanceContainerP"
+- !private "So18UIContentContainerP"
+- !private "So18UIFocusEnvironmentP"
+- !private "So30UIPasteConfigurationSupportingP"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So20UIScrollViewDelegateP"
+- !private "So16UIStateRestoringP"
+- !private "So19UITableViewDelegateP"
+- !private "So18UITraitEnvironmentP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework/Modules/SnapKit.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework/Headers/SnapKit-umbrella.h"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework/Headers/SnapKit-Swift.h"
+- "/Users/niamhpower/work/ios-demos/MVVM Example/DerivedData/MVVM_Example/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework/Modules/module.modulemap"
+interface-hash: "99c705cf56bf5f7e54237ddc2dc43d73"

@@ -1,0 +1,20 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)"
+options: "f3afff40efa2c926e0c8bb20a2cb11f8"
+build_time: [1517503541, 141973000]
+inputs:
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListViewModel.swift": [1517503531, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Navigation/ApplicationCoordinator.swift": [1517347488, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Extensions/Weakify.swift": [1517312709, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ViewController.swift": [1517311558, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/AppDelegate.swift": [1517503051, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListViewController.swift": [1517502672, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListViewData.swift": [1517501241, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Navigation/ListViewNavigator.swift": [1517346543, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Navigation/NavigatorFactory.swift": [1517347047, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Extensions/GCD+Ext.swift": [1517347125, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Custom Transitions/TransitionDelegate.swift": [1517347213, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Custom Transitions/FadeTransition.swift": [1517347265, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListViewDataSource.swift": [1517501308, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListItem/ListCellView.swift": [1517501602, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/ListView/ListItem/ListItemViewData.swift": [1517501245, 0]
+  "/Users/niamhpower/work/ios-demos/MVVM Example/MVVM Example/Extensions/TableView+Reusable.swift": [1517501427, 0]
