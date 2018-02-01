@@ -31,6 +31,8 @@ extends UIView; Import this into your project to be able to use constraints prog
 
 * [ARExperiment](https://github.com/novoda/ios-demos/tree/master/ARExperiment): Sample iOS app with the different demos . It is part of the [blog post](https://www.novoda.com/blog/).
 
+* [MVVM Example](https://github.com/novoda/ios-demos/tree/mvvm-example/MVVM%20Example) : Sample app using MVVM architecture. Currently in progress
+
 ## How to add a new project
  - Pull from master and create a new branch with your project and/or changes
  - If you are creating a new project make sure that XCode did not create a `.git` folder inside of the project directory.
