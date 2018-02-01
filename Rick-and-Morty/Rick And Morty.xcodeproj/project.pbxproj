@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					B81168681CFF1C9900301A0A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = V994K8B55B;
 					};
 					B811687E1CFF1C9900301A0A = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -347,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V994K8B55B;
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
@@ -358,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V994K8B55B;
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
@@ -408,6 +411,7 @@
 				B811688A1CFF1C9900301A0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B811688B1CFF1C9900301A0A /* Build configuration list for PBXNativeTarget "Rick And MortyTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +420,7 @@
 				B811688D1CFF1C9900301A0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
