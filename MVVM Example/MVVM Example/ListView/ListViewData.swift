@@ -10,10 +10,12 @@ import Foundation
 
 struct ListViewData {
     var title: String
+    var items: [ListCellViewData]
 }
 
 extension ListViewData {
     static func defaultData() -> ListViewData {
-        return ListViewData(title: "List View Title")
+        return ListViewData(title: "List View Title",
+                items: [.defaultData(), .defaultData(), .defaultData()])
     }
 }

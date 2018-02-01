@@ -5,13 +5,13 @@
 
 import Foundation
 
-struct ListItemViewData {
+struct ListCellViewData {
     var title: String
-    var subTitle: String
+    var subtitle: String
 }
 
-extension ListItemViewData {
-    static func defaultData() -> ListItemViewData {
-        return ListItemViewData(title: "List item title", subTitle: "List item subtitle")
+extension ListCellViewData {
+    static func defaultData() -> ListCellViewData {
+        return ListCellViewData(title: "cell title", subtitle: "cell subtitle")
     }
 }

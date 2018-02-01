@@ -6,15 +6,16 @@
 import Foundation
 import UIKit
 
-class ListCell: UITableViewCell, ConfigurableCell {
-    @IBOutlet weak var label: UILabel!
+class ListCellView: UITableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
 
-    // MARK: - ReusableCell
-    public static var height: CGFloat = 128.0
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    // MARK: - ConfigurableCell
-    func configure(_ item: ListItemViewData, at indexPath: IndexPath) {
-        //label.text = item.caption
-        //imageView.image = UIImage(named: item.imageName)
+    func update(with viewData: ListCellViewData) {
+        self.textLabel?.text = viewData.title
     }
 }
