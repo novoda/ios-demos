@@ -5,7 +5,6 @@ import ARKit
 class OneSceneViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    fileprivate var nodeModel: SCNNode?
     //MARK: These strings is what you need to switch between different 3D objects
     /** NodeName is the name of the object you want to show, not necessarily the name of the file.
         - You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
@@ -14,9 +13,10 @@ class OneSceneViewController: UIViewController {
         - On the top of the utilities look for the cube icon called "Show the nodes inspector" and click on that
         - Under identity -> Name there should be a textField, that is the nodeName you need for here
      **/
-    private let nodeName = "icecream"
-    private let fileName = "icecream"
+    private let nodeName = "banana"
+    private let fileName = "banana-small"
     private let fileExtension = "dae"
+    private let arViewModel = ARViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,6 @@ class OneSceneViewController: UIViewController {
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-
-        nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,14 +38,6 @@ class OneSceneViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         sceneView.session.pause()
-    }
-
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,7 +65,7 @@ class OneSceneViewController: UIViewController {
     }
 
     private func addNoteToSceneUsingVector(location: CGPoint) {
-        guard let nodeModel = self.nodeModel else {
+        guard let nodeModel = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
             return
         }
         nodeModel.position = SCNVector3(location.x, location.y,-0.2)
@@ -88,7 +78,7 @@ extension OneSceneViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-                guard let model = self.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+                guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
                     print("we have no model")
                     return nil
                 }
@@ -99,18 +89,18 @@ extension OneSceneViewController: ARSCNViewDelegate {
     }
     
 
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async {
-                guard let model = self.nodeModel else {
-                    print("we have no model")
-                    return
-                }
-                let modelClone = model.clone()
-                modelClone.position = SCNVector3Zero
-                // Add model as a child of the node
-                node.addChildNode(modelClone)
-            }
-        }
-    }
+//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+//        if !anchor.isKind(of: ARPlaneAnchor.self) {
+//            DispatchQueue.main.async {
+//                guard let model = self.nodeModel else {
+//                    print("we have no model")
+//                    return
+//                }
+//                let modelClone = model.clone()
+//                modelClone.position = SCNVector3Zero
+//                // Add model as a child of the node
+//                node.addChildNode(modelClone)
+//            }
+//        }
+//    }
 }

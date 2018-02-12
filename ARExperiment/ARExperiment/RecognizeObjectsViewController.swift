@@ -6,14 +6,13 @@ import Vision
 class RecognizeObjectsViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
-    fileprivate var nodeModel: SCNNode?
     fileprivate let yolo = YOLO()
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
-    private var touchPoint: float4x4?
     private let startButton = UIButton()
     private let compoundingBox = UIView()
     private let predictionLabel = UILabel()
+    private let arViewModel = ARViewModel()
 
     //MARK: These strings is what you need to switch between different 3D objects
     /** NodeName is the name of the object you want to show, not necessarily the name of the file.
@@ -33,8 +32,6 @@ class RecognizeObjectsViewController: UIViewController {
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-
-        nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
 
         setupStartButton()
         setUpVision()
@@ -69,11 +66,12 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     @objc private func startButtonHasBeenPressed(_ sender: UIButton) {
-        guard let pixelBuffer = getCurrentFrame() else { return }
+        guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
         startButton.isHidden = true
         semaphore.wait()
         DispatchQueue.global().async { [weak self] in
             self?.predictUsingVision(pixelBuffer: pixelBuffer)
+//            self?.predictUsingCoreML(pixelBuffer: pixelBuffer)
         }
     }
 
@@ -89,28 +87,14 @@ class RecognizeObjectsViewController: UIViewController {
         predictionLabel.topAnchor.constraint(equalTo: compoundingBox.topAnchor).isActive = true
     }
 
-    //MARK: ARKit functions
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
-    }
-
-    private func getCurrentFrame() -> CVPixelBuffer? {
-        let pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
-        return pixelBufferCameraCapture
-    }
-
-     //MARK: CoreML Functions
+    //MARK: Vision Prediction
     private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
     }
 
-    func setUpVision() {
+    private func setUpVision() {
         guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
             print("Error: could not create Vision model")
             return
@@ -128,15 +112,31 @@ class RecognizeObjectsViewController: UIViewController {
             let features = observations.first?.featureValue.multiArrayValue {
 
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
-            let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
-            self.semaphore.signal()
-            showOnMainThread(prominentBox)
+            showOnMainThread(boundingBoxes)
         }
     }
 
-    func showOnMainThread(_ boundingBox: YOLO.Prediction?) {
+    //MARK: CoreML Functions
+
+    private func predictUsingCoreML(pixelBuffer: CVPixelBuffer) {
+        guard let resizedImage = yolo.scaleImageForPredictionInput(pixelBufferImage: pixelBuffer) else {
+            return
+        }
+        guard let boundingBoxes = try? yolo.predict(image: resizedImage) else {
+            return
+        }
+        showOnMainThread(boundingBoxes)
+    }
+
+
+    //MARK: Prediction
+
+    private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
+        let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
+        self.semaphore.signal()
+
         DispatchQueue.main.async { [weak self] in
-            if let prominentBox = boundingBox {
+            if let prominentBox = prominentBox {
                 self?.show(prediction: prominentBox)
             } else {
                 self?.startButton.isHidden = false
@@ -144,16 +144,16 @@ class RecognizeObjectsViewController: UIViewController {
         }
     }
 
-    func show(prediction: YOLO.Prediction) {
-        guard let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect) else {
-            print("could not scale the POint vectors")
+    private func show(prediction: YOLO.Prediction) {
+        guard let scaledRect = yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: self.view.bounds) else {
+            print("could not scale the Point vectors")
             return
         }
         compoundingBox.frame = scaledRect
         predictionLabel.text = "\(labels[prediction.classIndex])"
         compoundingBox.isHidden = false
 
-        let hitPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+        let hitPoint = arViewModel.getCenterOfObject(objectRect: scaledRect)
         let hitResultsFeaturePoints: [ARHitTestResult] =
             sceneView.hitTest(hitPoint, types: .featurePoint)
         if let hit = hitResultsFeaturePoints.first {
@@ -161,56 +161,36 @@ class RecognizeObjectsViewController: UIViewController {
             sceneView.session.add(anchor: anchor)
         }
     }
-
-    //MARK: Processing Image
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect? {
-        // The predicted bounding box is in the coordinate space of the input
-        // image, which is a square image of 416x416 pixels. We want to show it
-        // on the video preview, which is as wide as the screen and has a 4:3
-        // aspect ratio. The video preview also may be letterboxed at the top
-        // and bottom.
-        let width = view.bounds.width
-        let height = width * 4 / 3
-        let scaleX = width / CGFloat(YOLO.inputWidth)
-        let scaleY = height / CGFloat(YOLO.inputHeight)
-        let top = (view.bounds.height - height) / 2
-
-        // Translate and scale the rectangle to our own coordinate system.
-        var scaleRect = predictionRect
-        scaleRect.origin.x *= scaleX
-        scaleRect.origin.y *= scaleY
-        scaleRect.origin.y += top
-        scaleRect.size.width *= scaleX
-        scaleRect.size.height *= scaleY
-
-        return scaleRect
-    }
-
-    private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {
-        guard let touch = touch else { return nil}
-        let location = touch.location(in: sceneView)
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: .featurePoint)
-        return hitResultsFeaturePoints.first?.worldTransform
-    }
 }
 
 extension RecognizeObjectsViewController: ARSCNViewDelegate {
 
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async {
-                guard let model = self.nodeModel else {
-                    print("we have no model")
-                    return
-                }
-                let modelClone = model.clone()
-                modelClone.position = SCNVector3Zero
-                // Add model as a child of the node
-                node.addChildNode(modelClone)
+            guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+                print("we have no model")
+                return nil
             }
+            model.position = SCNVector3Zero
+            return model
         }
+        return nil
     }
+
+//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+//        if !anchor.isKind(of: ARPlaneAnchor.self) {
+//            DispatchQueue.main.async {
+//                guard let model = self.nodeModel else {
+//                    print("we have no model")
+//                    return
+//                }
+//                let modelClone = model.clone()
+//                modelClone.position = SCNVector3Zero
+//                // Add model as a child of the node
+//                node.addChildNode(modelClone)
+//            }
+//        }
+//    }
 }
 
 

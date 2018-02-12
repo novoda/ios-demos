@@ -43,16 +43,12 @@ class YOLO {
 
   public init() { }
 
-  public func predict(image: CVPixelBuffer) throws -> Prediction? {
+  public func predict(image: CVPixelBuffer) throws -> [Prediction] {
     if let output = try? model.prediction(image: image) {
-        print("3 inside YOLO")
         let boundingBoxes = computeBoundingBoxes(features: output.grid)
-        if boundingBoxes.count == 0 {
-            return Prediction(classIndex: 0, score: 50, rect: CGRect(x: 0, y: 0, width: 100, height: 100))
-        }
-        return boundingBoxes.sorted{ $0.score > $1.score}.first
+        return boundingBoxes
     } else {
-      return nil
+      return []
     }
   }
 
@@ -171,4 +167,53 @@ class YOLO {
     // use "non-maximum suppression" to prune those duplicate bounding boxes.
     return nonMaxSuppression(boxes: predictions, limit: YOLO.maxBoundingBoxes, threshold: iouThreshold)
   }
+
+    public func scaleImageForCameraOutput(predictionRect: CGRect, viewRect: CGRect) -> CGRect? {
+        // The predicted bounding box is in the coordinate space of the input
+        // image, which is a square image of 416x416 pixels. We want to show it
+        // on the video preview, which is as wide as the screen and has a 4:3
+        // aspect ratio. The video preview also may be letterboxed at the top
+        // and bottom.
+        let width = viewRect.width
+        let height = width * 4 / 3
+        let scaleX = width / CGFloat(YOLO.inputWidth)
+        let scaleY = height / CGFloat(YOLO.inputHeight)
+        let top = (viewRect.height - height) / 2
+
+        // Translate and scale the rectangle to our own coordinate system.
+        var scaleRect = predictionRect
+        scaleRect.origin.x *= scaleX
+        scaleRect.origin.y *= scaleY
+        scaleRect.origin.y += top
+        scaleRect.size.width *= scaleX
+        scaleRect.size.height *= scaleY
+
+        return scaleRect
+    }
+
+   public func scaleImageForPredictionInput(pixelBufferImage: CVPixelBuffer) -> CVPixelBuffer? {
+
+        var newPixelBuffer: CVPixelBuffer?
+
+        let status = CVPixelBufferCreate(nil, YOLO.inputWidth, YOLO.inputHeight,
+                                         kCVPixelFormatType_32BGRA, nil,
+                                         &newPixelBuffer)
+
+        guard let resizedPixelBuffer = newPixelBuffer,
+            status == kCVReturnSuccess else {
+                print("Error: could not create resized pixel buffer", status)
+                return nil
+        }
+
+        // Resize the input with Core Image to 416x416.
+        let ciImage = CIImage(cvPixelBuffer: pixelBufferImage)
+        let sx = CGFloat(YOLO.inputWidth) / CGFloat(CVPixelBufferGetWidth(pixelBufferImage))
+        let sy = CGFloat(YOLO.inputHeight) / CGFloat(CVPixelBufferGetHeight(pixelBufferImage))
+        let scaleTransform = CGAffineTransform(scaleX: sx, y: sy)
+        let scaledImage = ciImage.transformed(by: scaleTransform)
+        CIContext().render(scaledImage, to: resizedPixelBuffer)
+        return resizedPixelBuffer
+
+    }
+
 }
