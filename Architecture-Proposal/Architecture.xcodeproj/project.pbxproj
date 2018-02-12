@@ -22,6 +22,12 @@
 		B892346A202E0D1300A8DA30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8923469202E0D1300A8DA30 /* User.swift */; };
 		B892346C202E0DBD00A8DA30 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892346B202E0DBD00A8DA30 /* UserFetcher.swift */; };
 		B89974A92020D2DF00AC1D14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89974A82020D2DF00AC1D14 /* AppDelegate.swift */; };
+		B8BBFC572030A3CD00D2B42A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC562030A3CD00D2B42A /* UserViewController.swift */; };
+		B8BBFC592030A5EC00D2B42A /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC582030A5EC00D2B42A /* UserPresenter.swift */; };
+		B8BBFC5C2030A6BF00D2B42A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC5A2030A69F00D2B42A /* Presenter.swift */; };
+		B8BBFC602030A73B00D2B42A /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC5F2030A73B00D2B42A /* UserPresenter.swift */; };
+		B8BBFC622030A75400D2B42A /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC612030A75400D2B42A /* UserUseCase.swift */; };
+		B8BBFC64203192C500D2B42A /* UserDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BBFC63203192C500D2B42A /* UserDisplayer.swift */; };
 		B8FE7BFD2020DF3A00D6D914 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FE7BFB2020DF3A00D6D914 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8FE7C002020DF3A00D6D914 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8FE7BF92020DF3900D6D914 /* Core.framework */; };
 		B8FE7C012020DF3A00D6D914 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8FE7BF92020DF3900D6D914 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,6 +86,12 @@
 		B89974A52020D2DF00AC1D14 /* Architecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Architecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89974A82020D2DF00AC1D14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B89974B42020D2DF00AC1D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8BBFC562030A3CD00D2B42A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		B8BBFC582030A5EC00D2B42A /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		B8BBFC5A2030A69F00D2B42A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		B8BBFC5F2030A73B00D2B42A /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		B8BBFC612030A75400D2B42A /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		B8BBFC63203192C500D2B42A /* UserDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDisplayer.swift; path = "/Users/gbasile/src/ios-demos/Architecture-Proposal/App/Example/UserDisplayer.swift"; sourceTree = "<absolute>"; };
 		B8FE7BF92020DF3900D6D914 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FE7BFB2020DF3A00D6D914 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		B8FE7BFC2020DF3A00D6D914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,7 +156,9 @@
 		B86DB7B12020EC9900AFE08B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				B8BBFC552030A3BC00D2B42A /* Example */,
 				B86DB7BD2020ECF300AFE08B /* DataState.swift */,
+				B8BBFC5A2030A69F00D2B42A /* Presenter.swift */,
 				B86DB7B22020EC9900AFE08B /* App.h */,
 				B86DB7B32020EC9900AFE08B /* Info.plist */,
 			);
@@ -155,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B8923469202E0D1300A8DA30 /* User.swift */,
+				B8BBFC582030A5EC00D2B42A /* UserPresenter.swift */,
 				B892346B202E0DBD00A8DA30 /* UserFetcher.swift */,
 			);
 			path = Example;
@@ -189,6 +204,17 @@
 				B89974B42020D2DF00AC1D14 /* Info.plist */,
 			);
 			path = Architecture;
+			sourceTree = "<group>";
+		};
+		B8BBFC552030A3BC00D2B42A /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				B8BBFC63203192C500D2B42A /* UserDisplayer.swift */,
+				B8BBFC562030A3CD00D2B42A /* UserViewController.swift */,
+				B8BBFC5F2030A73B00D2B42A /* UserPresenter.swift */,
+				B8BBFC612030A75400D2B42A /* UserUseCase.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 		B8FE7BFA2020DF3A00D6D914 /* Core */ = {
@@ -485,7 +511,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8BBFC5C2030A6BF00D2B42A /* Presenter.swift in Sources */,
+				B8BBFC64203192C500D2B42A /* UserDisplayer.swift in Sources */,
 				B86DB7BE2020ECF300AFE08B /* DataState.swift in Sources */,
+				B8BBFC622030A75400D2B42A /* UserUseCase.swift in Sources */,
+				B8BBFC602030A73B00D2B42A /* UserPresenter.swift in Sources */,
+				B8BBFC572030A3CD00D2B42A /* UserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +535,7 @@
 				B892346C202E0DBD00A8DA30 /* UserFetcher.swift in Sources */,
 				B8923465202E00CF00A8DA30 /* DataSource.swift in Sources */,
 				B8923463202DFEC600A8DA30 /* APIService.swift in Sources */,
+				B8BBFC592030A5EC00D2B42A /* UserPresenter.swift in Sources */,
 				B86DB7AA2020EC1200AFE08B /* Fetcher.swift in Sources */,
 				B892346A202E0D1300A8DA30 /* User.swift in Sources */,
 				B8923467202E02BD00A8DA30 /* Repository.swift in Sources */,

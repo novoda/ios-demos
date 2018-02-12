@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: DomainModel {
-    let firstName: String
-    let lastName: String
+public struct User: DomainModel {
+    public let firstName: String
+    public let lastName: String
 }

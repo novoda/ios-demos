@@ -1,11 +1,3 @@
-//
-//  Core.h
-//  Core
-//
-//  Created by Giuseppe Basile on 30/01/2018.
-//  Copyright © 2018 Novoda. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Core.
