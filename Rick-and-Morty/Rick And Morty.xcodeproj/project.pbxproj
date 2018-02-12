@@ -161,11 +161,12 @@
 				TargetAttributes = {
 					B81168681CFF1C9900301A0A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = V994K8B55B;
+						DevelopmentTeam = " ";
 						LastSwiftMigration = 0920;
 					};
 					B811687E1CFF1C9900301A0A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = " ";
 						LastSwiftMigration = 0920;
 						TestTargetID = B81168681CFF1C9900301A0A;
 					};
