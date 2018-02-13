@@ -135,7 +135,6 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
         let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
         self.semaphore.signal()
-        print("boxes: \(boundingBoxes)")
 
         DispatchQueue.main.async { [weak self] in
             if let prominentBox = prominentBox {
@@ -163,9 +162,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
         let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
         if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            print("scaledRect \(scaledRect)")
             let pointTranslation = hitPoint.worldTransform.translation
-            print("pointTranslation \(pointTranslation)")
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
 
