@@ -3,7 +3,7 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController {
+class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate let yolo = YOLO()
@@ -171,37 +171,6 @@ class RecognizeObjectsViewController: UIViewController {
 
         }
     }
-}
-
-extension RecognizeObjectsViewController: ARSCNViewDelegate {
-
-//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-//        if !anchor.isKind(of: ARPlaneAnchor.self) {
-//            guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
-//                print("we have no model")
-//                return nil
-//            }
-//            print("anchor: \(anchor.transform.translation)")
-//            model.position = SCNVector3Zero
-//            return model
-//        }
-//        return nil
-//    }
-
-//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        if !anchor.isKind(of: ARPlaneAnchor.self) {
-//            DispatchQueue.main.async {
-//                guard let model = self.nodeModel else {
-//                    print("we have no model")
-//                    return
-//                }
-//                let modelClone = model.clone()
-//                modelClone.position = SCNVector3Zero
-//                // Add model as a child of the node
-//                node.addChildNode(modelClone)
-//            }
-//        }
-//    }
 }
 
 
