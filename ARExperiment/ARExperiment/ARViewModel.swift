@@ -12,9 +12,8 @@ class ARViewModel {
         return carNode
     }
 
-    func getHitResults(location: CGPoint, sceneView: ARSCNView) -> ARHitTestResult? {
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: [.existingPlaneUsingExtent, .estimatedHorizontalPlane])
+    func getHitResults(location: CGPoint, sceneView: ARSCNView, resultType: ARHitTestResult.ResultType) -> ARHitTestResult? {
+        let hitResultsFeaturePoints: [ARHitTestResult] = sceneView.hitTest(location, types: resultType)
         if let hit = hitResultsFeaturePoints.first {
             return hit
         }

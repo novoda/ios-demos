@@ -55,7 +55,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
         guard let nodeModel = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/Banana/\(fileName).\(fileExtension)") else {
             return
         }
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView) {
+        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hit.worldTransform.translation 
             nodeModel.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(nodeModel)

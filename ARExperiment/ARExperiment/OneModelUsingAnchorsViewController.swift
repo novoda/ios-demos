@@ -53,7 +53,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
 
     private func addNodeToSessionUsingAnchors(location: CGPoint) {
 
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView) {
+        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: .featurePoint) {
             let anchor = ARAnchor(transform: hit.worldTransform)
             sceneView.session.add(anchor: anchor)
         }

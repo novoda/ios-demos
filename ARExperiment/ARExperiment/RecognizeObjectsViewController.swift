@@ -162,7 +162,7 @@ class RecognizeObjectsViewController: UIViewController {
         compoundingBox.isHidden = false
 
         let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView) {
+        if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             print("scaledRect \(scaledRect)")
             let pointTranslation = hitPoint.worldTransform.translation
             print("pointTranslation \(pointTranslation)")
