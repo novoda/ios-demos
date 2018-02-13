@@ -12,15 +12,18 @@ class ARViewModel {
         return carNode
     }
 
-    func getCenterOfObject(objectRect: CGRect) -> CGPoint {
-
-        let width = objectRect.width
-        let height = objectRect.height
-
-        let x = (width/2) + objectRect.origin.x
-        let y = (height/2) + objectRect.origin.y
-
-
-        return CGPoint(x: x, y: y)
+    func getHitResults(location: CGPoint, sceneView: ARSCNView) -> ARHitTestResult? {
+        let hitResultsFeaturePoints: [ARHitTestResult] =
+            sceneView.hitTest(location, types: [.existingPlaneUsingExtent, .estimatedHorizontalPlane])
+        if let hit = hitResultsFeaturePoints.first {
+            return hit
+        }
+        return nil
+    }
+}
+extension float4x4 {
+    var translation: float3 {
+        let translation = self.columns.3
+        return float3(translation.x, translation.y, translation.z)
     }
 }

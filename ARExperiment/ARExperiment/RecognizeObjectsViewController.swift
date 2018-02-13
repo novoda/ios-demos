@@ -42,6 +42,7 @@ class RecognizeObjectsViewController: UIViewController {
         super.viewWillAppear(animated)
 
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
 
@@ -134,6 +135,7 @@ class RecognizeObjectsViewController: UIViewController {
     private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
         let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
         self.semaphore.signal()
+        print("boxes: \(boundingBoxes)")
 
         DispatchQueue.main.async { [weak self] in
             if let prominentBox = prominentBox {
@@ -149,33 +151,42 @@ class RecognizeObjectsViewController: UIViewController {
             print("could not scale the Point vectors")
             return
         }
+
+        guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+            print("we have no model")
+            return
+        }
+
         compoundingBox.frame = scaledRect
         predictionLabel.text = "\(labels[prediction.classIndex])"
         compoundingBox.isHidden = false
 
-        let hitPoint = arViewModel.getCenterOfObject(objectRect: scaledRect)
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(hitPoint, types: .featurePoint)
-        if let hit = hitResultsFeaturePoints.first {
-            let anchor = ARAnchor(transform: hit.worldTransform)
-            sceneView.session.add(anchor: anchor)
+        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+        if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView) {
+            print("scaledRect \(scaledRect)")
+            let pointTranslation = hitPoint.worldTransform.translation
+            print("pointTranslation \(pointTranslation)")
+            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(model)
+
         }
     }
 }
 
 extension RecognizeObjectsViewController: ARSCNViewDelegate {
 
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
-                print("we have no model")
-                return nil
-            }
-            model.position = SCNVector3Zero
-            return model
-        }
-        return nil
-    }
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        if !anchor.isKind(of: ARPlaneAnchor.self) {
+//            guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+//                print("we have no model")
+//                return nil
+//            }
+//            print("anchor: \(anchor.transform.translation)")
+//            model.position = SCNVector3Zero
+//            return model
+//        }
+//        return nil
+//    }
 
 //    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 //        if !anchor.isKind(of: ARPlaneAnchor.self) {
@@ -192,5 +203,6 @@ extension RecognizeObjectsViewController: ARSCNViewDelegate {
 //        }
 //    }
 }
+
 
 
