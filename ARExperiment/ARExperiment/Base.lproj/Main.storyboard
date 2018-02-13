@@ -64,42 +64,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-l7-xhH">
-                                <rect key="frame" x="114" y="184" width="147" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="One Scene VC"/>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="A4p-Sf-BkO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-6r-CiO">
-                                <rect key="frame" x="91" y="265" width="185" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SizeComparison VC"/>
-                                <connections>
-                                    <segue destination="Nc5-t9-vlo" kind="show" id="PP7-xS-olW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-sG-B20">
-                                <rect key="frame" x="103" y="341" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="RecognizeObjects VC"/>
-                                <connections>
-                                    <segue destination="fYl-Q7-ghR" kind="show" id="Yb4-X0-wa7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-UT-Edf">
-                                <rect key="frame" x="114" y="395" width="170" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LightsAnimationVC"/>
-                                <connections>
-                                    <segue destination="1qu-Rp-qbK" kind="show" id="VNg-xg-IsL"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-yS-F9f">
+                                <rect key="frame" x="37.5" y="84.5" width="300" height="518"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-l7-xhH">
+                                        <rect key="frame" x="135" y="0.0" width="30" height="30"/>
+                                        <connections>
+                                            <segue destination="BV1-FR-VrT" kind="show" id="A4p-Sf-BkO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMh-iV-Xu7">
+                                        <rect key="frame" x="135" y="122" width="30" height="30"/>
+                                        <connections>
+                                            <segue destination="Foi-p7-lZV" kind="show" id="tVm-oQ-QBZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-6r-CiO">
+                                        <rect key="frame" x="82" y="244" width="136" height="30"/>
+                                        <state key="normal" title="SizeComparison VC"/>
+                                        <connections>
+                                            <segue destination="Nc5-t9-vlo" kind="show" id="PP7-xS-olW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-sG-B20">
+                                        <rect key="frame" x="75.5" y="366" width="149" height="30"/>
+                                        <state key="normal" title="RecognizeObjects VC"/>
+                                        <connections>
+                                            <segue destination="fYl-Q7-ghR" kind="show" id="Yb4-X0-wa7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-UT-Edf">
+                                        <rect key="frame" x="85" y="488" width="130" height="30"/>
+                                        <state key="normal" title="LightsAnimationVC"/>
+                                        <connections>
+                                            <segue destination="1qu-Rp-qbK" kind="show" id="VNg-xg-IsL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pnf-yS-F9f" firstAttribute="width" secondItem="ycr-Qa-zBu" secondAttribute="width" multiplier="0.8" id="6Ky-pk-hLi"/>
+                            <constraint firstItem="pnf-yS-F9f" firstAttribute="centerX" secondItem="ycr-Qa-zBu" secondAttribute="centerX" id="JnG-4J-lHu"/>
+                            <constraint firstItem="pnf-yS-F9f" firstAttribute="centerY" secondItem="ycr-Qa-zBu" secondAttribute="centerY" id="f4i-TG-YPg"/>
+                            <constraint firstItem="pnf-yS-F9f" firstAttribute="height" secondItem="ycr-Qa-zBu" secondAttribute="height" multiplier="0.8" id="vs7-7z-GSd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ycr-Qa-zBu"/>
                     </view>
+                    <connections>
+                        <outlet property="lightsAnimationButton" destination="R5f-UT-Edf" id="tv8-Z3-KQX"/>
+                        <outlet property="oneModelUsingAnchorsButton" destination="YMh-iV-Xu7" id="8HD-nA-g1D"/>
+                        <outlet property="oneModelUsingVectorsButton" destination="ehS-l7-xhH" id="HTb-aI-1Zq"/>
+                        <outlet property="recognizeObjectsButton" destination="0fG-sG-B20" id="CS6-ws-5p6"/>
+                        <outlet property="sizeComparisonButton" destination="Xiy-6r-CiO" id="8Lb-ir-YbK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mb-kZ-at4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
