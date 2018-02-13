@@ -27,6 +27,35 @@
             </objects>
             <point key="canvasLocation" x="172" y="-336"/>
         </scene>
+        <!--One Model Using Anchors View Controller-->
+        <scene sceneID="QPx-tm-rvS">
+            <objects>
+                <viewController id="Foi-p7-lZV" customClass="OneModelUsingAnchorsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="88x-YD-DI1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pmc-xn-C0d">
+                                <rect key="frame" x="135" y="307" width="240" height="128"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerY" secondItem="6sA-6V-IlV" secondAttribute="centerY" id="48C-vr-voz"/>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerX" secondItem="6sA-6V-IlV" secondAttribute="centerX" id="KF3-Ca-Sab"/>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="width" secondItem="88x-YD-DI1" secondAttribute="width" id="L5B-Mn-bNK"/>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="height" secondItem="88x-YD-DI1" secondAttribute="height" id="O10-dj-wDP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6sA-6V-IlV"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Pmc-xn-C0d" id="QjI-Y7-NUt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="leM-t8-5YO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="-341"/>
+        </scene>
         <!--Start View Controller-->
         <scene sceneID="l2p-JS-Tyb">
             <objects>
