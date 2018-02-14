@@ -5,14 +5,6 @@ import ARKit
 class OneModelUsingAnchorsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    //MARK: These strings is what you need to switch between different 3D objects
-    /** NodeName is the name of the object you want to show, not necessarily the name of the file.
-     - You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
-     - on the left bottom side of the corner there should be an icon called "Show the scene graph View" click on that, you will now see the hierarchy of the object, tap the object at the top you want to use
-     - on the right top of xcode there should be a button called "Hide or show utilities" open the utilities using it
-     - On the top of the utilities look for the cube icon called "Show the nodes inspector" and click on that
-     - Under identity -> Name there should be a textField, that is the nodeName you need for here
-     **/
     private let nodeName = "banana"
     private let fileName = "banana-small"
     private let fileExtension = "dae"

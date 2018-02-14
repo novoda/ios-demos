@@ -2,10 +2,6 @@ import UIKit
 import SceneKit
 import ARKit
 
-/**
-This is a specific case view controller to set different size boxes onto the View and check the scale, do not modify this one please
- **/
-
 class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
