@@ -44,13 +44,15 @@ struct LightSetting: Decodable {
     let intensity: CGFloat
     let shadowMode: ShadowOptions
     let shadowSampleCount: Int
+    let shadowRadius: CGFloat
 }
 
 extension LightSetting  {
     static func ==(lhs: LightSetting, rhs: LightSetting) -> Bool {
         return lhs.intensity == rhs.intensity &&
                 lhs.shadowMode == rhs.shadowMode &&
-                lhs.shadowSampleCount == rhs.shadowSampleCount
+                lhs.shadowSampleCount == rhs.shadowSampleCount &&
+                lhs.shadowRadius == rhs.shadowRadius
     }
 }
 
