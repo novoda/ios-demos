@@ -12,6 +12,7 @@ This is a simple demo app that pairs with our investigation into ARKIT
 
 At the beginning of every controller you will see there are around 3 or more string variables hardcoded
   - `fileName` if you are assets are not on the route of `art.scnassets` folder you should add the folder name before the file name like so: `Banana/banana`
+    (If your assets are not located in `art.scnassets`folder you might have to change to your root folder where `assetPath` is used)
   - `fileExtension` you can have the same file on both `.dae` and `.scn` format
   - `nodeName` NodeName is the name of the object you want to show, not necessarily the name of the file. You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
     - On the left bottom side of the corner there should be an icon called "Show the scene graph View" click on that, you will now see the hierarchy of the object, tap the object at the top you want to use
