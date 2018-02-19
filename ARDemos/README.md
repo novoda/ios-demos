@@ -48,6 +48,8 @@ The `.json` file you will be updating is called `ModelsData.json` in the Xcode p
   - showCameras
   - showPhysicsShapes
 
+  If you want to your plane to be transparent and show the shadows on your model, follow the [Designing for ARKit](https://www.novoda.com/blog/designing-for-ar-with-arkit/) step directions. 
+
 #### Models
 
 - filePath - The path where your `.dae` or `.scn` file is. Don't for get to add a `/` at the end. e.g `/art.scnassets/Banana/`
