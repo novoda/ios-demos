@@ -3,26 +3,16 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController {
+class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
-    fileprivate var nodeModel: SCNNode?
     fileprivate let yolo = YOLO()
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
-    private var touchPoint: float4x4?
     private let startButton = UIButton()
     private let compoundingBox = UIView()
     private let predictionLabel = UILabel()
-
-    //MARK: These strings is what you need to switch between different 3D objects
-    /** NodeName is the name of the object you want to show, not necessarily the name of the file.
-     - You can find the nodeName and change when opening the file on SceneKit Editor (click on the file or right click and use open as SceneKit Editor)
-     - on the left bottom side of the corner there should be an icon called "Show the scene graph View" click on that, you will now see the hierarchy of the object, tap the object at the top you want to use
-     - on the right top of xcode there should be a button called "Hide or show utilities" open the utilities using it
-     - On the top of the utilities look for the cube icon called "Show the nodes inspector" and click on that
-     - Under identity -> Name there should be a textField, that is the nodeName you need for here
-     **/
+    private let arViewModel = ARViewModel()
     private let nodeName = "cubewireframe"
     private let fileName = "cubewireframe"
     private let fileExtension = "dae"
@@ -34,8 +24,6 @@ class RecognizeObjectsViewController: UIViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
-        nodeModel = createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-
         setupStartButton()
         setUpVision()
         setupCompoundingBox()
@@ -45,6 +33,7 @@ class RecognizeObjectsViewController: UIViewController {
         super.viewWillAppear(animated)
 
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
 
@@ -69,11 +58,12 @@ class RecognizeObjectsViewController: UIViewController {
     }
 
     @objc private func startButtonHasBeenPressed(_ sender: UIButton) {
-        guard let pixelBuffer = getCurrentFrame() else { return }
+        guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
         startButton.isHidden = true
         semaphore.wait()
         DispatchQueue.global().async { [weak self] in
             self?.predictUsingVision(pixelBuffer: pixelBuffer)
+//            self?.predictUsingCoreML(pixelBuffer: pixelBuffer)
         }
     }
 
@@ -89,28 +79,14 @@ class RecognizeObjectsViewController: UIViewController {
         predictionLabel.topAnchor.constraint(equalTo: compoundingBox.topAnchor).isActive = true
     }
 
-    //MARK: ARKit functions
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
-    }
-
-    private func getCurrentFrame() -> CVPixelBuffer? {
-        let pixelBufferCameraCapture = (sceneView.session.currentFrame?.capturedImage)
-        return pixelBufferCameraCapture
-    }
-
-     //MARK: CoreML Functions
+    //MARK: Vision Prediction
     private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
     }
 
-    func setUpVision() {
+    private func setUpVision() {
         guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
             print("Error: could not create Vision model")
             return
@@ -128,15 +104,31 @@ class RecognizeObjectsViewController: UIViewController {
             let features = observations.first?.featureValue.multiArrayValue {
 
             let boundingBoxes = yolo.computeBoundingBoxes(features: features)
-            let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
-            self.semaphore.signal()
-            showOnMainThread(prominentBox)
+            showOnMainThread(boundingBoxes)
         }
     }
 
-    func showOnMainThread(_ boundingBox: YOLO.Prediction?) {
+    //MARK: CoreML Functions
+
+    private func predictUsingCoreML(pixelBuffer: CVPixelBuffer) {
+        guard let resizedImage = yolo.scaleImageForPredictionInput(pixelBufferImage: pixelBuffer) else {
+            return
+        }
+        guard let boundingBoxes = try? yolo.predict(image: resizedImage) else {
+            return
+        }
+        showOnMainThread(boundingBoxes)
+    }
+
+
+    //MARK: Prediction
+
+    private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
+        let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
+        self.semaphore.signal()
+
         DispatchQueue.main.async { [weak self] in
-            if let prominentBox = boundingBox {
+            if let prominentBox = prominentBox {
                 self?.show(prediction: prominentBox)
             } else {
                 self?.startButton.isHidden = false
@@ -144,73 +136,30 @@ class RecognizeObjectsViewController: UIViewController {
         }
     }
 
-    func show(prediction: YOLO.Prediction) {
-        guard let scaledRect = scaleImageForCameraOutput(predictionRect: prediction.rect) else {
-            print("could not scale the POint vectors")
+    private func show(prediction: YOLO.Prediction) {
+        guard let scaledRect = yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: self.view.bounds) else {
+            print("could not scale the Point vectors")
             return
         }
+
+        guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+            print("we have no model")
+            return
+        }
+
         compoundingBox.frame = scaledRect
         predictionLabel.text = "\(labels[prediction.classIndex])"
         compoundingBox.isHidden = false
 
-        let hitPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(hitPoint, types: .featurePoint)
-        if let hit = hitResultsFeaturePoints.first {
-            let anchor = ARAnchor(transform: hit.worldTransform)
-            sceneView.session.add(anchor: anchor)
-        }
-    }
+        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+        if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+            let pointTranslation = hitPoint.worldTransform.translation
+            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(model)
 
-    //MARK: Processing Image
-    private func scaleImageForCameraOutput(predictionRect: CGRect) -> CGRect? {
-        // The predicted bounding box is in the coordinate space of the input
-        // image, which is a square image of 416x416 pixels. We want to show it
-        // on the video preview, which is as wide as the screen and has a 4:3
-        // aspect ratio. The video preview also may be letterboxed at the top
-        // and bottom.
-        let width = view.bounds.width
-        let height = width * 4 / 3
-        let scaleX = width / CGFloat(YOLO.inputWidth)
-        let scaleY = height / CGFloat(YOLO.inputHeight)
-        let top = (view.bounds.height - height) / 2
-
-        // Translate and scale the rectangle to our own coordinate system.
-        var scaleRect = predictionRect
-        scaleRect.origin.x *= scaleX
-        scaleRect.origin.y *= scaleY
-        scaleRect.origin.y += top
-        scaleRect.size.width *= scaleX
-        scaleRect.size.height *= scaleY
-
-        return scaleRect
-    }
-
-    private func getCoordinateFromTouchHitPoint(touch: UITouch?) -> float4x4? {
-        guard let touch = touch else { return nil}
-        let location = touch.location(in: sceneView)
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: .featurePoint)
-        return hitResultsFeaturePoints.first?.worldTransform
-    }
-}
-
-extension RecognizeObjectsViewController: ARSCNViewDelegate {
-
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async {
-                guard let model = self.nodeModel else {
-                    print("we have no model")
-                    return
-                }
-                let modelClone = model.clone()
-                modelClone.position = SCNVector3Zero
-                // Add model as a child of the node
-                node.addChildNode(modelClone)
-            }
         }
     }
 }
+
 
 
