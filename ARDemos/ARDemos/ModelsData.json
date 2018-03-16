@@ -34,7 +34,8 @@
         {
           "intensity":0,
           "shadowMode":"deferred",
-          "shadowSampleCount":16
+          "shadowSampleCount":16,
+          "shadowRadius": 24
         }
       ,
       "planeSettings":
@@ -76,7 +77,8 @@
             {
             "intensity":0,
             "shadowMode":"deferred",
-            "shadowSampleCount":16
+            "shadowSampleCount":16,
+            "shadowRadius": 24
             }
             ,
             "planeSettings":
