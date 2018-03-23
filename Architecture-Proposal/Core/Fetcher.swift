@@ -14,9 +14,3 @@ public protocol Fetcher {
     associatedtype Model
     func fetch(predicate: FetcherPredicate?) -> Observable<Model>
 }
-
-extension Fetcher {
-    func fetch(predicate: FetcherPredicate? = nil) -> Observable<Model> {
-        preconditionFailure("This method must be implemented in your fetcher or not used")
-    }
-}
