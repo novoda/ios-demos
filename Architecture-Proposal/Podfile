@@ -1,0 +1,18 @@
+platform :ios, '10.0'
+inhibit_all_warnings!
+
+target 'Architecture' do
+  use_frameworks!
+end
+
+target 'Core' do
+  use_frameworks!
+
+  pod 'RxSwift', '4.1.2'
+end
+
+target 'App' do
+  use_frameworks!
+
+  pod 'RxSwift', '4.1.2'
+end
