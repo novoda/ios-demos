@@ -22,7 +22,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 
         setupStartButton()
         setUpVision()
