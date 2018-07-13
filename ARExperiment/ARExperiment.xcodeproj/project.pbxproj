@@ -406,8 +406,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V994K8B55B;
+				DEVELOPMENT_TEAM = 6344MVRY42;
 				INFOPLIST_FILE = ARExperiment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = novoda.ios.ARExperiment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -421,8 +422,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V994K8B55B;
+				DEVELOPMENT_TEAM = 6344MVRY42;
 				INFOPLIST_FILE = ARExperiment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = novoda.ios.ARExperiment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
