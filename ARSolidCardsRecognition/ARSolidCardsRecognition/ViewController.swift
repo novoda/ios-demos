@@ -7,17 +7,11 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARSKView!
     @IBOutlet weak var blurView: UIVisualEffectView!
 
-
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
     }()
 
-    /// A serial queue for thread safety when modifying the SceneKit node graph.
-    let updateQueue = DispatchQueue(label: Bundle.main.bundleIdentifier! +
-        ".serialSceneKitQueue")
-
-    /// Convenience accessor for the session owned by ARSCNView.
     var session: ARSession {
         return sceneView.session
     }
@@ -47,16 +41,6 @@ class ViewController: UIViewController {
         resetTracking()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        // Create a session configuration
-//        let configuration = ARWorldTrackingConfiguration()
-//
-//        // Run the view's session
-//        sceneView.session.run(configuration)
-//    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -161,8 +145,8 @@ extension ViewController {
         plane.materials = [material]
 
         let node = SKNode()
-        node.geometry?.materials = [material]
-        node.eulerAngles.x = -.pi / 2
+//        node.geometry?.materials = [material]
+//        node.eulerAngles.x = -.pi / 2
         return node
     }
 }
