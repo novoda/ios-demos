@@ -13,6 +13,8 @@
 		4C972C362108DA89009CB39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C972C342108DA89009CB39B /* Main.storyboard */; };
 		4C972C382108DA8A009CB39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C972C372108DA8A009CB39B /* Assets.xcassets */; };
 		4C972C3B2108DA8A009CB39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C972C392108DA8A009CB39B /* LaunchScreen.storyboard */; };
+		4C972C442108DB36009CB39B /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C972C432108DB36009CB39B /* StatusViewController.swift */; };
+		4C972C482108DBA4009CB39B /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C972C472108DBA4009CB39B /* ViewController+ARSessionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4C972C372108DA8A009CB39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C972C3A2108DA8A009CB39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C972C3C2108DA8A009CB39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C972C432108DB36009CB39B /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusViewController.swift; path = ../../../ARSolidCardsRecognition/ARSolidCardsRecognition/StatusViewController.swift; sourceTree = "<group>"; };
+		4C972C472108DBA4009CB39B /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+ARSessionDelegate.swift"; path = "../../../ARSolidCardsRecognition/ARSolidCardsRecognition/ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		4C972C2D2108DA89009CB39B /* ARImageDetectionWorkshop */ = {
 			isa = PBXGroup;
 			children = (
+				4C972C422108DB08009CB39B /* StatusViewController */,
 				4C972C2E2108DA89009CB39B /* AppDelegate.swift */,
 				4C972C302108DA89009CB39B /* art.scnassets */,
 				4C972C322108DA89009CB39B /* ViewController.swift */,
@@ -65,6 +70,15 @@
 				4C972C3C2108DA8A009CB39B /* Info.plist */,
 			);
 			path = ARImageDetectionWorkshop;
+			sourceTree = "<group>";
+		};
+		4C972C422108DB08009CB39B /* StatusViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C972C472108DBA4009CB39B /* ViewController+ARSessionDelegate.swift */,
+				4C972C432108DB36009CB39B /* StatusViewController.swift */,
+			);
+			path = StatusViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +154,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C972C332108DA89009CB39B /* ViewController.swift in Sources */,
+				4C972C482108DBA4009CB39B /* ViewController+ARSessionDelegate.swift in Sources */,
+				4C972C442108DB36009CB39B /* StatusViewController.swift in Sources */,
 				4C972C2F2108DA89009CB39B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
