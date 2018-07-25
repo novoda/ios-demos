@@ -41,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C972C4D2108E08B009CB39B /* StatusViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				4C0316AA20ED2D3D005372D3 /* StatusViewController.swift */,
+				4CE1452D2102454B00B1C805 /* ViewController+ARSessionDelegate.swift */,
+			);
+			path = StatusViewControler;
+			sourceTree = "<group>";
+		};
 		4CAAB82920ED26C700A8159E = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +69,13 @@
 		4CAAB83420ED26C700A8159E /* ARSolidCardsRecognition */ = {
 			isa = PBXGroup;
 			children = (
+				4C972C4D2108E08B009CB39B /* StatusViewControler */,
 				4CAAB83520ED26C700A8159E /* AppDelegate.swift */,
 				4CAAB83B20ED26C700A8159E /* ViewController.swift */,
 				4CAAB83D20ED26C700A8159E /* Main.storyboard */,
 				4CAAB84020ED26C900A8159E /* Assets.xcassets */,
 				4CAAB84220ED26C900A8159E /* LaunchScreen.storyboard */,
 				4CAAB84520ED26C900A8159E /* Info.plist */,
-				4C0316AA20ED2D3D005372D3 /* StatusViewController.swift */,
-				4CE1452D2102454B00B1C805 /* ViewController+ARSessionDelegate.swift */,
 				4CE1452F2102459E00B1C805 /* ViewController+ARSCNViewDelegate.swift */,
 			);
 			path = ARSolidCardsRecognition;
