@@ -1,0 +1,29 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "resources" : [
+    {
+      "filename" : "car.arreferenceimage"
+    },
+    {
+      "filename" : "drink.arreferenceimage"
+    },
+    {
+      "filename" : "SOLID-dependency-injection.arreferenceimage"
+    },
+    {
+      "filename" : "SOLID-open-close.arreferenceimage"
+    },
+    {
+      "filename" : "SOLID-segregation.arreferenceimage"
+    },
+    {
+      "filename" : "SOLID-single-responsibility.arreferenceimage"
+    },
+    {
+      "filename" : "SOLID-substitution-principle.arreferenceimage"
+    }
+  ]
+}
