@@ -5,12 +5,6 @@
   },
   "resources" : [
     {
-      "filename" : "car.arreferenceimage"
-    },
-    {
-      "filename" : "drink.arreferenceimage"
-    },
-    {
       "filename" : "SOLID-dependency-injection.arreferenceimage"
     },
     {

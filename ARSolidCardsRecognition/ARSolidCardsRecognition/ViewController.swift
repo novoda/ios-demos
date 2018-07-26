@@ -58,10 +58,15 @@ extension ViewController {
             fatalError("Missing expected asset catalog resources.")
         }
 
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravityAndHeading
+//        let configuration = ARWorldTrackingConfiguration()
+//        configuration.worldAlignment = .gravityAndHeading
+//        configuration.maximumNumberOfTrackedImages = 2
+//        configuration.detectionImages = referenceImages
+
+        let configuration = ARImageTrackingConfiguration()
         configuration.maximumNumberOfTrackedImages = 2
-        configuration.detectionImages = referenceImages
+        configuration.trackingImages = referenceImages
+
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)

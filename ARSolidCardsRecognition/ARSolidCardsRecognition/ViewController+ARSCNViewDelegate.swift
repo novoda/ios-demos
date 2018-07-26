@@ -11,17 +11,22 @@ extension ViewController: ARSCNViewDelegate {
         let imageName = referenceImage.name ?? ""
         showStatusMessage("Detected image “\(imageName)”")
 
+        let imageGif: NodeType = .imageGIF("fionaSleep")
+        let image: NodeType = .image("fiona")
+        let model: NodeType = .model("art.scnassets/Banana/banana-small.dae", "banana")
+
         DispatchQueue.main.async {
-            guard let textNode = self.textLabelNode(for: referenceImage) else {
+            let nodeFactory = NodeFactory()
+            guard let node = nodeFactory.node(for: image, imageAnchor: imageAnchor) else {
                 self.showStatusMessage("Could not create node")
                 return
             }
 
-            if let nodeExists = node.childNode(withName: textNode.name ?? "", recursively: true) {
+            if let nodeExists = node.childNode(withName: node.name ?? "", recursively: true) {
                 nodeExists.removeFromParentNode()
             }
 
-            node.addChildNode(textNode)
+            node.addChildNode(node)
         }
     }
 
