@@ -15,7 +15,8 @@ class OneModelUsingAnchorsViewController: UIViewController {
 
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
+                                  ARSCNDebugOptions.showWorldOrigin]
     }
 
     override func viewWillAppear(_ animated: Bool) {
