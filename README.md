@@ -33,8 +33,6 @@ extends UIView; Import this into your project to be able to use constraints prog
 
 * [MVVM Example](https://github.com/novoda/ios-demos/tree/mvvm-example/MVVM%20Example) : Sample app using MVVM architecture. Currently in progress
 
-* [AR Solid Cards Recognition](https://github.com/novoda/ios-demos/tree/mvvm-example/ARSolidCardsRecognition) : Sample app using ARImageDetection from ARKit2 to detect SOLID novoda cards and replace them with other images
-
 ## How to add a new project
  - Pull from master and create a new branch with your project and/or changes
  - If you are creating a new project make sure that XCode did not create a `.git` folder inside of the project directory.
