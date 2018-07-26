@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C0316AB20ED2D3D005372D3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0316AA20ED2D3D005372D3 /* StatusViewController.swift */; };
+		4C972C502108E439009CB39B /* PlaneTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C972C4F2108E439009CB39B /* PlaneTextNode.swift */; };
+		4C972C522108E470009CB39B /* NodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C972C512108E470009CB39B /* NodeFactory.swift */; };
 		4CAAB83620ED26C700A8159E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB83520ED26C700A8159E /* AppDelegate.swift */; };
 		4CAAB83C20ED26C700A8159E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB83B20ED26C700A8159E /* ViewController.swift */; };
 		4CAAB83F20ED26C700A8159E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAAB83D20ED26C700A8159E /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		4C0316AA20ED2D3D005372D3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		4C972C4F2108E439009CB39B /* PlaneTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTextNode.swift; sourceTree = "<group>"; };
+		4C972C512108E470009CB39B /* NodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeFactory.swift; sourceTree = "<group>"; };
 		4CAAB83220ED26C700A8159E /* ARSolidCardsRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARSolidCardsRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAAB83520ED26C700A8159E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CAAB83B20ED26C700A8159E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +54,14 @@
 			path = StatusViewControler;
 			sourceTree = "<group>";
 		};
+		4C972C4E2108E409009CB39B /* SCNNode+nodeTypes */ = {
+			isa = PBXGroup;
+			children = (
+				4C972C4F2108E439009CB39B /* PlaneTextNode.swift */,
+			);
+			path = "SCNNode+nodeTypes";
+			sourceTree = "<group>";
+		};
 		4CAAB82920ED26C700A8159E = {
 			isa = PBXGroup;
 			children = (
@@ -69,14 +81,16 @@
 		4CAAB83420ED26C700A8159E /* ARSolidCardsRecognition */ = {
 			isa = PBXGroup;
 			children = (
+				4C972C4E2108E409009CB39B /* SCNNode+nodeTypes */,
 				4C972C4D2108E08B009CB39B /* StatusViewControler */,
 				4CAAB83520ED26C700A8159E /* AppDelegate.swift */,
 				4CAAB83B20ED26C700A8159E /* ViewController.swift */,
+				4CE1452F2102459E00B1C805 /* ViewController+ARSCNViewDelegate.swift */,
+				4C972C512108E470009CB39B /* NodeFactory.swift */,
 				4CAAB83D20ED26C700A8159E /* Main.storyboard */,
 				4CAAB84020ED26C900A8159E /* Assets.xcassets */,
 				4CAAB84220ED26C900A8159E /* LaunchScreen.storyboard */,
 				4CAAB84520ED26C900A8159E /* Info.plist */,
-				4CE1452F2102459E00B1C805 /* ViewController+ARSCNViewDelegate.swift */,
 			);
 			path = ARSolidCardsRecognition;
 			sourceTree = "<group>";
@@ -153,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CE145302102459E00B1C805 /* ViewController+ARSCNViewDelegate.swift in Sources */,
+				4C972C522108E470009CB39B /* NodeFactory.swift in Sources */,
 				4CAAB83C20ED26C700A8159E /* ViewController.swift in Sources */,
 				4CE1452E2102454B00B1C805 /* ViewController+ARSessionDelegate.swift in Sources */,
+				4C972C502108E439009CB39B /* PlaneTextNode.swift in Sources */,
 				4CAAB83620ED26C700A8159E /* AppDelegate.swift in Sources */,
 				4C0316AB20ED2D3D005372D3 /* StatusViewController.swift in Sources */,
 			);
