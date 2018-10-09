@@ -55,8 +55,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerY" secondItem="6sA-6V-IlV" secondAttribute="centerY" id="48C-vr-voz"/>
-                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerX" secondItem="6sA-6V-IlV" secondAttribute="centerX" id="KF3-Ca-Sab"/>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerY" secondItem="88x-YD-DI1" secondAttribute="centerY" id="48C-vr-voz"/>
+                            <constraint firstItem="Pmc-xn-C0d" firstAttribute="centerX" secondItem="88x-YD-DI1" secondAttribute="centerX" id="KF3-Ca-Sab"/>
                             <constraint firstItem="Pmc-xn-C0d" firstAttribute="width" secondItem="88x-YD-DI1" secondAttribute="width" id="L5B-Mn-bNK"/>
                             <constraint firstItem="Pmc-xn-C0d" firstAttribute="height" secondItem="88x-YD-DI1" secondAttribute="height" id="O10-dj-wDP"/>
                         </constraints>
@@ -148,10 +148,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eS5-gw-vks">
-                                <rect key="frame" x="0.0" y="44" width="375" height="600.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWS-mi-JJX">
-                                <rect key="frame" x="0.0" y="644.5" width="375" height="29"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lcz-K7-T8u"/>
+                                </constraints>
                                 <segments>
                                     <segment title="5 cm"/>
                                     <segment title="1 cm"/>
@@ -164,13 +167,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IWS-mi-JJX" firstAttribute="bottom" secondItem="Da3-7B-Dzt" secondAttribute="bottom" id="0lC-05-DvI"/>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="top" secondItem="aqT-jC-0gk" secondAttribute="top" id="6m7-8I-4VN"/>
                             <constraint firstItem="eS5-gw-vks" firstAttribute="width" secondItem="aqT-jC-0gk" secondAttribute="width" id="7xQ-PK-BbI"/>
-                            <constraint firstItem="IWS-mi-JJX" firstAttribute="top" secondItem="eS5-gw-vks" secondAttribute="bottom" id="OhY-KG-myi"/>
-                            <constraint firstItem="Da3-7B-Dzt" firstAttribute="top" secondItem="eS5-gw-vks" secondAttribute="top" constant="20" id="OmB-vK-ntu"/>
                             <constraint firstItem="IWS-mi-JJX" firstAttribute="width" secondItem="aqT-jC-0gk" secondAttribute="width" id="SKZ-Gg-Myt"/>
-                            <constraint firstItem="eS5-gw-vks" firstAttribute="height" secondItem="aqT-jC-0gk" secondAttribute="height" multiplier="0.9" id="bp1-9m-JKs"/>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="height" secondItem="aqT-jC-0gk" secondAttribute="height" id="bp1-9m-JKs"/>
                             <constraint firstItem="IWS-mi-JJX" firstAttribute="centerX" secondItem="Da3-7B-Dzt" secondAttribute="centerX" id="jT9-3I-gtC"/>
-                            <constraint firstItem="eS5-gw-vks" firstAttribute="centerX" secondItem="Da3-7B-Dzt" secondAttribute="centerX" id="s2B-gP-AU2"/>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="centerX" secondItem="aqT-jC-0gk" secondAttribute="centerX" id="s2B-gP-AU2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Da3-7B-Dzt"/>
                     </view>
@@ -183,10 +186,10 @@
             </objects>
             <point key="canvasLocation" x="172" y="369"/>
         </scene>
-        <!--RecognizeObjectsViewController-->
+        <!--Recognize Objects View Controller-->
         <scene sceneID="iyy-y2-dmI">
             <objects>
-                <viewController title="RecognizeObjectsViewController" id="fYl-Q7-ghR" customClass="RecognizeObjectsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fYl-Q7-ghR" customClass="RecognizeObjectsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eP0-w5-OkY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
