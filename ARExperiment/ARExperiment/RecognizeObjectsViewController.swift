@@ -3,7 +3,7 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
+class RecognizeObjectsViewController: ARExampleViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate let yolo = YOLO()
@@ -27,6 +27,8 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         setupStartButton()
         setUpVision()
         setupCompoundingBox()
+        setNavigationBar(controllerName: "\(RecognizeObjectsViewController.self)")
+        setbackgroundColor()
     }
 
     override func viewWillAppear(_ animated: Bool) {

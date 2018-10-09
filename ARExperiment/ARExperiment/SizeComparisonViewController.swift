@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: UIViewController {
+class SizeComparisonViewController: ARExampleViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
@@ -19,7 +19,8 @@ class SizeComparisonViewController: UIViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
-
+        setbackgroundColor()
+        setNavigationBar(controllerName: "\(SizeComparisonViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {

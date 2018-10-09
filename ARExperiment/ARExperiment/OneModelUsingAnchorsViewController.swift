@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingAnchorsViewController: UIViewController {
+class OneModelUsingAnchorsViewController: ARExampleViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     private let nodeName = "banana"
@@ -17,6 +17,8 @@ class OneModelUsingAnchorsViewController: UIViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
+        setbackgroundColor()
+        setNavigationBar(controllerName: "\(OneModelUsingAnchorsViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,8 +47,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
     }
 
     private func addNodeToSessionUsingAnchors(location: CGPoint) {
-
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: .featurePoint) {
+        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.featurePoint, .estimatedHorizontalPlane]) {
             let anchor = ARAnchor(transform: hit.worldTransform)
             sceneView.session.add(anchor: anchor)
         }

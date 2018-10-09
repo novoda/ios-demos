@@ -3,13 +3,14 @@ import SceneKit
 import ARKit
 
 
-class LightsAnimationsViewController: UIViewController {
+class LightsAnimationsViewController: ARExampleViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     fileprivate var objectNodeModel: SCNNode?
     fileprivate var secondObjectNodeModel: SCNNode?
     fileprivate var planeNodeModel: SCNNode?
     fileprivate var lightNodeModel: SCNNode?
+    private let arViewModel = ARViewModel()
     private let fileName = "EarthMoon/earth-moon"
     private let fileExtension = "dae"
     private let objectNode1 = "Sphere"
@@ -22,10 +23,12 @@ class LightsAnimationsViewController: UIViewController {
 
         sceneView.delegate = self
 
-        objectNodeModel = createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        secondObjectNodeModel = createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        planeNodeModel = createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        lightNodeModel = createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        objectNodeModel = arViewModel.createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        secondObjectNodeModel = arViewModel.createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        planeNodeModel = arViewModel.createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        lightNodeModel = arViewModel.createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        setbackgroundColor()
+        setNavigationBar(controllerName: "\(LightsAnimationsViewController.self)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,14 +43,6 @@ class LightsAnimationsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
-    }
-
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
