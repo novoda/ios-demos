@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  ARExperiment
-//
-//  Created by Berta Devant on 02/01/2018.
-//  Copyright © 2018 Berta Devant. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
@@ -117,12 +109,5 @@ extension OneSceneViewController: ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
 
-    }
-}
-
-extension float4x4 {
-    var translation: float3 {
-        let translation = self.columns.3
-        return float3(translation.x, translation.y, translation.z)
     }
 }
