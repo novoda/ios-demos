@@ -54,14 +54,6 @@ class LightsAnimationsViewController: UIViewController {
                                                assetExtension: fileExtension)
     }
 
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return
@@ -76,20 +68,17 @@ class LightsAnimationsViewController: UIViewController {
     }
 
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: .featurePoint)
-
-        if let hit = hitResultsFeaturePoints.first {
-            let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
-            let finalTransform = simd_mul(hit.worldTransform, rotate)
-            let anchor = ARAnchor(transform: finalTransform)
-            sceneView.session.add(anchor: anchor)
+        guard let hitTransfrom = arModel.getTransformForAnchor(location: location,
+                                                               sceneView: sceneView, resultType: [.featurePoint]) else {
+                                                                return
         }
+        let anchor = ARAnchor(transform: hitTransfrom)
+        sceneView.session.add(anchor: anchor)
     }
-
 }
 
 extension LightsAnimationsViewController: ARSCNViewDelegate {
+
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async { [weak self] in

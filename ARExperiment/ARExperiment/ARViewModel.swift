@@ -6,11 +6,22 @@ class ARViewModel {
 
     func createSceneNodeForAsset(_ nodeName: String, assetFolder: String? = nil, fileName: String, assetExtension: String) -> SCNNode? {
         let pathName = createAssetPath(assetFolder: assetFolder, fileName: fileName, fileExtension: assetExtension)
-        guard let paperPlaneScene = SCNScene(named: pathName) else {
+        guard let scene = SCNScene(named: pathName) else {
             return nil
         }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: nodeName, recursively: true)
-        return carNode
+        let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
+        return node
+    }
+
+    func getTransformForAnchor(location: CGPoint, sceneView: ARSCNView, resultType: ARHitTestResult.ResultType) -> simd_float4x4? {
+        guard let hitPoint = getHitResults(location: location,
+                                           sceneView: sceneView,
+                                           resultType: resultType) else {
+                                            print("failed to find hit point")
+                                            return nil
+        }
+        let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+        return simd_mul(hitPoint.worldTransform, rotate)
     }
 
     func getHitResults(location: CGPoint, sceneView: ARSCNView, resultType: ARHitTestResult.ResultType) -> ARHitTestResult? {
