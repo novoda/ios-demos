@@ -53,8 +53,8 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
         }
         if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hit.worldTransform.translation 
-            nodeModel.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(nodeModel)
+            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(model)
         }
     }
 }
