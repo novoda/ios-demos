@@ -66,8 +66,10 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
                 print("we have no model")
                 return nil
             }
+            let node = SCNNode()
             model.position = SCNVector3Zero
-            return model
+            node.addChildNode(model)
+            return node
         }
         return nil
     }
