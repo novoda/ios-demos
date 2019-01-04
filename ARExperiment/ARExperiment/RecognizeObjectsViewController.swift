@@ -142,7 +142,9 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
             return
         }
 
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
+                                                              fileName: fileName,
+                                                              assetExtension: fileExtension) else {
             print("we have no model")
             return
         }

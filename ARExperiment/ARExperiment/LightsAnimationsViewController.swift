@@ -6,11 +6,13 @@ import ARKit
 class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    private let arModel = ARViewModel()
     fileprivate var objectNodeModel: SCNNode?
     fileprivate var secondObjectNodeModel: SCNNode?
     fileprivate var planeNodeModel: SCNNode?
     fileprivate var lightNodeModel: SCNNode?
-    private let fileName = "EarthMoon/earth-moon"
+    private let assetFolder = "EarthMoon"
+    private let fileName = "earth-moon"
     private let fileExtension = "dae"
     private let objectNode1 = "Sphere"
     private let objectNode2 = "Moon_Orbit"
@@ -21,11 +23,7 @@ class LightsAnimationsViewController: UIViewController {
         super.viewDidLoad()
 
         sceneView.delegate = self
-
-        objectNodeModel = createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        secondObjectNodeModel = createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        planeNodeModel = createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        lightNodeModel = createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        setUpModelsOnLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +38,20 @@ class LightsAnimationsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+
+    private func setUpModelsOnLoad() {
+        objectNodeModel = modelForNodeName(objectNode1)
+        secondObjectNodeModel = modelForNodeName(objectNode2)
+        planeNodeModel = modelForNodeName(planeNode)
+        lightNodeModel = modelForNodeName(lightNode)
+    }
+
+    private func modelForNodeName(_ nodeName: String) -> SCNNode? {
+        return arModel.createSceneNodeForAsset(nodeName,
+                                               assetFolder: assetFolder,
+                                               fileName: fileName,
+                                               assetExtension: fileExtension)
     }
 
     private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {

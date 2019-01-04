@@ -4,11 +4,12 @@ import ARKit
 
 class ARViewModel {
 
-    func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
+    func createSceneNodeForAsset(_ nodeName: String, assetFolder: String? = nil, fileName: String, assetExtension: String) -> SCNNode? {
+        let pathName = createAssetPath(assetFolder: assetFolder, fileName: fileName, fileExtension: assetExtension)
+        guard let paperPlaneScene = SCNScene(named: pathName) else {
             return nil
         }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
+        let carNode = paperPlaneScene.rootNode.childNode(withName: nodeName, recursively: true)
         return carNode
     }
 
@@ -18,6 +19,13 @@ class ARViewModel {
             return hit
         }
         return nil
+    }
+
+    private func createAssetPath(assetFolder: String?, fileName: String, fileExtension: String) -> String {
+        if let assetFolder = assetFolder {
+            return "art.scnassets/\(assetFolder)/\(fileName).\(fileExtension)"
+        }
+        return "art.scnassets/\(fileName).\(fileExtension)"
     }
 }
 extension float4x4 {
