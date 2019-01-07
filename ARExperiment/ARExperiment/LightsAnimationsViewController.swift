@@ -7,15 +7,15 @@ class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     private let arModel = ARViewModel()
-    fileprivate var objectNodeModel: SCNNode?
-    fileprivate var secondObjectNodeModel: SCNNode?
+    fileprivate var earthNode: SCNNode?
+    fileprivate var moonNode: SCNNode?
     fileprivate var planeNodeModel: SCNNode?
     fileprivate var lightNodeModel: SCNNode?
     private let assetFolder = "EarthMoon"
     private let fileName = "earth-moon"
     private let fileExtension = "dae"
-    private let objectNode1 = "Sphere"
-    private let objectNode2 = "Moon_Orbit"
+    private let earthNodeName = "Sphere"
+    private let moonNodeName = "Moon_Orbit"
     private let planeNode = "Plane"
     private let lightNode = "Sun"
 
@@ -41,8 +41,8 @@ class LightsAnimationsViewController: UIViewController {
     }
 
     private func setUpModelsOnLoad() {
-        objectNodeModel = modelForNodeName(objectNode1)
-        secondObjectNodeModel = modelForNodeName(objectNode2)
+        earthNode = modelForNodeName(earthNodeName)
+        moonNode = modelForNodeName(moonNodeName)
         planeNodeModel = modelForNodeName(planeNode)
         lightNodeModel = modelForNodeName(lightNode)
     }
@@ -59,8 +59,8 @@ class LightsAnimationsViewController: UIViewController {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: objectNode1, recursively: true),
-            let secondNodeExists = sceneView.scene.rootNode.childNode(withName: objectNode2, recursively: true) {
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: earthNodeName, recursively: true),
+            let secondNodeExists = sceneView.scene.rootNode.childNode(withName: moonNodeName, recursively: true) {
             nodeExists.removeFromParentNode()
             secondNodeExists.removeFromParentNode()
         }
@@ -83,8 +83,8 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                guard let model = strongSelf.objectNodeModel,
-                let secondModel = strongSelf.secondObjectNodeModel else {
+                guard let model = strongSelf.earthNode,
+                let secondModel = strongSelf.moonNode else {
                     print("We have no model to render")
                     return
                 }
