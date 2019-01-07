@@ -41,9 +41,9 @@ class SizeComparisonViewController: UIViewController {
 
        removeNodeIfExistAlready()
 
-        guard let hitTransform = arModel.getTransformForAnchor(location: location,
-                                                         sceneView: sceneView,
-                                                         resultType: [.featurePoint]) else {
+        guard let hitTransform = arModel.worldTransformForAnchor(at: location,
+                                                                 in: sceneView,
+                                                                 withType: [.featurePoint]) else {
                                                             return
         }
         let anchor = ARAnchor(transform: hitTransform)

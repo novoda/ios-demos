@@ -13,10 +13,10 @@ class ARViewModel {
         return node
     }
 
-    func getTransformForAnchor(location: CGPoint, sceneView: ARSCNView, resultType: ARHitTestResult.ResultType) -> simd_float4x4? {
+    func worldTransformForAnchor(at location: CGPoint, in sceneView: ARSCNView, withType type: ARHitTestResult.ResultType) -> simd_float4x4? {
         guard let hitPoint = hitResult(at: location,
                                        in: sceneView,
-                                       withType: resultType) else {
+                                       withType: type) else {
                                             print("failed to find hit point")
                                             return nil
         }
