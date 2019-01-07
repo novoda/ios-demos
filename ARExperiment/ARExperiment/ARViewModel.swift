@@ -20,7 +20,11 @@ class ARViewModel {
                                             print("failed to find hit point")
                                             return nil
         }
-        let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+        guard let currentFrame = sceneView.session.currentFrame else {
+            print("failed to find current frame on scene")
+            return nil
+        }
+        let rotate = simd_float4x4(SCNMatrix4MakeRotation(currentFrame.camera.eulerAngles.y, 0, 1, 0))
         return simd_mul(hitPoint.worldTransform, rotate)
     }
 
