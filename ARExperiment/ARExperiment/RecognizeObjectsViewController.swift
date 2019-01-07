@@ -154,7 +154,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         compoundingBox.isHidden = false
 
         let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        if let hitPoint = arViewModel.getHitResults(location: scaledPoint, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+        if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hitPoint.worldTransform.translation
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)

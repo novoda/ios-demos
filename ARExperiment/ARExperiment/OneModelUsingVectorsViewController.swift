@@ -51,7 +51,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
                                                               assetExtension: fileExtension) else {
             return
         }
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+        if let hit = arViewModel.hitResult(at: location, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hit.worldTransform.translation 
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
