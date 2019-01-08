@@ -6,14 +6,16 @@ import ARKit
 class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    fileprivate var objectNodeModel: SCNNode?
-    fileprivate var secondObjectNodeModel: SCNNode?
+    private let arModel = ARViewModel()
+    fileprivate var earthNode: SCNNode?
+    fileprivate var moonNode: SCNNode?
     fileprivate var planeNodeModel: SCNNode?
     fileprivate var lightNodeModel: SCNNode?
-    private let fileName = "EarthMoon/earth-moon"
+    private let assetFolder = "EarthMoon"
+    private let fileName = "earth-moon"
     private let fileExtension = "dae"
-    private let objectNode1 = "Sphere"
-    private let objectNode2 = "Moon_Orbit"
+    private let earthNodeName = "Sphere"
+    private let moonNodeName = "Moon_Orbit"
     private let planeNode = "Plane"
     private let lightNode = "Sun"
 
@@ -21,11 +23,7 @@ class LightsAnimationsViewController: UIViewController {
         super.viewDidLoad()
 
         sceneView.delegate = self
-
-        objectNodeModel = createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        secondObjectNodeModel = createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        planeNodeModel = createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        lightNodeModel = createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
+        setUpModelsOnLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,12 +40,18 @@ class LightsAnimationsViewController: UIViewController {
         sceneView.session.pause()
     }
 
-    private func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
-            return nil
-        }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
+    private func setUpModelsOnLoad() {
+        earthNode = modelForNodeName(earthNodeName)
+        moonNode = modelForNodeName(moonNodeName)
+        planeNodeModel = modelForNodeName(planeNode)
+        lightNodeModel = modelForNodeName(lightNode)
+    }
+
+    private func modelForNodeName(_ nodeName: String) -> SCNNode? {
+        return arModel.createSceneNodeForAsset(nodeName,
+                                               assetFolder: assetFolder,
+                                               fileName: fileName,
+                                               assetExtension: fileExtension)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,8 +59,8 @@ class LightsAnimationsViewController: UIViewController {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: objectNode1, recursively: true),
-            let secondNodeExists = sceneView.scene.rootNode.childNode(withName: objectNode2, recursively: true) {
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: earthNodeName, recursively: true),
+            let secondNodeExists = sceneView.scene.rootNode.childNode(withName: moonNodeName, recursively: true) {
             nodeExists.removeFromParentNode()
             secondNodeExists.removeFromParentNode()
         }
@@ -64,26 +68,23 @@ class LightsAnimationsViewController: UIViewController {
     }
 
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: .featurePoint)
-
-        if let hit = hitResultsFeaturePoints.first {
-            let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
-            let finalTransform = simd_mul(hit.worldTransform, rotate)
-            let anchor = ARAnchor(transform: finalTransform)
-            sceneView.session.add(anchor: anchor)
+        guard let hitTransfrom = arModel.worldTransformForAnchor(at: location,
+                                                                 in: sceneView, withType: [.featurePoint]) else {
+                                                                return
         }
+        let anchor = ARAnchor(transform: hitTransfrom)
+        sceneView.session.add(anchor: anchor)
     }
-
 }
 
 extension LightsAnimationsViewController: ARSCNViewDelegate {
+
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                guard let model = strongSelf.objectNodeModel,
-                let secondModel = strongSelf.secondObjectNodeModel else {
+                guard let model = strongSelf.earthNode,
+                let secondModel = strongSelf.moonNode else {
                     print("We have no model to render")
                     return
                 }

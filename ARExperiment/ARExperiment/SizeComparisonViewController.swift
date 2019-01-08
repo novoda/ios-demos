@@ -6,19 +6,19 @@ class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
-
-    private var textName: String = "text_5"
-    private var cubeName: String = "cube_5"
-    private var scene: SCNScene?
+    private let arModel = ARViewModel()
+    private let fileName = "measuring-units"
+    private let fileExtension = "scn"
+    private var currentCubeName = ""
+    private var currentTextName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-
-        scene = SCNScene(named: "art.scnassets/measuring-units.scn")
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
+                                  ARSCNDebugOptions.showWorldOrigin]
 
     }
 
@@ -39,57 +39,63 @@ class SizeComparisonViewController: UIViewController {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: cubeName, recursively: true) {
+       removeNodeIfExistAlready()
+
+        guard let hitTransform = arModel.worldTransformForAnchor(at: location,
+                                                                 in: sceneView,
+                                                                 withType: [.featurePoint]) else {
+                                                            return
+        }
+        let anchor = ARAnchor(transform: hitTransform)
+        sceneView.session.add(anchor: anchor)
+    }
+
+    private func removeNodeIfExistAlready() {
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentCubeName, recursively: true) {
             nodeExists.removeFromParentNode()
         }
 
-        let hitResultsFeaturePoints: [ARHitTestResult] =
-            sceneView.hitTest(location, types: .featurePoint)
-
-        if let hit = hitResultsFeaturePoints.first {
-            let anchor = ARAnchor(transform: hit.worldTransform)
-            sceneView.session.add(anchor: anchor)
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentTextName, recursively: true) {
+            nodeExists.removeFromParentNode()
         }
     }
 
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            textName = "text_5"
-            cubeName = "cube_5"
+            currentTextName = "text_5"
+            currentCubeName = "cube_5"
         case 1:
-            textName = "text_1"
-            cubeName = "cube_1"
+            currentTextName = "text_1"
+            currentCubeName = "cube_1"
         case 2:
-            textName = "text_0.1"
-            cubeName = "cube_0.1"
+            currentTextName = "text_0.1"
+            currentCubeName = "cube_0.1"
         default: break
         }
     }
-
-    func getNode() -> SCNNode? {
-
-        guard let scene = scene else {
-            return nil
-        }
-        return scene.rootNode.childNode(withName: cubeName, recursively: true)
-    }
-
 }
 
 extension SizeComparisonViewController: ARSCNViewDelegate {
 
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async { [weak self] in
-                guard let textNode = self?.getNode() else {
-                    print("we have no model")
-                    return
-                }
-                textNode.position = SCNVector3Zero
-                // Add model as a child of the node
-                node.addChildNode(textNode)
-            }
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        guard !anchor.isKind(of: ARPlaneAnchor.self) else {
+            return nil
         }
+        guard let cube = arModel.createSceneNodeForAsset(currentCubeName,
+                                                   fileName: fileName,
+                                                   assetExtension: fileExtension),
+            let text = arModel.createSceneNodeForAsset(currentTextName,
+                                                   fileName: fileName,
+                                                   assetExtension: fileExtension) else {
+                                                    print("could not find node")
+                                                    return nil
+        }
+        let node = SCNNode()
+        cube.position = SCNVector3Zero
+        text.position = SCNVector3Zero
+        node.addChildNode(cube)
+        node.addChildNode(text)
+        return node
     }
 }

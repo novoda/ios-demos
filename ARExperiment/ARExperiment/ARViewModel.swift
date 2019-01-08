@@ -4,20 +4,40 @@ import ARKit
 
 class ARViewModel {
 
-    func createSceneNodeForAsset(_ assetName: String, assetPath: String) -> SCNNode? {
-        guard let paperPlaneScene = SCNScene(named: assetPath) else {
+    func createSceneNodeForAsset(_ nodeName: String, assetFolder: String? = nil, fileName: String, assetExtension: String) -> SCNNode? {
+        let pathName = createAssetPath(assetFolder: assetFolder, fileName: fileName, fileExtension: assetExtension)
+        guard let scene = SCNScene(named: pathName) else {
             return nil
         }
-        let carNode = paperPlaneScene.rootNode.childNode(withName: assetName, recursively: true)
-        return carNode
+        let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
+        return node
     }
 
-    func getHitResults(location: CGPoint, sceneView: ARSCNView, resultType: ARHitTestResult.ResultType) -> ARHitTestResult? {
-        let hitResultsFeaturePoints: [ARHitTestResult] = sceneView.hitTest(location, types: resultType)
-        if let hit = hitResultsFeaturePoints.first {
-            return hit
+    func worldTransformForAnchor(at location: CGPoint, in sceneView: ARSCNView, withType type: ARHitTestResult.ResultType) -> simd_float4x4? {
+        guard let hitPoint = hitResult(at: location,
+                                       in: sceneView,
+                                       withType: type) else {
+                                            print("failed to find hit point")
+                                            return nil
         }
-        return nil
+        guard let currentFrame = sceneView.session.currentFrame else {
+            print("failed to find current frame on scene")
+            return nil
+        }
+        let rotate = simd_float4x4(SCNMatrix4MakeRotation(currentFrame.camera.eulerAngles.y, 0, 1, 0))
+        return simd_mul(hitPoint.worldTransform, rotate)
+    }
+
+    func hitResult(at location: CGPoint, in sceneView: ARSCNView, withType type: ARHitTestResult.ResultType) -> ARHitTestResult? {
+        let hitResultsFeaturePoints: [ARHitTestResult] = sceneView.hitTest(location, types: type)
+        return hitResultsFeaturePoints.first
+    }
+
+    private func createAssetPath(assetFolder: String?, fileName: String, fileExtension: String) -> String {
+        if let assetFolder = assetFolder {
+            return "art.scnassets/\(assetFolder)/\(fileName).\(fileExtension)"
+        }
+        return "art.scnassets/\(fileName).\(fileExtension)"
     }
 }
 extension float4x4 {
