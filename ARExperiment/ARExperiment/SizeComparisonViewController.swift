@@ -19,8 +19,8 @@ class SizeComparisonViewController: ARExampleViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
-        setbackgroundColor()
-        setNavigationBar(controllerName: "\(SizeComparisonViewController.self)")
+        self.viewBackgroundColor(to: .white)
+        self.navigationBar(with: .white, and: "\(SizeComparisonViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {

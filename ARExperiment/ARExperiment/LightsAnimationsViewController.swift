@@ -27,8 +27,8 @@ class LightsAnimationsViewController: ARExampleViewController {
         secondObjectNodeModel = arViewModel.createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         planeNodeModel = arViewModel.createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         lightNodeModel = arViewModel.createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
-        setbackgroundColor()
-        setNavigationBar(controllerName: "\(LightsAnimationsViewController.self)")
+        self.viewBackgroundColor(to: .white)
+        self.navigationBar(with: .white, and: "\(LightsAnimationsViewController.self)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

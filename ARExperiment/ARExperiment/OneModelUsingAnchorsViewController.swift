@@ -17,8 +17,8 @@ class OneModelUsingAnchorsViewController: ARExampleViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
-        setbackgroundColor()
-        setNavigationBar(controllerName: "\(OneModelUsingAnchorsViewController.self)")
+        self.viewBackgroundColor(to: .white)
+        self.navigationBar(with: .white, and: "\(OneModelUsingAnchorsViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
