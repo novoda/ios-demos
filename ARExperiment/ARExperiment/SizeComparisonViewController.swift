@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: ARExampleViewController {
+class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!

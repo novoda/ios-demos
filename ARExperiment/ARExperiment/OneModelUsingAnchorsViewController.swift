@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingAnchorsViewController: ARExampleViewController {
+class OneModelUsingAnchorsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     private let nodeName = "banana"

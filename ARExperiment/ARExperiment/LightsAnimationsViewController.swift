@@ -3,7 +3,7 @@ import SceneKit
 import ARKit
 
 
-class LightsAnimationsViewController: ARExampleViewController {
+class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     fileprivate var objectNodeModel: SCNNode?
