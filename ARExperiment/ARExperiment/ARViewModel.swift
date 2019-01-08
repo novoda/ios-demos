@@ -30,10 +30,7 @@ class ARViewModel {
 
     func hitResult(at location: CGPoint, in sceneView: ARSCNView, withType type: ARHitTestResult.ResultType) -> ARHitTestResult? {
         let hitResultsFeaturePoints: [ARHitTestResult] = sceneView.hitTest(location, types: type)
-        if let hit = hitResultsFeaturePoints.first {
-            return hit
-        }
-        return nil
+        return hitResultsFeaturePoints.first
     }
 
     private func createAssetPath(assetFolder: String?, fileName: String, fileExtension: String) -> String {
