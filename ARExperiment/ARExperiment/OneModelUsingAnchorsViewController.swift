@@ -9,16 +9,19 @@ class OneModelUsingAnchorsViewController: UIViewController {
     private let fileName = "banana-small"
     private let fileExtension = "dae"
     private let arViewModel = ARViewModel()
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
         self.viewBackgroundColor(to: .white)
-        self.navigationBar(with: .white, and: "\(OneModelUsingAnchorsViewController.self)")
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,3 +72,21 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
     }
 }
 
+extension OneModelUsingAnchorsViewController: ARExperimentSessionHandler {
+
+    func showTrackingState(for trackingState: ARCamera.TrackingState) {
+        title = trackingState.presentationString
+    }
+
+    func sessionWasInterrupted(message: String) {
+        title = "SESSION INTERRUPTED"
+    }
+
+    func resetTracking(message: String) {
+        title = "RESETTING TRACKING"
+    }
+
+    func sessionErrorOccurred(title: String, message: String) {
+        self.title = title
+    }
+}

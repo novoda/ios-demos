@@ -11,6 +11,7 @@ class LightsAnimationsViewController: UIViewController {
     fileprivate var planeNodeModel: SCNNode?
     fileprivate var lightNodeModel: SCNNode?
     private let arViewModel = ARViewModel()
+    private let arSessionDelegate = ARExperimentSession()
     private let fileName = "EarthMoon/earth-moon"
     private let fileExtension = "dae"
     private let objectNode1 = "Sphere"
@@ -22,13 +23,14 @@ class LightsAnimationsViewController: UIViewController {
         super.viewDidLoad()
 
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
 
         objectNodeModel = arViewModel.createSceneNodeForAsset(objectNode1, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         secondObjectNodeModel = arViewModel.createSceneNodeForAsset(objectNode2, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         planeNodeModel = arViewModel.createSceneNodeForAsset(planeNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         lightNodeModel = arViewModel.createSceneNodeForAsset(lightNode, assetPath: "art.scnassets/\(fileName).\(fileExtension)")
         self.viewBackgroundColor(to: .white)
-        self.navigationBar(with: .white, and: "\(LightsAnimationsViewController.self)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,5 +124,24 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
             plane.firstMaterial?.colorBufferWriteMask = []
             plane.firstMaterial?.lightingModel = .constant
         }
+    }
+}
+
+extension LightsAnimationsViewController: ARExperimentSessionHandler {
+
+    func showTrackingState(for trackingState: ARCamera.TrackingState) {
+        title = trackingState.presentationString
+    }
+
+    func sessionWasInterrupted(message: String) {
+        title = "SESSION INTERRUPTED"
+    }
+
+    func resetTracking(message: String) {
+        title = "RESETTING TRACKING"
+    }
+
+    func sessionErrorOccurred(title: String, message: String) {
+        self.title = title
     }
 }

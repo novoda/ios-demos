@@ -9,15 +9,17 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     private let fileName = "banana-small"
     private let fileExtension = "dae"
     private let arViewModel = ARViewModel()
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         self.viewBackgroundColor(to: .white)
-        self.navigationBar(with: .white, and: "\(OneModelUsingVectorsViewController.self)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,5 +56,24 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
             nodeModel.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(nodeModel)
         }
+    }
+}
+
+extension OneModelUsingVectorsViewController: ARExperimentSessionHandler {
+
+    func showTrackingState(for trackingState: ARCamera.TrackingState) {
+        title = trackingState.presentationString
+    }
+
+    func sessionWasInterrupted(message: String) {
+        title = "SESSION INTERRUPTED"
+    }
+
+    func resetTracking(message: String) {
+        title = "RESETTING TRACKING"
+    }
+
+    func sessionErrorOccurred(title: String, message: String) {
+        self.title = title
     }
 }

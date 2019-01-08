@@ -6,21 +6,22 @@ class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
-
     private var textName: String = "text_5"
     private var cubeName: String = "cube_5"
     private var scene: SCNScene?
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
         self.viewBackgroundColor(to: .white)
-        self.navigationBar(with: .white, and: "\(SizeComparisonViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -92,5 +93,24 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
                 node.addChildNode(textNode)
             }
         }
+    }
+}
+
+extension SizeComparisonViewController: ARExperimentSessionHandler {
+
+    func showTrackingState(for trackingState: ARCamera.TrackingState) {
+        title = trackingState.presentationString
+    }
+
+    func sessionWasInterrupted(message: String) {
+        title = "SESSION INTERRUPTED"
+    }
+
+    func resetTracking(message: String) {
+        title = "RESETTING TRACKING"
+    }
+
+    func sessionErrorOccurred(title: String, message: String) {
+        self.title = title
     }
 }
