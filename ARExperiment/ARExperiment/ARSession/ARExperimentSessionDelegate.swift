@@ -11,7 +11,7 @@
 import ARKit
 import Foundation
 
-protocol ARExperimentSessionHandler {
+protocol ARExperimentSessionHandler: class {
     func showTrackingState(for trackingState: ARCamera.TrackingState)
     func sessionWasInterrupted(message: String)
     func resetTracking(message: String)
@@ -20,7 +20,7 @@ protocol ARExperimentSessionHandler {
 
 class ARExperimentSession: NSObject, ARSessionDelegate {
 
-    var sessionHandler: ARExperimentSessionHandler?
+    weak var sessionHandler: ARExperimentSessionHandler?
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         sessionHandler?.showTrackingState(for: camera.trackingState)
