@@ -45,7 +45,7 @@ class SizeComparisonViewController: UIViewController {
             return
         }
 
-       removeNodeIfExistAlready()
+        removeNodeIfExistAlready()
 
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
@@ -57,13 +57,8 @@ class SizeComparisonViewController: UIViewController {
     }
 
     private func removeNodeIfExistAlready() {
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentCubeName, recursively: true) {
-            nodeExists.removeFromParentNode()
-        }
-
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentTextName, recursively: true) {
-            nodeExists.removeFromParentNode()
-        }
+        sceneView.scene.rootNode.childNode(withName: currentCubeName, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentTextName, recursively: true)?.removeFromParentNode()
     }
 
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
