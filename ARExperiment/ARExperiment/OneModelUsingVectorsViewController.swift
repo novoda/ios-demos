@@ -5,6 +5,7 @@ import ARKit
 class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    private let assetFolder = "Banana"
     private let nodeName = "banana"
     private let fileName = "banana-small"
     private let fileExtension = "dae"
@@ -48,13 +49,16 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func addNoteToSceneUsingVector(location: CGPoint) {
-        guard let nodeModel = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/Banana/\(fileName).\(fileExtension)") else {
+        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
+                                                              assetFolder: assetFolder,
+                                                              fileName: fileName,
+                                                              assetExtension: fileExtension) else {
             return
         }
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+        if let hit = arViewModel.hitResult(at: location, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hit.worldTransform.translation 
-            nodeModel.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(nodeModel)
+            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(model)
         }
     }
 }

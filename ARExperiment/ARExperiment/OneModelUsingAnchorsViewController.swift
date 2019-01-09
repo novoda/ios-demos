@@ -5,6 +5,7 @@ import ARKit
 class OneModelUsingAnchorsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    private let assetFolder = "Banana"
     private let nodeName = "banana"
     private let fileName = "banana-small"
     private let fileExtension = "dae"
@@ -50,10 +51,11 @@ class OneModelUsingAnchorsViewController: UIViewController {
     }
 
     private func addNodeToSessionUsingAnchors(location: CGPoint) {
-        if let hit = arViewModel.getHitResults(location: location, sceneView: sceneView, resultType: [.featurePoint, .estimatedHorizontalPlane]) {
-            let anchor = ARAnchor(transform: hit.worldTransform)
-            sceneView.session.add(anchor: anchor)
+        guard let hitTransform = arViewModel.worldTransformForAnchor(at: location, in: sceneView, withType: [.featurePoint, .estimatedHorizontalPlane]) else {
+            return
         }
+        let anchor = ARAnchor(transform: hitTransform)
+        sceneView.session.add(anchor: anchor)
     }
 }
 
@@ -61,12 +63,17 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-            guard let model = arViewModel.createSceneNodeForAsset(nodeName, assetPath: "art.scnassets/\(fileName).\(fileExtension)") else {
+            guard let model = arViewModel.createSceneNodeForAsset(nodeName,
+                                                                  assetFolder: assetFolder,
+                                                                  fileName: fileName,
+                                                                  assetExtension: fileExtension) else {
                 print("we have no model")
                 return nil
             }
+            let node = SCNNode()
             model.position = SCNVector3Zero
-            return model
+            node.addChildNode(model)
+            return node
         }
         return nil
     }
