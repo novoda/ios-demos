@@ -27,8 +27,8 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         setupStartButton()
         setUpVision()
         setupCompoundingBox()
-        self.viewBackgroundColor(to: .white)
-        self.navigationBar(with: .white, and: "\(RecognizeObjectsViewController.self)")
+        viewBackgroundColor(to: .white)
+        navigationBar(with: .white, and: "\(RecognizeObjectsViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -164,6 +164,3 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
 }
-
-
-

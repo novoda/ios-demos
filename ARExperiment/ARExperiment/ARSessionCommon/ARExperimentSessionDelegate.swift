@@ -12,6 +12,7 @@ import ARKit
 import Foundation
 
 protocol ARExperimentSessionHandler: class {
+    var stateDescription: String { get set }
     func showTrackingState(for trackingState: ARCamera.TrackingState)
     func sessionWasInterrupted(message: String)
     func resetTracking(message: String)
@@ -59,4 +60,22 @@ class ARExperimentSession: NSObject, ARSessionDelegate {
         return true
     }
     
+}
+
+extension ARExperimentSessionHandler {
+    func showTrackingState(for trackingState: ARCamera.TrackingState) {
+        stateDescription = trackingState.presentationString
+    }
+
+    func sessionWasInterrupted(message: String) {
+        stateDescription = "SESSION INTERRUPTED"
+    }
+
+    func resetTracking(message: String) {
+        stateDescription = "RESETTING TRACKING"
+    }
+
+    func sessionErrorOccurred(title: String, message: String) {
+        stateDescription = title
+    }
 }

@@ -21,8 +21,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
-        self.viewBackgroundColor(to: .white)
-        
+        viewBackgroundColor(to: .white)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,20 +79,12 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
 }
 
 extension OneModelUsingAnchorsViewController: ARExperimentSessionHandler {
-
-    func showTrackingState(for trackingState: ARCamera.TrackingState) {
-        title = trackingState.presentationString
-    }
-
-    func sessionWasInterrupted(message: String) {
-        title = "SESSION INTERRUPTED"
-    }
-
-    func resetTracking(message: String) {
-        title = "RESETTING TRACKING"
-    }
-
-    func sessionErrorOccurred(title: String, message: String) {
-        self.title = title
+    var stateDescription: String {
+        get {
+            return title ?? "\(type(of: self))"
+        }
+        set {
+            title = newValue
+        }
     }
 }

@@ -28,7 +28,7 @@ class LightsAnimationsViewController: UIViewController {
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
 
-        self.viewBackgroundColor(to: .white)
+        viewBackgroundColor(to: .white)
         setUpModelsOnLoad()
     }
     
@@ -138,20 +138,12 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
 }
 
 extension LightsAnimationsViewController: ARExperimentSessionHandler {
-
-    func showTrackingState(for trackingState: ARCamera.TrackingState) {
-        title = trackingState.presentationString
-    }
-
-    func sessionWasInterrupted(message: String) {
-        title = "SESSION INTERRUPTED"
-    }
-
-    func resetTracking(message: String) {
-        title = "RESETTING TRACKING"
-    }
-
-    func sessionErrorOccurred(title: String, message: String) {
-        self.title = title
+    var stateDescription: String {
+        get {
+            return title ?? "\(type(of: self))"
+        }
+        set {
+            title = newValue
+        }
     }
 }

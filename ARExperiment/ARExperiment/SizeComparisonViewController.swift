@@ -25,7 +25,7 @@ class SizeComparisonViewController: UIViewController {
                                   ARSCNDebugOptions.showWorldOrigin]
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
-        self.viewBackgroundColor(to: .white)
+        viewBackgroundColor(to: .white)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -107,20 +107,12 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
 }
 
 extension SizeComparisonViewController: ARExperimentSessionHandler {
-
-    func showTrackingState(for trackingState: ARCamera.TrackingState) {
-        title = trackingState.presentationString
-    }
-
-    func sessionWasInterrupted(message: String) {
-        title = "SESSION INTERRUPTED"
-    }
-
-    func resetTracking(message: String) {
-        title = "RESETTING TRACKING"
-    }
-
-    func sessionErrorOccurred(title: String, message: String) {
-        self.title = title
+    var stateDescription: String {
+        get {
+            return title ?? "\(type(of: self))"
+        }
+        set {
+            title = newValue
+        }
     }
 }
