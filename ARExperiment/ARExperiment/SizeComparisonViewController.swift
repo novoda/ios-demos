@@ -11,6 +11,7 @@ class SizeComparisonViewController: UIViewController {
     private let fileExtension = "scn"
     private var currentCubeName = ""
     private var currentTextName = ""
+    private let centimetersScale = Float(0.01)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +93,23 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
                                                     return nil
         }
         let node = SCNNode()
+        cube.scale = cube.scale.vectorScaled(to:centimetersScale)
+        text.scale = text.scale.vectorScaled(to:centimetersScale).vectorScaled(z:0.0)
         cube.position = SCNVector3Zero
-        text.position = SCNVector3Zero
+        text.position = cube.boundingBox.max.vectorScaled(to:centimetersScale)
         node.addChildNode(cube)
         node.addChildNode(text)
         return node
+    }
+}
+
+extension SCNVector3 {
+    
+    func vectorScaled(to scale:Float) -> SCNVector3{
+        return SCNVector3 (self.x * scale , self.y * scale, self.z * scale)
+    }
+    
+    func vectorScaled(_ x:Float = 1.0, y:Float = 1.0, z:Float = 1.0) -> SCNVector3{
+        return SCNVector3 (self.x * x , self.y * y, self.z * z)
     }
 }
