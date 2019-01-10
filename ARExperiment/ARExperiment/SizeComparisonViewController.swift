@@ -26,6 +26,7 @@ class SizeComparisonViewController: UIViewController {
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
         viewBackgroundColor(to: .white)
+        styleNavigationBar(with: .white)
     }
 
     override func viewWillAppear(_ animated: Bool) {

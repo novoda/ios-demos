@@ -22,6 +22,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         viewBackgroundColor(to: .white)
+        styleNavigationBar(with: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {

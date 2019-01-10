@@ -5,8 +5,7 @@ extension UIViewController {
         self.view.backgroundColor = color
     }
 
-    func navigationBar(with color: UIColor, and name: String) {
+    func styleNavigationBar(with color: UIColor) {
         navigationController?.navigationBar.tintColor = color
-        title = name
     }
 }
