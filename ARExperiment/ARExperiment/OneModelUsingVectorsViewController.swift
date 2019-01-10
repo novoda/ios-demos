@@ -21,7 +21,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
-        viewBackgroundColor(to: .white)
+        setViewBackgroundColor(to: .white)
         styleNavigationBar(with: .white)
     }
     

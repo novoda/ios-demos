@@ -28,7 +28,7 @@ class LightsAnimationsViewController: UIViewController {
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
 
-        viewBackgroundColor(to: .white)
+        setViewBackgroundColor(to: .white)
         styleNavigationBar(with: .white)
         setUpModelsOnLoad()
     }

@@ -30,7 +30,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         setupStartButton()
         setUpVision()
         setupCompoundingBox()
-        viewBackgroundColor(to: .white)
+        setViewBackgroundColor(to: .white)
         styleNavigationBar(with: .white)
     }
 

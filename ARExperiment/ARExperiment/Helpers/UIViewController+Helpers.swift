@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIViewController {
-    func viewBackgroundColor(to color: UIColor) {
+    func setViewBackgroundColor(to color: UIColor) {
         self.view.backgroundColor = color
     }
 
