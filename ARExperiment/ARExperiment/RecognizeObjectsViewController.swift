@@ -16,10 +16,13 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     private let nodeName = "cubewireframe"
     private let fileName = "cubewireframe"
     private let fileExtension = "dae"
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
@@ -28,7 +31,6 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         setUpVision()
         setupCompoundingBox()
         viewBackgroundColor(to: .white)
-        navigationBar(with: .white, and: "\(RecognizeObjectsViewController.self)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -161,6 +163,17 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
 
+        }
+    }
+}
+
+extension RecognizeObjectsViewController: ARExperimentSessionHandler {
+    var stateDescription: String {
+        get {
+            return title ?? "\(type(of: self))"
+        }
+        set {
+            title = newValue
         }
     }
 }
