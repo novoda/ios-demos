@@ -11,7 +11,6 @@
 		4C06C5C121DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06C5BD21DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift */; };
 		4C06C5C221DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06C5BE21DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift */; };
 		4C06C5C321DFA45E007FA0D1 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06C5BF21DFA45E007FA0D1 /* ARViewModel.swift */; };
-		4C06C5C421DFA45E007FA0D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06C5C021DFA45E007FA0D1 /* ViewController.swift */; };
 		4C1471AC21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1471AB21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift */; };
 		4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */; };
 		4C185BAA20052928007182D2 /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C185BA920052928007182D2 /* YOLO.swift */; };
@@ -45,7 +44,6 @@
 		4C06C5BD21DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneModelUsingAnchorsViewController.swift; path = ARExperiment/OneModelUsingAnchorsViewController.swift; sourceTree = SOURCE_ROOT; };
 		4C06C5BE21DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneModelUsingVectorsViewController.swift; path = ARExperiment/OneModelUsingVectorsViewController.swift; sourceTree = SOURCE_ROOT; };
 		4C06C5BF21DFA45E007FA0D1 /* ARViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARViewModel.swift; path = ARExperiment/Model/ARViewModel.swift; sourceTree = SOURCE_ROOT; };
-		4C06C5C021DFA45E007FA0D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ARExperiment/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		4C1471AB21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARExperimentSessionDelegate.swift; sourceTree = "<group>"; };
 		4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeObjectsViewController.swift; sourceTree = "<group>"; };
 		4C185BA920052928007182D2 /* YOLO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
-				4C06C5C021DFA45E007FA0D1 /* ViewController.swift */,
 				4C06C5BD21DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift */,
 				4C06C5BE21DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift */,
 				4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */,
@@ -302,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C7DAF38216CE2FC00D03840 /* StatusViewController.swift in Sources */,
-				4C06C5C421DFA45E007FA0D1 /* ViewController.swift in Sources */,
 				4C185BAA20052928007182D2 /* YOLO.swift in Sources */,
 				4C06C5C221DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift in Sources */,
 				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
