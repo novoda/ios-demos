@@ -152,18 +152,20 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         showOnMainThread(objectRect, objectName: objectName)
     }
 
-    //MARK: CoreML Functions
-
-    private func predictUsingCoreML(pixelBuffer: CVPixelBuffer) {
-        guard let resizedImage = yolo.scaleImageForPredictionInput(pixelBufferImage: pixelBuffer) else {
-            return
-        }
-        guard let boundingBoxes = try? yolo.predict(image: resizedImage) else {
-            return
-        }
-        showOnMainThread(boundingBoxes)
+    private func predictionForTinyYOLO(topObservation: MLMultiArray) -> YOLO.Prediction? {
+        let boundingBoxes = yolo.computeBoundingBoxes(features: topObservation)
+        let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}
+        return prominentBox.first
     }
 
+    private func boundingBoxRectForTinyYOLO(prediction: YOLO.Prediction) -> CGRect? {
+        let viewRect = CGRect(x: 0, y: 0, width: pixelBufferWidth, height: pixelBufferHeight)
+        return yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: viewRect)
+    }
+
+    private func objectNameForTinyYOLO(prediction: YOLO.Prediction) -> String {
+        return labels[prediction.classIndex]
+    }
 
     //MARK: Prediction
 
