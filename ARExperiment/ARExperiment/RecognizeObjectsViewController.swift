@@ -175,29 +175,37 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
 
-    private func show(prediction: YOLO.Prediction) {
-        guard let scaledRect = yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: self.view.bounds) else {
-            print("could not scale the Point vectors")
-            return
-        }
-
+    private func show(_ boundingBox: CGRect, objectName: String) {
         guard let model = arViewModel.createSceneNodeForAsset(nodeName,
                                                               fileName: fileName,
                                                               assetExtension: fileExtension) else {
-            print("we have no model")
+                                                                showStartButtonIfError()
+                                                                print("we have no model")
+                                                                return
+        }
+        let text = SCNText(string: objectName, extrusionDepth: 0.5)
+        text.styleFirstMaterial(with: UIColor.blue)
+        text.containerFrame = boundingBox
+        let textNode = SCNNode(geometry: text)
+        let node = SCNNode()
+        node.addChildNode(textNode)
+        node.addChildNode(model)
+        
+
+        let scaledPoint = CGPoint(x: boundingBox.origin.x, y: boundingBox.origin.y)
+        guard let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.estimatedHorizontalPlane, .existingPlaneUsingExtent]) else {
+            showStartButtonIfError()
+            print("failed finding hit point")
             return
         }
+        let pointTranslation = hitPoint.worldTransform.translation
+        node.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+        sceneView.scene.rootNode.addChildNode(node)
+    }
 
-        compoundingBox.frame = scaledRect
-        predictionLabel.text = "\(labels[prediction.classIndex])"
-        compoundingBox.isHidden = false
-
-        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            let pointTranslation = hitPoint.worldTransform.translation
-            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(model)
-
+    private func showStartButtonIfError() {
+        DispatchQueue.main.async { [weak self] in
+            self?.startButton.isHidden = false
         }
     }
 }
