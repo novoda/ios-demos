@@ -25,6 +25,8 @@
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
 		4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */; };
 		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
+		4CB8787C21E7A7120051B8A7 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8787B21E7A7120051B8A7 /* ObjectDetector.mlmodel */; };
+		4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
 		4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsAnimationsViewController.swift; sourceTree = "<group>"; };
 		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		4CB8787B21E7A7120051B8A7 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = ../../../../../../Downloads/RecognizingObjectsInLiveCapture/BreakfastFinder/ObjectDetector.mlmodel; sourceTree = "<group>"; };
+		4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4C06C5BB21DFA445007FA0D1 /* TinyYOLO.mlmodel */,
+				4CB8787B21E7A7120051B8A7 /* ObjectDetector.mlmodel */,
 				4CA242F4200533DE00D895C1 /* Helpers.swift */,
 				4C185BA920052928007182D2 /* YOLO.swift */,
 				4C185BAD20052977007182D2 /* CVPixelBuffer+Helpers.swift */,
@@ -127,6 +132,7 @@
 				4C5E3ED41FFBA2CC001B4493 /* Assets.xcassets */,
 				4C5E3ED61FFBA2CC001B4493 /* LaunchScreen.storyboard */,
 				4C5E3ED91FFBA2CC001B4493 /* Info.plist */,
+				4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */,
 			);
 			path = ARExperiment;
 			sourceTree = "<group>";
@@ -249,8 +255,10 @@
 				4C06C5C221DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift in Sources */,
 				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
 				4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */,
+				4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */,
 				4C06C5BC21DFA448007FA0D1 /* TinyYOLO.mlmodel in Sources */,
 				4C06C5C121DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift in Sources */,
+				4CB8787C21E7A7120051B8A7 /* ObjectDetector.mlmodel in Sources */,
 				4C06C5C321DFA45E007FA0D1 /* ARViewModel.swift in Sources */,
 				4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */,
 				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
