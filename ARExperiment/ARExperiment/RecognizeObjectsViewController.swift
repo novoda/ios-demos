@@ -112,12 +112,44 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     }
 
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
-        if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-            let features = observations.first?.featureValue.multiArrayValue {
+        self.semaphore.signal()
 
-            let boundingBoxes = yolo.computeBoundingBoxes(features: features)
-            showOnMainThread(boundingBoxes)
+        var objectName: String = ""
+        var objectRect: CGRect = .zero
+
+        if #available(iOS 12.0, *) {
+            guard let observations = request.results as? [VNRecognizedObjectObservation],
+                let topObservation = observations.first,
+                let topLabelObservation = topObservation.labels.first else {
+                    print("Vision failed finding prediction" )
+                    showStartButtonIfError()
+                    return
+            }
+
+            objectRect = VNImageRectForNormalizedRect(topObservation.boundingBox,
+                                                      pixelBufferWidth,
+                                                      pixelBufferHeight)
+            objectName = topLabelObservation.identifier
+
+        } else {
+            guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
+                let topObservation = observations.first?.featureValue.multiArrayValue else {
+                    print("Tiny YOLO failed finding prediction" )
+                    showStartButtonIfError()
+                    return
+            }
+
+            guard let prediction = predictionForTinyYOLO(topObservation: topObservation),
+                let objectBounds = boundingBoxRectForTinyYOLO(prediction: prediction) else {
+                    showStartButtonIfError()
+                    print("Tiny YOLO failed finding top prediction" )
+                    return
+            }
+            objectName = objectNameForTinyYOLO(prediction: prediction)
+            objectRect = objectBounds
         }
+
+        showOnMainThread(objectRect, objectName: objectName)
     }
 
     //MARK: CoreML Functions
