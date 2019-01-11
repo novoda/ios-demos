@@ -169,16 +169,9 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
     //MARK: Prediction
 
-    private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
-        let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
-        self.semaphore.signal()
-
+    private func showOnMainThread(_ boundingBox: CGRect, objectName: String) {
         DispatchQueue.main.async { [weak self] in
-            if let prominentBox = prominentBox {
-                self?.show(prediction: prominentBox)
-            } else {
-                self?.startButton.isHidden = false
-            }
+            self?.show(boundingBox, objectName: objectName)
         }
     }
 
