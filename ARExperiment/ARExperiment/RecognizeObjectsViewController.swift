@@ -16,6 +16,8 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     private let nodeName = "cubewireframe"
     private let fileName = "cubewireframe"
     private let fileExtension = "dae"
+    private var pixelBufferWidth: Int = 0
+    private var pixelBufferHeight: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,17 +83,27 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
 
     //MARK: Vision Prediction
     private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
+        pixelBufferWidth = CVPixelBufferGetWidth(pixelBuffer)
+        pixelBufferHeight = CVPixelBufferGetHeight(pixelBuffer)
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
     }
 
     private func setUpVision() {
-        guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
-            print("Error: could not create Vision model")
-            return
+        if #available(iOS 12.0, *) {
+            guard let visionModel = try? VNCoreMLModel(for: ObjectDetector().model) else {
+                print("Error: could not create Vision model")
+                return
+            }
+            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+        } else {
+            guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
+                print("Error: could not create Vision model")
+                return
+            }
+            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         }
-        request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
 
         // NOTE: If you choose another crop/scale option, then you must also
         // change how the BoundingBox objects get scaled when they are drawn.
