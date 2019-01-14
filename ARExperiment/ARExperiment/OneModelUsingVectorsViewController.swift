@@ -5,11 +5,7 @@ import ARKit
 class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let assetFolder = "Banana"
-    private let nodeName = "banana"
-    private let fileName = "banana-small"
-    private let fileExtension = "dae"
-    private let arViewModel = ARViewModel()
+    private let arViewModel = ARViewModel(arAsset: ARAsset.banana)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +34,27 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
+        for node in ARAsset.banana.nodesOfType(.model) {
+            if let nodeExists = arViewModel.nodeExistOnScene(sceneView, nodeName: node.name) {
+                nodeExists.removeFromParentNode()
+            }
         }
-        addNoteToSceneUsingVector(location: location)
+        addNodesToScene(location: location)
     }
 
-    private func addNoteToSceneUsingVector(location: CGPoint) {
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                              assetFolder: assetFolder,
-                                                              fileName: fileName,
-                                                              assetExtension: fileExtension) else {
+    private func addNodesToScene(location: CGPoint) {
+        for node in ARAsset.banana.nodesOfType(.model) {
+            addNoteToSceneUsingVector(nodeName: node.name, location: location)
+        }
+    }
+
+    private func addNoteToSceneUsingVector(nodeName: String, location: CGPoint) {
+        guard let model = arViewModel.createSceneNodeForAsset(nodeName) else {
+            print("we have no model")
             return
         }
         if let hit = arViewModel.hitResult(at: location, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            let pointTranslation = hit.worldTransform.translation 
+            let pointTranslation = hit.worldTransform.translation
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
         }
