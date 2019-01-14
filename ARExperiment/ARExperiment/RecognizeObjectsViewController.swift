@@ -12,10 +12,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     private let startButton = UIButton()
     private let compoundingBox = UIView()
     private let predictionLabel = UILabel()
-    private let arViewModel = ARViewModel()
-    private let nodeName = "cubewireframe"
-    private let fileName = "cubewireframe"
-    private let fileExtension = "dae"
+    private let arViewModel = ARViewModel(arAsset: ARAsset.cubeWireframe)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,27 +138,22 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
             print("could not scale the Point vectors")
             return
         }
+        for node in ARAsset.cubeWireframe.nodesOfType(.model) {
+            guard let model = arViewModel.createSceneNodeForAsset(node.name) else {
+                print("we have no model")
+                return
+            }
 
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                              fileName: fileName,
-                                                              assetExtension: fileExtension) else {
-            print("we have no model")
-            return
-        }
+            compoundingBox.frame = scaledRect
+            predictionLabel.text = "\(labels[prediction.classIndex])"
+            compoundingBox.isHidden = false
 
-        compoundingBox.frame = scaledRect
-        predictionLabel.text = "\(labels[prediction.classIndex])"
-        compoundingBox.isHidden = false
-
-        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            let pointTranslation = hitPoint.worldTransform.translation
-            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(model)
-
+            let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+            if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+                let pointTranslation = hitPoint.worldTransform.translation
+                model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+                sceneView.scene.rootNode.addChildNode(model)
+            }
         }
     }
 }
-
-
-
