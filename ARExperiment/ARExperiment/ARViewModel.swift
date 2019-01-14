@@ -4,9 +4,17 @@ import ARKit
 
 class ARViewModel {
 
-    func createSceneNodeForAsset(_ nodeName: String, assetFolder: String? = nil, fileName: String, assetExtension: String) -> SCNNode? {
-        let pathName = createAssetPath(assetFolder: assetFolder, fileName: fileName, fileExtension: assetExtension)
-        guard let scene = SCNScene(named: pathName) else {
+    private var sceneForView: SCNScene?
+
+    init(arAsset: ARAsset) {
+        guard let scene = SCNScene(named: arAsset.filePath()) else {
+            return
+        }
+        self.sceneForView = scene
+    }
+
+    func createSceneNodeForAsset(_ nodeName: String) -> SCNNode? {
+        guard let scene = sceneForView else {
             return nil
         }
         let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
