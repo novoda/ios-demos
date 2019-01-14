@@ -41,11 +41,8 @@ class ARViewModel {
         return hitResultsFeaturePoints.first
     }
 
-    private func createAssetPath(assetFolder: String?, fileName: String, fileExtension: String) -> String {
-        if let assetFolder = assetFolder {
-            return "art.scnassets/\(assetFolder)/\(fileName).\(fileExtension)"
-        }
-        return "art.scnassets/\(fileName).\(fileExtension)"
+    func nodeExistOnScene(_ sceneView: ARSCNView, nodeName: String) -> SCNNode? {
+        return sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true)
     }
 }
 extension float4x4 {
