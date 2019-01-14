@@ -5,11 +5,7 @@ import ARKit
 class OneModelUsingAnchorsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let assetFolder = "Banana"
-    private let nodeName = "banana"
-    private let fileName = "banana-small"
-    private let fileExtension = "dae"
-    private let arViewModel = ARViewModel()
+    private let arViewModel = ARViewModel(arAsset: ARAsset.banana)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +34,10 @@ class OneModelUsingAnchorsViewController: UIViewController {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
+        for node in ARAsset.banana.nodesOfType(.model) {
+            if let nodeExists = arViewModel.nodeExistOnScene(sceneView, nodeName: node.name) {
+                nodeExists.removeFromParentNode()
+            }
         }
 
         addNodeToSessionUsingAnchors(location: location)
@@ -59,17 +57,16 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-            guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                                  assetFolder: assetFolder,
-                                                                  fileName: fileName,
-                                                                  assetExtension: fileExtension) else {
-                print("we have no model")
-                return nil
+            for node in ARAsset.banana.nodesOfType(.model) {
+                guard let model = arViewModel.createSceneNodeForAsset(node.name) else {
+                    print("we have no model")
+                    return nil
+                }
+                let node = SCNNode()
+                model.position = SCNVector3Zero
+                node.addChildNode(model)
+                return node
             }
-            let node = SCNNode()
-            model.position = SCNVector3Zero
-            node.addChildNode(model)
-            return node
         }
         return nil
     }
