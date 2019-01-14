@@ -30,7 +30,7 @@ extension ARAsset {
     static let banana = ARAsset(fileName: "banana-small",
                                      fileExtension: "dae",
                                      assetFolder: "Banana",
-                                     nodes: [ARNode(name: "Banana",
+                                     nodes: [ARNode(name: "banana",
                                                     nodeType: .model)])
     static let measuringUnits = ARAsset(fileName: "measuring-units",
                                         fileExtension: "scn",
