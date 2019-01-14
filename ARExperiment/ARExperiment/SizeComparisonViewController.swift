@@ -6,11 +6,9 @@ class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
-    private let arModel = ARViewModel()
-    private let fileName = "measuring-units"
-    private let fileExtension = "scn"
-    private var currentCubeName = ""
-    private var currentTextName = ""
+    private let arModel = ARViewModel(arAsset: ARAsset.measuringUnits)
+    private var currentCube: ARNode?
+    private var currentText: ARNode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +49,11 @@ class SizeComparisonViewController: UIViewController {
     }
 
     private func removeNodeIfExistAlready() {
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentCubeName, recursively: true) {
+        if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: currentCube?.name ?? "") {
             nodeExists.removeFromParentNode()
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentTextName, recursively: true) {
+        if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: currentText?.name ?? "") {
             nodeExists.removeFromParentNode()
         }
     }
@@ -63,14 +61,14 @@ class SizeComparisonViewController: UIViewController {
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            currentTextName = "text_5"
-            currentCubeName = "cube_5"
+            currentText = ARAsset.measuringUnits.nodeWithName("text_5")
+            currentCube = ARAsset.measuringUnits.nodeWithName("cube_5")
         case 1:
-            currentTextName = "text_1"
-            currentCubeName = "cube_1"
+            currentText = ARAsset.measuringUnits.nodeWithName("text_1")
+            currentCube = ARAsset.measuringUnits.nodeWithName("cube_1")
         case 2:
-            currentTextName = "text_0.1"
-            currentCubeName = "cube_0.1"
+            currentText = ARAsset.measuringUnits.nodeWithName("text_0.1")
+            currentCube = ARAsset.measuringUnits.nodeWithName("cube_0.1")
         default: break
         }
     }
@@ -82,14 +80,12 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil
         }
-        guard let cube = arModel.createSceneNodeForAsset(currentCubeName,
-                                                   fileName: fileName,
-                                                   assetExtension: fileExtension),
-            let text = arModel.createSceneNodeForAsset(currentTextName,
-                                                   fileName: fileName,
-                                                   assetExtension: fileExtension) else {
-                                                    print("could not find node")
-                                                    return nil
+        guard let currentCube = currentCube,
+            let cube = arModel.createSceneNodeForAsset(currentCube.name),
+            let currentText = currentText,
+            let text = arModel.createSceneNodeForAsset(currentText.name) else {
+                print("could not find node")
+                return nil
         }
         let node = SCNNode()
         cube.position = SCNVector3Zero
