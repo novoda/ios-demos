@@ -25,7 +25,7 @@ class SizeComparisonViewController: UIViewController {
                                   ARSCNDebugOptions.showWorldOrigin]
 
         scene = SCNScene(named: "art.scnassets/measuring-units.scn")
-        setViewBackgroundColor(to: .white)
+        self.view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
 

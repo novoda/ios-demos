@@ -21,7 +21,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
-        setViewBackgroundColor(to: .white)
+        self.view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
 
