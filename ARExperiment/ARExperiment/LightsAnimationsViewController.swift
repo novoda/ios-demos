@@ -6,24 +6,12 @@ import ARKit
 class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let arModel = ARViewModel()
-    fileprivate var earthNode: SCNNode?
-    fileprivate var moonNode: SCNNode?
-    fileprivate var planeNodeModel: SCNNode?
-    fileprivate var lightNodeModel: SCNNode?
-    private let assetFolder = "EarthMoon"
-    private let fileName = "earth-moon"
-    private let fileExtension = "dae"
-    private let earthNodeName = "Sphere"
-    private let moonNodeName = "Moon_Orbit"
-    private let planeNode = "Plane"
-    private let lightNode = "Sun"
+    private let arModel = ARViewModel(arAsset: ARAsset.earthMoon)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         sceneView.delegate = self
-        setUpModelsOnLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,30 +28,17 @@ class LightsAnimationsViewController: UIViewController {
         sceneView.session.pause()
     }
 
-    private func setUpModelsOnLoad() {
-        earthNode = modelForNodeName(earthNodeName)
-        moonNode = modelForNodeName(moonNodeName)
-        planeNodeModel = modelForNodeName(planeNode)
-        lightNodeModel = modelForNodeName(lightNode)
-    }
-
-    private func modelForNodeName(_ nodeName: String) -> SCNNode? {
-        return arModel.createSceneNodeForAsset(nodeName,
-                                               assetFolder: assetFolder,
-                                               fileName: fileName,
-                                               assetExtension: fileExtension)
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: earthNodeName, recursively: true),
-            let secondNodeExists = sceneView.scene.rootNode.childNode(withName: moonNodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
-            secondNodeExists.removeFromParentNode()
+        for node in ARAsset.earthMoon.nodes {
+            if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: node.name) {
+                nodeExists.removeFromParentNode()
+            }
         }
+
         addNodeToSessionUsingFeaturePoints(location: location)
     }
 
@@ -80,53 +55,71 @@ class LightsAnimationsViewController: UIViewController {
 extension LightsAnimationsViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                guard let model = strongSelf.earthNode,
-                let secondModel = strongSelf.moonNode else {
-                    print("We have no model to render")
-                    return
-                }
+        guard !anchor.isKind(of: ARPlaneAnchor.self) else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
 
-                let modelClone = model.clone()
-                modelClone.position = SCNVector3Zero
-                let secondModelClone = secondModel.clone()
-                secondModel.position = SCNVector3Zero
-
-                node.addChildNode(modelClone)
-                node.addChildNode(secondModelClone)
-                if let lightNodeModel = strongSelf.lightNodeModel {
-                    strongSelf.setSceneLighting()
-                    node.addChildNode(lightNodeModel)
+            for assetNode in ARAsset.earthMoon.nodesOfType(.model) {
+                if let model = strongSelf.sceneModel(with: assetNode.name) {
+                    node.addChildNode(model)
                 }
-                if let planeNodeModel = strongSelf.planeNodeModel {
-                    strongSelf.setScenePlane()
-                    node.addChildNode(planeNodeModel)
+            }
+
+            for lightNode in ARAsset.earthMoon.nodesOfType(.light) {
+                if let light = strongSelf.sceneLighting(with: lightNode.name) {
+                    node.addChildNode(light)
+                }
+            }
+
+            for planeNode in ARAsset.earthMoon.nodesOfType(.plane) {
+                if let plane = strongSelf.scenePlane(with: planeNode.name) {
+                    node.addChildNode(plane)
                 }
             }
         }
     }
 
-    private func setSceneLighting() {
-        guard let lightnode = lightNodeModel else { return }
-
-        if let light: SCNLight = lightnode.light,
-            let estimate: ARLightEstimate = sceneView.session.currentFrame?.lightEstimate {
-            light.intensity = estimate.ambientIntensity
-            light.shadowMode = .deferred
-            light.shadowSampleCount = 16
-            light.shadowRadius = 24
+    private func sceneModel(with name: String?) -> SCNNode? {
+        guard let name = name,
+            let model = arModel.createSceneNodeForAsset(name) else {
+            return nil
         }
+        model.position = SCNVector3Zero
+        return model
     }
 
-    private func setScenePlane() {
-        guard let planenode = planeNodeModel else { return }
-
-        if let plane = planenode.geometry {
-            plane.firstMaterial?.writesToDepthBuffer = true
-            plane.firstMaterial?.colorBufferWriteMask = []
-            plane.firstMaterial?.lightingModel = .constant
+    private func sceneLighting(with name: String?) -> SCNNode? {
+        guard let name = name,
+            let lightNode = arModel.createSceneNodeForAsset(name) else {
+            return nil
         }
+
+        guard let light: SCNLight = lightNode.light,
+            let estimate: ARLightEstimate = sceneView.session.currentFrame?.lightEstimate else {
+                return nil
+        }
+        light.intensity = estimate.ambientIntensity
+        light.shadowMode = .deferred
+        light.shadowSampleCount = 16
+        light.shadowRadius = 24
+
+        return lightNode
+    }
+
+    private func scenePlane(with name: String?) -> SCNNode? {
+        guard let name = name,
+            let planeNode = arModel.createSceneNodeForAsset(name) else {
+            return nil
+        }
+
+        guard let plane = planeNode.geometry else {
+            return nil
+        }
+        plane.firstMaterial?.writesToDepthBuffer = true
+        plane.firstMaterial?.colorBufferWriteMask = []
+        plane.firstMaterial?.lightingModel = .constant
+        return planeNode
     }
 }
