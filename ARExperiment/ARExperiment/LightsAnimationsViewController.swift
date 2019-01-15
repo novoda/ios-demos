@@ -6,11 +6,12 @@ import ARKit
 class LightsAnimationsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let arModel = ARViewModel(arAsset: ARAsset.earthMoon)
+    private let arAsset = ARAsset.earthMoon
+    private var arModel: ARViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        arModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
     }
     
@@ -33,7 +34,7 @@ class LightsAnimationsViewController: UIViewController {
             return
         }
 
-        for node in ARAsset.earthMoon.nodes {
+        for node in arAsset.nodes {
             if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: node.name) {
                 nodeExists.removeFromParentNode()
             }
@@ -61,19 +62,19 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
 
-            for assetNode in ARAsset.earthMoon.nodesOfType(.model) {
+            for assetNode in strongSelf.arAsset.nodesOfType(.model) {
                 if let model = strongSelf.sceneModel(with: assetNode.name) {
                     node.addChildNode(model)
                 }
             }
 
-            for lightNode in ARAsset.earthMoon.nodesOfType(.light) {
+            for lightNode in strongSelf.arAsset.nodesOfType(.light) {
                 if let light = strongSelf.sceneLighting(with: lightNode.name) {
                     node.addChildNode(light)
                 }
             }
 
-            for planeNode in ARAsset.earthMoon.nodesOfType(.plane) {
+            for planeNode in strongSelf.arAsset.nodesOfType(.plane) {
                 if let plane = strongSelf.scenePlane(with: planeNode.name) {
                     node.addChildNode(plane)
                 }

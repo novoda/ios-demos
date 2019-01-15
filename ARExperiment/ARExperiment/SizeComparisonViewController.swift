@@ -6,13 +6,15 @@ class SizeComparisonViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
-    private let arModel = ARViewModel(arAsset: ARAsset.measuringUnits)
+    private let arAsset = ARAsset.measuringUnits
+    private var arModel: ARViewModel!
     private var currentCube: ARNode?
     private var currentText: ARNode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        arModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
@@ -61,14 +63,14 @@ class SizeComparisonViewController: UIViewController {
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            currentText = ARAsset.measuringUnits.nodeWithName("text_5")
-            currentCube = ARAsset.measuringUnits.nodeWithName("cube_5")
+            currentText = arAsset.nodeWithName("text_5")
+            currentCube = arAsset.nodeWithName("cube_5")
         case 1:
-            currentText = ARAsset.measuringUnits.nodeWithName("text_1")
-            currentCube = ARAsset.measuringUnits.nodeWithName("cube_1")
+            currentText = arAsset.nodeWithName("text_1")
+            currentCube = arAsset.nodeWithName("cube_1")
         case 2:
-            currentText = ARAsset.measuringUnits.nodeWithName("text_0.1")
-            currentCube = ARAsset.measuringUnits.nodeWithName("cube_0.1")
+            currentText = arAsset.nodeWithName("text_0.1")
+            currentCube = arAsset.nodeWithName("cube_0.1")
         default: break
         }
     }

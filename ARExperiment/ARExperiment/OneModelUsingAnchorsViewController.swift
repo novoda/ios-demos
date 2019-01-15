@@ -5,7 +5,8 @@ import ARKit
 class OneModelUsingAnchorsViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let arViewModel = ARViewModel(arAsset: ARAsset.banana)
+    private let arAsset = ARAsset.banana
+    private var arViewModel: ARViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
             return
         }
 
-        for node in ARAsset.banana.nodesOfType(.model) {
+        for node in arAsset.nodesOfType(.model) {
             if let nodeExists = arViewModel.nodeExistOnScene(sceneView, nodeName: node.name) {
                 nodeExists.removeFromParentNode()
             }
@@ -57,7 +58,7 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
-            for node in ARAsset.banana.nodesOfType(.model) {
+            for node in arAsset.nodesOfType(.model) {
                 guard let model = arViewModel.createSceneNodeForAsset(node.name) else {
                     print("we have no model")
                     return nil

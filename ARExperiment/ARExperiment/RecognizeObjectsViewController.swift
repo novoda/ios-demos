@@ -12,11 +12,13 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     private let startButton = UIButton()
     private let compoundingBox = UIView()
     private let predictionLabel = UILabel()
-    private let arViewModel = ARViewModel(arAsset: ARAsset.cubeWireframe)
+    private let arAsset = ARAsset.cubeWireframe
+    private var arViewModel: ARViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        arModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
@@ -138,7 +140,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
             print("could not scale the Point vectors")
             return
         }
-        for node in ARAsset.cubeWireframe.nodesOfType(.model) {
+        for node in arAsset.nodesOfType(.model) {
             guard let model = arViewModel.createSceneNodeForAsset(node.name) else {
                 print("we have no model")
                 return

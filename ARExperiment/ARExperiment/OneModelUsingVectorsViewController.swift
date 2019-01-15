@@ -5,11 +5,13 @@ import ARKit
 class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    private let arViewModel = ARViewModel(arAsset: ARAsset.banana)
+    private let arAsset = ARAsset.banana
+    private var arViewModel: ARViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        arModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
@@ -34,7 +36,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
             return
         }
 
-        for node in ARAsset.banana.nodesOfType(.model) {
+        for node in arAsset.nodesOfType(.model) {
             if let nodeExists = arViewModel.nodeExistOnScene(sceneView, nodeName: node.name) {
                 nodeExists.removeFromParentNode()
             }
@@ -43,7 +45,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func addNodesToScene(location: CGPoint) {
-        for node in ARAsset.banana.nodesOfType(.model) {
+        for node in arAsset.nodesOfType(.model) {
             addNoteToSceneUsingVector(nodeName: node.name, location: location)
         }
     }
