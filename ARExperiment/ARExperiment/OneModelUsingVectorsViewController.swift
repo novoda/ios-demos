@@ -2,24 +2,30 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
-
+class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+    
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.banana
     private var arViewModel: ARViewModel!
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        arModel = ARViewModel(arAsset: arAsset)
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        
+        self.view.backgroundColor = .white
+        styleNavigationBar(with: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
@@ -27,10 +33,10 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         sceneView.session.pause()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return

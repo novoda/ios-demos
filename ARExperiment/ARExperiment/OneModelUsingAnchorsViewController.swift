@@ -2,34 +2,40 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingAnchorsViewController: UIViewController {
-
+class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionHandler {
+    
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.banana
     private var arViewModel: ARViewModel!
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
+        self.view.backgroundColor = .white
+        styleNavigationBar(with: .white)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         sceneView.session.pause()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return
@@ -40,13 +46,12 @@ class OneModelUsingAnchorsViewController: UIViewController {
                 nodeExists.removeFromParentNode()
             }
         }
-
+        
         addNodeToSessionUsingAnchors(location: location)
     }
-
+    
     private func addNodeToSessionUsingAnchors(location: CGPoint) {
-
-        guard let hitTransform = arViewModel.worldTransformForAnchor(at: location, in: sceneView, withType: .featurePoint) else {
+        guard let hitTransform = arViewModel.worldTransformForAnchor(at: location, in: sceneView, withType: [.featurePoint, .estimatedHorizontalPlane]) else {
             return
         }
         let anchor = ARAnchor(transform: hitTransform)
@@ -55,7 +60,7 @@ class OneModelUsingAnchorsViewController: UIViewController {
 }
 
 extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
-
+    
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             for node in arAsset.nodesOfType(.model) {
@@ -72,4 +77,3 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
         return nil
     }
 }
-

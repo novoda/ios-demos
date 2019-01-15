@@ -3,32 +3,38 @@ import SceneKit
 import ARKit
 
 
-class LightsAnimationsViewController: UIViewController {
-
+class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandler {
+    
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.earthMoon
     private var arModel: ARViewModel!
+    private let arSessionDelegate = ARExperimentSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         arModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
+        
+        self.view.backgroundColor = .white
+        styleNavigationBar(with: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let configuration = ARWorldTrackingConfiguration()
         configuration.isLightEstimationEnabled = true;
-
+        
         sceneView.session.run(configuration)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return
@@ -42,11 +48,11 @@ class LightsAnimationsViewController: UIViewController {
 
         addNodeToSessionUsingFeaturePoints(location: location)
     }
-
+    
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
         guard let hitTransfrom = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView, withType: [.featurePoint]) else {
-                                                                return
+                                                                    return
         }
         let anchor = ARAnchor(transform: hitTransfrom)
         sceneView.session.add(anchor: anchor)
@@ -54,7 +60,7 @@ class LightsAnimationsViewController: UIViewController {
 }
 
 extension LightsAnimationsViewController: ARSCNViewDelegate {
-
+    
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return
