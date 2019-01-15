@@ -107,11 +107,12 @@ class SizeComparisonViewController: UIViewController {
 
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         
-        //If the user selects ar measures, `realWorldMeasuresSegmentedControl` should be deselected
-        //otherwise `ARMeasuresSegmentedControl` should be deselected.
-        (sender == self.ARMeasuresSegmentedControl ? self.realWorldMeasuresSegmentedControl : self.ARMeasuresSegmentedControl).selectedSegmentIndex = UISegmentedControlNoSegment
+        let segmentedControlToDeselect: UISegmentedControl! =
+            (sender == self.ARMeasuresSegmentedControl) ? self.realWorldMeasuresSegmentedControl : self.ARMeasuresSegmentedControl
         
-        self.currentScale = sender == self.ARMeasuresSegmentedControl ? .arWorldScale : .realWorldScale
+        segmentedControlToDeselect.selectedSegmentIndex = UISegmentedControlNoSegment
+        
+        self.currentScale = (sender == self.ARMeasuresSegmentedControl) ? .arWorldScale : .realWorldScale
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -154,10 +155,10 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
 extension SCNVector3 {
     
     func vectorScaled(to scale:Float) -> SCNVector3{
-        return SCNVector3 (self.x * scale , self.y * scale, self.z * scale)
+        return SCNVector3(self.x * scale , self.y * scale, self.z * scale)
     }
     
     func vectorScaled(_ x:Float = 1.0, y:Float = 1.0, z:Float = 1.0) -> SCNVector3{
-        return SCNVector3 (self.x * x , self.y * y, self.z * z)
+        return SCNVector3(self.x * x , self.y * y, self.z * z)
     }
 }
