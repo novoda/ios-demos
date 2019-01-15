@@ -3,7 +3,7 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
+class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
     
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate let yolo = YOLO()
@@ -164,17 +164,6 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
             
-        }
-    }
-}
-
-extension RecognizeObjectsViewController: ARExperimentSessionHandler {
-    var stateDescription: String {
-        get {
-            return title ?? "\(type(of: self))"
-        }
-        set {
-            title = newValue
         }
     }
 }

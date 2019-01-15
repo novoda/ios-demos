@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: UIViewController {
+class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
@@ -99,16 +99,5 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         node.addChildNode(cube)
         node.addChildNode(text)
         return node
-    }
-}
-
-extension SizeComparisonViewController: ARExperimentSessionHandler {
-    var stateDescription: String {
-        get {
-            return title ?? "\(type(of: self))"
-        }
-        set {
-            title = newValue
-        }
     }
 }

@@ -3,7 +3,7 @@ import SceneKit
 import ARKit
 
 
-class LightsAnimationsViewController: UIViewController {
+class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandler {
     
     @IBOutlet var sceneView: ARSCNView!
     private let arModel = ARViewModel()
@@ -134,17 +134,6 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
             plane.firstMaterial?.writesToDepthBuffer = true
             plane.firstMaterial?.colorBufferWriteMask = []
             plane.firstMaterial?.lightingModel = .constant
-        }
-    }
-}
-
-extension LightsAnimationsViewController: ARExperimentSessionHandler {
-    var stateDescription: String {
-        get {
-            return title ?? "\(type(of: self))"
-        }
-        set {
-            title = newValue
         }
     }
 }

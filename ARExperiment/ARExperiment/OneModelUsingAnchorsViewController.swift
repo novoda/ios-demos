@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingAnchorsViewController: UIViewController {
+class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionHandler {
     
     @IBOutlet var sceneView: ARSCNView!
     private let assetFolder = "Banana"
@@ -76,16 +76,5 @@ extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
             return node
         }
         return nil
-    }
-}
-
-extension OneModelUsingAnchorsViewController: ARExperimentSessionHandler {
-    var stateDescription: String {
-        get {
-            return title ?? "\(type(of: self))"
-        }
-        set {
-            title = newValue
-        }
     }
 }

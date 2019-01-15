@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
+class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
     
     @IBOutlet var sceneView: ARSCNView!
     private let assetFolder = "Banana"
@@ -61,17 +61,6 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
             let pointTranslation = hit.worldTransform.translation 
             model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
             sceneView.scene.rootNode.addChildNode(model)
-        }
-    }
-}
-
-extension OneModelUsingVectorsViewController: ARExperimentSessionHandler {
-    var stateDescription: String {
-        get {
-            return title ?? "\(type(of: self))"
-        }
-        set {
-            title = newValue
         }
     }
 }
