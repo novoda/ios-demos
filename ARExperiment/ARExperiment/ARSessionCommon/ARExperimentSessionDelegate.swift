@@ -52,7 +52,16 @@ class ARExperimentSession: NSObject, ARSessionDelegate {
     
 }
 
-extension ARExperimentSessionHandler {
+extension ARExperimentSessionHandler where Self: UIViewController {
+    var stateDescription: String {
+        get {
+            return title ?? "\(type(of: self))"
+        }
+        set {
+            title = newValue
+        }
+    }
+
     func showTrackingState(for trackingState: ARCamera.TrackingState) {
         stateDescription = trackingState.presentationString
     }
