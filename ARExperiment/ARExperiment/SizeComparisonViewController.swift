@@ -2,8 +2,8 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: UIViewController {
-    
+class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
+
     enum CubeModel {
         case big    //5x5
         case medium //1x1
@@ -45,40 +45,46 @@ class SizeComparisonViewController: UIViewController {
             }
         }
     }
-    
+
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var realWorldMeasuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var ARMeasuresSegmentedControl: UISegmentedControl!
 
+    private var scene: SCNScene?
+    private let arSessionDelegate = ARExperimentSession()
     private let arModel = ARViewModel()
     private let fileName = "measuring-units"
     private let fileExtension = "scn"
-    
     private var currentCube = CubeModel.big //Default model
     private var currentScale:Scale = .realWorldScale
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         sceneView.delegate = self
+        arSessionDelegate.sessionHandler = self
+        sceneView.session.delegate = arSessionDelegate
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
-
+        
+        scene = SCNScene(named: "art.scnassets/measuring-units.scn")
+        self.view.backgroundColor = .white
+        styleNavigationBar(with: .white)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: sceneView) else {
             return
@@ -89,22 +95,18 @@ class SizeComparisonViewController: UIViewController {
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
                                                                  withType: [.featurePoint]) else {
-                                                            return
+                                                                    return
         }
         let anchor = ARAnchor(transform: hitTransform)
         sceneView.session.add(anchor: anchor)
     }
-
+    
     private func removeNodeIfExistAlready() {
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentCube.filename, recursively: true) {
-            nodeExists.removeFromParentNode()
-        }
 
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: currentCube.textFilename, recursively: true) {
-            nodeExists.removeFromParentNode()
-        }
+        sceneView.scene.rootNode.childNode(withName: currentCube.filename, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentCube.textFilename, recursively: true)?.removeFromParentNode()
     }
-
+    
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         
         let segmentedControlToDeselect: UISegmentedControl! =
@@ -127,7 +129,7 @@ class SizeComparisonViewController: UIViewController {
 }
 
 extension SizeComparisonViewController: ARSCNViewDelegate {
-
+    
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7ZQ-HJ-4hq">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vpH-fA-lMI">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,12 +10,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Jne-zr-76E">
+            <objects>
+                <navigationController id="vpH-fA-lMI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rbb-T5-L2g">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7ZQ-HJ-4hq" kind="relationship" relationship="rootViewController" id="haU-r8-b0X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="68z-QS-okx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1554" y="90"/>
+        </scene>
         <!--One Model Using Vectors View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="OneModelUsingVectorsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </arscnView>
                     <connections>
@@ -31,11 +47,11 @@
             <objects>
                 <viewController id="Foi-p7-lZV" customClass="OneModelUsingAnchorsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="88x-YD-DI1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmc-xn-C0d">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,40 +76,40 @@
             <objects>
                 <viewController id="7ZQ-HJ-4hq" customClass="StartViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dNx-u6-lLN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-yS-F9f">
-                                <rect key="frame" x="37.666666666666657" y="117.33333333333331" width="300" height="587.33333333333348"/>
+                                <rect key="frame" x="41.5" y="165.5" width="331" height="619"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-l7-xhH">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="109.66666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="115.5"/>
                                         <connections>
                                             <segue destination="BV1-FR-VrT" kind="show" id="vga-VB-xJE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMh-iV-Xu7">
-                                        <rect key="frame" x="0.0" y="119.66666666666669" width="300" height="109.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="125.5" width="331" height="116"/>
                                         <connections>
                                             <segue destination="Foi-p7-lZV" kind="show" id="tVm-oQ-QBZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-6r-CiO">
-                                        <rect key="frame" x="0.0" y="239.00000000000003" width="300" height="109.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="251.5" width="331" height="116"/>
                                         <state key="normal" title="SizeComparison VC"/>
                                         <connections>
                                             <segue destination="Nc5-t9-vlo" kind="show" id="PP7-xS-olW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-sG-B20">
-                                        <rect key="frame" x="0.0" y="358.33333333333337" width="300" height="109.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="377.5" width="331" height="116"/>
                                         <state key="normal" title="RecognizeObjects VC"/>
                                         <connections>
                                             <segue destination="fYl-Q7-ghR" kind="show" id="Yb4-X0-wa7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-UT-Edf">
-                                        <rect key="frame" x="0.0" y="477.66666666666669" width="300" height="109.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="503.5" width="331" height="115.5"/>
                                         <state key="normal" title="LightsAnimationVC"/>
                                         <connections>
                                             <segue destination="1qu-Rp-qbK" kind="show" id="VNg-xg-IsL"/>
@@ -111,6 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ycr-Qa-zBu"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kkg-9p-FPb"/>
                     <connections>
                         <outlet property="lightsAnimationButton" destination="R5f-UT-Edf" id="tv8-Z3-KQX"/>
                         <outlet property="oneModelUsingAnchorsButton" destination="YMh-iV-Xu7" id="8HD-nA-g1D"/>
@@ -128,23 +145,23 @@
             <objects>
                 <viewController id="Nc5-t9-vlo" customClass="SizeComparisonViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aqT-jC-0gk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eS5-gw-vks">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nvK-9A-erz">
-                                <rect key="frame" x="0.0" y="661.33333333333337" width="375" height="96.666666666666629"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="owx-tQ-e9n">
+                                <rect key="frame" x="0.0" y="733" width="414" height="109"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real world size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TZ-GL-o8k">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real World Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-js-xdg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mxz-Jh-058">
-                                        <rect key="frame" x="0.0" y="20.333333333333258" width="375" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWS-mi-JJX">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="29"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
                                             <segment title="5 cm"/>
@@ -152,17 +169,17 @@
                                             <segment title="0.1 cm"/>
                                         </segments>
                                         <connections>
-                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="aXP-uD-2rS"/>
+                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="ebQ-gV-rmv"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR world size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aP-gn-7YU">
-                                        <rect key="frame" x="0.0" y="48.333333333333258" width="375" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR World Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRH-14-FA6">
+                                        <rect key="frame" x="0.0" y="56.5" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="IKz-yq-D5M">
-                                        <rect key="frame" x="0.0" y="68.666666666666629" width="375" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="481-xv-pre">
+                                        <rect key="frame" x="0.0" y="81" width="414" height="29"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
                                             <segment title="5 cm"/>
@@ -170,7 +187,7 @@
                                             <segment title="0.1 cm"/>
                                         </segments>
                                         <connections>
-                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="hDW-3b-ysl"/>
+                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="IUy-be-EsU"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
@@ -178,36 +195,37 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="top" secondItem="aqT-jC-0gk" secondAttribute="top" id="6m7-8I-4VN"/>
                             <constraint firstItem="eS5-gw-vks" firstAttribute="width" secondItem="aqT-jC-0gk" secondAttribute="width" id="7xQ-PK-BbI"/>
-                            <constraint firstItem="nvK-9A-erz" firstAttribute="leading" secondItem="aqT-jC-0gk" secondAttribute="leading" id="Kws-vr-acD"/>
-                            <constraint firstItem="eS5-gw-vks" firstAttribute="top" secondItem="aqT-jC-0gk" secondAttribute="top" id="OFf-YW-mSi"/>
-                            <constraint firstAttribute="bottom" secondItem="eS5-gw-vks" secondAttribute="bottom" id="UZa-H9-I8N"/>
-                            <constraint firstItem="Da3-7B-Dzt" firstAttribute="trailing" secondItem="nvK-9A-erz" secondAttribute="trailing" id="l5I-4u-fjn"/>
-                            <constraint firstItem="eS5-gw-vks" firstAttribute="centerX" secondItem="Da3-7B-Dzt" secondAttribute="centerX" id="s2B-gP-AU2"/>
-                            <constraint firstItem="Da3-7B-Dzt" firstAttribute="bottom" secondItem="nvK-9A-erz" secondAttribute="bottom" constant="20" id="yon-vZ-OXg"/>
+                            <constraint firstItem="owx-tQ-e9n" firstAttribute="leading" secondItem="Da3-7B-Dzt" secondAttribute="leading" id="GsY-n1-4WX"/>
+                            <constraint firstItem="Da3-7B-Dzt" firstAttribute="trailing" secondItem="owx-tQ-e9n" secondAttribute="trailing" id="XHn-qm-vE7"/>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="height" secondItem="aqT-jC-0gk" secondAttribute="height" id="bp1-9m-JKs"/>
+                            <constraint firstItem="Da3-7B-Dzt" firstAttribute="bottom" secondItem="owx-tQ-e9n" secondAttribute="bottom" constant="20" id="mkR-hh-XkK"/>
+                            <constraint firstItem="eS5-gw-vks" firstAttribute="centerX" secondItem="aqT-jC-0gk" secondAttribute="centerX" id="s2B-gP-AU2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Da3-7B-Dzt"/>
                     </view>
                     <connections>
-                        <outlet property="ARMeasuresSegmentedControl" destination="IKz-yq-D5M" id="Ure-a3-Y0B"/>
-                        <outlet property="realWorldMeasuresSegmentedControl" destination="mxz-Jh-058" id="jyi-6l-7du"/>
+                        <outlet property="ARMeasuresSegmentedControl" destination="481-xv-pre" id="lTN-rr-m73"/>
+                        <outlet property="realWorldMeasuresSegmentedControl" destination="IWS-mi-JJX" id="lm9-zj-pyW"/>
                         <outlet property="sceneView" destination="eS5-gw-vks" id="dK7-EH-gFc"/>
+                        <outlet property="segmentControl" destination="IWS-mi-JJX" id="CGp-s7-lf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOK-mG-OgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="368.7192118226601"/>
+            <point key="canvasLocation" x="172" y="369"/>
         </scene>
-        <!--RecognizeObjectsViewController-->
+        <!--Recognize Objects View Controller-->
         <scene sceneID="iyy-y2-dmI">
             <objects>
-                <viewController title="RecognizeObjectsViewController" id="fYl-Q7-ghR" customClass="RecognizeObjectsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fYl-Q7-ghR" customClass="RecognizeObjectsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eP0-w5-OkY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJL-fM-s46">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -232,11 +250,11 @@
             <objects>
                 <viewController id="1qu-Rp-qbK" customClass="LightsAnimationsViewController" customModule="ARExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vb-Ax-DuE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULK-Yn-QB7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
