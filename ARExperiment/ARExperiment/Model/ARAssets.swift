@@ -9,6 +9,17 @@ struct ARAsset {
     let nodes: [ARNode]
 }
 
+struct ARNode {
+    let name: String
+    let nodeType: NodeType
+}
+
+enum NodeType {
+    case model
+    case light
+    case plane
+}
+
 extension ARAsset {
     func filePath() -> String {
         if let assetFolder = assetFolder {
@@ -54,15 +65,4 @@ extension ARAsset {
                                            ARNode(name: "Plane", nodeType: .plane),
                                            ARNode(name: "Sun", nodeType: .light)])
 
-}
-
-struct ARNode {
-    let name: String
-    let nodeType: NodeType
-}
-
-enum NodeType {
-    case model
-    case light
-    case plane
 }
