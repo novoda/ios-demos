@@ -5,7 +5,7 @@ protocol ARExperimentSessionHandler: class {
     func showTrackingState(for trackingState: ARCamera.TrackingState)
     func sessionWasInterrupted(message: String)
     func resetTracking(message: String)
-    func sessionErrorOccurred(title: String, message: String)
+    func sessionErrorOccurred(error: String, message: String)
 }
 
 class ARExperimentSession: NSObject, ARSessionDelegate {
@@ -27,7 +27,7 @@ class ARExperimentSession: NSObject, ARSessionDelegate {
         ]
 
         let errorMessage = messages.compactMap({ $0 }).joined(separator: "\n")
-        sessionHandler?.sessionErrorOccurred(title: "The AR session failed.", message: errorMessage)
+        sessionHandler?.sessionErrorOccurred(error: "The AR session failed.", message: errorMessage)
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
