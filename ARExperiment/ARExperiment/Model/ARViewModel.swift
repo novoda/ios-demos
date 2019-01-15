@@ -73,3 +73,24 @@ extension float4x4 {
         return float3(translation.x, translation.y, translation.z)
     }
 }
+
+private extension SCNNode {
+    func defaultLightConfiguration(with estimate: ARLightEstimate) {
+        guard let light: SCNLight = self.light else {
+            return
+        }
+        light.intensity = estimate.ambientIntensity
+        light.shadowMode = .deferred
+        light.shadowSampleCount = 16
+        light.shadowRadius = 24
+    }
+
+    func defaultTransparentPlane() {
+        guard let plane = self.geometry else {
+            return
+        }
+        plane.firstMaterial?.writesToDepthBuffer = true
+        plane.firstMaterial?.colorBufferWriteMask = []
+        plane.firstMaterial?.lightingModel = .constant
+    }
+}
