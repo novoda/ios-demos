@@ -51,7 +51,8 @@ class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandl
     
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
         guard let hitTransfrom = arModel.worldTransformForAnchor(at: location,
-                                                                 in: sceneView, withType: [.featurePoint]) else {
+                                                                 in: sceneView, withType: [.estimatedHorizontalPlane,
+                                                                                           .existingPlaneUsingExtent]) else {
                                                                     return
         }
         let anchor = ARAnchor(transform: hitTransfrom)
