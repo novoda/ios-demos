@@ -121,8 +121,6 @@
 				4C5E3ECB1FFBA2CC001B4493 /* AppDelegate.swift */,
 				4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */,
 				4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */,
-				4C06C5BF21DFA45E007FA0D1 /* ARViewModel.swift */,
-				4CB8787F21ECEB6D0051B8A7 /* ARAssets.swift */,
 				4C06C5BD21DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift */,
 				4C06C5BE21DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift */,
 				4C185BA3200527A4007182D2 /* RecognizeObjectsViewController.swift */,
@@ -194,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				4C06C5BF21DFA45E007FA0D1 /* ARViewModel.swift */,
+				4CB8787F21ECEB6D0051B8A7 /* ARAssets.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
