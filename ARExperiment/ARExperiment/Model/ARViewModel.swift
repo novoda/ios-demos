@@ -4,21 +4,35 @@ import ARKit
 
 class ARViewModel {
 
-    private var sceneForView: SCNScene?
+    private let arAsset: ARAsset
 
     init(arAsset: ARAsset) {
-        guard let scene = SCNScene(named: arAsset.filePath()) else {
-            return
-        }
-        self.sceneForView = scene
+        self.arAsset = arAsset
     }
 
-    func createSceneNodeForAsset(_ nodeName: String) -> SCNNode? {
-        guard let scene = sceneForView else {
-            return nil
+    func nodesForARExperience(using lightEstimate: ARLightEstimate) -> [SCNNode] {
+        var nodes: [SCNNode] = []
+
+        for node in arAsset.nodesOfType(.model) {
+            if let modelNode = createSceneNodeForAsset(node.name) {
+                nodes.append(modelNode)
+            }
         }
-        let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
-        return node
+
+        for node in arAsset.nodesOfType(.light) {
+            if let lightNode = createSceneNodeForAsset(node.name) {
+                lightNode.defaultLightConfiguration(with: lightEstimate)
+                nodes.append(lightNode)
+            }
+        }
+
+        for node in arAsset.nodesOfType(.plane) {
+            if let planeNode = createSceneNodeForAsset(node.name) {
+                nodes.append(planeNode)
+            }
+        }
+
+        return nodes
     }
 
     func worldTransformForAnchor(at location: CGPoint, in sceneView: ARSCNView, withType type: ARHitTestResult.ResultType) -> simd_float4x4? {
@@ -43,6 +57,14 @@ class ARViewModel {
 
     func nodeExistOnScene(_ sceneView: ARSCNView, nodeName: String) -> SCNNode? {
         return sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true)
+    }
+
+    private func createSceneNodeForAsset(_ nodeName: String) -> SCNNode? {
+        guard let scene = SCNScene(named: arAsset.filePath()) else {
+            return nil
+        }
+        let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
+        return node
     }
 }
 extension float4x4 {
