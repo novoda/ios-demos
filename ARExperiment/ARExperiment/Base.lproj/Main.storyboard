@@ -209,7 +209,6 @@
                         <outlet property="ARMeasuresSegmentedControl" destination="481-xv-pre" id="lTN-rr-m73"/>
                         <outlet property="realWorldMeasuresSegmentedControl" destination="IWS-mi-JJX" id="lm9-zj-pyW"/>
                         <outlet property="sceneView" destination="eS5-gw-vks" id="dK7-EH-gFc"/>
-                        <outlet property="segmentControl" destination="IWS-mi-JJX" id="CGp-s7-lf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOK-mG-OgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
