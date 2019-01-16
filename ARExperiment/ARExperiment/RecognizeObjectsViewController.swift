@@ -3,7 +3,7 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandler {
     
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate let yolo = YOLO()
