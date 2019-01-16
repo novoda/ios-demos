@@ -27,6 +27,7 @@
 		4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */; };
 		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
 		4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */; };
+		CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsAnimationsViewController.swift; sourceTree = "<group>"; };
 		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
+		CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */,
+				CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */,
 				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
+				CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */,
 				4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */,
 				4C1471AC21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */,

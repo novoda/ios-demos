@@ -153,14 +153,3 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         return node
     }
 }
-
-extension SCNVector3 {
-    
-    func vectorScaled(to scale:Float) -> SCNVector3{
-        return SCNVector3(self.x * scale , self.y * scale, self.z * scale)
-    }
-    
-    func vectorScaled(_ x:Float = 1.0, y:Float = 1.0, z:Float = 1.0) -> SCNVector3{
-        return SCNVector3(self.x * x , self.y * y, self.z * z)
-    }
-}
