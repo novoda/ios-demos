@@ -4,32 +4,13 @@ import ARKit
 
 class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
 
-    enum CubeModel {
-        case big    //5x5
-        case medium //1x1
-        case small  //0.1x0.1
+    struct CubeModel {
+        let fileName: String
+        let textFileName: String
         
-        var filename: String {
-            switch self {
-            case .big:
-                return "cube_5"
-            case .medium:
-                return "cube_1"
-            case .small:
-                return "cube_0.1"
-            }
-        }
-        
-        var textFilename: String {
-            switch self {
-            case .big:
-                return "text_5"
-            case .medium:
-                return "text_1"
-            case .small:
-                return "text_0.1"
-            }
-        }
+        static let big = CubeModel(fileName: "cube_5", textFileName: "text_5")
+        static let medium = CubeModel(fileName: "cube_1", textFileName: "text_1")
+        static let small = CubeModel(fileName: "cube_0.1", textFileName: "text_0.1")
     }
     
     enum Scale {
@@ -103,8 +84,8 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     
     private func removeNodeIfExistAlready() {
 
-        sceneView.scene.rootNode.childNode(withName: currentCube.filename, recursively: true)?.removeFromParentNode()
-        sceneView.scene.rootNode.childNode(withName: currentCube.textFilename, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentCube.fileName, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true)?.removeFromParentNode()
     }
     
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
@@ -134,10 +115,10 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil
         }
-        guard let cube = arModel.createSceneNodeForAsset(currentCube.filename,
+        guard let cube = arModel.createSceneNodeForAsset(currentCube.fileName,
                                                    fileName: fileName,
                                                    assetExtension: fileExtension),
-            let text = arModel.createSceneNodeForAsset(currentCube.textFilename,
+            let text = arModel.createSceneNodeForAsset(currentCube.textFileName,
                                                    fileName: fileName,
                                                    assetExtension: fileExtension) else {
                                                     print("could not find node")
