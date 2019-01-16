@@ -13,18 +13,11 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         static let small = CubeModel(fileName: "cube_0.1", textFileName: "text_0.1")
     }
     
-    enum Scale {
-        case arWorldScale
-        case realWorldScale
+    struct Scale {
+        let percentage: Float
         
-        var percentage: Float {
-            switch self {
-            case .arWorldScale:
-                return 1
-            case .realWorldScale:
-                return 0.01
-            }
-        }
+        static let realWorldScale = Scale(percentage: 0.01)
+        static let arWorldScale = Scale(percentage: 1)
     }
 
     @IBOutlet var sceneView: ARSCNView!
@@ -37,7 +30,7 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     private let fileName = "measuring-units"
     private let fileExtension = "scn"
     private var currentCube = CubeModel.big //Default model
-    private var currentScale:Scale = .realWorldScale
+    private var currentScale = Scale.realWorldScale
 
     override func viewDidLoad() {
         super.viewDidLoad()
