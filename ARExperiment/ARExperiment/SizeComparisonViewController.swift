@@ -36,7 +36,7 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         case arWorldScale
         case realWorldScale
         
-        var persentage: Float {
+        var percentage: Float {
             switch self {
             case .arWorldScale:
                 return 1
@@ -144,10 +144,10 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
                                                     return nil
         }
         let node = SCNNode()
-        cube.scale = cube.scale.vectorScaled(to:self.currentScale.persentage)
-        text.scale = text.scale.vectorScaled(to:self.currentScale.persentage).vectorScaled(z:0.0)
+        cube.scale = cube.scale.vectorScaled(to:self.currentScale.percentage)
+        text.scale = text.scale.vectorScaled(to:self.currentScale.percentage).vectorScaled(z:0.0)
         cube.position = SCNVector3Zero
-        text.position = cube.boundingBox.max.vectorScaled(to:self.currentScale.persentage)
+        text.position = cube.boundingBox.max.vectorScaled(to:self.currentScale.percentage)
         node.addChildNode(cube)
         node.addChildNode(text)
         return node
