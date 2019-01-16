@@ -10,16 +10,15 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
     private let semaphore = DispatchSemaphore(value: 2)
     private var request: VNCoreMLRequest!
     private let startButton = UIButton()
-    private var objectName = ""
     private let arViewModel = ARViewModel()
     private let nodeName = "cubewireframe"
     private let fileName = "cubewireframe"
     private let fileExtension = "dae"
     private var viewSizeForScale: CGRect = .zero
-    private var boundingBoxSize: CGSize = .zero
     private let usingAnchors = true
     private var usingTinyModel = false
     private let arSessionDelegate = ARExperimentSession()
+    private var prediction: ObjectPrediction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,54 +114,48 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
     
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.semaphore.signal()
-        var objectRect: CGRect = .zero
 
         if usingTinyModel {
-            let (predictionRect, predictionName) = processPredictionFromTinyYolo(results: request.results)
-            objectName = predictionName
-            objectRect = predictionRect ?? .zero
+            prediction = processPredictionFromTinyYolo(results: request.results)
         } else {
-            let (predictionRect, predictionName) = processPredictionFromVision(results: request.results)
-            objectName = predictionName
-            objectRect = predictionRect ?? .zero
+            prediction = processPredictionFromVision(results: request.results)
         }
-        addBoxOnMainThread(objectRect)
-
+        addBoxOnMainThread(prediction)
     }
 
-    private func processPredictionFromTinyYolo(results: [Any]?) -> (CGRect?, String) {
+    private func processPredictionFromTinyYolo(results: [Any]?) -> ObjectPrediction? {
         guard let observations = results as? [VNCoreMLFeatureValueObservation],
             let topObservation = observations.first?.featureValue.multiArrayValue else {
                 print("Tiny YOLO failed finding prediction" )
                 showStartButtonIfError()
-                return (nil, "")
+                return nil
         }
 
         guard let prediction = predictionForTinyYOLO(topObservation: topObservation),
             let objectBounds = boundingBoxRectForTinyYOLO(prediction: prediction) else {
                 showStartButtonIfError()
                 print("Tiny YOLO failed finding top prediction" )
-                return (nil, "")
+                return nil
         }
-        return (objectBounds, objectNameForTinyYOLO(prediction: prediction))
+        return ObjectPrediction(name: objectNameForTinyYOLO(prediction: prediction), bounds: objectBounds)
     }
 
-    private func processPredictionFromVision(results: [Any]?) -> (CGRect?, String) {
+    private func processPredictionFromVision(results: [Any]?) -> ObjectPrediction? {
         guard #available(iOS 12.0, *) else {
             usingTinyModel = true
-           return (nil, "")
+           return nil
         }
         guard let observations = results as? [VNRecognizedObjectObservation],
             let topObservation = observations.first,
             let topLabelObservation = topObservation.labels.first else {
                 print("Vision failed finding prediction" )
                 showStartButtonIfError()
-                return (nil, "")
+                return nil
         }
         let objectRect = VNImageRectForNormalizedRect(topObservation.boundingBox,
                                                   Int(viewSizeForScale.width),
                                                   Int(viewSizeForScale.height))
-        return (objectRect, topLabelObservation.identifier)
+        return ObjectPrediction(name: topLabelObservation.identifier, bounds: objectRect)
     }
 
     private func predictionForTinyYOLO(topObservation: MLMultiArray) -> YOLO.Prediction? {
@@ -182,33 +175,34 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
 
     //MARK: Add Model to the scene
 
-    private func addBoxOnMainThread(_ boundingBox: CGRect) {
-        guard let hitPoint = findHitPointFor(boundingBox) else {
+    private func addBoxOnMainThread(_ prediction: ObjectPrediction?) {
+        guard let prediction = prediction,
+            let hitPoint = findHitPointFor(prediction.bounds) else {
             showStartButtonIfError()
-            print("failed finding hit point")
+            print("failed finding hit point or prediction")
             return
         }
         DispatchQueue.main.async { [weak self] in
             if self?.usingAnchors ?? false {
-                self?.addAnchorToScene(in: hitPoint, withSize: boundingBox)
+                self?.addAnchorToScene(in: hitPoint)
+
             } else {
-                self?.addVectorToScene(in: hitPoint, withSize: boundingBox)
+                self?.addVectorToScene(in: hitPoint, withPrediction: prediction)
             }
         }
     }
 
     private func findHitPointFor(_ boundingBox: CGRect) -> ARHitTestResult? {
         let scaledPoint = CGPoint(x: boundingBox.origin.x, y: boundingBox.origin.y)
-        boundingBoxSize = CGSize(width: boundingBox.width, height: boundingBox.height)
         return arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.featurePoint, .estimatedHorizontalPlane])
     }
 
-    private func addAnchorToScene(in hitPoint: ARHitTestResult, withSize boundingBox: CGRect) {
+    private func addAnchorToScene(in hitPoint: ARHitTestResult) {
         let anchor = ARAnchor(transform: hitPoint.localTransform)
         sceneView.session.add(anchor: anchor)
     }
 
-    private func addVectorToScene(in hitPoint: ARHitTestResult, withSize boundingBox: CGRect) {
+    private func addVectorToScene(in hitPoint: ARHitTestResult, withPrediction prediction: ObjectPrediction) {
         let pointTranslation = hitPoint.worldTransform.translation
         guard let node = nodeForTextAndSize() else {
             showStartButtonIfError()
@@ -220,15 +214,16 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
     }
 
     private func nodeForTextAndSize() -> SCNNode? {
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
+        guard let prediction = prediction,
+            let model = arViewModel.createSceneNodeForAsset(nodeName,
                                                               fileName: fileName,
                                                               assetExtension: fileExtension) else {
                                                                 showStartButtonIfError()
-                                                                print("we have no model")
+                                                                print("we have no model or prediction")
                                                                 return nil
         }
         let parentNode = SCNNode()
-        let text = SCNText(string: objectName, extrusionDepth: 0.5)
+        let text = SCNText(string: prediction.name, extrusionDepth: 0.5)
         text.styleFirstMaterial(with: UIColor.blue)
         let textNode = SCNNode(geometry: text)
         textNode.scale = SCNVector3(textNode.scale.x * 0.01 ,
@@ -236,8 +231,8 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
                                     textNode.scale.z * 0.01)
         let modelWidth = model.boundingBox.max.x - model.boundingBox.min.x
         let modelHeight = model.boundingBox.max.y - model.boundingBox.min.y
-        let widthScale = Float(boundingBoxSize.width) / modelWidth
-        let heightScale = Float(boundingBoxSize.height) / modelHeight
+        let widthScale = Float(prediction.bounds.width) / modelWidth
+        let heightScale = Float(prediction.bounds.height) / modelHeight
         model.scale = SCNVector3(model.scale.x * widthScale,
                                  model.scale.y * heightScale,
                                  model.scale.z)

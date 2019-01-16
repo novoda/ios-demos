@@ -29,6 +29,7 @@
 		4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */; };
 		4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */; };
 		4CB8788621EF5E430051B8A7 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788521EF5E430051B8A7 /* ObjectDetector.mlmodel */; };
+		4CB8788821EF61590051B8A7 /* CoreMLPredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelpers.swift; sourceTree = "<group>"; };
 		4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
 		4CB8788521EF5E430051B8A7 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = "ARExperiment/TinyYolo Helpers/ObjectDetector.mlmodel"; sourceTree = SOURCE_ROOT; };
+		4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLPredictionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */,
+				4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				4C06C5C221DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift in Sources */,
 				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
 				4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */,
+				4CB8788821EF61590051B8A7 /* CoreMLPredictionModel.swift in Sources */,
 				4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */,
 				4C06C5BC21DFA448007FA0D1 /* TinyYOLO.mlmodel in Sources */,
 				4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */,
