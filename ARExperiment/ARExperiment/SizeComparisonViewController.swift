@@ -57,11 +57,11 @@ class SizeComparisonViewController: UIViewController {
     }
     
     private func removeNodeIfExistAlready() {
-        if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: currentCube?.name ?? "") {
+        if let nodeExists = arModel.node(in: sceneView, named: currentCube?.name ?? "") {
             nodeExists.removeFromParentNode()
         }
 
-        if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: currentText?.name ?? "") {
+        if let nodeExists = arModel.node(in: sceneView, named: currentText?.name ?? "") {
             nodeExists.removeFromParentNode()
         }
     }

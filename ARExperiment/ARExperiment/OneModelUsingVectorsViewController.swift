@@ -44,7 +44,7 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
         }
 
         for node in arAsset.nodesOfType(.model) {
-            if let nodeExists = arViewModel.nodeExistOnScene(sceneView, nodeName: node.name) {
+            if let nodeExists = arViewModel.node(in: sceneView, named: node.name) {
                 nodeExists.removeFromParentNode()
             }
         }

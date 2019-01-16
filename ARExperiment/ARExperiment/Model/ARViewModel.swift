@@ -56,7 +56,7 @@ class ARViewModel {
         return hitResultsFeaturePoints.first
     }
 
-    func nodeExistOnScene(_ sceneView: ARSCNView, nodeName: String) -> SCNNode? {
+    func node(in sceneView: ARSCNView, named nodeName: String) -> SCNNode? {
         return sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true)
     }
 

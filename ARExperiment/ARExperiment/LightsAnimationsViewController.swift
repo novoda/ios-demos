@@ -42,7 +42,7 @@ class LightsAnimationsViewController: UIViewController {
         }
 
         for node in arAsset.nodes {
-            if let nodeExists = arModel.nodeExistOnScene(sceneView, nodeName: node.name) {
+            if let nodeExists = arModel.node(in: sceneView, named: node.name) {
                 nodeExists.removeFromParentNode()
             }
         }
