@@ -2,12 +2,13 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.banana
     private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
+    private var nodesForSession: [SCNNode]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,20 +52,28 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, A
     }
 
     private func addNodesToScene(location: CGPoint) {
-        for node in arAsset.nodesOfType(.model) {
-            addNoteToSceneUsingVector(nodeName: node.name, location: location)
-        }
-    }
-
-    private func addNoteToSceneUsingVector(nodeName: String, location: CGPoint) {
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName) else {
+        guard let nodesForSession = nodesForSession else {
             print("we have no model")
             return
         }
+
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
+
         if let hit = arViewModel.hitResult(at: location, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
             let pointTranslation = hit.worldTransform.translation
-            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(model)
+            parentNode.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(parentNode)
+        }
+    }
+}
+
+extension OneModelUsingVectorsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }

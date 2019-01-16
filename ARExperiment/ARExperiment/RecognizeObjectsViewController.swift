@@ -3,7 +3,7 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var sceneView: ARSCNView!
     fileprivate let yolo = YOLO()
@@ -15,6 +15,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExp
     private let arAsset = ARAsset.cubeWireframe
     private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
+    private var nodesForSession: [SCNNode]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,22 +146,34 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExp
             print("could not scale the Point vectors")
             return
         }
-        for node in arAsset.nodesOfType(.model) {
-            guard let model = arViewModel.createSceneNodeForAsset(node.name) else {
-                print("we have no model")
-                return
-            }
+        guard let nodesForSession = nodesForSession else {
+            print("we have no model")
+            return
+        }
 
-            compoundingBox.frame = scaledRect
-            predictionLabel.text = "\(labels[prediction.classIndex])"
-            compoundingBox.isHidden = false
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
 
-            let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-            if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-                let pointTranslation = hitPoint.worldTransform.translation
-                model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-                sceneView.scene.rootNode.addChildNode(model)
-            }
+        compoundingBox.frame = scaledRect
+        predictionLabel.text = "\(labels[prediction.classIndex])"
+        compoundingBox.isHidden = false
+
+        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
+        if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
+            let pointTranslation = hitPoint.worldTransform.translation
+            parentNode.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(parentNode)
+
+        }
+    }
+}
+
+extension RecognizeObjectsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }

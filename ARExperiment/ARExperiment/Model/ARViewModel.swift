@@ -28,6 +28,7 @@ class ARViewModel {
 
         for node in arAsset.nodesOfType(.plane) {
             if let planeNode = createSceneNodeForAsset(node.name) {
+                planeNode.defaultTransparentPlane()
                 nodes.append(planeNode)
             }
         }

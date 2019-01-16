@@ -3,12 +3,13 @@ import SceneKit
 import ARKit
 
 
-class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandler {
+class LightsAnimationsViewController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.earthMoon
     private var arModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
+    private var nodesForSession: [SCNNode]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,73 +62,28 @@ class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandl
 }
 
 extension LightsAnimationsViewController: ARSCNViewDelegate {
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
-            return
+            return nil
         }
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
 
-            for assetNode in strongSelf.arAsset.nodesOfType(.model) {
-                if let model = strongSelf.sceneModel(with: assetNode.name) {
-                    node.addChildNode(model)
-                }
-            }
-
-            for lightNode in strongSelf.arAsset.nodesOfType(.light) {
-                if let light = strongSelf.sceneLighting(with: lightNode.name) {
-                    node.addChildNode(light)
-                }
-            }
-
-            for planeNode in strongSelf.arAsset.nodesOfType(.plane) {
-                if let plane = strongSelf.scenePlane(with: planeNode.name) {
-                    node.addChildNode(plane)
-                }
-            }
+        guard let nodesForSession = nodesForSession else {
+            print("nodes were not loaded properly")
+            return nil
         }
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
+        return parentNode
     }
+}
 
-    private func sceneModel(with name: String?) -> SCNNode? {
-        guard let name = name,
-            let model = arModel.createSceneNodeForAsset(name) else {
-            return nil
+extension LightsAnimationsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arModel.nodesForARExperience(using: lightEstimate)
         }
-        model.position = SCNVector3Zero
-        return model
-    }
-
-    private func sceneLighting(with name: String?) -> SCNNode? {
-        guard let name = name,
-            let lightNode = arModel.createSceneNodeForAsset(name) else {
-            return nil
-        }
-
-        guard let light: SCNLight = lightNode.light,
-            let estimate: ARLightEstimate = sceneView.session.currentFrame?.lightEstimate else {
-                return nil
-        }
-        light.intensity = estimate.ambientIntensity
-        light.shadowMode = .deferred
-        light.shadowSampleCount = 16
-        light.shadowRadius = 24
-
-        return lightNode
-    }
-
-    private func scenePlane(with name: String?) -> SCNNode? {
-        guard let name = name,
-            let planeNode = arModel.createSceneNodeForAsset(name) else {
-            return nil
-        }
-
-        guard let plane = planeNode.geometry else {
-            return nil
-        }
-        plane.firstMaterial?.writesToDepthBuffer = true
-        plane.firstMaterial?.colorBufferWriteMask = []
-        plane.firstMaterial?.lightingModel = .constant
-        return planeNode
     }
 }

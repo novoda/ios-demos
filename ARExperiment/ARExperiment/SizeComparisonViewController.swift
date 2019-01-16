@@ -2,15 +2,16 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
+class SizeComparisonViewController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var segmentControl: UISegmentedControl!
     private let arAsset = ARAsset.measuringUnits
     private var arModel: ARViewModel!
-    private var currentCube: ARNode?
-    private var currentText: ARNode?
+    private var currentCube: SCNNode?
+    private var currentText: SCNNode?
     private let arSessionDelegate = ARExperimentSession()
+    private var nodesForSession: [SCNNode]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +69,14 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            currentText = arAsset.nodeWithName("text_5")
-            currentCube = arAsset.nodeWithName("cube_5")
+            currentText = nodesForSession?.findNode(withName: "text_5")
+            currentCube = nodesForSession?.findNode(withName: "cube_5")
         case 1:
-            currentText = arAsset.nodeWithName("text_1")
-            currentCube = arAsset.nodeWithName("cube_1")
+            currentText = nodesForSession?.findNode(withName: "text_1")
+            currentCube = nodesForSession?.findNode(withName: "cube_1")
         case 2:
-            currentText = arAsset.nodeWithName("text_0.1")
-            currentCube = arAsset.nodeWithName("cube_0.1")
+            currentText = nodesForSession?.findNode(withName: "text_0.1")
+            currentCube = nodesForSession?.findNode(withName: "cube_0.1")
         default: break
         }
     }
@@ -87,18 +88,31 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil
         }
+
         guard let currentCube = currentCube,
-            let cube = arModel.createSceneNodeForAsset(currentCube.name),
-            let currentText = currentText,
-            let text = arModel.createSceneNodeForAsset(currentText.name) else {
+            let currentText = currentText else {
                 print("could not find node")
                 return nil
         }
         let node = SCNNode()
-        cube.position = SCNVector3Zero
-        text.position = SCNVector3Zero
-        node.addChildNode(cube)
-        node.addChildNode(text)
+        currentCube.position = SCNVector3Zero
+        currentText.position = SCNVector3Zero
+        node.addChildNode(currentCube)
+        node.addChildNode(currentText)
         return node
+    }
+}
+
+extension SizeComparisonViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arModel.nodesForARExperience(using: lightEstimate)
+        }
+    }
+}
+
+private extension Array where Element == SCNNode {
+    func findNode(withName name: String) -> SCNNode? {
+        return self.filter{$0.name == name}.first
     }
 }
