@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8789521EF861C0051B8A7 /* AppDelegate.swift */; };
 		4CB8789821EF861C0051B8A7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789721EF861C0051B8A7 /* art.scnassets */; };
-		4CB8789A21EF861C0051B8A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8789921EF861C0051B8A7 /* ViewController.swift */; };
 		4CB8789D21EF861C0051B8A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789B21EF861C0051B8A7 /* Main.storyboard */; };
 		4CB8789F21EF861E0051B8A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789E21EF861E0051B8A7 /* Assets.xcassets */; };
 		4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */; };
@@ -19,7 +18,6 @@
 		4CB8789221EF861C0051B8A7 /* ARImageTrackingExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARImageTrackingExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB8789521EF861C0051B8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CB8789721EF861C0051B8A7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		4CB8789921EF861C0051B8A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CB8789C21EF861C0051B8A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CB8789E21EF861E0051B8A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CB878A321EF861E0051B8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 				4CB878A921EF89040051B8A7 /* View Controllers */,
 				4CB8789521EF861C0051B8A7 /* AppDelegate.swift */,
 				4CB8789721EF861C0051B8A7 /* art.scnassets */,
-				4CB8789921EF861C0051B8A7 /* ViewController.swift */,
 				4CB8789B21EF861C0051B8A7 /* Main.storyboard */,
 				4CB8789E21EF861E0051B8A7 /* Assets.xcassets */,
 				4CB878A321EF861E0051B8A7 /* Info.plist */,
@@ -154,7 +151,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CB8789A21EF861C0051B8A7 /* ViewController.swift in Sources */,
 				4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */,
 				4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */,
 			);
