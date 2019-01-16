@@ -6,6 +6,7 @@ protocol ARExperimentSessionHandler: class {
     func sessionWasInterrupted(message: String)
     func resetTracking(message: String)
     func sessionErrorOccurred(error: String, message: String)
+    func sessionTrackingSwitchedToNormal()
 }
 
 class ARExperimentSession: NSObject, ARSessionDelegate {
@@ -14,6 +15,10 @@ class ARExperimentSession: NSObject, ARSessionDelegate {
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         sessionHandler?.showTrackingState(for: camera.trackingState)
+
+        if case .normal = camera.trackingState {
+            sessionHandler?.sessionTrackingSwitchedToNormal()
+        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
