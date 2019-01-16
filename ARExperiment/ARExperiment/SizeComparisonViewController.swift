@@ -28,8 +28,8 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     }
 
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var realWorldMeasuresSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var ARMeasuresSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
 
     private var scene: SCNScene?
     private let arSessionDelegate = ARExperimentSession()
@@ -88,14 +88,22 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true)?.removeFromParentNode()
     }
     
-    @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
+    @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
         
-        let segmentedControlToDeselect: UISegmentedControl! =
-            (sender == self.ARMeasuresSegmentedControl) ? self.realWorldMeasuresSegmentedControl : self.ARMeasuresSegmentedControl
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
         
-        segmentedControlToDeselect.selectedSegmentIndex = UISegmentedControlNoSegment
-        
-        self.currentScale = (sender == self.ARMeasuresSegmentedControl) ? .arWorldScale : .realWorldScale
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.currentScale = .realWorldScale
+        case 1:
+            self.currentScale = .arWorldScale
+        default: break
+        }
+    }
+    
+    @IBAction func sizeSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
         case 0:

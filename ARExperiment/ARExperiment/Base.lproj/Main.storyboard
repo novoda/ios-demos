@@ -151,35 +151,22 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eS5-gw-vks">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="owx-tQ-e9n">
-                                <rect key="frame" x="0.0" y="733" width="414" height="109"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="owx-tQ-e9n">
+                                <rect key="frame" x="0.0" y="776" width="414" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real World Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-js-xdg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWS-mi-JJX">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
-                                            <segment title="5 cm"/>
-                                            <segment title="1 cm"/>
-                                            <segment title="0.1 cm"/>
+                                            <segment title="Real World"/>
+                                            <segment title="AR World"/>
                                         </segments>
                                         <connections>
-                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="ebQ-gV-rmv"/>
+                                            <action selector="worldSelectionSegmentControlHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="2YJ-MY-gW4"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR World Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRH-14-FA6">
-                                        <rect key="frame" x="0.0" y="56.5" width="414" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="481-xv-pre">
-                                        <rect key="frame" x="0.0" y="81" width="414" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="481-xv-pre">
+                                        <rect key="frame" x="0.0" y="38" width="414" height="29"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
                                             <segment title="5 cm"/>
@@ -187,7 +174,7 @@
                                             <segment title="0.1 cm"/>
                                         </segments>
                                         <connections>
-                                            <action selector="segmentHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="IUy-be-EsU"/>
+                                            <action selector="sizeSegmentControlHasBeenChanged:" destination="Nc5-t9-vlo" eventType="valueChanged" id="vbQ-xt-r1f"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
@@ -206,9 +193,9 @@
                         <viewLayoutGuide key="safeArea" id="Da3-7B-Dzt"/>
                     </view>
                     <connections>
-                        <outlet property="ARMeasuresSegmentedControl" destination="481-xv-pre" id="lTN-rr-m73"/>
-                        <outlet property="realWorldMeasuresSegmentedControl" destination="IWS-mi-JJX" id="lm9-zj-pyW"/>
                         <outlet property="sceneView" destination="eS5-gw-vks" id="dK7-EH-gFc"/>
+                        <outlet property="sizeSegmentedControl" destination="481-xv-pre" id="TtP-8t-2i5"/>
+                        <outlet property="worldMessuresSegmentedControl" destination="IWS-mi-JJX" id="znC-t8-Hug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOK-mG-OgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
