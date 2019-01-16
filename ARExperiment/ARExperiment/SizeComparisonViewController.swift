@@ -3,17 +3,19 @@ import SceneKit
 import ARKit
 
 class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
-    
+
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
+
     private var scene: SCNScene?
     private let arSessionDelegate = ARExperimentSession()
     private let arModel = ARViewModel()
     private let fileName = "measuring-units"
     private let fileExtension = "scn"
-    private var currentCubeName = ""
-    private var currentTextName = ""
-    
+    private var currentCube = CubeModel.big
+    private var currentScale = Scale.realWorldScale
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,9 +47,9 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
-        
+
         removeNodeIfExistAlready()
-        
+
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
                                                                  withType: [.featurePoint]) else {
@@ -58,21 +60,35 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     }
     
     private func removeNodeIfExistAlready() {
-        sceneView.scene.rootNode.childNode(withName: currentCubeName, recursively: true)?.removeFromParentNode()
-        sceneView.scene.rootNode.childNode(withName: currentTextName, recursively: true)?.removeFromParentNode()
+
+        sceneView.scene.rootNode.childNode(withName: currentCube.fileName, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true)?.removeFromParentNode()
     }
     
-    @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
+    @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
+        
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        
         switch sender.selectedSegmentIndex {
         case 0:
-            currentTextName = "text_5"
-            currentCubeName = "cube_5"
+            self.currentScale = .realWorldScale
         case 1:
-            currentTextName = "text_1"
-            currentCubeName = "cube_1"
+            self.currentScale = .arWorldScale
+        default: break
+        }
+    }
+    
+    @IBAction func sizeSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            currentCube = .big
+        case 1:
+            currentCube = .medium
         case 2:
-            currentTextName = "text_0.1"
-            currentCubeName = "cube_0.1"
+            currentCube = .small
         default: break
         }
     }
@@ -84,18 +100,20 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil
         }
-        guard let cube = arModel.createSceneNodeForAsset(currentCubeName,
-                                                         fileName: fileName,
-                                                         assetExtension: fileExtension),
-            let text = arModel.createSceneNodeForAsset(currentTextName,
-                                                       fileName: fileName,
-                                                       assetExtension: fileExtension) else {
-                                                        print("could not find node")
-                                                        return nil
+        guard let cube = arModel.createSceneNodeForAsset(currentCube.fileName,
+                                                   fileName: fileName,
+                                                   assetExtension: fileExtension),
+            let text = arModel.createSceneNodeForAsset(currentCube.textFileName,
+                                                   fileName: fileName,
+                                                   assetExtension: fileExtension) else {
+                                                    print("could not find node")
+                                                    return nil
         }
         let node = SCNNode()
+        cube.scale = cube.scale.vectorScaled(to:self.currentScale.percentage)
+        text.scale = text.scale.vectorScaled(to:self.currentScale.percentage).vectorScaled(z:0.0)
         cube.position = SCNVector3Zero
-        text.position = SCNVector3Zero
+        text.position = cube.boundingBox.max.vectorScaled(to:self.currentScale.percentage)
         node.addChildNode(cube)
         node.addChildNode(text)
         return node
