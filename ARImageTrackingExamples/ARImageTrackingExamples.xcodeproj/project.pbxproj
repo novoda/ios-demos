@@ -15,6 +15,8 @@
 		4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */; };
 		4CB878BA21EF967E0051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878B821EF967E0051B8A7 /* ARCameraTrackingState.swift */; };
 		4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */; };
+		4CB878BE21EF9AAC0051B8A7 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878BD21EF9AAC0051B8A7 /* ARViewModel.swift */; };
+		4CB878C021EFA0410051B8A7 /* ARHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878BF21EFA0410051B8A7 /* ARHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidCardViewController.swift; sourceTree = "<group>"; };
 		4CB878B821EF967E0051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
 		4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARExperimentSessionDelegate.swift; sourceTree = "<group>"; };
+		4CB878BD21EF9AAC0051B8A7 /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		4CB878BF21EFA0410051B8A7 /* ARHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		4CB8789421EF861C0051B8A7 /* ARImageTrackingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				4CB878BC21EF9A9A0051B8A7 /* ViewModels */,
 				4CB878AF21EF950D0051B8A7 /* ARSession */,
 				4CB878AA21EF896C0051B8A7 /* Helpers */,
 				4CB878A921EF89040051B8A7 /* View Controllers */,
@@ -84,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */,
+				4CB878BF21EFA0410051B8A7 /* ARHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -95,6 +101,14 @@
 				4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */,
 			);
 			path = ARSession;
+			sourceTree = "<group>";
+		};
+		4CB878BC21EF9A9A0051B8A7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4CB878BD21EF9AAC0051B8A7 /* ARViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +184,9 @@
 			files = (
 				4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */,
 				4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */,
+				4CB878C021EFA0410051B8A7 /* ARHelper.swift in Sources */,
 				4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */,
+				4CB878BE21EF9AAC0051B8A7 /* ARViewModel.swift in Sources */,
 				4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */,
 				4CB878BA21EF967E0051B8A7 /* ARCameraTrackingState.swift in Sources */,
 			);
