@@ -14,7 +14,7 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
     private let nodeName = "cubewireframe"
     private let fileName = "cubewireframe"
     private let fileExtension = "dae"
-    private var viewSizeForScale: CGRect = .zero
+    private var currentSceneFrame: CGRect = .zero
     private let usingAnchors = true
     private var usingTinyModel = false
     private let arSessionDelegate = ARExperimentSession()
@@ -41,7 +41,7 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
-        viewSizeForScale = sceneView.frame
+        currentSceneFrame = sceneView.frame
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,8 +153,8 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
                 return nil
         }
         let objectRect = VNImageRectForNormalizedRect(topObservation.boundingBox,
-                                                  Int(viewSizeForScale.width),
-                                                  Int(viewSizeForScale.height))
+                                                  Int(currentSceneFrame.width),
+                                                  Int(currentSceneFrame.height))
         return ObjectPrediction(name: topLabelObservation.identifier, bounds: objectRect)
     }
 
@@ -165,7 +165,7 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
     }
 
     private func boundingBoxRectForTinyYOLO(prediction: YOLO.Prediction) -> CGRect? {
-        let viewRect = CGRect(x: 0, y: 0, width: Int(viewSizeForScale.width), height: Int(viewSizeForScale.height))
+        let viewRect = CGRect(x: 0, y: 0, width: Int(currentSceneFrame.width), height: Int(currentSceneFrame.height))
         return yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: viewRect)
     }
 
