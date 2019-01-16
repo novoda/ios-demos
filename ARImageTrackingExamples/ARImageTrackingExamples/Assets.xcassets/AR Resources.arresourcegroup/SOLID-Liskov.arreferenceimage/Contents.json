@@ -1,6 +1,9 @@
 {
   "images" : [
-
+    {
+      "idiom" : "universal",
+      "filename" : "Liskov's-substitution-principle_3502x2385.png"
+    }
   ],
   "info" : {
     "version" : 1,
