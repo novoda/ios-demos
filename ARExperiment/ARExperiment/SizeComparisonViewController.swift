@@ -4,22 +4,6 @@ import ARKit
 
 class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
 
-    struct CubeModel {
-        let fileName: String
-        let textFileName: String
-        
-        static let big = CubeModel(fileName: "cube_5", textFileName: "text_5")
-        static let medium = CubeModel(fileName: "cube_1", textFileName: "text_1")
-        static let small = CubeModel(fileName: "cube_0.1", textFileName: "text_0.1")
-    }
-    
-    struct Scale {
-        let percentage: Float
-        
-        static let realWorldScale = Scale(percentage: 0.01)
-        static let arWorldScale = Scale(percentage: 1)
-    }
-
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
@@ -29,7 +13,7 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     private let arModel = ARViewModel()
     private let fileName = "measuring-units"
     private let fileExtension = "scn"
-    private var currentCube = CubeModel.big //Default model
+    private var currentCube = CubeModel.big
     private var currentScale = Scale.realWorldScale
 
     override func viewDidLoad() {
