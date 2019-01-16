@@ -5,13 +5,14 @@ import ARKit
 class SizeComparisonViewController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
     private let arAsset = ARAsset.measuringUnits
     private var arModel: ARViewModel!
-    private var currentCube: SCNNode?
-    private var currentText: SCNNode?
     private let arSessionDelegate = ARExperimentSession()
     private var nodesForSession: [SCNNode]?
+    private var currentCube = CubeModel.big
+    private var currentScale = Scale.realWorldScale
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +45,9 @@ class SizeComparisonViewController: UIViewController {
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
-        
+
         removeNodeIfExistAlready()
-        
+
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
                                                                  withType: [.featurePoint]) else {
@@ -57,26 +58,41 @@ class SizeComparisonViewController: UIViewController {
     }
     
     private func removeNodeIfExistAlready() {
-        if let nodeExists = arModel.node(in: sceneView, named: currentCube?.name ?? "") {
-            nodeExists.removeFromParentNode()
-        }
 
-        if let nodeExists = arModel.node(in: sceneView, named: currentText?.name ?? "") {
-            nodeExists.removeFromParentNode()
+if let nodeExists = arModel.node(in: sceneView, named: currentCube.fileName) {
+nodeExists.removeFromParentNode()
+}
+
+if let nodeExists = arModel.node(in: sceneView, named: currentCube.textFileName) {
+nodeExists.removeFromParentNode()
+}
+
+    }
+
+    @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
+        
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.currentScale = .realWorldScale
+        case 1:
+            self.currentScale = .arWorldScale
+        default: break
         }
     }
     
-    @IBAction func segmentHasBeenChanged(_ sender: UISegmentedControl) {
+    @IBAction func sizeSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
+        
         switch sender.selectedSegmentIndex {
         case 0:
-            currentText = nodesForSession?.findNode(withName: "text_5")
-            currentCube = nodesForSession?.findNode(withName: "cube_5")
+            currentCube = .big
         case 1:
-            currentText = nodesForSession?.findNode(withName: "text_1")
-            currentCube = nodesForSession?.findNode(withName: "cube_1")
+            currentCube = .medium
         case 2:
-            currentText = nodesForSession?.findNode(withName: "text_0.1")
-            currentCube = nodesForSession?.findNode(withName: "cube_0.1")
+            currentCube = .small
         default: break
         }
     }
@@ -89,16 +105,19 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
             return nil
         }
 
-        guard let currentCube = currentCube,
-            let currentText = currentText else {
+        guard let nodesForSession = nodesForSession,
+            let cube = nodesForSession.findNode(withName: currentCube.fileName),
+            let text = nodesForSession.findNode(withName: currentCube.textFileName) else {
                 print("could not find node")
                 return nil
         }
         let node = SCNNode()
-        currentCube.position = SCNVector3Zero
-        currentText.position = SCNVector3Zero
-        node.addChildNode(currentCube)
-        node.addChildNode(currentText)
+        cube.scale = cube.scale.vectorScaled(to:self.currentScale.percentage)
+        text.scale = text.scale.vectorScaled(to:self.currentScale.percentage).vectorScaled(z:0.0)
+        cube.position = SCNVector3Zero
+        text.position = cube.boundingBox.max.vectorScaled(to:self.currentScale.percentage)
+        node.addChildNode(cube)
+        node.addChildNode(text)
         return node
     }
 }

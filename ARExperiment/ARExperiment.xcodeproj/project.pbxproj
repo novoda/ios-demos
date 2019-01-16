@@ -28,6 +28,9 @@
 		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
 		4CB8788021ECEB6D0051B8A7 /* ARAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8787F21ECEB6D0051B8A7 /* ARAssets.swift */; };
 		4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */; };
+		CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */; };
+		CDBE769D21EF92C50065B272 /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769C21EF92C50065B272 /* CubeModel.swift */; };
+		CDBE769F21EF931B0065B272 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769E21EF931B0065B272 /* Scale.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4CB8787F21ECEB6D0051B8A7 /* ARAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssets.swift; sourceTree = "<group>"; };
 		4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
+		CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Helpers.swift"; sourceTree = "<group>"; };
+		CDBE769C21EF92C50065B272 /* CubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
+		CDBE769E21EF931B0065B272 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */,
+				CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,6 +200,8 @@
 			children = (
 				4C06C5BF21DFA45E007FA0D1 /* ARViewModel.swift */,
 				4CB8787F21ECEB6D0051B8A7 /* ARAssets.swift */,
+				CDBE769C21EF92C50065B272 /* CubeModel.swift */,
+				CDBE769E21EF931B0065B272 /* Scale.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,13 +318,16 @@
 				4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */,
 				4C06C5C121DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift in Sources */,
 				4C06C5C321DFA45E007FA0D1 /* ARViewModel.swift in Sources */,
+				CDBE769D21EF92C50065B272 /* CubeModel.swift in Sources */,
 				4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */,
 				4CB8788021ECEB6D0051B8A7 /* ARAssets.swift in Sources */,
 				4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */,
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
+				CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */,
 				4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */,
 				4C1471AC21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */,
+				CDBE769F21EF931B0065B272 /* Scale.swift in Sources */,
 				4C7DAF35216CDA6800D03840 /* UIViewController+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
