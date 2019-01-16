@@ -13,6 +13,8 @@
 		4CB8789F21EF861E0051B8A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789E21EF861E0051B8A7 /* Assets.xcassets */; };
 		4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */; };
 		4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */; };
+		4CB878BA21EF967E0051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878B821EF967E0051B8A7 /* ARCameraTrackingState.swift */; };
+		4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4CB878A321EF861E0051B8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+helpers.swift"; sourceTree = "<group>"; };
 		4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidCardViewController.swift; sourceTree = "<group>"; };
+		4CB878B821EF967E0051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
+		4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARExperimentSessionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		4CB8789421EF861C0051B8A7 /* ARImageTrackingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				4CB878AF21EF950D0051B8A7 /* ARSession */,
 				4CB878AA21EF896C0051B8A7 /* Helpers */,
 				4CB878A921EF89040051B8A7 /* View Controllers */,
 				4CB8789521EF861C0051B8A7 /* AppDelegate.swift */,
@@ -81,6 +86,15 @@
 				4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4CB878AF21EF950D0051B8A7 /* ARSession */ = {
+			isa = PBXGroup;
+			children = (
+				4CB878B821EF967E0051B8A7 /* ARCameraTrackingState.swift */,
+				4CB878B921EF967E0051B8A7 /* ARExperimentSessionDelegate.swift */,
+			);
+			path = ARSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,7 +170,9 @@
 			files = (
 				4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */,
 				4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */,
+				4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */,
+				4CB878BA21EF967E0051B8A7 /* ARCameraTrackingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
