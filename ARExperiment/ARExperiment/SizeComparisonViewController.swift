@@ -50,8 +50,9 @@ class SizeComparisonViewController: UIViewController {
 
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
-                                                                 withType: [.featurePoint]) else {
-                                                                    return
+                                                                 withType: [.featurePoint,
+                                                                            .estimatedHorizontalPlane]) else {
+                                                                                return
         }
         let anchor = ARAnchor(transform: hitTransform)
         sceneView.session.add(anchor: anchor)
@@ -59,13 +60,13 @@ class SizeComparisonViewController: UIViewController {
     
     private func removeNodeIfExistAlready() {
 
-if let nodeExists = arModel.node(in: sceneView, named: currentCube.fileName) {
-nodeExists.removeFromParentNode()
-}
+        if let nodeExists = arModel.node(in: sceneView, named: currentCube.fileName) {
+            nodeExists.removeFromParentNode()
+        }
 
-if let nodeExists = arModel.node(in: sceneView, named: currentCube.textFileName) {
-nodeExists.removeFromParentNode()
-}
+        if let nodeExists = arModel.node(in: sceneView, named: currentCube.textFileName) {
+            nodeExists.removeFromParentNode()
+        }
 
     }
 
