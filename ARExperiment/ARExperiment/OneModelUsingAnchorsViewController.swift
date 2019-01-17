@@ -43,8 +43,8 @@ class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionH
             return
         }
         
-        if let existingNode = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            existingNode.removeFromParentNode()
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
+            nodeExists.removeFromParentNode()
         }
         
         addNodeToSessionUsingAnchors(location: location)

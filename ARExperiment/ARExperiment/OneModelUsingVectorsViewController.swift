@@ -44,8 +44,8 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, A
             return
         }
         
-        if let existingNode = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            existingNode.removeFromParentNode()
+        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
+            nodeExists.removeFromParentNode()
         }
         addNoteToSceneUsingVector(location: location)
     }

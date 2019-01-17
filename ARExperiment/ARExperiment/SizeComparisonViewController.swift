@@ -47,6 +47,7 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
+
         removeNodeIfExistAlready()
 
         guard let hitTransform = arModel.worldTransformForAnchor(at: location,
@@ -60,12 +61,8 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
     
     private func removeNodeIfExistAlready() {
 
-        if let existingNode = sceneView.scene.rootNode.childNode(withName: currentCube.fileName, recursively: true) {
-            existingNode.removeFromParentNode()
-        }
-        if let existingNode = sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true) {
-            existingNode.removeFromParentNode()
-        }
+        sceneView.scene.rootNode.childNode(withName: currentCube.fileName, recursively: true)?.removeFromParentNode()
+        sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true)?.removeFromParentNode()
     }
     
     @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
