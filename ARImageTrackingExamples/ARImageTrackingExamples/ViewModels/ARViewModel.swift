@@ -13,4 +13,13 @@ class ARViewModel {
         configuration.maximumNumberOfTrackedImages = 2
         return configuration
     }
+
+    func image(correspondingTo referenceImage: ARReferenceImage) -> UIImage? {
+        guard let referenceImageName = referenceImage.name,
+            let correspondingImageName = assets[referenceImageName] else {
+            print("no image found")
+            return nil
+        }
+        return correspondingImageName.image()
+    }
 }

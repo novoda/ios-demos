@@ -32,9 +32,14 @@ extension SolidCardViewController: ARSCNViewDelegate {
             return
         }
 
+        guard let image = arViewModel.image(correspondingTo: imageAnchor.referenceImage) else {
+            print("could not find image")
+            return
+        }
+        
         let plane = SCNPlane(width: imageAnchor.imageSize().width,
                              height: imageAnchor.imageSize().height)
-        plane.styleFirstMaterial(with: UIImage(named: "SOLIDtext_single"))
+        plane.styleFirstMaterial(with: image)
         let planeNode = SCNNode(geometry: plane)
         planeNode.opacity = 0.95
         planeNode.eulerAngles.x = -.pi / 2
