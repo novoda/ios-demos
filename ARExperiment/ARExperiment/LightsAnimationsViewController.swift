@@ -66,9 +66,9 @@ class LightsAnimationsViewController: UIViewController, ARExperimentSessionHandl
             return
         }
         
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: earthNodeName, recursively: true),
+        if let existingNode = sceneView.scene.rootNode.childNode(withName: earthNodeName, recursively: true),
             let secondNodeExists = sceneView.scene.rootNode.childNode(withName: moonNodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
+            existingNode.removeFromParentNode()
             secondNodeExists.removeFromParentNode()
         }
         addNodeToSessionUsingFeaturePoints(location: location)
