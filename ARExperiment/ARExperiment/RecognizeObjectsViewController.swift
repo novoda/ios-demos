@@ -183,11 +183,13 @@ class RecognizeObjectsViewController: UIViewController, ARExperimentSessionHandl
             return
         }
         DispatchQueue.main.async { [weak self] in
-            if self?.usingAnchors ?? false {
-                self?.addAnchorToScene(in: hitPoint)
-
+            guard let strongSelf = self else {
+                return
+            }
+            if strongSelf.usingAnchors {
+                strongSelf.addAnchorToScene(in: hitPoint)
             } else {
-                self?.addVectorToScene(in: hitPoint, withPrediction: prediction)
+                strongSelf.addVectorToScene(in: hitPoint, withPrediction: prediction)
             }
         }
     }
