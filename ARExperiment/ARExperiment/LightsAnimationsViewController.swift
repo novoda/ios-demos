@@ -7,13 +7,13 @@ class LightsAnimationsViewController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
     private let arAsset = ARAsset.earthMoon
-    private var arModel: ARViewModel!
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
     private var nodesForSession: [SCNNode]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        arModel = ARViewModel(arAsset: arAsset)
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
@@ -42,8 +42,8 @@ class LightsAnimationsViewController: UIViewController {
         }
 
         for node in arAsset.nodes {
-            if let nodeExists = arModel.node(in: sceneView, named: node.name) {
-                nodeExists.removeFromParentNode()
+            if let existingNode = arViewModel.node(in: sceneView, named: node.name) {
+                existingNode.removeFromParentNode()
             }
         }
 
@@ -51,7 +51,7 @@ class LightsAnimationsViewController: UIViewController {
     }
     
     private func addNodeToSessionUsingFeaturePoints(location: CGPoint) {
-        guard let hitTransfrom = arModel.worldTransformForAnchor(at: location,
+        guard let hitTransfrom = arViewModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView, withType: [.estimatedHorizontalPlane,
                                                                                            .existingPlaneUsingExtent]) else {
                                                                     return
@@ -83,7 +83,7 @@ extension LightsAnimationsViewController: ARSCNViewDelegate {
 extension LightsAnimationsViewController: ARExperimentSessionHandler {
     func sessionTrackingSwitchedToNormal() {
         if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
-            nodesForSession = arModel.nodesForARExperience(using: lightEstimate)
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }

@@ -43,8 +43,8 @@ class OneModelUsingAnchorsViewController: UIViewController {
         }
 
         for node in arAsset.nodesOfType(.model) {
-            if let nodeExists = arViewModel.node(in: sceneView, named: node.name) {
-                nodeExists.removeFromParentNode()
+            if let existingNode = arViewModel.node(in: sceneView, named: node.name) {
+                existingNode.removeFromParentNode()
             }
         }
         

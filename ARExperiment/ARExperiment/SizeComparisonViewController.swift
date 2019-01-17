@@ -8,7 +8,7 @@ class SizeComparisonViewController: UIViewController {
     @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
     private let arAsset = ARAsset.measuringUnits
-    private var arModel: ARViewModel!
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
     private var nodesForSession: [SCNNode]?
     private var currentCube = CubeModel.big
@@ -17,7 +17,7 @@ class SizeComparisonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        arModel = ARViewModel(arAsset: arAsset)
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
@@ -48,7 +48,7 @@ class SizeComparisonViewController: UIViewController {
 
         removeNodeIfExistAlready()
 
-        guard let hitTransform = arModel.worldTransformForAnchor(at: location,
+        guard let hitTransform = arViewModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
                                                                  withType: [.featurePoint,
                                                                             .estimatedHorizontalPlane]) else {
@@ -60,12 +60,12 @@ class SizeComparisonViewController: UIViewController {
     
     private func removeNodeIfExistAlready() {
 
-        if let nodeExists = arModel.node(in: sceneView, named: currentCube.fileName) {
-            nodeExists.removeFromParentNode()
+        if let nodeExists = arViewModel.node(in: sceneView, named: currentCube.fileName) {
+            existingNode.removeFromParentNode()
         }
 
-        if let nodeExists = arModel.node(in: sceneView, named: currentCube.textFileName) {
-            nodeExists.removeFromParentNode()
+        if let nodeExists = arViewModel.node(in: sceneView, named: currentCube.textFileName) {
+            existingNode.removeFromParentNode()
         }
 
     }
@@ -126,7 +126,7 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
 extension SizeComparisonViewController: ARExperimentSessionHandler {
     func sessionTrackingSwitchedToNormal() {
         if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
-            nodesForSession = arModel.nodesForARExperience(using: lightEstimate)
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }
