@@ -2,23 +2,22 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler {
-
+class SizeComparisonViewController: UIViewController {
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var worldMessuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
-
-    private var scene: SCNScene?
+    private let arAsset = ARAsset.measuringUnits
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
-    private let arModel = ARViewModel()
-    private let fileName = "measuring-units"
-    private let fileExtension = "scn"
+    private var nodesForSession: [SCNNode]?
     private var currentCube = CubeModel.big
     private var currentScale = Scale.realWorldScale
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
@@ -26,7 +25,6 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
                                   ARSCNDebugOptions.showWorldOrigin]
         
-        scene = SCNScene(named: "art.scnassets/measuring-units.scn")
         self.view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
@@ -50,21 +48,21 @@ class SizeComparisonViewController: UIViewController, ARExperimentSessionHandler
 
         removeNodeIfExistAlready()
 
-        guard let hitTransform = arModel.worldTransformForAnchor(at: location,
+        guard let hitTransform = arViewModel.worldTransformForAnchor(at: location,
                                                                  in: sceneView,
-                                                                 withType: [.featurePoint]) else {
-                                                                    return
+                                                                 withType: [.featurePoint,
+                                                                            .estimatedHorizontalPlane]) else {
+                                                                                return
         }
         let anchor = ARAnchor(transform: hitTransform)
         sceneView.session.add(anchor: anchor)
     }
     
     private func removeNodeIfExistAlready() {
-
-        sceneView.scene.rootNode.childNode(withName: currentCube.fileName, recursively: true)?.removeFromParentNode()
-        sceneView.scene.rootNode.childNode(withName: currentCube.textFileName, recursively: true)?.removeFromParentNode()
+        arViewModel.node(in: sceneView, named: currentCube.fileName)?.removeFromParentNode()
+        arViewModel.node(in: sceneView, named: currentCube.textFileName)?.removeFromParentNode()
     }
-    
+
     @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
         
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
@@ -100,14 +98,12 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         guard !anchor.isKind(of: ARPlaneAnchor.self) else {
             return nil
         }
-        guard let cube = arModel.createSceneNodeForAsset(currentCube.fileName,
-                                                   fileName: fileName,
-                                                   assetExtension: fileExtension),
-            let text = arModel.createSceneNodeForAsset(currentCube.textFileName,
-                                                   fileName: fileName,
-                                                   assetExtension: fileExtension) else {
-                                                    print("could not find node")
-                                                    return nil
+
+        guard let nodesForSession = nodesForSession,
+            let cube = nodesForSession.findNode(withName: currentCube.fileName),
+            let text = nodesForSession.findNode(withName: currentCube.textFileName) else {
+                print("could not find node")
+                return nil
         }
         let node = SCNNode()
         cube.scale = cube.scale.vectorScaled(to:self.currentScale.percentage)
@@ -117,5 +113,19 @@ extension SizeComparisonViewController: ARSCNViewDelegate {
         node.addChildNode(cube)
         node.addChildNode(text)
         return node
+    }
+}
+
+extension SizeComparisonViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
+        }
+    }
+}
+
+private extension Array where Element == SCNNode {
+    func findNode(withName name: String) -> SCNNode? {
+        return self.filter{$0.name == name}.first
     }
 }

@@ -2,19 +2,18 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionHandler {
+class OneModelUsingAnchorsViewController: UIViewController {
     
     @IBOutlet var sceneView: ARSCNView!
-    private let assetFolder = "Banana"
-    private let nodeName = "banana"
-    private let fileName = "banana-small"
-    private let fileExtension = "dae"
-    private let arViewModel = ARViewModel()
+    private let arAsset = ARAsset.banana
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
-    
+    private var nodesForSession: [SCNNode]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
@@ -42,9 +41,9 @@ class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionH
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
-        
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
+
+        for node in arAsset.nodesOfType(.model) {
+            arViewModel.node(in: sceneView, named: node.name)?.removeFromParentNode()
         }
         
         addNodeToSessionUsingAnchors(location: location)
@@ -62,19 +61,28 @@ class OneModelUsingAnchorsViewController: UIViewController, ARExperimentSessionH
 extension OneModelUsingAnchorsViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        if !anchor.isKind(of: ARPlaneAnchor.self) {
-            guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                                  assetFolder: assetFolder,
-                                                                  fileName: fileName,
-                                                                  assetExtension: fileExtension) else {
-                                                                    print("we have no model")
-                                                                    return nil
-            }
-            let node = SCNNode()
-            model.position = SCNVector3Zero
-            node.addChildNode(model)
-            return node
+        guard !anchor.isKind(of: ARPlaneAnchor.self) else {
+            return nil
         }
-        return nil
+
+        guard let nodesForSession = nodesForSession else {
+            print("we have no model")
+            return nil
+        }
+
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
+
+        return parentNode
+    }
+}
+
+extension OneModelUsingAnchorsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
+        }
     }
 }

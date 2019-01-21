@@ -2,19 +2,18 @@ import UIKit
 import SceneKit
 import ARKit
 
-class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
-    private let assetFolder = "Banana"
-    private let nodeName = "banana"
-    private let fileName = "banana-small"
-    private let fileExtension = "dae"
-    private let arViewModel = ARViewModel()
+    private let arAsset = ARAsset.banana
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
-    
+    private var nodesForSession: [SCNNode]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        arViewModel = ARViewModel(arAsset: arAsset)
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
@@ -43,24 +42,36 @@ class OneModelUsingVectorsViewController: UIViewController, ARSCNViewDelegate, A
         guard let location = touches.first?.location(in: sceneView) else {
             return
         }
-        
-        if let nodeExists = sceneView.scene.rootNode.childNode(withName: nodeName, recursively: true) {
-            nodeExists.removeFromParentNode()
+
+        for node in arAsset.nodesOfType(.model) {
+            arViewModel.node(in: sceneView, named: node.name)?.removeFromParentNode()
         }
-        addNoteToSceneUsingVector(location: location)
+        addNodesToScene(location: location)
     }
-    
-    private func addNoteToSceneUsingVector(location: CGPoint) {
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                              assetFolder: assetFolder,
-                                                              fileName: fileName,
-                                                              assetExtension: fileExtension) else {
-                                                                return
+
+    private func addNodesToScene(location: CGPoint) {
+        guard let nodesForSession = nodesForSession else {
+            print("we have no model")
+            return
         }
+
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
+
         if let hit = arViewModel.hitResult(at: location, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            let pointTranslation = hit.worldTransform.translation 
-            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(model)
+            let pointTranslation = hit.worldTransform.translation
+            parentNode.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+            sceneView.scene.rootNode.addChildNode(parentNode)
+        }
+    }
+}
+
+extension OneModelUsingVectorsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }
