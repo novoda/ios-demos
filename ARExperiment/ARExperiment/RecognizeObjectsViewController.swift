@@ -29,7 +29,7 @@ class RecognizeObjectsViewController: UIViewController {
 
         setupStartButton()
         setUpVision()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
     
@@ -54,12 +54,12 @@ class RecognizeObjectsViewController: UIViewController {
         startButton.backgroundColor = .white
         startButton.alpha = 0.85
         startButton.addTarget(self, action: #selector(startButtonHasBeenPressed), for: .touchUpInside)
-        self.view.addSubview(startButton)
+        view.addSubview(startButton)
         
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        startButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        startButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        startButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
     }
     
     @objc private func startButtonHasBeenPressed(_ sender: UIButton) {
