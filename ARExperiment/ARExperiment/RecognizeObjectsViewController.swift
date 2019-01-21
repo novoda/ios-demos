@@ -13,8 +13,6 @@ class RecognizeObjectsViewController: UIViewController {
     private let arAsset = ARAsset.cubeWireframe
     private var arViewModel: ARViewModel!
     private var currentSceneFrame: CGRect = .zero
-    private let usingAnchors = true
-    private var usingTinyModel = false
     private let arSessionDelegate = ARExperimentSession()
     private var nodesForSession: [SCNNode]?
     private var prediction: ObjectPrediction?
@@ -186,7 +184,7 @@ class RecognizeObjectsViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            if strongSelf.usingAnchors {
+            if DeveloperOptions.usingAnchors.isActive {
                 strongSelf.addAnchorToScene(in: hitPoint)
             } else {
                 strongSelf.addVectorToScene(in: hitPoint, withPrediction: prediction)
@@ -233,7 +231,7 @@ class RecognizeObjectsViewController: UIViewController {
 
 extension RecognizeObjectsViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        guard !anchor.isKind(of: ARPlaneAnchor.self) && usingAnchors else {
+        guard !anchor.isKind(of: ARPlaneAnchor.self) && DeveloperOptions.usingAnchors.isActive else {
             return nil
         }
         guard let model = nodeForTextAndSize() else {

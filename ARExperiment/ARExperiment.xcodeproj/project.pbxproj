@@ -23,6 +23,7 @@
 		4C5E3EE31FFBA2CC001B4493 /* ARExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E3EE21FFBA2CC001B4493 /* ARExperimentTests.swift */; };
 		4C7DAF35216CDA6800D03840 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */; };
 		4C8BBEA721F5E1AC00FFA065 /* RecognizeObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BBEA621F5E1AC00FFA065 /* RecognizeObjectsViewModel.swift */; };
+		4C8BBEAA21F5E43500FFA065 /* DeveloperOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BBEA921F5E43500FFA065 /* DeveloperOptions.swift */; };
 		4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */; };
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
 		4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */; };
@@ -68,6 +69,7 @@
 		4C5E3EE41FFBA2CC001B4493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		4C8BBEA621F5E1AC00FFA065 /* RecognizeObjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeObjectsViewModel.swift; sourceTree = "<group>"; };
+		4C8BBEA921F5E43500FFA065 /* DeveloperOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperOptions.swift; sourceTree = "<group>"; };
 		4C8C9FDC1FFE719B00CF9889 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
 		4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsAnimationsViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */,
 				4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */,
 				CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */,
+				4C8BBEA921F5E43500FFA065 /* DeveloperOptions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				4C5E3ECC1FFBA2CC001B4493 /* AppDelegate.swift in Sources */,
 				CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */,
 				4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */,
+				4C8BBEAA21F5E43500FFA065 /* DeveloperOptions.swift in Sources */,
 				4C1471AC21E4C4F400017DD7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4C8C9FDD1FFE719B00CF9889 /* StartViewController.swift in Sources */,
 				CDBE769F21EF931B0065B272 /* Scale.swift in Sources */,

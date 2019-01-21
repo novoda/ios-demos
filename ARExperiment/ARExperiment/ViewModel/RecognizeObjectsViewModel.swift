@@ -3,8 +3,6 @@ import Vision
 
 class RecognizeObjectsViewModel {
     private var request: VNCoreMLRequest!
-    let usingAnchors = true
-    private var usingTinyModel = false
     private let yolo = YOLO()
     private let semaphore = DispatchSemaphore(value: 2)
     private var prediction: ObjectPrediction?
@@ -21,7 +19,7 @@ class RecognizeObjectsViewModel {
     }
 
     func setUpVision() {
-        if usingTinyModel {
+        if DeveloperOptions.usingTinyYOLOModel.isActive {
             guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
                 print("Error: could not create Vision model")
                 return
@@ -29,8 +27,8 @@ class RecognizeObjectsViewModel {
             request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         } else {
             guard #available(iOS 12.0, *) else {
-                usingTinyModel = true
-                setUpVision()
+                print("Error: you can't use ObjectDetector on NOT IOS12")
+                showStartButtonIfError()
                 return
             }
             guard let visionModel = try? VNCoreMLModel(for: ObjectDetector().model) else {
@@ -49,7 +47,7 @@ class RecognizeObjectsViewModel {
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.semaphore.signal()
 
-        if usingTinyModel {
+        if DeveloperOptions.usingTinyYOLOModel.isActive {
             prediction = processPredictionFromTinyYolo(results: request.results)
         } else {
             prediction = processPredictionFromVision(results: request.results)
