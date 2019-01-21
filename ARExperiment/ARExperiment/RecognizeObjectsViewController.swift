@@ -25,6 +25,7 @@ class RecognizeObjectsViewController: UIViewController {
 
         setupStartButton()
         recognizeObjectsViewModel.setUpVision()
+        bindPredictionResults()
         view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
@@ -72,8 +73,16 @@ class RecognizeObjectsViewController: UIViewController {
         }
     }
 
-    //MARK: Add Model to the scene
+    private func bindPredictionResults() {
+        recognizeObjectsViewModel.onNewPrediction = { [weak self] prediction in
+            self?.addBoxOnMainThread(prediction)
+        }
+        recognizeObjectsViewModel.onError = { [weak self] in
+            self?.showStartButtonIfError()
+        }
+    }
 
+    //MARK: Add Model to the scene
     private func addBoxOnMainThread(_ prediction: ObjectPrediction?) {
         guard let prediction = prediction,
             let hitPoint = findHitPointFor(prediction.bounds) else {

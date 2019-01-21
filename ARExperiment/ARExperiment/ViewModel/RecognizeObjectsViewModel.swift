@@ -5,14 +5,16 @@ class RecognizeObjectsViewModel {
     private var request: VNCoreMLRequest!
     private let yolo = YOLO()
     private let semaphore = DispatchSemaphore(value: 2)
-    private var prediction: ObjectPrediction?
     private var currentSceneFrame: CGRect = .zero
+    var onNewPrediction: ((ObjectPrediction?) -> Void)?
+    var onError: (() -> Void)?
 
     func setCurrentFrameForModel(_ currentSceneFrame: CGRect) {
         self.currentSceneFrame = currentSceneFrame
     }
 
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
+        semaphore.wait()
         // Vision will automatically resize the input image.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
@@ -21,21 +23,27 @@ class RecognizeObjectsViewModel {
     func setUpVision() {
         if DeveloperOptions.usingTinyYOLOModel.isActive {
             guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
+                onError?()
                 print("Error: could not create Vision model")
                 return
             }
-            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+            request = VNCoreMLRequest(model: visionModel) { [weak self] request, error in
+                self?.visionRequestDidComplete(request: request, error: error)
+            }
         } else {
             guard #available(iOS 12.0, *) else {
                 print("Error: you can't use ObjectDetector on NOT IOS12")
-                showStartButtonIfError()
+                onError?()
                 return
             }
             guard let visionModel = try? VNCoreMLModel(for: ObjectDetector().model) else {
+                onError?()
                 print("Error: could not create Vision model")
                 return
             }
-            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+            request = VNCoreMLRequest(model: visionModel) { [weak self] request, error in
+                self?.visionRequestDidComplete(request: request, error: error)
+            }
         }
 
         // NOTE: If you choose another crop/scale option, then you must also
@@ -48,24 +56,23 @@ class RecognizeObjectsViewModel {
         self.semaphore.signal()
 
         if DeveloperOptions.usingTinyYOLOModel.isActive {
-            prediction = processPredictionFromTinyYolo(results: request.results)
+            onNewPrediction?(processPredictionFromTinyYolo(results: request.results))
         } else {
-            prediction = processPredictionFromVision(results: request.results)
+            onNewPrediction?(processPredictionFromVision(results: request.results))
         }
-        addBoxOnMainThread(prediction)
     }
 
     private func processPredictionFromTinyYolo(results: [Any]?) -> ObjectPrediction? {
         guard let observations = results as? [VNCoreMLFeatureValueObservation],
             let topObservation = observations.first?.featureValue.multiArrayValue else {
                 print("Tiny YOLO failed finding prediction" )
-                showStartButtonIfError()
+                onError?()
                 return nil
         }
 
         guard let prediction = predictionForTinyYOLO(topObservation: topObservation),
             let objectBounds = boundingBoxRectForTinyYOLO(prediction: prediction) else {
-                showStartButtonIfError()
+                onError?()
                 print("Tiny YOLO failed finding top prediction" )
                 return nil
         }
@@ -74,14 +81,14 @@ class RecognizeObjectsViewModel {
 
     private func processPredictionFromVision(results: [Any]?) -> ObjectPrediction? {
         guard #available(iOS 12.0, *) else {
-            usingTinyModel = true
+            print("Error: you can't use ObjectDetector on NOT IOS12")
             return nil
         }
         guard let observations = results as? [VNRecognizedObjectObservation],
             let topObservation = observations.first,
             let topLabelObservation = topObservation.labels.first else {
                 print("Vision failed finding prediction" )
-                showStartButtonIfError()
+                onError?()
                 return nil
         }
         let objectRect = VNImageRectForNormalizedRect(topObservation.boundingBox,
