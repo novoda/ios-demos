@@ -26,7 +26,10 @@
 		4C8C9FDF1FFE733500CF9889 /* SizeComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */; };
 		4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */; };
 		4CA242F5200533DF00D895C1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA242F4200533DE00D895C1 /* Helpers.swift */; };
+		4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */; };
 		4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */; };
+		4CB8788621EF5E430051B8A7 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788521EF5E430051B8A7 /* ObjectDetector.mlmodel */; };
+		4CB8788821EF61590051B8A7 /* CoreMLPredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */; };
 		CDBE769B21EF56870065B272 /* SCNVector3+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */; };
 		CDBE769D21EF92C50065B272 /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769C21EF92C50065B272 /* CubeModel.swift */; };
 		CDBE769F21EF931B0065B272 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE769E21EF931B0065B272 /* Scale.swift */; };
@@ -66,7 +69,10 @@
 		4C8C9FDE1FFE733500CF9889 /* SizeComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeComparisonViewController.swift; sourceTree = "<group>"; };
 		4C9409FB20189E2000DAFC91 /* LightsAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsAnimationsViewController.swift; sourceTree = "<group>"; };
 		4CA242F4200533DE00D895C1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHelpers.swift; sourceTree = "<group>"; };
 		4CB8788121EDEE700051B8A7 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
+		4CB8788521EF5E430051B8A7 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = "ARExperiment/TinyYolo Helpers/ObjectDetector.mlmodel"; sourceTree = SOURCE_ROOT; };
+		4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLPredictionModel.swift; sourceTree = "<group>"; };
 		CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Helpers.swift"; sourceTree = "<group>"; };
 		CDBE769C21EF92C50065B272 /* CubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
 		CDBE769E21EF931B0065B272 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		4C3DF54F201B72C4008F81E8 /* TinyYolo Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4CB8788521EF5E430051B8A7 /* ObjectDetector.mlmodel */,
 				4C06C5BB21DFA445007FA0D1 /* TinyYOLO.mlmodel */,
 				4CA242F4200533DE00D895C1 /* Helpers.swift */,
 				4C185BA920052928007182D2 /* YOLO.swift */,
@@ -136,6 +143,7 @@
 				5087490121E60DF000BAF05D /* Frameworks */,
 				5087490021E60DA200BAF05D /* Resources */,
 				508748FF21E60D7C00BAF05D /* Supporting Files */,
+				4CB8787D21E8C2FE0051B8A7 /* ARHelpers.swift */,
 			);
 			path = ARExperiment;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				4C7DAF34216CDA6800D03840 /* UIViewController+Helpers.swift */,
+				4CB8788721EF61590051B8A7 /* CoreMLPredictionModel.swift */,
 				CDBE769A21EF56870065B272 /* SCNVector3+Helpers.swift */,
 			);
 			path = Helpers;
@@ -311,9 +320,12 @@
 				4C06C5C221DFA45E007FA0D1 /* OneModelUsingVectorsViewController.swift in Sources */,
 				4C185BAE20052977007182D2 /* CVPixelBuffer+Helpers.swift in Sources */,
 				4C185BA4200527A4007182D2 /* RecognizeObjectsViewController.swift in Sources */,
+				4CB8788821EF61590051B8A7 /* CoreMLPredictionModel.swift in Sources */,
+				4CB8787E21E8C2FE0051B8A7 /* ARHelpers.swift in Sources */,
 				4C06C5BC21DFA448007FA0D1 /* TinyYOLO.mlmodel in Sources */,
 				4CB8788221EDEE700051B8A7 /* ARCameraTrackingState.swift in Sources */,
 				4C06C5C121DFA45E007FA0D1 /* OneModelUsingAnchorsViewController.swift in Sources */,
+				4CB8788621EF5E430051B8A7 /* ObjectDetector.mlmodel in Sources */,
 				4C06C5C321DFA45E007FA0D1 /* ARViewModel.swift in Sources */,
 				CDBE769D21EF92C50065B272 /* CubeModel.swift in Sources */,
 				4C9409FC20189E2000DAFC91 /* LightsAnimationsViewController.swift in Sources */,
