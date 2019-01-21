@@ -59,15 +59,8 @@ class SizeComparisonViewController: UIViewController {
     }
     
     private func removeNodeIfExistAlready() {
-
-        if let nodeExists = arViewModel.node(in: sceneView, named: currentCube.fileName) {
-            existingNode.removeFromParentNode()
-        }
-
-        if let nodeExists = arViewModel.node(in: sceneView, named: currentCube.textFileName) {
-            existingNode.removeFromParentNode()
-        }
-
+        arViewModel.node(in: sceneView, named: currentCube.fileName)?.removeFromParentNode()
+        arViewModel.node(in: sceneView, named: currentCube.textFileName)?.removeFromParentNode()
     }
 
     @IBAction func worldSelectionSegmentControlHasBeenChanged(_ sender: UISegmentedControl) {
