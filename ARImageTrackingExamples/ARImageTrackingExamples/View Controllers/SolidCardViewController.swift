@@ -9,18 +9,20 @@ class SolidCardViewController: UIViewController, ARExperimentSessionHandler {
     private let arViewModel = ARViewModel()
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         sceneView.delegate = self
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
+        super.viewWillAppear(animated)
         let configuration = arViewModel.imageTrackingConfiguration()
         sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
 }
