@@ -41,9 +41,9 @@ extension SolidCardViewController: ARSCNViewDelegate {
 
         let planeNode = arViewModel.planeNode(with: image,
                                               imageSize: imageAnchor.imageSize())
-        planeNode.opacitySlightlyTransparent()
+        planeNode.opacity = .slightyTransparent
         planeNode.eulerAngles.x = -.pi / 2
-        planeNode.positionYSmallOffset()
+        planeNode.position.y = planeNode.position.y * .smallOffset
         node.addChildNode(planeNode)
     }
 }

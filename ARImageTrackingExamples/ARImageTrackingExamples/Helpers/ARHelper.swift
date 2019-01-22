@@ -13,13 +13,3 @@ extension ARImageAnchor {
         return self.referenceImage.physicalSize
     }
 }
-
-extension SCNNode {
-    func opacitySlightlyTransparent() {
-        self.opacity = self.opacity * 0.95
-    }
-
-    func positionYSmallOffset() {
-        self.position.y = self.position.y + 0.01
-    }
-}
