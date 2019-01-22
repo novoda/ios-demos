@@ -22,4 +22,11 @@ class ARViewModel {
         }
         return correspondingImageName.image()
     }
+
+    func planeNode(with material: Any, imageSize: CGSize) -> SCNNode {
+        let plane = SCNPlane(width: imageSize.width,
+                             height: imageSize.height)
+        plane.styleFirstMaterial(with: material)
+        return SCNNode(geometry: plane)
+    }
 }
