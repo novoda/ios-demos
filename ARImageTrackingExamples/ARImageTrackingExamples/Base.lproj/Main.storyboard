@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="332" width="300" height="30"/>
                                         <color key="backgroundColor" red="0.62190557930000001" green="0.79848870699999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.62190557930000001" green="0.79848870699999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="2D Animation">
+                                        <state key="normal" title="SOLID CARD Animation">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -86,11 +86,11 @@
             </objects>
             <point key="canvasLocation" x="-188" y="469"/>
         </scene>
-        <!--View Controller-->
+        <!--Solid Card Animation View Controller-->
         <scene sceneID="OMZ-HA-kGp">
             <objects>
-                <viewController id="yWd-d3-otc" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MeI-dz-ltr">
+                <viewController id="yWd-d3-otc" customClass="SolidCardAnimationViewController" customModule="ARImageTrackingExamples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MeI-dz-ltr" customClass="Solid">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

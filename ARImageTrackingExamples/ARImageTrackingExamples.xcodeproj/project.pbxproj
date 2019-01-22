@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C8BBEA521F0D59700FFA065 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BBEA421F0D59700FFA065 /* Assets.swift */; };
+		4C8BBEAC21F73ED900FFA065 /* SolidCardAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BBEAB21F73ED900FFA065 /* SolidCardAnimationViewController.swift */; };
 		4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8789521EF861C0051B8A7 /* AppDelegate.swift */; };
 		4CB8789821EF861C0051B8A7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789721EF861C0051B8A7 /* art.scnassets */; };
 		4CB8789D21EF861C0051B8A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789B21EF861C0051B8A7 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4C8BBEA421F0D59700FFA065 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		4C8BBEAB21F73ED900FFA065 /* SolidCardAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidCardAnimationViewController.swift; sourceTree = "<group>"; };
 		4CB8789221EF861C0051B8A7 /* ARImageTrackingExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARImageTrackingExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB8789521EF861C0051B8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CB8789721EF861C0051B8A7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */,
+				4C8BBEAB21F73ED900FFA065 /* SolidCardAnimationViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */,
 				4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */,
 				4C8BBEA521F0D59700FFA065 /* Assets.swift in Sources */,
+				4C8BBEAC21F73ED900FFA065 /* SolidCardAnimationViewController.swift in Sources */,
 				4CB878C021EFA0410051B8A7 /* ARHelper.swift in Sources */,
 				4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4CB878BE21EF9AAC0051B8A7 /* ARViewModel.swift in Sources */,
