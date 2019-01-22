@@ -101,16 +101,30 @@
             </objects>
             <point key="canvasLocation" x="-882" y="806"/>
         </scene>
-        <!--View Controller-->
+        <!--Solid Card View Controller-->
         <scene sceneID="1qZ-D9-drb">
             <objects>
-                <viewController id="ZUi-Og-CVQ" sceneMemberID="viewController">
+                <viewController id="ZUi-Og-CVQ" customClass="SolidCardViewController" customModule="ARImageTrackingExamples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLU-VY-ezH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcf-cb-UdK">
+                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                            </arscnView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pcf-cb-UdK" firstAttribute="centerY" secondItem="HLU-VY-ezH" secondAttribute="centerY" constant="32" id="NgB-4k-IR0"/>
+                            <constraint firstItem="Pcf-cb-UdK" firstAttribute="width" secondItem="HLU-VY-ezH" secondAttribute="width" id="XBe-ta-M7D"/>
+                            <constraint firstItem="Pcf-cb-UdK" firstAttribute="height" secondItem="HLU-VY-ezH" secondAttribute="height" id="jm0-Qu-RXp"/>
+                            <constraint firstItem="Pcf-cb-UdK" firstAttribute="centerX" secondItem="HLU-VY-ezH" secondAttribute="centerX" id="zhi-YP-mFC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oLu-Vi-YoL"/>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Pcf-cb-UdK" id="XVf-CF-8lX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBq-me-toh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
