@@ -14,6 +14,8 @@ extension Float {
 
 extension CGFloat {
     static let slightyTransparent: CGFloat = 0.95
+    static let half: CGFloat = 0.5
+    static let third: CGFloat = 0.75
 }
 
 extension Int {
