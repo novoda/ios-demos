@@ -23,10 +23,15 @@ class ARViewModel {
         return correspondingImageName.image()
     }
 
-    func planeNode(with material: Any, imageSize: CGSize) -> SCNNode {
+    func planeNode(with material: Any?, imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
         let plane = SCNPlane(width: imageSize.width,
                              height: imageSize.height)
-        plane.styleFirstMaterial(with: material)
+        if let material = material {
+            plane.styleFirstMaterial(with: material)
+        }
+        if let colorBuffer = colorBufferWriteMask {
+            plane.firstMaterial?.colorBufferWriteMask = colorBuffer
+        }
         return SCNNode(geometry: plane)
     }
 }
