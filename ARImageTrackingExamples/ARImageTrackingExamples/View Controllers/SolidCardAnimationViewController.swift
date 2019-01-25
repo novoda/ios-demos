@@ -45,13 +45,10 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
         mainNode.eulerAngles.x = -.rightAngle
         mainNode.renderingOrder = .renderFirst
 
-        let solidDataPlaneNode = cardNode(for: imageAnchor.imageSize(),
-                                          withImage: image)
+        let solidDataPlaneNode = cardNode(for: imageAnchor.imageSize(), withImage: image)
         mainNode.addChildNode(solidDataPlaneNode)
-        webViewNode(for: imageAnchor.imageSize()) { webViewNode in
-            if let webViewNode = webViewNode {
-                 mainNode.addChildNode(webViewNode)
-            }
+        if let webViewNode = webViewNode(for: imageAnchor.imageSize()) {
+            mainNode.addChildNode(webViewNode)
         }
         node.addChildNode(mainNode)
     }
