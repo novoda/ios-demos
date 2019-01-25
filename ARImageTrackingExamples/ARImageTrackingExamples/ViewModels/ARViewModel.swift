@@ -8,12 +8,22 @@ class ARViewModel {
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
+        let configuration = ARImageTrackingConfiguration()
+        configuration.trackingImages = referenceImages
+        configuration.maximumNumberOfTrackedImages = 2
+        return configuration
+    }
+
+    func worldTrackingWithImageDetection() -> ARConfiguration {
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+            fatalError("Missing expected asset catalog resources.")
+        }
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
         configuration.maximumNumberOfTrackedImages = 2
         return configuration
     }
-
+    
     func image(correspondingTo referenceImage: ARReferenceImage) -> UIImage? {
         guard let referenceImageName = referenceImage.name,
             let correspondingImageName = assets[referenceImageName] else {
