@@ -92,8 +92,6 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
         webViewNode.animate(xOffset: xOffset)
         return webViewNode
     }
-        }
-    }
 }
 
 extension SCNNode {
