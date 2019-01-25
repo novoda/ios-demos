@@ -34,7 +34,7 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
             return
         }
 
-        guard let image = arViewModel.image(correspondingTo: imageAnchor.referenceImage) else {
+        guard let image = arViewModel.image(correspondingTo: imageAnchor.referenceImage, for: .vertical) else {
             print("could not find image")
             return
         }
@@ -109,6 +109,7 @@ private extension SCNNode
                                                   width: cardSize.width,
                                                   height: cardSize.height))
             webView.loadRequest(request)
+            webView.isUserInteractionEnabled = true
             material.diffuse.contents = webView
         }
         plane.materials = [material]

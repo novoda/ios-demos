@@ -34,7 +34,7 @@ extension SolidCardViewController: ARSCNViewDelegate {
             return
         }
 
-        guard let image = arViewModel.image(correspondingTo: imageAnchor.referenceImage) else {
+        guard let image = arViewModel.image(correspondingTo: imageAnchor.referenceImage, for: .horizontal) else {
             print("could not find image")
             return
         }

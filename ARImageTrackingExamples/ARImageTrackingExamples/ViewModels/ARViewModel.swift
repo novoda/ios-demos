@@ -24,9 +24,9 @@ class ARViewModel {
         return configuration
     }
 
-    func image(correspondingTo referenceImage: ARReferenceImage) -> UIImage? {
+    func image(correspondingTo referenceImage: ARReferenceImage, for imageOrientation: ImageOrientation) -> UIImage? {
         guard let referenceImageName = referenceImage.name,
-            let correspondingImageName = assets[referenceImageName] else {
+            let correspondingImageName = correspondingImageName(to: referenceImageName, for: imageOrientation) else {
             print("no image found")
             return nil
         }
@@ -53,5 +53,10 @@ class ARViewModel {
         solidDataPlaneNode.position.z -= 0.01
         solidDataPlaneNode.animate(xOffset: -size.width * .third)
         return solidDataPlaneNode
+    }
+
+    private func correspondingImageName(to referenceImageName: String,
+                                        for imageOrientation: ImageOrientation) -> String? {
+        return "\(referenceImageName)\(imageOrientation.text)"
     }
 }
