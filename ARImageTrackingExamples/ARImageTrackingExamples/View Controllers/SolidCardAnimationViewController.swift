@@ -39,32 +39,58 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
             return
         }
 
-        let mainNode = arViewModel.planeNode(with: nil,
-                                             imageSize: imageAnchor.imageSize(),
-                                             colorBufferWriteMask: .alpha)
-        mainNode.eulerAngles.x = -.rightAngle
-        mainNode.renderingOrder = .renderFirst
+        let mainNode = SCNNode.mainNode(with: imageAnchor.imageSize(), colorBufferWriteMask: .alpha)
 
-        let solidDataPlaneNode = cardNode(for: imageAnchor.imageSize(), withImage: image)
+        node.addChildNode(mainNode)
+        
+        let solidDataPlaneNode = SCNNode.cardNode(for: imageAnchor.imageSize(), withImage: image)
+        
         mainNode.addChildNode(solidDataPlaneNode)
-        if let webViewNode = webViewNode(for: imageAnchor.imageSize()) {
+        
+        if let webViewNode = SCNNode.webViewNode(for: imageAnchor.imageSize())
+        {
             mainNode.addChildNode(webViewNode)
         }
-        node.addChildNode(mainNode)
     }
+}
 
-    private func cardNode(for size: CGSize, withImage image: UIImage) -> SCNNode {
+private extension SCNNode
+{
+    static func planeNode(with material: Any?, imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
+        let plane = SCNPlane(width: imageSize.width,
+                             height: imageSize.height)
+        if let material = material {
+            plane.styleFirstMaterial(with: material)
+        }
+        if let colorBuffer = colorBufferWriteMask {
+            plane.firstMaterial?.colorBufferWriteMask = colorBuffer
+        }
+        return SCNNode(geometry: plane)
+    }
+    
+    static func mainNode(with imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
+        
+        let node = SCNNode.planeNode(with: nil,
+                                         imageSize: imageSize,
+                                         colorBufferWriteMask: .alpha)
+        node.eulerAngles.x = -.rightAngle
+        node.renderingOrder = .renderFirst
+        
+        return node
+    }
+    
+    static func cardNode(for size: CGSize, withImage image: UIImage) -> SCNNode {
         let cardSize = CGSize(width: size.width * .half,
                               height: size.height)
-        let solidDataPlaneNode = arViewModel.planeNode(with: image,
-                                                       imageSize: cardSize)
+        let solidDataPlaneNode = SCNNode.planeNode(with: image,
+                                                   imageSize: cardSize)
         solidDataPlaneNode.opacity = 0
         solidDataPlaneNode.position.z -= 0.01
         solidDataPlaneNode.animate(xOffset: -size.width * .third)
         return solidDataPlaneNode
     }
-
-    private func webViewNode(for size: CGSize) -> SCNNode? {
+    
+    static func webViewNode(for size: CGSize) -> SCNNode? {
         guard let url = URL(string: "https://blog.novoda.com/designing-something-solid/") else {
             print("invalid URL")
             return nil
@@ -75,7 +101,7 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
                               height: 660)
         let xOffset = size.width * .third
         let material = SCNMaterial()
-
+        
         DispatchQueue.main.async {
             let request = URLRequest(url: url)
             let webView = UIWebView(frame: CGRect(x: 0,
@@ -90,6 +116,7 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
         webViewNode.position.z -= 0.01
         webViewNode.opacity = 0
         webViewNode.animate(xOffset: xOffset)
+        
         return webViewNode
     }
 }
