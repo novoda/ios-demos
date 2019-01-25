@@ -2,6 +2,10 @@ import Foundation
 import UIKit
 import ARKit
 
+private extension Int {
+    static let renderFirst: Int = -1
+}
+
 class SolidCardAnimationViewController: UIViewController, ARExperimentSessionHandler {
 
     @IBOutlet var sceneView: ARSCNView!

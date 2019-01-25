@@ -17,7 +17,3 @@ extension CGFloat {
     static let half: CGFloat = 0.5
     static let third: CGFloat = 0.75
 }
-
-extension Int {
-    static let renderFirst: Int = -1
-}
