@@ -100,7 +100,7 @@ extension SCNNode {
     func animate(xOffset: CGFloat) {
         self.runAction(SCNAction.sequence([
                 .wait(duration: 0.5),
-                .fadeOpacity(by: 1.0, duration: 1.5),
+                .fadeOpacity(by: .slightyTransparent, duration: 1.5),
                 .moveBy(x: xOffset, y: 0, z: 0, duration: 1.5),
                 .moveBy(x: 0, y: 0, z: 0.01, duration: 0.2)
             ]))
