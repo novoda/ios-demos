@@ -40,22 +40,19 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
         }
 
         let mainNode = SCNNode.mainNode(with: imageAnchor.imageSize(), colorBufferWriteMask: .alpha)
-
         node.addChildNode(mainNode)
         
         let solidDataPlaneNode = SCNNode.cardNode(for: imageAnchor.imageSize(), withImage: image)
-        
         mainNode.addChildNode(solidDataPlaneNode)
         
-        if let webViewNode = SCNNode.webViewNode(for: imageAnchor.imageSize())
-        {
+        if let webViewNode = SCNNode.webViewNode(for: imageAnchor.imageSize()) {
             mainNode.addChildNode(webViewNode)
         }
     }
 }
 
-private extension SCNNode
-{
+private extension SCNNode {
+    
     static func planeNode(with material: Any?, imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
         let plane = SCNPlane(width: imageSize.width,
                              height: imageSize.height)
@@ -71,8 +68,8 @@ private extension SCNNode
     static func mainNode(with imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
         
         let node = SCNNode.planeNode(with: nil,
-                                         imageSize: imageSize,
-                                         colorBufferWriteMask: .alpha)
+                                     imageSize: imageSize,
+                                     colorBufferWriteMask: .alpha)
         node.eulerAngles.x = -.rightAngle
         node.renderingOrder = .renderFirst
         
@@ -124,10 +121,10 @@ private extension SCNNode
 extension SCNNode {
     func animate(xOffset: CGFloat) {
         self.runAction(SCNAction.sequence([
-                .wait(duration: 0.5),
-                .fadeOpacity(by: .slightyTransparent, duration: 1.5),
-                .moveBy(x: xOffset, y: 0, z: 0, duration: 1.5),
-                .moveBy(x: 0, y: 0, z: 0.01, duration: 0.2)
+            .wait(duration: 0.5),
+            .fadeOpacity(by: .slightyTransparent, duration: 1.5),
+            .moveBy(x: xOffset, y: 0, z: 0, duration: 1.5),
+            .moveBy(x: 0, y: 0, z: 0.01, duration: 0.2)
             ]))
     }
 }
