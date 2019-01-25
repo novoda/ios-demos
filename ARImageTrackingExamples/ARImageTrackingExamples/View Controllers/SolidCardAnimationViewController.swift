@@ -67,28 +67,34 @@ extension SolidCardAnimationViewController: ARSCNViewDelegate {
         return solidDataPlaneNode
     }
 
-    private func webViewNode(for size: CGSize, onComplete: @escaping (SCNNode?) -> ()) {
+    private func webViewNode(for size: CGSize) -> SCNNode? {
         guard let url = URL(string: "https://blog.novoda.com/designing-something-solid/") else {
             print("invalid URL")
-            return
+            return nil
         }
-        let request = URLRequest(url: url)
-        DispatchQueue.main.async { [weak self] in
+        let plane = SCNPlane(width: size.width * .half,
+                             height: size.height)
+        let cardSize = CGSize(width: 400,
+                              height: 660)
+        let xOffset = size.width * .third
+        let material = SCNMaterial()
+
+        DispatchQueue.main.async {
+            let request = URLRequest(url: url)
             let webView = UIWebView(frame: CGRect(x: 0,
                                                   y: 0,
-                                                  width: size.width * .half,
-                                                  height: size.height))
+                                                  width: cardSize.width,
+                                                  height: cardSize.height))
             webView.loadRequest(request)
-            let cardSize = CGSize(width: size.width * .half,
-                                  height: size.height)
-            let webViewNode = self?.arViewModel.planeNode(with: webView, imageSize: cardSize)
-            if let plane = webViewNode?.geometry as? SCNPlane {
-                plane.cornerRadius = 0.25
-            }
-            webViewNode?.position.z -= 0.01
-            webViewNode?.opacity = 0
-            webViewNode?.animate(xOffset: size.width * .third)
-            onComplete(webViewNode)
+            material.diffuse.contents = webView
+        }
+        plane.materials = [material]
+        let webViewNode = SCNNode(geometry: plane)
+        webViewNode.position.z -= 0.01
+        webViewNode.opacity = 0
+        webViewNode.animate(xOffset: xOffset)
+        return webViewNode
+    }
         }
     }
 }
