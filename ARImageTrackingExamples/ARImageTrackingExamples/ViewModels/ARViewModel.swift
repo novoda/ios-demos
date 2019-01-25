@@ -14,13 +14,20 @@ class ARViewModel {
         return configuration
     }
 
-    func worldTrackingWithImageDetection() -> ARConfiguration {
+    func worldTrackingWithImageDetection(with planeDetection: ARWorldTrackingConfiguration.PlaneDetection? = nil) -> ARConfiguration {
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
         configuration.maximumNumberOfTrackedImages = 2
+        configuration.isLightEstimationEnabled = true
+        if #available(iOS 12.0, *) {
+            configuration.environmentTexturing = .automatic
+        }
+        if let planeDetection = planeDetection {
+            configuration.planeDetection = planeDetection
+        }
         return configuration
     }
     
@@ -38,5 +45,13 @@ class ARViewModel {
                              height: imageSize.height)
         plane.styleFirstMaterial(with: material)
         return SCNNode(geometry: plane)
+    }
+
+    func createSceneNodeForAsset(_ nodeName: String, arAsset: ARAsset) -> SCNNode? {
+        guard let scene = SCNScene(named: arAsset.filePath()) else {
+            return nil
+        }
+        let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
+        return node
     }
 }

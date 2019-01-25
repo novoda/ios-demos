@@ -38,31 +38,12 @@ extension ARAsset {
 }
 
 extension ARAsset {
-    static let banana = ARAsset(fileName: "banana-small",
-                                     fileExtension: "dae",
-                                     assetFolder: "Banana",
-                                     nodes: [ARNode(name: "banana",
-                                                    nodeType: .model)])
-    static let measuringUnits = ARAsset(fileName: "measuring-units",
-                                        fileExtension: "scn",
-                                        assetFolder: nil,
-                                        nodes: [ARNode(name: "text_5", nodeType: .model),
-                                                ARNode(name: "cube_5", nodeType: .model),
-                                                ARNode(name: "text_1", nodeType: .model),
-                                                ARNode(name: "cube_1", nodeType: .model),
-                                                ARNode(name: "text_0.1", nodeType: .model),
-                                                ARNode(name: "cube_0.1", nodeType: .model)])
-    static let cubeWireframe = ARAsset(fileName: "cubewireframe",
-                                       fileExtension: "dae",
-                                       assetFolder: nil,
-                                       nodes: [ARNode(name: "cubewireframe",
-                                                      nodeType: .model)])
-    static let earthMoon = ARAsset(fileName: "earth-moon",
-                                   fileExtension: "dae",
-                                   assetFolder: "EarthMoon",
-                                   nodes: [ARNode(name: "Sphere", nodeType: .model),
-                                           ARNode(name: "Moon_Orbit", nodeType: .model),
-                                           ARNode(name: "Plane", nodeType: .plane),
-                                           ARNode(name: "Sun", nodeType: .light)])
-
+    static let novodaPlaneExterior = ARAsset(fileName: "plane-exterior",
+                                             fileExtension: "scn",
+                                             assetFolder: "plane-exterior",
+                                             nodes: [ARNode(name: "plane", nodeType: .model)])
+    static let novodaPlaneInterior = ARAsset(fileName: "cabin",
+                                             fileExtension: "scn",
+                                             assetFolder: "plane-interior-reduced",
+                                             nodes: [ARNode(name: "First_Class_Passenger_Cabin", nodeType: .model)])
 }
