@@ -7,12 +7,11 @@ class Aviation3dAnimationViewController: UIViewController {
     @IBOutlet weak var customSwitch: BetterSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
-    private var airplane = SCNNode()
     private let arViewModel = ARViewModel()
+    private var airplane = SCNNode()
     private var cabin = SCNNode()
     private var imageAnchor: ARAnchor?
     private var imageNode: SCNNode?
-    private var objectRendered: SCNNode?
     private let scale = 0.04
     private var animationInfo: AnimationInfo?
 
@@ -22,7 +21,6 @@ class Aviation3dAnimationViewController: UIViewController {
         sceneView.delegate = self
         sceneView.showsStatistics = false
         sceneView.scene = SCNScene()
-
         prepareObjects()
         setupViews()
     }
@@ -78,36 +76,25 @@ class Aviation3dAnimationViewController: UIViewController {
     private func setupLightSource() {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLight.LightType.ambient
-        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
+        ambientLightNode.light?.type = SCNLight.LightType.ambient
+        ambientLightNode.light?.color = UIColor(white: 0.67, alpha: 1.0)
         sceneView.scene.rootNode.addChildNode(ambientLightNode)
 
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLight.LightType.omni
-        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode.light?.type = SCNLight.LightType.omni
+        omniLightNode.light?.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50, 50)
         sceneView.scene.rootNode.addChildNode(omniLightNode)
     }
 
     @IBAction func resetExperience() {
-        guard let objectRendered = objectRendered else {
-            return
-        }
 
         DispatchQueue.main.async {
-            SCNTransaction.begin()
-            self.containerView.alpha = 0
-            SCNTransaction.animationDuration = 6.0
-            if objectRendered == self.airplane {
-                self.airplane.position = SCNVector3Make(3, 1, 0)
-            } else if objectRendered == self.cabin {
-                self.cabin.opacity = 0.0
-            }
-            SCNTransaction.completionBlock = {
-                self.resetState()
-            }
-            SCNTransaction.commit()
+            self.animateContainerVisibility(alpha: 0)
+            self.animateAirplaneTo(position: SCNVector3Make(3, 1, 0))
+            self.cabin.opacity = 0.0
+            self.resetState()
         }
     }
 
@@ -116,7 +103,6 @@ class Aviation3dAnimationViewController: UIViewController {
         if let imageAnchor = imageAnchor {
             sceneView.session.remove(anchor: imageAnchor)
         }
-        objectRendered = nil
     }
 
     @objc private func controlValueChanged(_ sender: BetterSegmentedControl) {
@@ -128,13 +114,9 @@ class Aviation3dAnimationViewController: UIViewController {
     }
 
     private func transition(fromObject: SCNNode, toObject: SCNNode) {
-        let animationDuration = 3.0
-        objectRendered = toObject
-
         DispatchQueue.main.async {
             SCNTransaction.begin()
-            SCNTransaction.animationDuration = animationDuration
-
+            SCNTransaction.animationDuration = 3.0
             fromObject.opacity = 0.0
             toObject.opacity = 1.0
             SCNTransaction.commit()
@@ -145,29 +127,19 @@ class Aviation3dAnimationViewController: UIViewController {
 extension Aviation3dAnimationViewController: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let imageAnchor = anchor as? ARImageAnchor, objectRendered == nil else { return }
+        guard let imageAnchor = anchor as? ARImageAnchor else { return }
 
         DispatchQueue.main.async {
             self.airplane.position = SCNVector3Make(-0.5, 0, 0)
+            self.cabin.position = SCNVector3Zero
+            self.cabin.opacity = 0
             node.addChildNode(self.airplane)
+            node.addChildNode(self.cabin)
 
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 5
-            self.airplane.position = SCNVector3Zero
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 2
-                self.containerView.alpha = 1
-                SCNTransaction.commit()
-
-                self.objectRendered = self.airplane
-                self.imageAnchor = imageAnchor
-                self.imageNode = node
-                self.cabin.position = SCNVector3Zero
-                self.cabin.opacity = 0
-                node.addChildNode(self.cabin)
-            }
-            SCNTransaction.commit()
+            self.animateAirplaneTo(position: SCNVector3Zero)
+            self.animateContainerVisibility(alpha: 1)
+            self.imageAnchor = imageAnchor
+            self.imageNode = node
         }
     }
 
@@ -179,65 +151,39 @@ extension Aviation3dAnimationViewController: ARSCNViewDelegate {
 
         // 1. Unwrap animationInfo. Calculate animationInfo if it is nil.
         guard let animationInfo = animationInfo else {
-            refreshAnimationVariables(startTime: time,
-                                      initialPosition: airplane.simdWorldPosition,
-                                      finalPosition: imageNode.simdWorldPosition,
-                                      initialOrientation: airplane.simdWorldOrientation,
-                                      finalOrientation: imageNode.simdWorldOrientation)
+            self.animationInfo = arViewModel.animationVariable(updateAtTime: time,
+                                                          referenceImageNode: imageNode,
+                                                          referenenceNode: airplane)
             return
         }
 
-        // 2. Calculate new animationInfo if image position or orientation changed.
-        if !simd_equal(animationInfo.finalModelPosition, imageNode.simdWorldPosition) ||
-            animationInfo.finalModelRotation != imageNode.simdWorldOrientation {
+        if imageNode.hasPositionChanged(comparedTo: animationInfo) ||
+            imageNode.hasOrientationChanged(comparedTo: animationInfo) {
 
-            refreshAnimationVariables(startTime: time,
-                                      initialPosition: airplane.simdWorldPosition,
-                                      finalPosition: imageNode.simdWorldPosition,
-                                      initialOrientation: airplane.simdWorldOrientation,
-                                      finalOrientation: imageNode.simdWorldOrientation)
+            self.animationInfo = arViewModel.animationVariable(updateAtTime: time,
+                                                               referenceImageNode: imageNode,
+                                                               referenenceNode: airplane)
         }
 
-        // 3. Calculate interpolation based on passedTime/totalTime ratio.
-        let passedTime = time - animationInfo.startTime
-        var t = min(Float(passedTime/animationInfo.duration), 1)
-        // Applying curve function to time parameter to achieve "ease out" timing
-        t = sin(t * .pi * 0.5)
 
-        // 4. Calculate and set new model position and orientation.
-        let f3t = simd_make_float3(t, t, t)
-        airplane.simdWorldPosition = simd_mix(animationInfo.initialModelPosition, animationInfo.finalModelPosition, f3t)
-        airplane.simdWorldOrientation = simd_slerp(animationInfo.initialModelRotation, animationInfo.finalModelRotation, t)
+        airplane.simdWorldPosition = arViewModel.positionRelativeTo(animationInfo: animationInfo,
+                                                                    using: time)
+        cabin.simdWorldPosition = arViewModel.positionRelativeTo(animationInfo: animationInfo,
+                                                                 using: time)
     }
 
-    func refreshAnimationVariables(startTime: TimeInterval, initialPosition: float3, finalPosition: float3, initialOrientation: simd_quatf, finalOrientation: simd_quatf) {
-        let distance = simd_distance(initialPosition, finalPosition)
-        // Average speed of movement is 0.15 m/s.
-        let speed = Float(0.15)
-        // Total time is calculated as distance/speed. Min time is set to 0.1s and max is set to 2s.
-        let animationDuration = Double(min(max(0.1, distance/speed), 2))
-        // Store animation information for later usage.
-        animationInfo = AnimationInfo(startTime: startTime,
-                                      duration: animationDuration,
-                                      initialModelPosition: initialPosition,
-                                      initialModelRotation: initialOrientation, finalModelPosition: finalPosition,
-                                      finalModelRotation: finalOrientation)
+    private func animateContainerVisibility(alpha: CGFloat) {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 2
+        self.containerView.alpha = alpha
+        SCNTransaction.commit()
     }
 
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        if anchor == self.imageAnchor {
-
-
-        }
+    private func animateAirplaneTo(position: SCNVector3) {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 5
+        self.airplane.position = position
+        SCNTransaction.commit()
     }
 }
 
-struct AnimationInfo {
-    var startTime: TimeInterval
-    var duration: TimeInterval
-    var initialModelPosition: simd_float3
-    var initialModelRotation: simd_quatf
-    var finalModelPosition: simd_float3
-    var finalModelRotation: simd_quatf
-
-}
