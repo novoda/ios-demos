@@ -44,14 +44,4 @@ class ARViewModel {
         }
         return SCNNode(geometry: plane)
    }
-    
-    func cardNode(for size: CGSize, withImage image: UIImage) -> SCNNode {
-        let cardSize = CGSize(width: size.width * .half,
-                              height: size.height)
-        let solidDataPlaneNode = planeNode(with: image, imageSize: cardSize)
-        solidDataPlaneNode.opacity = 0
-        solidDataPlaneNode.position.z -= 0.01
-        solidDataPlaneNode.animate(xOffset: -size.width * .third)
-        return solidDataPlaneNode
-    }
 }
