@@ -24,9 +24,9 @@ class ARViewModel {
         return configuration
     }
 
-    func image(correspondingTo referenceImage: ARReferenceImage) -> UIImage? {
+    func image(correspondingTo referenceImage: ARReferenceImage, for imageOrientation: ImageOrientation) -> UIImage? {
         guard let referenceImageName = referenceImage.name,
-            let correspondingImageName = assets[referenceImageName] else {
+            let correspondingImageName = correspondingImageName(to: referenceImageName, for: imageOrientation) else {
             print("no image found")
             return nil
         }
@@ -44,4 +44,9 @@ class ARViewModel {
         }
         return SCNNode(geometry: plane)
    }
+    
+    private func correspondingImageName(to referenceImageName: String,
+                                        for imageOrientation: ImageOrientation) -> String? {
+        return "\(referenceImageName)\(imageOrientation.text)"
+    }
 }
