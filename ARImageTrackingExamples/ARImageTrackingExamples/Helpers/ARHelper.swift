@@ -13,3 +13,13 @@ extension ARImageAnchor {
         return self.referenceImage.physicalSize
     }
 }
+
+extension SCNNode {
+    func hasPositionChanged(comparedTo animationInfo: AnimationInfo) -> Bool {
+        return !simd_equal(animationInfo.finalModelPosition, self.simdWorldPosition)
+    }
+
+    func hasOrientationChanged(comparedTo animationInfo: AnimationInfo) -> Bool {
+        return animationInfo.finalModelRotation != self.simdWorldOrientation
+    }
+}
