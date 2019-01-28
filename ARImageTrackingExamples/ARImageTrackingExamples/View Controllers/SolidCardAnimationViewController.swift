@@ -87,7 +87,7 @@ private extension SCNNode {
                                                    imageSize: cardSize)
         solidDataPlaneNode.opacity = 0
         solidDataPlaneNode.position.z -= 0.01
-        solidDataPlaneNode.animate(xOffset: -size.width * .third)
+        solidDataPlaneNode.animate(xOffset: -size.width * 0.75)
         return solidDataPlaneNode
     }
     
@@ -100,7 +100,7 @@ private extension SCNNode {
                              height: size.height)
         let cardSize = CGSize(width: 400,
                               height: 660)
-        let xOffset = size.width * .third
+        let xOffset = size.width * 0.75
         let material = SCNMaterial()
         
         DispatchQueue.main.async {
