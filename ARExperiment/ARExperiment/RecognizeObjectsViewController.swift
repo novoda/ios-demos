@@ -3,34 +3,30 @@ import ARKit
 import SceneKit
 import Vision
 
-class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExperimentSessionHandler {
+class RecognizeObjectsViewController: UIViewController {
     
     @IBOutlet weak var sceneView: ARSCNView!
-    fileprivate let yolo = YOLO()
-    private let semaphore = DispatchSemaphore(value: 2)
-    private var request: VNCoreMLRequest!
     private let startButton = UIButton()
-    private let compoundingBox = UIView()
-    private let predictionLabel = UILabel()
-    private let arViewModel = ARViewModel()
-    private let nodeName = "cubewireframe"
-    private let fileName = "cubewireframe"
-    private let fileExtension = "dae"
+    private let arAsset = ARAsset.cubeWireframe
+    private var arViewModel: ARViewModel!
     private let arSessionDelegate = ARExperimentSession()
-    
+    private var nodesForSession: [SCNNode]?
+    private let recognizeObjectsViewModel = RecognizeObjectsViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        arViewModel = ARViewModel(arAsset: arAsset)
         arSessionDelegate.sessionHandler = self
         sceneView.session.delegate = arSessionDelegate
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-        
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+
         setupStartButton()
-        setUpVision()
-        setupCompoundingBox()
-        self.view.backgroundColor = .white
+        recognizeObjectsViewModel.setUpVision()
+        bindPredictionResults()
+        view.backgroundColor = .white
         styleNavigationBar(with: .white)
     }
     
@@ -40,6 +36,7 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExp
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
+        recognizeObjectsViewModel.setCurrentFrameForModel(sceneView.frame)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,116 +51,113 @@ class RecognizeObjectsViewController: UIViewController, ARSCNViewDelegate, ARExp
         startButton.backgroundColor = .white
         startButton.alpha = 0.85
         startButton.addTarget(self, action: #selector(startButtonHasBeenPressed), for: .touchUpInside)
-        self.view.addSubview(startButton)
+        view.addSubview(startButton)
         
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        startButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        startButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        startButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
     }
     
     @objc private func startButtonHasBeenPressed(_ sender: UIButton) {
         guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
         startButton.isHidden = true
-        semaphore.wait()
         DispatchQueue.global().async { [weak self] in
-            self?.predictUsingVision(pixelBuffer: pixelBuffer)
-            //            self?.predictUsingCoreML(pixelBuffer: pixelBuffer)
+            self?.recognizeObjectsViewModel.predictUsingVision(pixelBuffer: pixelBuffer)
         }
     }
-    
-    private func setupCompoundingBox() {
-        predictionLabel.textColor = .gray
-        compoundingBox.isHidden = true
-        
-        compoundingBox.addSubview(predictionLabel)
-        view.addSubview(compoundingBox)
-        
-        predictionLabel.translatesAutoresizingMaskIntoConstraints = false
-        predictionLabel.trailingAnchor.constraint(equalTo: compoundingBox.trailingAnchor).isActive = true
-        predictionLabel.topAnchor.constraint(equalTo: compoundingBox.topAnchor).isActive = true
-    }
-    
-    //MARK: Vision Prediction
-    private func predictUsingVision(pixelBuffer: CVPixelBuffer) {
-        // Vision will automatically resize the input image.
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
-        try? handler.perform([request])
-    }
-    
-    private func setUpVision() {
-        guard let visionModel = try? VNCoreMLModel(for: yolo.model.model) else {
-            print("Error: could not create Vision model")
-            return
-        }
-        request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-        
-        // NOTE: If you choose another crop/scale option, then you must also
-        // change how the BoundingBox objects get scaled when they are drawn.
-        // Currently they assume the full input image is used.
-        request.imageCropAndScaleOption = .scaleFill
-    }
-    
-    func visionRequestDidComplete(request: VNRequest, error: Error?) {
-        if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-            let features = observations.first?.featureValue.multiArrayValue {
-            
-            let boundingBoxes = yolo.computeBoundingBoxes(features: features)
-            showOnMainThread(boundingBoxes)
-        }
-    }
-    
-    //MARK: CoreML Functions
-    
-    private func predictUsingCoreML(pixelBuffer: CVPixelBuffer) {
-        guard let resizedImage = yolo.scaleImageForPredictionInput(pixelBufferImage: pixelBuffer) else {
-            return
-        }
-        guard let boundingBoxes = try? yolo.predict(image: resizedImage) else {
-            return
-        }
-        showOnMainThread(boundingBoxes)
-    }
-    
-    
-    //MARK: Prediction
-    
-    private func showOnMainThread(_ boundingBoxes: [YOLO.Prediction]) {
-        let prominentBox = boundingBoxes.sorted{ $0.score > $1.score}.first
-        self.semaphore.signal()
-        
+
+    private func showStartButtonIfError() {
         DispatchQueue.main.async { [weak self] in
-            if let prominentBox = prominentBox {
-                self?.show(prediction: prominentBox)
+            self?.startButton.isHidden = false
+        }
+    }
+
+    private func bindPredictionResults() {
+        recognizeObjectsViewModel.onNewPrediction = { [weak self] prediction in
+            self?.addBoxOnMainThread(prediction)
+        }
+        recognizeObjectsViewModel.onError = { [weak self] in
+            self?.showStartButtonIfError()
+        }
+    }
+
+    //MARK: Add Model to the scene
+    private func addBoxOnMainThread(_ prediction: ObjectPrediction?) {
+        guard let prediction = prediction,
+            let hitPoint = findHitPointFor(prediction.bounds) else {
+                showStartButtonIfError()
+                print("failed finding hit point or prediction")
+                return
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            if DeveloperOptions.usingAnchors.isActive {
+                strongSelf.addAnchorToScene(in: hitPoint)
             } else {
-                self?.startButton.isHidden = false
+                strongSelf.addVectorToScene(in: hitPoint, withPrediction: prediction)
             }
         }
     }
-    
-    private func show(prediction: YOLO.Prediction) {
-        guard let scaledRect = yolo.scaleImageForCameraOutput(predictionRect: prediction.rect, viewRect: self.view.bounds) else {
-            print("could not scale the Point vectors")
+
+    private func findHitPointFor(_ boundingBox: CGRect) -> ARHitTestResult? {
+        let scaledPoint = CGPoint(x: boundingBox.origin.x, y: boundingBox.origin.y)
+        return arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.featurePoint, .estimatedHorizontalPlane])
+    }
+
+    private func addAnchorToScene(in hitPoint: ARHitTestResult) {
+        let anchor = ARAnchor(transform: hitPoint.localTransform)
+        sceneView.session.add(anchor: anchor)
+    }
+
+    private func addVectorToScene(in hitPoint: ARHitTestResult, withPrediction prediction: ObjectPrediction) {
+        let pointTranslation = hitPoint.worldTransform.translation
+        guard let node = nodeForTextAndSize() else {
+            showStartButtonIfError()
+            print("we have no model")
             return
         }
-        
-        guard let model = arViewModel.createSceneNodeForAsset(nodeName,
-                                                              fileName: fileName,
-                                                              assetExtension: fileExtension) else {
-                                                                print("we have no model")
-                                                                return
+        node.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+
+    private func nodeForTextAndSize() -> SCNNode? {
+        guard let nodesForSession = nodesForSession else {
+            print("we have no model")
+            return nil
         }
-        
-        compoundingBox.frame = scaledRect
-        predictionLabel.text = "\(labels[prediction.classIndex])"
-        compoundingBox.isHidden = false
-        
-        let scaledPoint = CGPoint(x: scaledRect.origin.x, y: scaledRect.origin.y)
-        if let hitPoint = arViewModel.hitResult(at: scaledPoint, in: sceneView, withType: [.existingPlaneUsingExtent, .estimatedHorizontalPlane]) {
-            let pointTranslation = hitPoint.worldTransform.translation
-            model.position = SCNVector3(pointTranslation.x, pointTranslation.y, pointTranslation.z)
-            sceneView.scene.rootNode.addChildNode(model)
-            
+
+        let parentNode = SCNNode()
+        for node in nodesForSession {
+            parentNode.addChildNode(node)
+        }
+
+        return parentNode
+    }
+}
+
+
+extension RecognizeObjectsViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        guard !anchor.isKind(of: ARPlaneAnchor.self) && DeveloperOptions.usingAnchors.isActive else {
+            return nil
+        }
+        guard let model = nodeForTextAndSize() else {
+            showStartButtonIfError()
+            print("we have no model")
+            return nil
+        }
+        return model
+    }
+}
+
+extension RecognizeObjectsViewController: ARExperimentSessionHandler {
+    func sessionTrackingSwitchedToNormal() {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            nodesForSession = arViewModel.nodesForARExperience(using: lightEstimate)
         }
     }
 }
+
