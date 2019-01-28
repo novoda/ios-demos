@@ -20,6 +20,15 @@ enum NodeType {
     case plane
 }
 
+struct AnimationInfo {
+    var startTime: TimeInterval
+    var duration: TimeInterval
+    var initialModelPosition: simd_float3
+    var initialModelRotation: simd_quatf
+    var finalModelPosition: simd_float3
+    var finalModelRotation: simd_quatf
+}
+
 extension ARAsset {
     func filePath() -> String {
         if let assetFolder = assetFolder {
