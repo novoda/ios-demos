@@ -23,20 +23,30 @@ class ARViewModel {
         configuration.maximumNumberOfTrackedImages = 2
         return configuration
     }
-    
-    func image(correspondingTo referenceImage: ARReferenceImage) -> UIImage? {
+
+    func image(correspondingTo referenceImage: ARReferenceImage, for imageOrientation: ImageOrientation) -> UIImage? {
         guard let referenceImageName = referenceImage.name,
-            let correspondingImageName = assets[referenceImageName] else {
+            let correspondingImageName = correspondingImageName(to: referenceImageName, for: imageOrientation) else {
             print("no image found")
             return nil
         }
         return correspondingImageName.image()
     }
 
-    func planeNode(with material: Any, imageSize: CGSize) -> SCNNode {
+    func planeNode(with material: Any?, imageSize: CGSize, colorBufferWriteMask: SCNColorMask? = nil) -> SCNNode {
         let plane = SCNPlane(width: imageSize.width,
                              height: imageSize.height)
-        plane.styleFirstMaterial(with: material)
+        if let material = material {
+            plane.styleFirstMaterial(with: material)
+        }
+        if let colorBuffer = colorBufferWriteMask {
+            plane.firstMaterial?.colorBufferWriteMask = colorBuffer
+        }
         return SCNNode(geometry: plane)
+   }
+    
+    private func correspondingImageName(to referenceImageName: String,
+                                        for imageOrientation: ImageOrientation) -> String? {
+        return "\(referenceImageName)\(imageOrientation.text)"
     }
 }

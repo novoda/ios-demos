@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="332" width="300" height="30"/>
                                         <color key="backgroundColor" red="0.62190557930000001" green="0.79848870699999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.62190557930000001" green="0.79848870699999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="2D Animation">
+                                        <state key="normal" title="SOLID CARD Animation">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -86,16 +86,30 @@
             </objects>
             <point key="canvasLocation" x="-188" y="469"/>
         </scene>
-        <!--View Controller-->
+        <!--Solid Card Animation View Controller-->
         <scene sceneID="OMZ-HA-kGp">
             <objects>
-                <viewController id="yWd-d3-otc" sceneMemberID="viewController">
+                <viewController id="yWd-d3-otc" customClass="SolidCardAnimationViewController" customModule="ARImageTrackingExamples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MeI-dz-ltr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUH-Up-ab2">
+                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                            </arscnView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VUH-Up-ab2" firstAttribute="height" secondItem="MeI-dz-ltr" secondAttribute="height" id="0Nn-RG-VA0"/>
+                            <constraint firstItem="VUH-Up-ab2" firstAttribute="width" secondItem="MeI-dz-ltr" secondAttribute="width" id="QgN-pm-uFn"/>
+                            <constraint firstItem="VUH-Up-ab2" firstAttribute="centerY" secondItem="MeI-dz-ltr" secondAttribute="centerY" constant="32" id="hIC-28-o3s"/>
+                            <constraint firstItem="VUH-Up-ab2" firstAttribute="centerX" secondItem="MeI-dz-ltr" secondAttribute="centerX" id="y8P-yh-72n"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1AS-Ww-YEu"/>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="VUH-Up-ab2" id="c5W-2q-EkE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxD-l8-cZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

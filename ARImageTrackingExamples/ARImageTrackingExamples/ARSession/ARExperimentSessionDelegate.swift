@@ -48,7 +48,6 @@ class ARExperimentSession: NSObject, ARSessionDelegate {
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         return true
     }
-    
 }
 
 extension ARExperimentSessionHandler where Self: UIViewController {
