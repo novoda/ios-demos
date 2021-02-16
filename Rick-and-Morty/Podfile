@@ -1,0 +1,14 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+target 'Rick And Morty' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'RxSwift'
+
+  target 'Rick And MortyTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end

@@ -1,17 +1,16 @@
 import UIKit
 
-let ricks = [
-    Rick(name: "Rick Prime", image: "Rick-2", description: "Rick Prime's appearance is almost identical to the other members of the Council of Ricks. The only difference is that his hair style consists of a large puff of hair on top, with the sides and back of his head shaved."),
-    Rick(name: "Quantum Rick", image: "Rick-3", description: "Quantum Rick shares the general appearance of the titular Rick Sanchez, but sports a puffier hairstyle."),
-    Rick(name: "Maximums Rickimus", image: "Rick-4", description: "Maximums Rickimus shares the general appearance of Rick Sanchez, though with a different hairstyle."),
-    Rick(name: "Riq IV", image: "Rick-5", description: "Riq IV shares the general appearance of Rick Sanchez, though with a much different hairstyle, consisting of 3 spikes, and a long soul patch."),
-    Rick(name: "Zeta Alpha Rick", image: "Rick-6", description: "Zeta Alpha Rick shares the general appearance of Rick Sanchez, though with a different hairstyle."),
-    Rick(name: "Ricktiminus Sancheziminius", image: "Rick-7", description: "Ricktiminus Sancheziminius shares the general appearance of Rick Sanchez, though with a different hairstyle, and facial hair."),
-]
-
 class RickCollectionViewController: UICollectionViewController {
+    private let service = Service()
+    private var ricks: [Rick] = []
+
     override func viewDidLoad() {
         self.title = "Rick"
+
+        service.getRicks()
+            .subscribe { ricks in
+                self.ricks = ricks
+            }
 
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.itemSize = CGSize(width: 320, height: 120)
