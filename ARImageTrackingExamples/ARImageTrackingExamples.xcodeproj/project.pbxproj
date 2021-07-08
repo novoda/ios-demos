@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C62F62E21FB3C17008989D2 /* Aviation3dAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F62D21FB3C17008989D2 /* Aviation3dAnimationViewController.swift */; };
+		4C62F63021FB3C85008989D2 /* UIButton+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F62F21FB3C85008989D2 /* UIButton+Extras.swift */; };
+		4C62F63821FB3E95008989D2 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63221FB3E95008989D2 /* Options.swift */; };
+		4C62F63921FB3E95008989D2 /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63321FB3E95008989D2 /* BetterSegmentedControl.swift */; };
+		4C62F63A21FB3E95008989D2 /* BetterSegmentedControlSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63421FB3E95008989D2 /* BetterSegmentedControlSegment.swift */; };
+		4C62F63B21FB3E95008989D2 /* IconSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63621FB3E95008989D2 /* IconSegment.swift */; };
+		4C62F63C21FB3E95008989D2 /* LabelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63721FB3E95008989D2 /* LabelSegment.swift */; };
+		4C62F63F21FB5CD9008989D2 /* ARAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62F63E21FB5CD8008989D2 /* ARAssets.swift */; };
 		4C8BBEA521F0D59700FFA065 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BBEA421F0D59700FFA065 /* Assets.swift */; };
 		4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8789521EF861C0051B8A7 /* AppDelegate.swift */; };
 		4CB8789821EF861C0051B8A7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB8789721EF861C0051B8A7 /* art.scnassets */; };
@@ -21,6 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C62F62D21FB3C17008989D2 /* Aviation3dAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aviation3dAnimationViewController.swift; sourceTree = "<group>"; };
+		4C62F62F21FB3C85008989D2 /* UIButton+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extras.swift"; sourceTree = "<group>"; };
+		4C62F63221FB3E95008989D2 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		4C62F63321FB3E95008989D2 /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterSegmentedControl.swift; sourceTree = "<group>"; };
+		4C62F63421FB3E95008989D2 /* BetterSegmentedControlSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterSegmentedControlSegment.swift; sourceTree = "<group>"; };
+		4C62F63621FB3E95008989D2 /* IconSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconSegment.swift; sourceTree = "<group>"; };
+		4C62F63721FB3E95008989D2 /* LabelSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSegment.swift; sourceTree = "<group>"; };
+		4C62F63E21FB5CD8008989D2 /* ARAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARAssets.swift; path = ../../../ARExperiment/ARExperiment/Model/ARAssets.swift; sourceTree = "<group>"; };
 		4C8BBEA421F0D59700FFA065 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		4CB8789221EF861C0051B8A7 /* ARImageTrackingExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARImageTrackingExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB8789521EF861C0051B8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +63,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C62F63121FB3E95008989D2 /* BetterSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				4C62F63221FB3E95008989D2 /* Options.swift */,
+				4C62F63321FB3E95008989D2 /* BetterSegmentedControl.swift */,
+				4C62F63421FB3E95008989D2 /* BetterSegmentedControlSegment.swift */,
+				4C62F63521FB3E95008989D2 /* Segments */,
+			);
+			path = BetterSegmentedControl;
+			sourceTree = "<group>";
+		};
+		4C62F63521FB3E95008989D2 /* Segments */ = {
+			isa = PBXGroup;
+			children = (
+				4C62F63621FB3E95008989D2 /* IconSegment.swift */,
+				4C62F63721FB3E95008989D2 /* LabelSegment.swift */,
+			);
+			path = Segments;
+			sourceTree = "<group>";
+		};
+		4C62F63D21FB5CC9008989D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C8BBEA421F0D59700FFA065 /* Assets.swift */,
+				4C62F63E21FB5CD8008989D2 /* ARAssets.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4CB8788921EF861C0051B8A7 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +111,7 @@
 		4CB8789421EF861C0051B8A7 /* ARImageTrackingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				4C62F63D21FB5CC9008989D2 /* Models */,
 				4CB878BC21EF9A9A0051B8A7 /* ViewModels */,
 				4CB878AF21EF950D0051B8A7 /* ARSession */,
 				4CB878AA21EF896C0051B8A7 /* Helpers */,
@@ -83,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB878AD21EF93D60051B8A7 /* SolidCardViewController.swift */,
+				4C62F62D21FB3C17008989D2 /* Aviation3dAnimationViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -90,9 +137,10 @@
 		4CB878AA21EF896C0051B8A7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C62F63121FB3E95008989D2 /* BetterSegmentedControl */,
+				4C62F62F21FB3C85008989D2 /* UIButton+Extras.swift */,
 				4CB878AB21EF8BDF0051B8A7 /* UIViewController+helpers.swift */,
 				4CB878BF21EFA0410051B8A7 /* ARHelper.swift */,
-				4C8BBEA421F0D59700FFA065 /* Assets.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -187,12 +235,20 @@
 			files = (
 				4CB878AC21EF8BDF0051B8A7 /* UIViewController+helpers.swift in Sources */,
 				4CB878AE21EF93D60051B8A7 /* SolidCardViewController.swift in Sources */,
+				4C62F62E21FB3C17008989D2 /* Aviation3dAnimationViewController.swift in Sources */,
+				4C62F63C21FB3E95008989D2 /* LabelSegment.swift in Sources */,
+				4C62F63821FB3E95008989D2 /* Options.swift in Sources */,
 				4C8BBEA521F0D59700FFA065 /* Assets.swift in Sources */,
 				4CB878C021EFA0410051B8A7 /* ARHelper.swift in Sources */,
 				4CB878BB21EF967E0051B8A7 /* ARExperimentSessionDelegate.swift in Sources */,
 				4CB878BE21EF9AAC0051B8A7 /* ARViewModel.swift in Sources */,
+				4C62F63A21FB3E95008989D2 /* BetterSegmentedControlSegment.swift in Sources */,
 				4CB8789621EF861C0051B8A7 /* AppDelegate.swift in Sources */,
+				4C62F63B21FB3E95008989D2 /* IconSegment.swift in Sources */,
+				4C62F63021FB3C85008989D2 /* UIButton+Extras.swift in Sources */,
+				4C62F63921FB3E95008989D2 /* BetterSegmentedControl.swift in Sources */,
 				4CB878BA21EF967E0051B8A7 /* ARCameraTrackingState.swift in Sources */,
+				4C62F63F21FB5CD9008989D2 /* ARAssets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
