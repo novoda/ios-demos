@@ -1,6 +1,6 @@
 import Foundation
 
-struct Morty: Character {
+struct Morty {
     let name: String
     let image: String
     let shortDescription: String
