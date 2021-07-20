@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17DCAADE26A6DA7400C2CA19 /* MortyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DCAADD26A6DA7400C2CA19 /* MortyCollectionViewCell.swift */; };
 		17F1E38226A18A54009C1CDB /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */; };
 		17F1E38426A18EA8009C1CDB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38326A18EA8009C1CDB /* TabBarController.swift */; };
 		17F1E38626A1AF6A009C1CDB /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38526A1AF6A009C1CDB /* Character.swift */; };
-		17F1E38826A1D80E009C1CDB /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F1E38726A1D80E009C1CDB /* CharacterCollectionViewCell.xib */; };
-		17F1E38A26A1D877009C1CDB /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38926A1D877009C1CDB /* CharacterCollectionViewCell.swift */; };
+		17F1E38A26A1D877009C1CDB /* RickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38926A1D877009C1CDB /* RickCollectionViewCell.swift */; };
 		17F1E38D26A1DCF0009C1CDB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38C26A1DCF0009C1CDB /* Data.swift */; };
 		B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811686C1CFF1C9900301A0A /* AppDelegate.swift */; };
 		B81168741CFF1C9900301A0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81168721CFF1C9900301A0A /* Main.storyboard */; };
@@ -33,11 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17DCAADD26A6DA7400C2CA19 /* MortyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortyCollectionViewCell.swift; sourceTree = "<group>"; };
 		17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		17F1E38326A18EA8009C1CDB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		17F1E38526A1AF6A009C1CDB /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		17F1E38726A1D80E009C1CDB /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
-		17F1E38926A1D877009C1CDB /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		17F1E38926A1D877009C1CDB /* RickCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickCollectionViewCell.swift; sourceTree = "<group>"; };
 		17F1E38C26A1DCF0009C1CDB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B81168691CFF1C9900301A0A /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B811686C1CFF1C9900301A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		17F1E38E26A5724A009C1CDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				17F1E38926A1D877009C1CDB /* CharacterCollectionViewCell.swift */,
-				17F1E38726A1D80E009C1CDB /* CharacterCollectionViewCell.xib */,
+				17F1E38926A1D877009C1CDB /* RickCollectionViewCell.swift */,
+				17DCAADD26A6DA7400C2CA19 /* MortyCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F1E38826A1D80E009C1CDB /* CharacterCollectionViewCell.xib in Resources */,
 				B81168791CFF1C9900301A0A /* LaunchScreen.storyboard in Resources */,
 				B81168761CFF1C9900301A0A /* Assets.xcassets in Resources */,
 				B81168741CFF1C9900301A0A /* Main.storyboard in Resources */,
@@ -254,7 +253,8 @@
 				B81168931CFF234900301A0A /* Rick.swift in Sources */,
 				17F1E38626A1AF6A009C1CDB /* Character.swift in Sources */,
 				B81168951CFF235600301A0A /* Morty.swift in Sources */,
-				17F1E38A26A1D877009C1CDB /* CharacterCollectionViewCell.swift in Sources */,
+				17F1E38A26A1D877009C1CDB /* RickCollectionViewCell.swift in Sources */,
+				17DCAADE26A6DA7400C2CA19 /* MortyCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

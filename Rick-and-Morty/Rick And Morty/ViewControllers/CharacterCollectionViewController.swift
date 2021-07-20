@@ -6,9 +6,6 @@ class CharacterCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         self.navigationItem.title = charactersTitle
-                
-        // not to sure what this does, but makes things work
-        collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "character-cell-identifier")
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.itemSize = CGSize(width: 320, height: 120)
@@ -20,14 +17,31 @@ class CharacterCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "character-cell-identifier", for:indexPath)
-        guard let characterCell = cell as? CharacterCollectionViewCell else {
-            return cell
-        }
-
+        
         let character = characters[indexPath.row]
-        characterCell.setForCharacter(character: character)
-
-        return characterCell
+        
+        if let morty = character as? Morty {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "morty-cell-identifier", for:indexPath)
+            guard let mortyCell = cell as? MortyCollectionViewCell else {
+                return cell
+            }
+            
+            mortyCell.setForMorty(morty: morty)
+            
+            return mortyCell
+        }
+        
+        if let rick = character as? Rick {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rick-cell-identifier", for:indexPath)
+            guard let rickCell = cell as? RickCollectionViewCell else {
+                return cell
+            }
+            
+            rickCell.setForRick(rick: rick)
+            
+            return rickCell
+        }
+        
+        return UICollectionViewCell()
     }
 }

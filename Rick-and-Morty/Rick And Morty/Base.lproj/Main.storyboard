@@ -39,7 +39,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="character-cell-identifier" id="agh-Qv-2sF" customClass="CharacterCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rick-cell-identifier" id="agh-Qv-2sF" customClass="RickCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
                                 <rect key="frame" x="-92.5" y="0.0" width="599" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -99,9 +99,9 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="nq4-Vs-jiA" id="BlH-zD-NPR"/>
-                                    <outlet property="imageView" destination="FSA-pe-p2x" id="6VQ-ka-5j4"/>
-                                    <outlet property="nameLabel" destination="qri-MS-e8d" id="rEg-5b-1nn"/>
+                                    <outlet property="descriptionLabel" destination="nq4-Vs-jiA" id="EkW-gw-17r"/>
+                                    <outlet property="imageView" destination="FSA-pe-p2x" id="OAz-CK-aK7"/>
+                                    <outlet property="nameLabel" destination="qri-MS-e8d" id="T1k-fc-tgX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -148,7 +148,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="character-cell-identifier" id="Pae-ca-sa5" customClass="CharacterCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="morty-cell-identifier" id="Pae-ca-sa5" customClass="MortyCollectionViewCell" customModule="Rick_And_Morty" customModuleProvider="target">
                                 <rect key="frame" x="-93" y="0.0" width="600" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -199,9 +199,9 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="jaj-ED-29X" id="Yqy-IH-P5k"/>
-                                    <outlet property="imageView" destination="mPn-qu-WkM" id="ZiI-Qb-DXZ"/>
-                                    <outlet property="nameLabel" destination="ami-Zy-9bs" id="iQR-qd-avp"/>
+                                    <outlet property="descriptionLabel" destination="jaj-ED-29X" id="iRA-Ve-GL4"/>
+                                    <outlet property="imageView" destination="mPn-qu-WkM" id="u6A-He-bTn"/>
+                                    <outlet property="nameLabel" destination="ami-Zy-9bs" id="eOo-LW-JjI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
