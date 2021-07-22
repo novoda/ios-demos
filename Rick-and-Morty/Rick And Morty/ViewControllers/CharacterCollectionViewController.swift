@@ -26,9 +26,19 @@ class CharacterCollectionViewController: UICollectionViewController {
         }
         
         let character = characters[indexPath.row]
+        let imagePosition = getImagePosition(character: character)
         
-        characterCell.embed(in: self, withCharacter: character)
+        characterCell.embed(in: self, withCharacter: character, imagePosition: imagePosition)
 
         return characterCell
+    }
+    
+    private func getImagePosition(character: Character) -> CharacterImagePosition {
+        if character is Morty {
+            return .left
+        }
+        else {
+            return .right
+        }
     }
 }

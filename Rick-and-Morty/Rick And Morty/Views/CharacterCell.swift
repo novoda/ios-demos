@@ -8,13 +8,19 @@
 
 import SwiftUI
 
+enum CharacterImagePosition {
+    case left
+    case right
+}
+
 struct CharacterCell: View {
     let character: Character
+    let imagePosition: CharacterImagePosition
     
     var body: some View {
         HStack(spacing: 8) {
             // left handside images for morties
-            if character is Morty {
+            if imagePosition == .left {
                 CharacterCellImage(character: character)
             }
             
@@ -23,7 +29,7 @@ struct CharacterCell: View {
                 Text(character.description)
             }
             // right handside images for ricks
-            if character is Rick {
+            if imagePosition == .right {
                 CharacterCellImage(character: character)
             }
         }
@@ -44,6 +50,6 @@ struct CharacterCellImage: View {
 
 struct CharacterCell_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCell(character: ricks[0])
+        CharacterCell(character: ricks[0], imagePosition: .left)
     }
 }

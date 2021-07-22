@@ -14,21 +14,27 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func embed(in parent: UIViewController, withCharacter character: Character) {
+    func embed(in parent: UIViewController, withCharacter character: Character, imagePosition: CharacterImagePosition) {
             if let host = self.host {
-                host.rootView = CharacterCell(character: character)
+                host.rootView = CharacterCell(character: character, imagePosition: imagePosition)
                 host.view.layoutIfNeeded()
             } else {
-                let host = UIHostingController(rootView: CharacterCell(character: character))
-                parent.addChild(host)
-                host.didMove(toParent: parent)
-                
-                host.view.frame = self.contentView.bounds
+                let host = createHostView(parent: parent, character: character, imagePosition: imagePosition)
                 self.contentView.addSubview(host.view)
                 
                 self.host = host
             }
-        }
+    }
+    
+    func createHostView(parent: UIViewController, character: Character, imagePosition: CharacterImagePosition) -> UIHostingController<CharacterCell> {
+        let host = UIHostingController(rootView: CharacterCell(character: character, imagePosition: imagePosition))
+        parent.addChild(host)
+        host.didMove(toParent: parent)
+        
+        host.view.frame = self.contentView.bounds
+        
+        return host
+    }
         
     deinit {
         host?.willMove(toParent: nil)
@@ -36,5 +42,4 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         host?.removeFromParent()
         host = nil
     }
-    
 }
