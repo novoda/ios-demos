@@ -9,6 +9,7 @@
 import Foundation
 
 protocol Character {
+    var id: UUID { get }
     var name: String { get }
     var image: String { get }
     var description: String { get }

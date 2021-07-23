@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174EC80326AAFA9B0014B1FE /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC80226AAFA9B0014B1FE /* CharactersView.swift */; };
+		174EC80526AAFBDD0014B1FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC80426AAFBDD0014B1FE /* ContentView.swift */; };
 		17CAB4FA26A824470048F2F1 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CAB4F926A824470048F2F1 /* CharacterCell.swift */; };
 		17F1E38226A18A54009C1CDB /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */; };
 		17F1E38426A18EA8009C1CDB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38326A18EA8009C1CDB /* TabBarController.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		174EC80226AAFA9B0014B1FE /* CharactersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		174EC80426AAFBDD0014B1FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		17CAB4F926A824470048F2F1 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		17F1E38326A18EA8009C1CDB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			children = (
 				17F1E38926A1D877009C1CDB /* CharacterCollectionViewCell.swift */,
 				17CAB4F926A824470048F2F1 /* CharacterCell.swift */,
+				174EC80226AAFA9B0014B1FE /* CharactersView.swift */,
+				174EC80426AAFBDD0014B1FE /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,11 +253,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F1E38D26A1DCF0009C1CDB /* Data.swift in Sources */,
+				174EC80526AAFBDD0014B1FE /* ContentView.swift in Sources */,
 				B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */,
 				17F1E38226A18A54009C1CDB /* CharacterCollectionViewController.swift in Sources */,
 				17CAB4FA26A824470048F2F1 /* CharacterCell.swift in Sources */,
 				17F1E38426A18EA8009C1CDB /* TabBarController.swift in Sources */,
 				B81168931CFF234900301A0A /* Rick.swift in Sources */,
+				174EC80326AAFA9B0014B1FE /* CharactersView.swift in Sources */,
 				17F1E38626A1AF6A009C1CDB /* Character.swift in Sources */,
 				B81168951CFF235600301A0A /* Morty.swift in Sources */,
 				17F1E38A26A1D877009C1CDB /* CharacterCollectionViewCell.swift in Sources */,
@@ -410,7 +418,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,7 +436,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
 				PRODUCT_NAME = "$(TARGET_NAME)";
