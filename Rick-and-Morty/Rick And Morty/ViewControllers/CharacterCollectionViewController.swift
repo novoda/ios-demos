@@ -8,10 +8,10 @@ class CharacterCollectionViewController: UICollectionViewController {
         self.navigationItem.title = charactersTitle
                 
         // not to sure what this does, but makes things work
-        collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "character-cell-identifier")
+        collectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)
         
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = CGSize(width: 320, height: 120)
+            flowLayout.itemSize = CGSize(width: collectionView.frame.width, height: 120)
         }
     }
     
@@ -20,14 +20,25 @@ class CharacterCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "character-cell-identifier", for:indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for:indexPath)
         guard let characterCell = cell as? CharacterCollectionViewCell else {
             return cell
         }
-
+        
         let character = characters[indexPath.row]
-        characterCell.setForCharacter(character: character)
+        let imagePosition = getImagePosition(character: character)
+        
+        characterCell.embed(in: self, withCharacter: character, imagePosition: imagePosition)
 
         return characterCell
+    }
+    
+    private func getImagePosition(character: Character) -> CharacterImagePosition {
+        if character is Morty {
+            return .left
+        }
+        else {
+            return .right
+        }
     }
 }
