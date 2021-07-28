@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1711B39C26B16D6200BE935B /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1711B39B26B16D6200BE935B /* CharactersView.swift */; };
+		1711B39E26B1898100BE935B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1711B39D26B1898100BE935B /* ContentView.swift */; };
 		17CAB4FA26A824470048F2F1 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CAB4F926A824470048F2F1 /* CharacterCell.swift */; };
 		17F1E38226A18A54009C1CDB /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */; };
 		17F1E38426A18EA8009C1CDB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1E38326A18EA8009C1CDB /* TabBarController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		1711B39B26B16D6200BE935B /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		1711B39D26B1898100BE935B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		17CAB4F926A824470048F2F1 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		17F1E38126A18A54009C1CDB /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		17F1E38326A18EA8009C1CDB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				17F1E38926A1D877009C1CDB /* CharacterCollectionViewCell.swift */,
 				17CAB4F926A824470048F2F1 /* CharacterCell.swift */,
 				1711B39B26B16D6200BE935B /* CharactersView.swift */,
+				1711B39D26B1898100BE935B /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F1E38D26A1DCF0009C1CDB /* Data.swift in Sources */,
+				1711B39E26B1898100BE935B /* ContentView.swift in Sources */,
 				B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */,
 				17F1E38226A18A54009C1CDB /* CharacterCollectionViewController.swift in Sources */,
 				17CAB4FA26A824470048F2F1 /* CharacterCell.swift in Sources */,
@@ -348,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -398,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -414,7 +418,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,7 +436,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.novoda.Rick-And-Morty";
 				PRODUCT_NAME = "$(TARGET_NAME)";
