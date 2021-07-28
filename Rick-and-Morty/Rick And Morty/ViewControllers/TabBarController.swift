@@ -1,18 +1,16 @@
 import UIKit
+import SwiftUI
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
-        // Rick tab index: 0
-        let rickNavController = self.viewControllers![0] as! UINavigationController
-        let rickViewController = rickNavController.topViewController as! CharacterCollectionViewController
-        rickViewController.charactersTitle = "Rick"
-        rickViewController.characters = ricks
         
-        // Morty tab index: 1
-        let mortyNavController = self.viewControllers![1] as! UINavigationController
-        let mortyViewController = mortyNavController.topViewController as! CharacterCollectionViewController
-        mortyViewController.charactersTitle = "Morty"
-        mortyViewController.characters = morties
+        let rickViewController = UIHostingController(rootView: CharactersView(characters: ricks, title: "Ricks"))
+        rickViewController.tabBarItem = UITabBarItem(title: "Ricks", image: UIImage(named: "rick-icon"), tag: 1)
+        
+        let mortyViewController = UIHostingController(rootView: CharactersView(characters: morties, title: "Morties"))
+        mortyViewController.tabBarItem = UITabBarItem(title: "Morties", image: UIImage(named: "morty-icon"), tag: 2)
+        
+        self.setViewControllers([rickViewController, mortyViewController], animated: false)
     }
 }
