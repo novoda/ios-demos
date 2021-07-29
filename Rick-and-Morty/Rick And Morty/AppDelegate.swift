@@ -1,10 +1,11 @@
 import UIKit
+import SwiftUI
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return true
+@main
+struct RickAndMorty: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
     }
 }
