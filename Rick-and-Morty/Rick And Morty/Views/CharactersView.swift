@@ -1,30 +1,26 @@
 import SwiftUI
 
 struct CharactersView: View {
-    let characters: [Character]
-    let title: String
+    @ObservedObject var viewModel: CharactersViewModel
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
-                    ForEach(characters, id: \.id) { character in
-                        CharacterCell(character: character, imagePosition: getImagePosition(character: character))
+                    ForEach(viewModel.characters, id: \.id) { character in
+                        CharacterCell(character: character, imagePosition: viewModel.imagePosition)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
                     }
                 }
             }
-            .navigationBarTitle(title)
+            .navigationBarTitle(viewModel.title)
         }
-    }
-    
-    func getImagePosition(character: Character) -> CharacterImagePosition {
-        character is Rick ? .right : .left
     }
 }
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView(characters: ricks, title: "Ricks")
+        CharactersView(viewModel: CharactersViewModel(characterType: .rick))
+        CharactersView(viewModel: CharactersViewModel(characterType: .morty))
     }
 }

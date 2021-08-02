@@ -12,11 +12,11 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            CharactersView(characters: ricks, title: "Ricks")
+            CharactersView(viewModel: CharactersViewModel(characterType: .rick))
                 .tabItem {
                     Label("Ricks", image: "rick-icon")
                 }
-            CharactersView(characters: morties, title: "Morties")
+            CharactersView(viewModel: CharactersViewModel(characterType: .morty))
                 .tabItem {
                     Label("Morties", image: "morty-icon")
                 }
