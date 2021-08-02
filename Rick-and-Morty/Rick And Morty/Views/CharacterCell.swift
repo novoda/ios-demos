@@ -18,22 +18,24 @@ struct CharacterCell: View {
     let imagePosition: CharacterImagePosition
     
     var body: some View {
-        HStack(spacing: 8) {
-            // left handside images for morties
-            if imagePosition == .left {
-                CharacterCellImage(character: character)
+        NavigationLink(destination: CharacterDetailView(character: character)) {
+            HStack(spacing: 8) {
+                if imagePosition == .left {
+                    CharacterCellImage(character: character)
+                }
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(character.name)
+                    Text(character.description)
+                }
+                
+                if imagePosition == .right {
+                    CharacterCellImage(character: character)
+                }
             }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text(character.name)
-                Text(character.description)
-            }
-            // right handside images for ricks
-            if imagePosition == .right {
-                CharacterCellImage(character: character)
-            }
+            .padding()
         }
-        .padding()
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
