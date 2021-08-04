@@ -1,26 +1,28 @@
 import SwiftUI
 
 struct CharactersView: View {
-    @ObservedObject var viewModel: CharactersViewModel
+    let charactersViewState: CharactersViewState
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
-                    ForEach(viewModel.characters, id: \.id) { character in
-                        CharacterCell(character: character, imagePosition: viewModel.imagePosition)
+                    ForEach(charactersViewState.characterViewStates) { characterViewState in
+                        CharacterCell(characterViewState: characterViewState)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
                     }
                 }
             }
-            .navigationBarTitle(viewModel.title)
+            .navigationBarTitle(charactersViewState.title)
         }
     }
 }
 
+/*
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView(viewModel: CharactersViewModel(characterType: .rick))
-        CharactersView(viewModel: CharactersViewModel(characterType: .morty))
+        //CharactersView(viewModel: CharactersViewModel(characterType: .rick))
+        //CharactersView(viewModel: CharactersViewModel(characterType: .morty))
     }
 }
+*/

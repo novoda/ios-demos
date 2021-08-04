@@ -12,31 +12,19 @@ final class CharactersViewModel: ObservableObject {
         self.title = getTitle()
         self.imagePosition = getImagePosition()
         
-        fetchCharacters()
+        self.characters = fetchCharacters()
     }
     
-    private func fetchCharacters() {
-        if characterType == .rick {
-            characters = ricks
-        } else {
-            characters = morties
-        }
+    private func fetchCharacters() -> [Character] {
+        return characterType == .rick ? ricks : morties
     }
     
     private func getTitle() -> String {
-        if characterType == .rick {
-            return "Ricks"
-        } else {
-            return "Morties"
-        }
+        return characterType == .rick ? "Ricks" : "Morties"
     }
     
     private func getImagePosition() -> CharacterImagePosition {
-        if characterType == .rick {
-            return .right
-        } else {
-            return .left
-        }
+        return characterType == .rick ? .right : .left
     }
 }
 
