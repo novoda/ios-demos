@@ -18,15 +18,13 @@ struct CharacterDetailView: View {
                 .scaledToFit()
                 .frame(maxHeight: 200)
 
-            HStack {
-                VStack(alignment: .leading, spacing: 12) {
-                    if let c = character as? ShortCharacterDescription {
-                        Text(c.shortDescription)
-                    }
-                    Text(character.description)
+            VStack(alignment: .leading, spacing: 12) {
+                if let c = character as? ShortCharacterDescription {
+                    Text(c.shortDescription)
                 }
-                Spacer()
+                Text(character.description)
             }
+            
             Spacer()
         }
         .padding()
