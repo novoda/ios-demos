@@ -15,6 +15,10 @@ protocol Character {
     var description: String { get }
 }
 
+protocol ShortCharacterDescription {
+    var shortDescription: String { get }
+}
+
 extension Character {
     var id: UUID { UUID() }
 }
