@@ -9,17 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var contentViewModel = ContentViewModel()
     
     var body: some View {
         TabView {
-            CharactersView(characters: ricks, title: "Ricks")
-                .tabItem {
-                    Label("Ricks", image: "rick-icon")
-                }
-            CharactersView(characters: morties, title: "Morties")
-                .tabItem {
-                    Label("Morties", image: "morty-icon")
-                }
+            ForEach(contentViewModel.charatersViewStates) { charactersViewState in
+                CharactersView(charactersViewState: charactersViewState)
+                    .tabItem {
+                        Label(charactersViewState.title, image: charactersViewState.iconName)
+                    }
+            }
         }
     }
 }

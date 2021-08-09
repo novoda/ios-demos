@@ -14,23 +14,22 @@ enum CharacterImagePosition {
 }
 
 struct CharacterCell: View {
-    let character: Character
-    let imagePosition: CharacterImagePosition
+    let characterViewState: CharacterViewState
     
     var body: some View {
-        NavigationLink(destination: CharacterDetailView(character: character)) {
+        NavigationLink(destination: CharacterDetailView(character: characterViewState.character)) {
             HStack(spacing: 8) {
-                if imagePosition == .left {
-                    CharacterCellImage(character: character)
+                if characterViewState.imagePosition == .left {
+                    CharacterCellImage(imageName: characterViewState.character.image)
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(character.name)
-                    description(for: character)
+                    Text(characterViewState.character.name)
+                    description(for: characterViewState.character)
                 }
                 
-                if imagePosition == .right {
-                    CharacterCellImage(character: character)
+                if characterViewState.imagePosition == .right {
+                    CharacterCellImage(imageName: characterViewState.character.image)
                 }
                 Spacer()
             }
@@ -49,18 +48,19 @@ struct CharacterCell: View {
 }
 
 struct CharacterCellImage: View {
-    let character: Character
+    let imageName: String
     
     var body: some View {
-        Image(character.image)
+        Image(imageName)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 70, height: 70)
     }
 }
-
+/*
 struct CharacterCell_Previews: PreviewProvider {
     static var previews: some View {
         CharacterCell(character: ricks[0], imagePosition: .left)
     }
 }
+*/
