@@ -17,10 +17,14 @@ struct CharacterDetailView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 200)
-            HStack {
+
+            VStack(alignment: .leading, spacing: 12) {
+                if let c = character as? ShortCharacterDescription {
+                    Text(c.shortDescription)
+                }
                 Text(character.description)
-                Spacer()
             }
+            
             Spacer()
         }
         .padding()
@@ -30,7 +34,12 @@ struct CharacterDetailView: View {
 
 struct CharacterDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDetailView(character: ricks[0])
-        CharacterDetailView(character: morties[0])
+        NavigationView {
+            CharacterDetailView(character: ricks[0])
+        }
+        NavigationView {
+            CharacterDetailView(character: morties[2])
+
+        }
     }
 }

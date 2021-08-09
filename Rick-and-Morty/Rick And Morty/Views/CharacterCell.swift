@@ -17,21 +17,33 @@ struct CharacterCell: View {
     let characterViewState: CharacterViewState
     
     var body: some View {
-        HStack(spacing: 8) {
-            if characterViewState.imagePosition == .left {
-                CharacterCellImage(imageName: characterViewState.character.image)
+        NavigationLink(destination: CharacterDetailView(character: characterViewState.character)) {
+            HStack(spacing: 8) {
+                if characterViewState.imagePosition == .left {
+                    CharacterCellImage(imageName: characterViewState.character.image)
+                }
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(characterViewState.character.name)
+                    description(for: characterViewState.character)
+                }
+                
+                if characterViewState.imagePosition == .right {
+                    CharacterCellImage(imageName: characterViewState.character.image)
+                }
+                Spacer()
             }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text(characterViewState.character.name)
-                Text(characterViewState.character.description)
-            }
-            
-            if characterViewState.imagePosition == .right {
-                CharacterCellImage(imageName: characterViewState.character.image)
-            }
+            .padding()
         }
-        .padding()
+        .buttonStyle(PlainButtonStyle())
+    }
+    
+    func description(for character: Character) -> Text {
+        if let c = character as? ShortCharacterDescription {
+            return Text(c.shortDescription)
+        }
+        
+        return Text(character.description)
     }
 }
 
