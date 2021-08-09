@@ -19,16 +19,16 @@ struct CharacterCell: View {
     var body: some View {
         HStack(spacing: 8) {
             if characterViewState.imagePosition == .left {
-                CharacterCellImage(imageName: characterViewState.imageName)
+                CharacterCellImage(imageName: characterViewState.character.image)
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(characterViewState.name)
-                Text(characterViewState.description)
+                Text(characterViewState.character.name)
+                Text(characterViewState.character.description)
             }
             
             if characterViewState.imagePosition == .right {
-                CharacterCellImage(imageName: characterViewState.imageName)
+                CharacterCellImage(imageName: characterViewState.character.image)
             }
         }
         .padding()

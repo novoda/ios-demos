@@ -47,6 +47,7 @@ struct CharactersViewState: Identifiable {
 
 struct CharacterViewState: Identifiable {
     let id = UUID()
+    let character: Character
     let name: String
     let description: String
     let shortDescription: String?
