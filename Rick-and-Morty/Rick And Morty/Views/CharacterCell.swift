@@ -26,7 +26,7 @@ struct CharacterCell: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(character.name)
-                    Text(description(for: character))
+                    description(for: character)
                 }
                 
                 if imagePosition == .right {
@@ -39,12 +39,12 @@ struct CharacterCell: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    func description(for character: Character) -> String {
+    func description(for character: Character) -> Text {
         if let c = character as? ShortCharacterDescription {
-            return c.shortDescription
+            return Text(c.shortDescription)
         }
         
-        return character.description
+        return Text(character.description)
     }
 }
 
