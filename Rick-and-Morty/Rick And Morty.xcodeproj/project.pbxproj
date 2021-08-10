@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1711B39E26B1898100BE935B /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1711B39D26B1898100BE935B /* CharacterListView.swift */; };
 		17588BAC26C1750B008ECC31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAB26C1750B008ECC31 /* Character.swift */; };
+		17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAE26C273BB008ECC31 /* CharacterCard.swift */; };
 		B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811686C1CFF1C9900301A0A /* AppDelegate.swift */; };
 		B81168761CFF1C9900301A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81168751CFF1C9900301A0A /* Assets.xcassets */; };
 		B81168791CFF1C9900301A0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		1711B39D26B1898100BE935B /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		17588BAB26C1750B008ECC31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		17588BAE26C273BB008ECC31 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 		B81168691CFF1C9900301A0A /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B811686C1CFF1C9900301A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B81168751CFF1C9900301A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		17588BAD26C273A2008ECC31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1711B39D26B1898100BE935B /* CharacterListView.swift */,
+				17588BAE26C273BB008ECC31 /* CharacterCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B81168601CFF1C9900301A0A = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +96,9 @@
 		B811686B1CFF1C9900301A0A /* Rick And Morty */ = {
 			isa = PBXGroup;
 			children = (
+				17588BAD26C273A2008ECC31 /* Views */,
 				17588BAA26C174FB008ECC31 /* Model */,
 				B811686C1CFF1C9900301A0A /* AppDelegate.swift */,
-				1711B39D26B1898100BE935B /* CharacterListView.swift */,
 				B81168751CFF1C9900301A0A /* Assets.xcassets */,
 				B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */,
 				B811687A1CFF1C9900301A0A /* Info.plist */,
@@ -208,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */,
 				17588BAC26C1750B008ECC31 /* Character.swift in Sources */,
 				1711B39E26B1898100BE935B /* CharacterListView.swift in Sources */,
 				B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */,
