@@ -54,7 +54,7 @@ struct CharacterCard: View {
                 
                 characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.lastLocation)
                 
-                characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.firstEpisode)
+                characterDetailsVStack(caption: constants.firstEpisodeCaption, text: characterCardState.firstEpisode)
             }
             Spacer()
         }
