@@ -8,14 +8,14 @@
 
 import Foundation
 
-final class RickAndMortyService {
+final class RickAndMortyService: RickAndMortyServiceProtocol {
     static let baseURL = URL(string: "https://rickandmortyapi.com/api")!
     
-    enum ParseError: Error {
-        case invalidJSON
+    enum DecodingError: Error {
+        case decodingError
     }
     
-    func fetchData(url: URL, success: @escaping (Dictionary<String, Any>) -> (), error: @escaping (Error?) -> ()) {
+    func fetchData<T:Decodable>(url: URL, success: @escaping (T) -> (), error: @escaping (Error?) -> ()) {
         let request = URLRequest(url: url)
 
         URLSession.shared.dataTask(with: request) { data, response, requestError in
@@ -24,15 +24,20 @@ final class RickAndMortyService {
             }
             
             if let data = data {
-                if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? Dictionary<String, Any> {
+                let decoder = JSONDecoder()
+                
+                do {
+                    let decodedData = try decoder.decode(T.self, from: data)
                     DispatchQueue.main.async {
-                        success(jsonResponse)
+                        success(decodedData)
                     }
-                } else {
-                    error(ParseError.invalidJSON)
+                } catch let decodingError {
+                    error(decodingError)
                 }
             } else {
-                error(requestError)
+                DispatchQueue.main.async {
+                    error(requestError)
+                }
             }
         }.resume()
     }
