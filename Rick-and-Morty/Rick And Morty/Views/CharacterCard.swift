@@ -19,12 +19,19 @@ struct CharacterCardState {
     var firstEpisode: String
 }
 
+private struct Constants {
+    let cornerRadius: CGFloat = 10
+    let noSpacing: CGFloat = 0
+    let VSpacing: CGFloat = 10
+    let borderWidth: CGFloat = 0.25
+    let cardHeight: CGFloat = 200
+    let lastLocationCaption = "Last known location:"
+    let firstEpisodeCaption = "First seen in:"
+}
+
 struct CharacterCard: View {
     var characterCardState: CharacterCardState
-    
-    private let cornerRadius: CGFloat = 10
-    private let noSpacing: CGFloat = 0
-    private let VSpacing: CGFloat = 10
+    private let constants: Constants = Constants()
     
     var body: some View {
         HStack(alignment: .top) {
@@ -32,8 +39,8 @@ struct CharacterCard: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             
-            VStack(alignment: .leading, spacing: VSpacing) {
-                VStack(alignment: .leading, spacing: noSpacing) {
+            VStack(alignment: .leading, spacing: constants.VSpacing) {
+                VStack(alignment: .leading, spacing: constants.noSpacing) {
                     Text(characterCardState.name)
                         .font(.title)
                         .fontWeight(.black)
@@ -45,29 +52,28 @@ struct CharacterCard: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: noSpacing) {
-                    Text("Last known location:")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text(characterCardState.lastLocation)
-                }
+                characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.lastLocation)
                 
-                VStack(alignment: .leading, spacing: noSpacing) {
-                    Text("First seen in:")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text(characterCardState.firstEpisode)
-                }
+                characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.firstEpisode)
             }
             Spacer()
         }
-        .cornerRadius(cornerRadius)
+        .cornerRadius(constants.cornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color(.lightGray), lineWidth: 0.25)
+            RoundedRectangle(cornerRadius: constants.cornerRadius)
+                .stroke(Color(.lightGray), lineWidth: constants.borderWidth)
         )
         .padding()
-        .frame(height: 200)
+        .frame(height: constants.cardHeight)
+    }
+    
+    func characterDetailsVStack(caption: String, text: String) -> some View {
+        return VStack(alignment: .leading, spacing: constants.noSpacing) {
+                        Text(caption)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Text(text)
+        }
     }
 }
 
@@ -76,13 +82,9 @@ struct CharacterTileView_Previews: PreviewProvider {
         Group {
             VStack {
                 CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: false, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
             }
             .preferredColorScheme(.light)
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: false, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
                 CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
             }
             .preferredColorScheme(.dark)
