@@ -15,12 +15,6 @@ final class RickAndMortyService: RickAndMortyServiceProtocol {
         let request = URLRequest(url: url)
 
         URLSession.shared.dataTask(with: request) { data, response, requestError in
-            if requestError != nil {
-                DispatchQueue.main.async {
-                    error(requestError)
-                }
-            }
-            
             if let data = data {
                 let decoder = JSONDecoder()
                 
@@ -35,8 +29,10 @@ final class RickAndMortyService: RickAndMortyServiceProtocol {
                     }
                 }
             } else {
-                DispatchQueue.main.async {
-                    error(requestError)
+                if requestError != nil {
+                    DispatchQueue.main.async {
+                        error(requestError)
+                    }
                 }
             }
         }.resume()

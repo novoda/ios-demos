@@ -8,20 +8,24 @@
 
 import Foundation
 
-
-struct CharactersList: Decodable {
-    let info: CharacterListInfo
-    let results: [Character]
+struct CharactersResponse: Codable {
+    enum CodingKeys: String, CodingKey {
+        case info = "info"
+        case characters = "results"
+    }
+    
+    let info: CharacterResponseInfo
+    let characters: [Character]
 }
 
-struct CharacterListInfo: Decodable {
+struct CharacterResponseInfo: Codable {
     let count: Int
     let next: String?
     let pages: Int
     let prev: String?
 }
 
-struct Character: Decodable {
+struct Character: Codable {
     let id: Int
     let name: String
     let species: String
@@ -31,7 +35,7 @@ struct Character: Decodable {
     let episode: [String]
 }
 
-struct LastLocation: Decodable {
+struct LastLocation: Codable {
     let name: String
     let url: String
 }

@@ -10,16 +10,17 @@ final class CharacterRepository: CharacterRepositoryProtocol {
     private let rickAndMortyService: RickAndMortyServiceProtocol = RickAndMortyService()
     
     func getCharacters(completion: @escaping (([Character]) -> Void)) {
-        
         if let url = characterPageURL {
-            rickAndMortyService.fetchData(url: url) { (characterList: CharactersList) in
+            rickAndMortyService.fetchData(url: url) { (characterList: CharactersResponse) in
                 if let nextURLString = characterList.info.next {
-                    self.characterPageURL = URL(string: nextURLString)!
+                    if let nextURL = URL(string: nextURLString) {
+                        self.characterPageURL = nextURL
+                    }
                 } else {
                     self.characterPageURL = nil
                 }
                 
-                completion(characterList.results)
+                completion(characterList.characters)
             } error: { error in
                 print(error.debugDescription)
                 return
@@ -27,3 +28,5 @@ final class CharacterRepository: CharacterRepositoryProtocol {
         }
     }
 }
+
+
