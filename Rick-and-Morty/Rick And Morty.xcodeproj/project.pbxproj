@@ -79,6 +79,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		179D2D7B26C40CF4008E1B3A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				179D2D7726C3E456008E1B3A /* CharacterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		179D2D7C26C40CFF008E1B3A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1711B39D26B1898100BE935B /* CharacterListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B81168601CFF1C9900301A0A = {
 			isa = PBXGroup;
 			children = (
@@ -103,11 +119,11 @@
 				17588BB026C2B112008ECC31 /* Services */,
 				17588BAA26C174FB008ECC31 /* Model */,
 				B811686C1CFF1C9900301A0A /* AppDelegate.swift */,
-				1711B39D26B1898100BE935B /* CharacterListView.swift */,
+				179D2D7C26C40CFF008E1B3A /* Views */,
+				179D2D7B26C40CF4008E1B3A /* Repositories */,
 				B81168751CFF1C9900301A0A /* Assets.xcassets */,
 				B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */,
 				B811687A1CFF1C9900301A0A /* Info.plist */,
-				179D2D7726C3E456008E1B3A /* CharacterRepository.swift */,
 			);
 			path = "Rick And Morty";
 			sourceTree = "<group>";
