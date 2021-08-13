@@ -14,13 +14,19 @@ struct CharacterListViewState {
 }
 
 struct CharacterListView: View {
+    @ObservedObject var viewModel: CharacterListViewModel = CharacterListViewModel()
     
     var body: some View {
         NavigationView {
-            VStack {
-                
+            List(viewModel.characterListViewState.characterCardStates, id: \.id) { cardState in
+                CharacterCard(characterCardState: cardState)
+                    .onAppear(perform: {
+                        if viewModel.isLastCard(characterCardState: cardState) {
+                            viewModel.loadCardStates()
+                        }
+                    })
             }
-            .navigationTitle("Characters")
+            .navigationTitle(viewModel.characterListViewState.title)
         }
     }
 }

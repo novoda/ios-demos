@@ -28,7 +28,7 @@ final class CharacterCardStateFactory {
     func createCharacterCardState(from character: Character) -> CharacterCardState {
         let isAlive = getIsAlive(character: character)
         let firstEpisode = getFirstEpisode(character: character) ?? "Unknown"
-        let characterCardState = CharacterCardState(id: character.id, name: character.name, imageURL: character.imageURL, isAlive: isAlive, species: character.species, lastLocation: character.lastLocation.name, firstEpisode: firstEpisode)
+        let characterCardState = CharacterCardState(id: character.id, name: character.name, imageURL: character.imageURL, isAlive: isAlive, species: character.species, lastLocation: character.lastLocation.name, firstEpisodeURL: firstEpisode)
         
         return characterCardState
     }

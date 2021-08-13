@@ -16,7 +16,7 @@ struct CharacterCardState {
     var isAlive: Bool
     var species: String
     var lastLocation: String
-    var firstEpisode: String
+    var firstEpisodeURL: String
 }
 
 private struct Constants {
@@ -24,7 +24,7 @@ private struct Constants {
     let noSpacing: CGFloat = 0
     let VSpacing: CGFloat = 10
     let borderWidth: CGFloat = 0.25
-    let cardHeight: CGFloat = 200
+    let cardHeight: CGFloat = 175
     let lastLocationCaption = "Last known location:"
     let firstEpisodeCaption = "First seen in:"
 }
@@ -35,9 +35,8 @@ struct CharacterCard: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            //Image(uiImage: characterCardState.image)
-                //.resizable()
-                //.aspectRatio(contentMode: .fit)
+            RemoteImage(url: characterCardState.imageURL)
+                .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: constants.VSpacing) {
                 VStack(alignment: .leading, spacing: constants.noSpacing) {
@@ -54,7 +53,12 @@ struct CharacterCard: View {
                 
                 characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.lastLocation)
                 
-                characterDetailsVStack(caption: constants.firstEpisodeCaption, text: characterCardState.firstEpisode)
+                VStack(alignment: .leading, spacing: constants.noSpacing) {
+                    Text(constants.firstEpisodeCaption)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                    FirstEpisodeText(characterCardState: characterCardState)
+                }
             }
             Spacer()
         }
@@ -63,7 +67,6 @@ struct CharacterCard: View {
             RoundedRectangle(cornerRadius: constants.cornerRadius)
                 .stroke(Color(.lightGray), lineWidth: constants.borderWidth)
         )
-        .padding()
         .frame(height: constants.cardHeight)
     }
     
@@ -77,18 +80,35 @@ struct CharacterCard: View {
     }
 }
 
+struct FirstEpisodeText: View {
+    let characterCardState: CharacterCardState
+    @State var firstEpisode: Episode = Episode(name: "")
+    private let episodeRepository: EpisodeRepositoryProtocol = EpisodeRepository()
+    
+    var body: some View {
+        Text(firstEpisode.name)
+            .onAppear(perform: {
+                episodeRepository.getEpisode(from: characterCardState.firstEpisodeURL) { episode in
+                    self.firstEpisode = episode
+                }
+            })
+    }
+}
+
+
 struct CharacterTileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack {
-                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
             }
             .preferredColorScheme(.light)
             VStack {
-                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
             }
             .preferredColorScheme(.dark)
             
         }
     }
 }
+

@@ -26,4 +26,8 @@ final class CharacterListViewModel: ObservableObject {
             }
         }
     }
+    
+    func isLastCard(characterCardState: CharacterCardState) -> Bool {
+        return characterCardState.id == characterListViewState.characterCardStates.last?.id
+    }
 }
