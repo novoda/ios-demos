@@ -13,6 +13,8 @@
 		174B065126C671580080ADD0 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065026C671580080ADD0 /* CharacterRepository.swift */; };
 		174B065426C6740E0080ADD0 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065326C6740E0080ADD0 /* CharacterListViewModel.swift */; };
 		174B065726C6751F0080ADD0 /* CharacterCardStateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065626C6751F0080ADD0 /* CharacterCardStateFactory.swift */; };
+		174B065926C680850080ADD0 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065826C680850080ADD0 /* EpisodeRepository.swift */; };
+		174B065B26C680E20080ADD0 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065A26C680E20080ADD0 /* Episode.swift */; };
 		17588BAC26C1750B008ECC31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAB26C1750B008ECC31 /* Character.swift */; };
 		17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAE26C273BB008ECC31 /* CharacterCard.swift */; };
 		B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811686C1CFF1C9900301A0A /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 		174B065026C671580080ADD0 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
 		174B065326C6740E0080ADD0 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		174B065626C6751F0080ADD0 /* CharacterCardStateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardStateFactory.swift; sourceTree = "<group>"; };
+		174B065826C680850080ADD0 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
+		174B065A26C680E20080ADD0 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		17588BAB26C1750B008ECC31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		17588BAE26C273BB008ECC31 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 		B81168691CFF1C9900301A0A /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,8 +85,10 @@
 			isa = PBXGroup;
 			children = (
 				174B065026C671580080ADD0 /* CharacterRepository.swift */,
+				174B065826C680850080ADD0 /* EpisodeRepository.swift */,
 			);
 			name = Repositories;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		174B065226C673FB0080ADD0 /* ViewModels */ = {
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				17588BAB26C1750B008ECC31 /* Character.swift */,
+				174B065A26C680E20080ADD0 /* Episode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,7 +131,6 @@
 				B811686B1CFF1C9900301A0A /* Rick And Morty */,
 				B81168821CFF1C9900301A0A /* Rick And MortyTests */,
 				B811686A1CFF1C9900301A0A /* Products */,
-				174B064E26C66FAD0080ADD0 /* Repositories */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +152,7 @@
 				17588BAD26C273A2008ECC31 /* Views */,
 				17588BAA26C174FB008ECC31 /* Model */,
 				B811686C1CFF1C9900301A0A /* AppDelegate.swift */,
+				174B064E26C66FAD0080ADD0 /* Repositories */,
 				B81168751CFF1C9900301A0A /* Assets.xcassets */,
 				B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */,
 				B811687A1CFF1C9900301A0A /* Info.plist */,
@@ -271,10 +278,12 @@
 				174B064B26C6611D0080ADD0 /* RickAndMortyService.swift in Sources */,
 				174B065726C6751F0080ADD0 /* CharacterCardStateFactory.swift in Sources */,
 				17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */,
+				174B065B26C680E20080ADD0 /* Episode.swift in Sources */,
 				174B065426C6740E0080ADD0 /* CharacterListViewModel.swift in Sources */,
 				17588BAC26C1750B008ECC31 /* Character.swift in Sources */,
 				1711B39E26B1898100BE935B /* CharacterListView.swift in Sources */,
 				B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */,
+				174B065926C680850080ADD0 /* EpisodeRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
