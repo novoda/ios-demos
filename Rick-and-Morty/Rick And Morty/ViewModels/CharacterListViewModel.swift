@@ -15,10 +15,10 @@ final class CharacterListViewModel: ObservableObject {
     private let characterCardStateFactory = CharacterCardStateFactory()
     
     init() {
-        getCardStates()
+        loadCardStates()
     }
     
-    func getCardStates() {
+    func loadCardStates() {
         characterRepository.getCharacters { characters in
             for character in characters {
                 let cardState = self.characterCardStateFactory.createCharacterCardState(from: character)
