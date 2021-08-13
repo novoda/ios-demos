@@ -8,19 +8,6 @@
 
 import Foundation
 
-
-struct CharactersList: Decodable {
-    let info: CharacterListInfo
-    let results: [Character]
-}
-
-struct CharacterListInfo: Decodable {
-    let count: Int
-    let next: String?
-    let pages: Int
-    let prev: String?
-}
-
 struct Character: Decodable {
     let id: Int
     let name: String
