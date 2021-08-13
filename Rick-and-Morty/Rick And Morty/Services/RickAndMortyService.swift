@@ -1,11 +1,3 @@
-//
-//  RickAndMortyService.swift
-//  Rick And Morty
-//
-//  Created by Scottie Gray on 2021-08-10.
-//  Copyright © 2021 Novoda. All rights reserved.
-//
-
 import Foundation
 
 final class RickAndMortyService: RickAndMortyServiceProtocol {
