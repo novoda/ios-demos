@@ -15,7 +15,7 @@ struct CharactersResponse: Codable {
     }
     
     let info: CharacterResponseInfo
-    let characters: [Character]
+    var characters: [Character]
 }
 
 struct CharacterResponseInfo: Codable {
@@ -26,13 +26,23 @@ struct CharacterResponseInfo: Codable {
 }
 
 struct Character: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case species = "species"
+        case lastLocation = "location"
+        case status = "status"
+        case imageURL = "image"
+        case episodeURLs = "episode"
+    }
+    
     let id: Int
     let name: String
     let species: String
-    let location: LastLocation
+    let lastLocation: LastLocation
     let status: String
-    let image: String
-    let episode: [String]
+    let imageURL: String
+    let episodeURLs: [String]
 }
 
 struct LastLocation: Codable {
