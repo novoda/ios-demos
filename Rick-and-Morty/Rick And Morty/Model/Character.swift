@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CharactersResponse: Codable {
+struct CharacterResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case info = "info"
         case characters = "results"

@@ -11,6 +11,8 @@
 		174B064B26C6611D0080ADD0 /* RickAndMortyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B064A26C6611D0080ADD0 /* RickAndMortyService.swift */; };
 		174B064D26C661470080ADD0 /* RickAndMortyServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B064C26C661470080ADD0 /* RickAndMortyServiceProtocol.swift */; };
 		174B065126C671580080ADD0 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065026C671580080ADD0 /* CharacterRepository.swift */; };
+		174B065426C6740E0080ADD0 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065326C6740E0080ADD0 /* CharacterListViewModel.swift */; };
+		174B065726C6751F0080ADD0 /* CharacterCardStateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065626C6751F0080ADD0 /* CharacterCardStateFactory.swift */; };
 		17588BAC26C1750B008ECC31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAB26C1750B008ECC31 /* Character.swift */; };
 		17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAE26C273BB008ECC31 /* CharacterCard.swift */; };
 		B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811686C1CFF1C9900301A0A /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 		174B064A26C6611D0080ADD0 /* RickAndMortyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyService.swift; sourceTree = "<group>"; };
 		174B064C26C661470080ADD0 /* RickAndMortyServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyServiceProtocol.swift; sourceTree = "<group>"; };
 		174B065026C671580080ADD0 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
+		174B065326C6740E0080ADD0 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		174B065626C6751F0080ADD0 /* CharacterCardStateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardStateFactory.swift; sourceTree = "<group>"; };
 		17588BAB26C1750B008ECC31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		17588BAE26C273BB008ECC31 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
 		B81168691CFF1C9900301A0A /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,22 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
+		174B065226C673FB0080ADD0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				174B065326C6740E0080ADD0 /* CharacterListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		174B065526C674FD0080ADD0 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				174B065626C6751F0080ADD0 /* CharacterCardStateFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		17588BAA26C174FB008ECC31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +140,8 @@
 		B811686B1CFF1C9900301A0A /* Rick And Morty */ = {
 			isa = PBXGroup;
 			children = (
+				174B065526C674FD0080ADD0 /* Factories */,
+				174B065226C673FB0080ADD0 /* ViewModels */,
 				174B064926C660FF0080ADD0 /* Services */,
 				17588BAD26C273A2008ECC31 /* Views */,
 				17588BAA26C174FB008ECC31 /* Model */,
@@ -247,7 +269,9 @@
 				174B064D26C661470080ADD0 /* RickAndMortyServiceProtocol.swift in Sources */,
 				174B065126C671580080ADD0 /* CharacterRepository.swift in Sources */,
 				174B064B26C6611D0080ADD0 /* RickAndMortyService.swift in Sources */,
+				174B065726C6751F0080ADD0 /* CharacterCardStateFactory.swift in Sources */,
 				17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */,
+				174B065426C6740E0080ADD0 /* CharacterListViewModel.swift in Sources */,
 				17588BAC26C1750B008ECC31 /* Character.swift in Sources */,
 				1711B39E26B1898100BE935B /* CharacterListView.swift in Sources */,
 				B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */,

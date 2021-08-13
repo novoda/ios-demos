@@ -12,7 +12,7 @@ import Foundation
 struct CharacterCardState {
     var id: Int
     var name: String
-    var image: UIImage
+    var imageURL: String
     var isAlive: Bool
     var species: String
     var lastLocation: String
@@ -35,9 +35,9 @@ struct CharacterCard: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            Image(uiImage: characterCardState.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            //Image(uiImage: characterCardState.image)
+                //.resizable()
+                //.aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: constants.VSpacing) {
                 VStack(alignment: .leading, spacing: constants.noSpacing) {
@@ -81,11 +81,11 @@ struct CharacterTileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
             }
             .preferredColorScheme(.light)
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
             }
             .preferredColorScheme(.dark)
             

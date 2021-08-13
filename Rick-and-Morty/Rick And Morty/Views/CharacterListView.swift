@@ -8,6 +8,11 @@
 
 import SwiftUI
 
+struct CharacterListViewState {
+    let title: String = "Characters"
+    var characterCardStates: [CharacterCardState]
+}
+
 struct CharacterListView: View {
     
     var body: some View {
