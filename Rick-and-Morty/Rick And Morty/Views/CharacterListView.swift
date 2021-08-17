@@ -8,22 +8,15 @@
 
 import SwiftUI
 
-struct CharacterListViewState {
-    let title: String = "Characters"
-    var characterCardStates: [CharacterCardState]
-}
-
 struct CharacterListView: View {
     @ObservedObject var viewModel: CharacterListViewModel = CharacterListViewModel()
     
     var body: some View {
         NavigationView {
-            List(viewModel.characterListViewState.characterCardStates, id: \.id) { cardState in
-                CharacterCard(characterCardState: cardState)
+            List(viewModel.characterListViewState.characters, id: \.id) { character in
+                CharacterCard(cardViewModel: CharacterCardViewModel(character: character))
                     .onAppear(perform: {
-                        if viewModel.isLastCard(characterCardState: cardState) {
-                            viewModel.loadCardStates()
-                        }
+                        viewModel.loadIfNeeded(characterID: character.id)
                     })
             }
             .navigationTitle(viewModel.characterListViewState.title)

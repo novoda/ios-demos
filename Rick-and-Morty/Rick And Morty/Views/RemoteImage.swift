@@ -29,7 +29,7 @@ struct RemoteImage: View {
                 } else {
                     self.state = .failure
                 }
-
+                
                 DispatchQueue.main.async {
                     self.objectWillChange.send()
                 }

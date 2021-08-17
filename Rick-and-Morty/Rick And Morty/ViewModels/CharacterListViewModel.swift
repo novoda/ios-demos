@@ -8,26 +8,33 @@
 
 import Foundation
 
+
+struct CharacterListViewState {
+    let title: String = "Characters"
+    var characters: [Character]
+}
+
 final class CharacterListViewModel: ObservableObject {
-    @Published var characterListViewState: CharacterListViewState = CharacterListViewState(characterCardStates: [])
+    @Published var characterListViewState: CharacterListViewState = CharacterListViewState(characters: [])
     
     private let characterRepository: CharacterRepositoryProtocol = CharacterRepository()
     private let characterCardStateFactory = CharacterCardStateFactory()
     
     init() {
-        loadCardStates()
+        loadCharacters()
     }
     
-    func loadCardStates() {
+    func loadCharacters() {
         characterRepository.getCharacters { characters in
             for character in characters {
-                let cardState = self.characterCardStateFactory.createCharacterCardState(from: character)
-                self.characterListViewState.characterCardStates.append(cardState)
+                self.characterListViewState.characters.append(character)
             }
         }
     }
     
-    func isLastCard(characterCardState: CharacterCardState) -> Bool {
-        return characterCardState.id == characterListViewState.characterCardStates.last?.id
+    func loadIfNeeded(characterID: Int) {
+        if characterID == characterListViewState.characters.last?.id {
+            loadCharacters()
+        }
     }
 }

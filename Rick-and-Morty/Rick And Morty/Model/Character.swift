@@ -26,6 +26,12 @@ struct CharacterResponseInfo: Codable {
 }
 
 struct Character: Codable {
+    enum Status: String, Codable {
+        case alive = "Alive"
+        case dead = "Dead"
+        case unkown = "unknown"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
@@ -40,7 +46,7 @@ struct Character: Codable {
     let name: String
     let species: String
     let lastLocation: LastLocation
-    let status: String
+    let status: Status
     let imageURL: String
     let episodeURLs: [String]
 }

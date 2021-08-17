@@ -9,16 +9,7 @@
 import SwiftUI
 import Foundation
 
-struct CharacterCardState {
-    var id: Int
-    var name: String
-    var imageURL: String
-    var isAlive: Bool
-    var species: String
-    var lastLocation: String
-    var firstEpisodeURL: String
-}
-
+//enums
 private struct Constants {
     let cornerRadius: CGFloat = 10
     let noSpacing: CGFloat = 0
@@ -30,35 +21,20 @@ private struct Constants {
 }
 
 struct CharacterCard: View {
-    var characterCardState: CharacterCardState
+    @ObservedObject var cardViewModel: CharacterCardViewModel
     private let constants: Constants = Constants()
     
     var body: some View {
         HStack(alignment: .top) {
-            RemoteImage(url: characterCardState.imageURL)
+            RemoteImage(url: cardViewModel.cardState.imageURL)
                 .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: constants.VSpacing) {
-                VStack(alignment: .leading, spacing: constants.noSpacing) {
-                    Text(characterCardState.name)
-                        .font(.title)
-                        .fontWeight(.black)
-                    HStack {
-                        Circle()
-                            .foregroundColor(characterCardState.isAlive ? .green : .red)
-                            .frame(width: 10, height: 10)
-                        Text(characterCardState.isAlive ? "Alive - \(characterCardState.species)" : "Dead - \(characterCardState.species)")
-                    }
-                }
+                NameAndStatusView(name: cardViewModel.cardState.name, statusColor: cardViewModel.cardState.statusColor, statusText: cardViewModel.cardState.statusText)
                 
-                characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.lastLocation)
+                DescriptionDetailView(title: constants.lastLocationCaption, text: cardViewModel.cardState.lastLocation)
                 
-                VStack(alignment: .leading, spacing: constants.noSpacing) {
-                    Text(constants.firstEpisodeCaption)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                    FirstEpisodeText(characterCardState: characterCardState)
-                }
+                DescriptionDetailView(title: constants.firstEpisodeCaption, text: cardViewModel.cardState.firstEpisodeName)
             }
             Spacer()
         }
@@ -69,42 +45,58 @@ struct CharacterCard: View {
         )
         .frame(height: constants.cardHeight)
     }
+}
+
+extension CharacterCard {
+    private struct DescriptionDetailView: View {
+        let title: String
+        let text: String
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(title)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(text)
+            }
+        }
+    }
     
-    func characterDetailsVStack(caption: String, text: String) -> some View {
-        return VStack(alignment: .leading, spacing: constants.noSpacing) {
-                        Text(caption)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Text(text)
+    private struct NameAndStatusView: View {
+        let name: String
+        let statusColor: Color
+        let statusText: String
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(name)
+                    .font(.title)
+                    .fontWeight(.black)
+                HStack {
+                    Circle()
+                        .foregroundColor(statusColor)
+                        .frame(width: 10, height: 10)
+                    Text(statusText)
+                }
+            }
         }
     }
 }
 
-struct FirstEpisodeText: View {
-    let characterCardState: CharacterCardState
-    @State var firstEpisode: Episode = Episode(name: "")
-    private let episodeRepository: EpisodeRepositoryProtocol = EpisodeRepository()
-    
-    var body: some View {
-        Text(firstEpisode.name)
-            .onAppear(perform: {
-                episodeRepository.getEpisode(from: characterCardState.firstEpisodeURL) { episode in
-                    self.firstEpisode = episode
-                }
-            })
-    }
-}
+
+
+
 
 
 struct CharacterTileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
+                CharacterCard(cardViewModel: CharacterCardViewModel(character: Character(id: 1, name: "Morty", species: "Human", lastLocation: LastLocation(name: "Earth", url: ""), status: .alive, imageURL: "", episodeURLs: [])))
             }
             .preferredColorScheme(.light)
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
+                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
             }
             .preferredColorScheme(.dark)
             
