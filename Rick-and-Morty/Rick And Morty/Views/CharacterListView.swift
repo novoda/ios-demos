@@ -1,11 +1,3 @@
-//
-//  ContentView.swift
-//  Rick And Morty
-//
-//  Created by Scottie Gray on 2021-07-28.
-//  Copyright © 2021 Novoda. All rights reserved.
-//
-
 import SwiftUI
 
 struct CharacterListView: View {
@@ -14,11 +6,12 @@ struct CharacterListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.characterListViewState.characters, id: \.id) { character in
-                CharacterCard(cardViewModel: CharacterCardViewModel(character: character))
+                CharacterCard(viewModel: CharacterCardViewModel(character: character))
                     .onAppear(perform: {
                         viewModel.loadIfNeeded(characterID: character.id)
                     })
             }
+            .buttonStyle(BorderlessButtonStyle())
             .navigationTitle(viewModel.characterListViewState.title)
         }
     }

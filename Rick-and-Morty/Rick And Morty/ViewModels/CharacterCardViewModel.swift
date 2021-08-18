@@ -1,30 +1,21 @@
-//
-//  CharacterCardViewModel.swift
-//  Rick And Morty
-//
-//  Created by Scottie Gray on 2021-08-13.
-//  Copyright © 2021 Novoda. All rights reserved.
-//
-
 import Foundation
 import SwiftUI
-
-
-struct CharacterCardState {
-    var id: Int
-    var name: String
-    var imageURL: String
-    var statusColor: Color
-    var species: String
-    var lastLocation: String
-    var firstEpisodeName: String
-    var statusText: String
-}
 
 final class CharacterCardViewModel: ObservableObject {
     @Published var cardState: CharacterCardState
     
-    let character: Character
+    struct CharacterCardState {
+        var id: Int
+        var name: String
+        var imageURL: String
+        var statusColor: Color
+        var species: String
+        var lastLocation: String
+        var firstEpisodeName: String
+        var statusText: String
+    }
+    
+    private let character: Character
     private let episodeRepository: EpisodeRepositoryProtocol = EpisodeRepository()
     
     init(character: Character) {

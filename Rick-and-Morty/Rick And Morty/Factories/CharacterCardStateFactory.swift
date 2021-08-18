@@ -35,8 +35,8 @@ final class CharacterCardStateFactory {
         return str + " - " + character.species
     }
     
-    func createCharacterCardState(from character: Character) -> CharacterCardState {
-        let characterCardState = CharacterCardState(
+    func createCharacterCardState(from character: Character) -> CharacterCardViewModel.CharacterCardState {
+        let characterCardState = CharacterCardViewModel.CharacterCardState(
                                         id: character.id,
                                         name: character.name,
                                         imageURL: character.imageURL,
