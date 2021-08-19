@@ -22,17 +22,17 @@ final class CharacterCardStateFactory {
     }
     
     private func getStatusText(character: Character) -> String {
-        var str = ""
+        var statusText = ""
         switch character.status {
         case .alive:
-            str = "Alive"
+            statusText = "Alive"
         case .dead:
-            str = "Dead"
+            statusText = "Dead"
         default:
-            str = "unknown"
+            statusText = "unknown"
         }
         
-        return str + " - " + character.species
+        return statusText + " - " + character.species
     }
     
     func createCharacterCardState(from character: Character) -> CharacterCardViewModel.CharacterCardState {

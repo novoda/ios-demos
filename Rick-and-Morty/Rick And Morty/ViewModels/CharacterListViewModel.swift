@@ -16,7 +16,8 @@ final class CharacterListViewModel: ObservableObject {
     }
     
     func loadCharacters() {
-        characterRepository.getCharacters { characters in
+        characterRepository.getCharacters {
+            characters in
             for character in characters {
                 self.characterListViewState.characters.append(character)
             }

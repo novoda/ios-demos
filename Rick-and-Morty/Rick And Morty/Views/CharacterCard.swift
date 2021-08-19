@@ -71,10 +71,6 @@ extension CharacterCard {
 }
 
 
-
-
-
-
 struct CharacterTileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -83,7 +79,7 @@ struct CharacterTileView_Previews: PreviewProvider {
             }
             .preferredColorScheme(.light)
             VStack {
-                //CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", imageURL: " ", isAlive: true, species: "Human", lastLocation: "Earth", firstEpisodeURL: "Episode 1"))
+                CharacterCard(viewModel: CharacterCardViewModel(character: Character(id: 1, name: "Morty", species: "Human", lastLocation: LastLocation(name: "Earth", url: ""), status: .alive, imageURL: "", episodeURLs: [])))
             }
             .preferredColorScheme(.dark)
             

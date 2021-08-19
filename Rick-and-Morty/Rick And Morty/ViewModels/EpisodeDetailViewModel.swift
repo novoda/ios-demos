@@ -7,14 +7,9 @@ final class EpisodeDetailViewModel: ObservableObject {
         let name: String
         let airDate: String
         let episodeString: String
-        //let characters: [CharacterCardState]
     }
     
-    init(episode: Episode?) {
-        if let epi = episode {
-            self.viewState = EpisodeDetailViewState(name: epi.name, airDate: epi.airDate, episodeString: epi.episodeString)
-        } else {
-            viewState = EpisodeDetailViewState(name: "Unknown", airDate: "", episodeString: "")
-        }
+    init(episode: Episode) {
+        self.viewState = EpisodeDetailViewState(name: episode.name, airDate: episode.airDate, episodeString: episode.episodeString)
     }
 }

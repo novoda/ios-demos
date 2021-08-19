@@ -11,11 +11,11 @@ struct CharacterListView: View {
                         viewModel.loadIfNeeded(characterID: character.id)
                     })
             }
-            .buttonStyle(BorderlessButtonStyle())
             .navigationTitle(viewModel.characterListViewState.title)
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

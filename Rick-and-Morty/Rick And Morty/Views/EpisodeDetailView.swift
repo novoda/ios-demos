@@ -24,16 +24,14 @@ struct EpisodeDetailView: View {
     }
 }
 
-/*
+
 struct EpisodeDetailView_Previews: PreviewProvider {
-    
-    
     static var previews: some View {
         NavigationView {
-            let episodeDetailViewState = EpisodeDetailViewState(name: "Epiosode the best", airDate: "September 2014", episodeString: "S01E04", characters: [])
-            EpisodeDetailView(viewState: episodeDetailViewState)
+            let viewModel = EpisodeDetailViewModel(episode: Episode(name: "First Episode", airDate: "Apr 4, 2021", episodeString: "S01E01", characterURLs: []))
+            EpisodeDetailView(viewModel: viewModel)
         }
         
     }
 }
-*/
+
