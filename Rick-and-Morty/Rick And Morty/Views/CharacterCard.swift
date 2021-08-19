@@ -1,94 +1,89 @@
-//
-//  CharacterTileView.swift
-//  Rick And Morty
-//
-//  Created by Scottie Gray on 2021-08-10.
-//  Copyright © 2021 Novoda. All rights reserved.
-//
-
 import SwiftUI
 import Foundation
 
-struct CharacterCardState {
-    var id: Int
-    var name: String
-    var image: UIImage
-    var isAlive: Bool
-    var species: String
-    var lastLocation: String
-    var firstEpisode: String
-}
-
-private struct Constants {
-    let cornerRadius: CGFloat = 10
-    let noSpacing: CGFloat = 0
-    let VSpacing: CGFloat = 10
-    let borderWidth: CGFloat = 0.25
-    let cardHeight: CGFloat = 200
-    let lastLocationCaption = "Last known location:"
-    let firstEpisodeCaption = "First seen in:"
-}
-
 struct CharacterCard: View {
-    var characterCardState: CharacterCardState
-    private let constants: Constants = Constants()
+    @ObservedObject var viewModel: CharacterCardViewModel
     
+    private enum Constants: CGFloat {
+        case cornerRadius = 10
+        case noSpacing = 0
+        case VSpacing = 8
+        case borderWidth = 0.25
+        case cardHeight = 175
+    }
+        
     var body: some View {
         HStack(alignment: .top) {
-            Image(uiImage: characterCardState.image)
-                .resizable()
+            RemoteImage(url: viewModel.cardState.imageURL)
                 .aspectRatio(contentMode: .fit)
             
-            VStack(alignment: .leading, spacing: constants.VSpacing) {
-                VStack(alignment: .leading, spacing: constants.noSpacing) {
-                    Text(characterCardState.name)
-                        .font(.title)
-                        .fontWeight(.black)
-                    HStack {
-                        Circle()
-                            .foregroundColor(characterCardState.isAlive ? .green : .red)
-                            .frame(width: 10, height: 10)
-                        Text(characterCardState.isAlive ? "Alive - \(characterCardState.species)" : "Dead - \(characterCardState.species)")
-                    }
-                }
+            VStack(alignment: .leading, spacing: Constants.VSpacing.rawValue) {
+                NameAndStatusView(name: viewModel.cardState.name, statusColor: viewModel.cardState.statusColor, statusText: viewModel.cardState.statusText)
                 
-                characterDetailsVStack(caption: constants.lastLocationCaption, text: characterCardState.lastLocation)
-                
-                characterDetailsVStack(caption: constants.firstEpisodeCaption, text: characterCardState.firstEpisode)
+                DescriptionDetailView(title: "Last known location:", text: viewModel.cardState.lastLocation)
+                DescriptionDetailView(title: "First seen in:", text: viewModel.cardState.firstEpisodeName)
             }
             Spacer()
         }
-        .cornerRadius(constants.cornerRadius)
+        .cornerRadius(Constants.cornerRadius.rawValue)
         .overlay(
-            RoundedRectangle(cornerRadius: constants.cornerRadius)
-                .stroke(Color(.lightGray), lineWidth: constants.borderWidth)
+            RoundedRectangle(cornerRadius: Constants.cornerRadius.rawValue)
+                .stroke(Color(.lightGray), lineWidth: Constants.borderWidth.rawValue)
         )
-        .padding()
-        .frame(height: constants.cardHeight)
+        .frame(height: Constants.cardHeight.rawValue)
+    }
+}
+
+extension CharacterCard {
+    private struct DescriptionDetailView: View {
+        let title: String
+        let text: String
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(title)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(text)
+            }
+        }
     }
     
-    func characterDetailsVStack(caption: String, text: String) -> some View {
-        return VStack(alignment: .leading, spacing: constants.noSpacing) {
-                        Text(caption)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Text(text)
+    private struct NameAndStatusView: View {
+        let name: String
+        let statusColor: Color
+        let statusText: String
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(name)
+                    .font(.title)
+                    .fontWeight(.black)
+                HStack {
+                    Circle()
+                        .foregroundColor(statusColor)
+                        .frame(width: 10, height: 10)
+                    Text(statusText)
+                }
+            }
         }
     }
 }
+
 
 struct CharacterTileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                CharacterCard(viewModel: CharacterCardViewModel(character: Character(id: 1, name: "Morty", species: "Human", lastLocation: LastLocation(name: "Earth", url: ""), status: .alive, imageURL: "", episodeURLs: [])))
             }
             .preferredColorScheme(.light)
             VStack {
-                CharacterCard(characterCardState: CharacterCardState(id: 2, name: "Morty", image: UIImage(named: "morty-image")!, isAlive: true, species: "Human", lastLocation: "Earth", firstEpisode: "Episode 1"))
+                CharacterCard(viewModel: CharacterCardViewModel(character: Character(id: 1, name: "Morty", species: "Human", lastLocation: LastLocation(name: "Earth", url: ""), status: .alive, imageURL: "", episodeURLs: [])))
             }
             .preferredColorScheme(.dark)
             
         }
     }
 }
+
