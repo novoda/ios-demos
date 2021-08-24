@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CharacterRepositoryProtocol {
-    func getCharacters(completion: @escaping (([Character]) -> Void))
+    func getCharacters(completion: @escaping (([Character]) -> Void), error: @escaping ((NSError?) -> Void))
 }
 
 final class CharacterRepository: CharacterRepositoryProtocol {
@@ -9,7 +9,7 @@ final class CharacterRepository: CharacterRepositoryProtocol {
     
     private let rickAndMortyService: RickAndMortyServiceProtocol = RickAndMortyService()
     
-    func getCharacters(completion: @escaping (([Character]) -> Void)) {
+    func getCharacters(completion: @escaping (([Character]) -> Void), error: @escaping ((NSError?) -> Void)) {
         if let url = characterPageURL {
             rickAndMortyService.fetchData(url: url) { (charactersResponse: CharacterResponse) in
                 if let nextURLString = charactersResponse.info.next {
@@ -21,9 +21,8 @@ final class CharacterRepository: CharacterRepositoryProtocol {
                 }
                 
                 completion(charactersResponse.characters)
-            } error: { error in
-                print(error.debugDescription)
-                return
+            } error: { (err: NSError?) in
+                error(err)
             }
         }
     }
