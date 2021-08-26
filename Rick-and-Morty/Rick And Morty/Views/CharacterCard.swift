@@ -20,8 +20,8 @@ struct CharacterCard: View {
             VStack(alignment: .leading, spacing: Constants.VSpacing.rawValue) {
                 NameAndStatusView(name: viewModel.cardState.name, statusColor: viewModel.cardState.statusColor, statusText: viewModel.cardState.statusText)
                 
-                DescriptionDetailView(title: "Last known location:", text: viewModel.cardState.lastLocation)
-                DescriptionDetailView(title: "First seen in:", text: viewModel.cardState.firstEpisodeName)
+                DescriptionDetailView(title: "lastKnownLocationTitle", text: viewModel.cardState.lastLocation)
+                DescriptionDetailView(title: "firstEpisodeTitle", text: viewModel.cardState.firstEpisodeName)
             }
             Spacer()
         }
@@ -36,7 +36,7 @@ struct CharacterCard: View {
 
 extension CharacterCard {
     private struct DescriptionDetailView: View {
-        let title: String
+        let title: LocalizedStringKey
         let text: String
         
         var body: some View {
@@ -52,7 +52,7 @@ extension CharacterCard {
     private struct NameAndStatusView: View {
         let name: String
         let statusColor: Color
-        let statusText: String
+        let statusText: LocalizedStringKey
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {

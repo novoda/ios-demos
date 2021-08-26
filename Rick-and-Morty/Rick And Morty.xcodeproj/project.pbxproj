@@ -22,6 +22,7 @@
 		174B065F26C6ABB00080ADD0 /* CharacterCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B065E26C6ABB00080ADD0 /* CharacterCardViewModel.swift */; };
 		17588BAC26C1750B008ECC31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAB26C1750B008ECC31 /* Character.swift */; };
 		17588BAF26C273BB008ECC31 /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17588BAE26C273BB008ECC31 /* CharacterCard.swift */; };
+		17CA9FE326D7A25A002CEED5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17CA9FE526D7A25A002CEED5 /* Localizable.strings */; };
 		B811686D1CFF1C9900301A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811686C1CFF1C9900301A0A /* AppDelegate.swift */; };
 		B81168761CFF1C9900301A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81168751CFF1C9900301A0A /* Assets.xcassets */; };
 		B81168791CFF1C9900301A0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */; };
@@ -54,6 +55,8 @@
 		174B065E26C6ABB00080ADD0 /* CharacterCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewModel.swift; sourceTree = "<group>"; };
 		17588BAB26C1750B008ECC31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		17588BAE26C273BB008ECC31 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCard.swift; sourceTree = "<group>"; };
+		17CA9FE426D7A25A002CEED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		17CA9FE626D7A2D3002CEED5 /* en-AU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-AU"; path = "en-AU.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B81168691CFF1C9900301A0A /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B811686C1CFF1C9900301A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B81168751CFF1C9900301A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 				B81168751CFF1C9900301A0A /* Assets.xcassets */,
 				B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */,
 				B811687A1CFF1C9900301A0A /* Info.plist */,
+				17CA9FE526D7A25A002CEED5 /* Localizable.strings */,
 			);
 			path = "Rick And Morty";
 			sourceTree = "<group>";
@@ -260,6 +264,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-AU",
 			);
 			mainGroup = B81168601CFF1C9900301A0A;
 			productRefGroup = B811686A1CFF1C9900301A0A /* Products */;
@@ -278,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B81168791CFF1C9900301A0A /* LaunchScreen.storyboard in Resources */,
+				17CA9FE326D7A25A002CEED5 /* Localizable.strings in Resources */,
 				B81168761CFF1C9900301A0A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +340,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		17CA9FE526D7A25A002CEED5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17CA9FE426D7A25A002CEED5 /* en */,
+				17CA9FE626D7A2D3002CEED5 /* en-AU */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B81168771CFF1C9900301A0A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -349,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -405,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

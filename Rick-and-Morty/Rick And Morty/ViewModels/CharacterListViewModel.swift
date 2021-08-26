@@ -1,11 +1,12 @@
 import Foundation
+import SwiftUI
 
 final class CharacterListViewModel: ObservableObject {
     @Published var characterListViewState: CharacterListViewState = CharacterListViewState(characters: [])
     
     struct CharacterListViewState {
-        let title: String = "Characters"
-        var errorMessage: String? = nil
+        let title: LocalizedStringKey = "charactersListTitle"
+        var errorMessage: LocalizedStringKey? = nil
         var characters: [Character]
         var state: State = .doneLoading
         
@@ -36,16 +37,7 @@ final class CharacterListViewModel: ObservableObject {
         } fail: { error in
             
             self.characterListViewState.state = .error
-            
-            if let error = error {
-                if error.code == 4864 {
-                    self.characterListViewState.errorMessage = "Wubba Lubba Dub Dub! There was a problem loading the characters."
-                } else {
-                    self.characterListViewState.errorMessage = error.localizedDescription
-                }
-                
-                self.characterListViewState.errorMessage?.append(" Tap the refresh button to try again..")
-            }
+            self.characterListViewState.errorMessage = "errorMessage"
         }
     }
     

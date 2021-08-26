@@ -21,18 +21,15 @@ final class CharacterCardStateFactory {
         }
     }
     
-    private func getStatusText(character: Character) -> String {
-        var statusText = ""
+    private func getStatusText(character: Character) -> LocalizedStringKey {
         switch character.status {
         case .alive:
-            statusText = "Alive"
+            return "aliveStatus - \(character.species)"
         case .dead:
-            statusText = "Dead"
+            return "deadStatus - \(character.species)"
         default:
-            statusText = "unknown"
-        }
-        
-        return statusText + " - " + character.species
+            return "unknownStatus - \(character.species)"
+        }        
     }
     
     func createCharacterCardState(from character: Character) -> CharacterCardViewModel.CharacterCardState {

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ErrorView: View {
-    let errorMessage: String?
+    let errorMessage: LocalizedStringKey?
     let refreshAction: () -> ()
     
     var body: some View {
