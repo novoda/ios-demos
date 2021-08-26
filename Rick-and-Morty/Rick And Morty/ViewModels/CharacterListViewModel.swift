@@ -33,15 +33,15 @@ final class CharacterListViewModel: ObservableObject {
             for character in characters {
                 self.characterListViewState.characters.append(character)
             }
-        } error: { error in
+        } fail: { error in
             
             self.characterListViewState.state = .error
             
-            if let err = error {
-                if err.code == 4864 {
+            if let error = error {
+                if error.code == 4864 {
                     self.characterListViewState.errorMessage = "Wubba Lubba Dub Dub! There was a problem loading the characters."
                 } else {
-                    self.characterListViewState.errorMessage = err.localizedDescription
+                    self.characterListViewState.errorMessage = error.localizedDescription
                 }
                 
                 self.characterListViewState.errorMessage?.append(" Tap the refresh button to try again..")
