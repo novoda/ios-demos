@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Rick And Morty
+
+  Created by Scottie Gray on 2021-08-26.
+  Copyright © 2021 Novoda. All rights reserved.
+*/
+
+"charactersListTitle" = "Characters";
+
+"lastKnownLocationTitle" = "Last known location:";
+"firstEpisodeTitle" = "First seen in:";
+
+"aliveStatus" = "Alive";
+"deadStatus" = "Dead";
+"unknownStatus" = "Unknown";
+
+"errorMessage" = "Wubba Lubba Dub Dub! There was a problem loading the characters. Tap the refresh button to try again.";

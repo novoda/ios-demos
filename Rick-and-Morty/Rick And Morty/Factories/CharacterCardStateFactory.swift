@@ -21,18 +21,15 @@ final class CharacterCardStateFactory {
         }
     }
     
-    private func getStatusText(character: Character) -> String {
-        var statusText = ""
+    private func getStatus(character: Character) -> String {
         switch character.status {
         case .alive:
-            statusText = "Alive"
+            return "aliveStatus"
         case .dead:
-            statusText = "Dead"
+            return "deadStatus"
         default:
-            statusText = "unknown"
-        }
-        
-        return statusText + " - " + character.species
+            return "unknownStatus"
+        }        
     }
     
     func createCharacterCardState(from character: Character) -> CharacterCardViewModel.CharacterCardState {
@@ -44,7 +41,7 @@ final class CharacterCardStateFactory {
                                         species: character.species,
                                         lastLocation: character.lastLocation.name,
                                         firstEpisodeName: "",
-                                        statusText: getStatusText(character: character)
+                                        status: getStatus(character: character)
                                         )
         
         return characterCardState
