@@ -16,7 +16,7 @@ final class EpisodeRepository: EpisodeRepositoryProtocol {
                 rickAndMortyService.fetchData(url: url) { (episode: Episode) in
                     EpisodeRepository.cachedEpisodeNames[urlString] = episode
                     completion(episode)
-                } error: { error in
+                } fail: { error in
                     print(error.debugDescription)
                     return
                 }

@@ -3,7 +3,8 @@ import Foundation
 final class RickAndMortyService: RickAndMortyServiceProtocol {
     static let baseURL = URL(string: "https://rickandmortyapi.com/api")!
     
-    func fetchData<T:Decodable>(url: URL, success: @escaping (T) -> (), error: @escaping (Error?) -> ()) {
+    func fetchData<T:Decodable>(url: URL, success: @escaping (T) -> (), fail: @escaping (NSError?) -> ()) {
+        
         let request = URLRequest(url: url)
 
         URLSession.shared.dataTask(with: request) { data, response, requestError in
@@ -16,15 +17,21 @@ final class RickAndMortyService: RickAndMortyServiceProtocol {
                         success(decodedData)
                     }
                 } catch let decodingError {
-                    DispatchQueue.main.async {
-                       error(decodingError)
+                    if let error = decodingError as NSError? {
+                        DispatchQueue.main.async {
+                            fail(error)
+                        }
+                    } else {
+                        print("Unknown Error: \(decodingError.localizedDescription)")
                     }
                 }
             } else {
-                if requestError != nil {
+                if let error = requestError as NSError? {
                     DispatchQueue.main.async {
-                        error(requestError)
+                        fail(error)
                     }
+                } else {
+                    print("Unknown Error: \(String(describing: requestError?.localizedDescription))")
                 }
             }
         }.resume()
