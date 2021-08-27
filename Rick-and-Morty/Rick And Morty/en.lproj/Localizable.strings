@@ -11,8 +11,8 @@
 "lastKnownLocationTitle" = "Last known location:";
 "firstEpisodeTitle" = "First seen in:";
 
-"aliveStatus - %@" = "Alive - %@";
-"deadStatus - %@" = "Dead - %@";
-"unkownStatus - %@" = "Unknown - %@";
+"aliveStatus" = "Alive";
+"deadStatus" = "Dead";
+"unknownStatus" = "Unknown";
 
 "errorMessage" = "Wubba Lubba Dub Dub! There was a problem loading the characters. Tap the refresh button to try again.";

@@ -12,7 +12,7 @@ final class CharacterCardViewModel: ObservableObject {
         var species: String
         var lastLocation: String
         var firstEpisodeName: String
-        var statusText: LocalizedStringKey
+        var status: String
     }
     
     private let character: Character

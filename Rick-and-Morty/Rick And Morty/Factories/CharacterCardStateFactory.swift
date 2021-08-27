@@ -21,14 +21,14 @@ final class CharacterCardStateFactory {
         }
     }
     
-    private func getStatusText(character: Character) -> LocalizedStringKey {
+    private func getStatus(character: Character) -> String {
         switch character.status {
         case .alive:
-            return "aliveStatus - \(character.species)"
+            return "aliveStatus"
         case .dead:
-            return "deadStatus - \(character.species)"
+            return "deadStatus"
         default:
-            return "unknownStatus - \(character.species)"
+            return "unknownStatus"
         }        
     }
     
@@ -41,7 +41,7 @@ final class CharacterCardStateFactory {
                                         species: character.species,
                                         lastLocation: character.lastLocation.name,
                                         firstEpisodeName: "",
-                                        statusText: getStatusText(character: character)
+                                        status: getStatus(character: character)
                                         )
         
         return characterCardState

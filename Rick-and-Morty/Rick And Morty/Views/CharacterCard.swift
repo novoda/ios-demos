@@ -18,7 +18,7 @@ struct CharacterCard: View {
                 .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: Constants.VSpacing.rawValue) {
-                NameAndStatusView(name: viewModel.cardState.name, statusColor: viewModel.cardState.statusColor, statusText: viewModel.cardState.statusText)
+                NameAndStatusView(name: viewModel.cardState.name, statusColor: viewModel.cardState.statusColor, status: viewModel.cardState.status, species: viewModel.cardState.species)
                 
                 DescriptionDetailView(title: "lastKnownLocationTitle", text: viewModel.cardState.lastLocation)
                 DescriptionDetailView(title: "firstEpisodeTitle", text: viewModel.cardState.firstEpisodeName)
@@ -52,7 +52,8 @@ extension CharacterCard {
     private struct NameAndStatusView: View {
         let name: String
         let statusColor: Color
-        let statusText: LocalizedStringKey
+        let status: String
+        let species: String
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -63,7 +64,10 @@ extension CharacterCard {
                     Circle()
                         .foregroundColor(statusColor)
                         .frame(width: 10, height: 10)
-                    Text(statusText)
+                    HStack(spacing: 0) {
+                        Text(LocalizedStringKey(status))
+                        Text(" - \(species)")
+                    }
                 }
             }
         }
