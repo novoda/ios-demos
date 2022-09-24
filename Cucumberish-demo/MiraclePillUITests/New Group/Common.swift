@@ -9,7 +9,7 @@ class Common: XCTest {
         application.launch()
     }
 
-    func verifyUIElementExists(_ type: XCUIElementType, withId id: String) {
+    func verifyUIElementExists(_ type: XCUIElement.ElementType, withId id: String) {
         XCTAssert(application.descendants(matching: type)[id].exists)
     }
 

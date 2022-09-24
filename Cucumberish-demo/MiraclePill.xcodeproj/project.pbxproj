@@ -45,7 +45,6 @@
 		2D4A07BD1FE7B92B00E00048 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MiraclePill.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7FE1801FDAE448005C4AE7 /* Features */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Features; sourceTree = "<group>"; };
 		2D7FE1821FDAE4F2005C4AE7 /* CucumberishTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CucumberishTests.m; sourceTree = "<group>"; };
-		2D7FE1961FDAF861005C4AE7 /* main-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "main-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D7FE1991FDAFE7E005C4AE7 /* CucumberishInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CucumberishInitializer.swift; sourceTree = "<group>"; };
 		2D7FE19E1FDB0199005C4AE7 /* Pods_MiraclePill.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MiraclePill.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7FE19F1FDB332D005C4AE7 /* FormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormScreen.swift; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 				89B88E531D33495F00EA1578 /* Main.storyboard */,
 				89B88E581D33495F00EA1578 /* LaunchScreen.storyboard */,
 				89B88E5B1D33495F00EA1578 /* Info.plist */,
-				2D7FE1961FDAF861005C4AE7 /* main-Bridging-Header.h */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -490,9 +488,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.MiraclePillUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MiraclePill;
 			};
@@ -524,9 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.MiraclePillUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MiraclePill;
 			};
@@ -576,6 +570,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -616,6 +611,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -632,9 +628,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novoda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -649,9 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novoda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MiraclePill/SupportingFiles/main-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "main-Swift.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
